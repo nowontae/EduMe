@@ -11,7 +11,7 @@
 <a href="admin_memberAllList.do">전체사용자</a>  |  
 <a href="admin_blackList.do">블랙리스트</a>
 <br>
-<a href="admin_reviewDeclaration.do">리뷰 신고 글목록</a>
+<a href="admin_reviewDeclaration.do">리뷰 신고 글목록</a>등록보류취소
 <br>
 후기?
 

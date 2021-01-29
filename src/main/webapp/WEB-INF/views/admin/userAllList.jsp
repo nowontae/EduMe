@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,14 +9,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>모든 사원 내역</h1>
+<h1>유저 전체 내역</h1>
 <table border="1" cellspacing="0">
 	<thead>
 		<tr>
-			<th>사원번호</th>
-			<th>사원이름</th>
+			<th>회원 고유번호</th>
+			<th>프로필사진경로</th>
+			<th>회원이름</th>
+			<th>ID</th>
 			<th>e-mail</th>
-			<th>부서명</th>
+			<th>전화번호</th>
+			<th>등급</th>
+			<th>회원가입일</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -27,9 +32,24 @@
 	<c:forEach var="dto" items="${list }">
 		<tr>
 			<td>${dto.midx }</td>
+			<td>${dto.mimg }</td>
 			<td>${dto.mname }</td>
+			<td>${dto.mid }</td>
 			<td>${dto.memail }</td>
-
+			<td>${dto.mtel }</td>
+			<c:if test="${dto.mgrade==1 }">
+			<td>관리자</td>
+			</c:if>
+			<c:if test="${dto.mgrade ==2}">
+			<td>강사</td>
+			</c:if>
+			<c:if test="${dto.mgrade == 3}">
+			<td>학생</td>
+			</c:if>
+			<td>
+			<fmt:formatDate  pattern="yyyy년 MM월 dd일" value="${dto.mjoindate }"/>
+			
+			</td>
 		</tr>
 	</c:forEach>
 	</tbody>
