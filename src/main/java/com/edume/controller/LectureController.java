@@ -39,7 +39,8 @@ public class LectureController {
 	@RequestMapping("/lecturePrice.do")
 	public String lecturePrice() {
 		return "lecture/createLecture/lecturePrice";
-
+	}
+	
 	@RequestMapping("testVideo.do")
 	public String testVideoForm() {
 		return "lecture/lectureTestvideo/lectureTestvideo";
