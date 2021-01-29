@@ -25,7 +25,7 @@
 
 
 <hr>
-<a href="#">안녕하세요</a>
+<a href="lectureMain.do">강사</a>
 
 <hr>
 <a href="#">bbbbb</a>
