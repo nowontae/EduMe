@@ -1,11 +1,13 @@
 package com.edume.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 public class LectureController {
+
 
 	//@Autowired
 	
@@ -37,5 +39,15 @@ public class LectureController {
 	@RequestMapping("/lecturePrice.do")
 	public String lecturePrice() {
 		return "lecture/createLecture/lecturePrice";
+
+	@RequestMapping("testVideo.do")
+	public String testVideoForm() {
+		return "lecture/lectureTestvideo/lectureTestvideo";
+	}
+	
+	@RequestMapping("chartTest.do")
+	public String charTest() {
+		return "lecture/lectureResult/lectureResult";
+
 	}
 }
