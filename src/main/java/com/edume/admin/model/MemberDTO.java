@@ -9,9 +9,9 @@ public class MemberDTO {
 	private String mpwd;   //비밀번호
 	private String memail; //이메일
 	private String mtel;   //전화번호
-	private int mgrade;    //등급
+	private int mgrade;    //유저 등급  -> 1 관리자 , 2 강사,  3 학생(default)
 	private String mimg;   //프로필사진 경로
-	private char mblack;   //블랙리스트 여부
+	private char mblack;   //블랙리스트 여부 -> 1  정상 (default), 2  블랙리스트
 	private String mfav1_idx;  //관심사1
 	private String mfav2_idx;  //관심사2
 	private String mfav3_idx;  //관심사3 
