@@ -9,9 +9,11 @@ public class IndexController {
     @RequestMapping("/index.do")
       public String index() {
          return "index";
-      } 
-    @RequestMapping("lectureMain.do")
-    public String lecture() {
-    	return "lecture/lectureMain";
-    }
+      }  
+    
+    @RequestMapping("/lectureMain.do")
+	public String createLectureMain() {
+		return "lecture/lectureMain";
+	}
+
 }
