@@ -10,7 +10,7 @@
 <h1>
 메인 페이지
 </h1>
-<a href="lectureMain.do">강사</a>
+<a href="teacherMain.do">강사</a>
 <hr>
 
 
@@ -26,7 +26,6 @@
 
 
 <hr>
-<a href="lectureMain.do">강사</a>
 
 <hr>
 <a href="#">bbbbb</a>

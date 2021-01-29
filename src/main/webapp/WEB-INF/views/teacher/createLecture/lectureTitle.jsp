@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="lectureTitleSave" action="lectureCategorySave.do">
+<form name="lectureTitleSave" action="lectureTitleSave.do">
 <div>
-	<input type="button" value="<강좌로 돌아가기" onclick="location.href='lectureMain.do'">
+	<input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do'">
 </div>
 
 <div>
@@ -19,7 +19,7 @@
 			<a href="createLectureForm.do">강의 주제</a>
 		</li>
 		
-		<li >
+		<li>
 			<a href="lectureCategory.do">카테고리</a>
 		</li>
 		
@@ -50,32 +50,24 @@
 	<input type="button" value="검토를 위해 제출">
 </div>
 
+
 <div>
-	<h2>카테고리</h2>
+	<h2>강의 주제</h2>
 </div>
 
 <div>
-<span>공유하려는 지식에 가장 적합한 카테고리는 무엇입니까?</span>
-	<div>
-		<select>
-			<option>대분류</option>
-			<option value="개발">개발</option>
-		</select>
-	</div>	
+	<span>강좌 제목을 작성해주세요.</span>
+	<div><input type="text" value="강좌 제목"></div>
 </div>
 
 <div>
-	<select>
-		<option>중분류</option>
-		<option value="웹개발">웹개발</option>
-	</select>
+	<span>강좌 부제목을 작성해주세요.</span>
+	<div><input type="text" value="강좌 부제목"></div>
 </div>
-	
+
 <div>
-	<select>
-		<option>소분류</option>
-		<option value="모든 웹 개발">모든 웹 개발</option>
-	</select>
+	<span>난이도를 설정해주세요.</span>
+	<div>☆☆☆☆☆</div>
 </div>
 
 <div>
