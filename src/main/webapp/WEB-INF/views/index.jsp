@@ -38,11 +38,21 @@
 <div> 은진 추가</div>
 <div> 선아 추가</div>
 <div> 은진 추가</div>
+
+<hr>
 <div> 원태 추가</div>
-<div> 원태 추가1-1</div>
-<div> 원태 추가2</div>
-<div> 원태 추가3-1</div>
-<div> 원태 추가3-2</div>
+<ul>
+	<li><a href="declaration.do">신고</a></li>
+	<li><a href="commonQna.do">일반 문의사항</a></li>
+	<li><a href="#">찜목록</a></li>
+	<li><a href="#">알림</a></li>
+	<li><a href="#">구매내역</a></li>
+	<li><a href="#">크레딧</a></li>
+	<li><a href="lectureList.do">강의 리스트</a></li>
+	<li><a href="lectureDetail.do">강의 상세</a></li>
+	<li><a href="lectureMyClass.do">강의 듣기</a></li>
+	<li></li>
+</ul>
 
 
 
