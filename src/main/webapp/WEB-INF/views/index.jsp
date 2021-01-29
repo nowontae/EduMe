@@ -19,6 +19,7 @@
 <br/>
 <br/>
 
+<a href="admin.do">관리자 페이지</a>
 <hr>
 <a href="#">강의 리스트</a>
 
