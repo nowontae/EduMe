@@ -9,7 +9,7 @@
 <body>
 <form name="lectureTitleSave" action="lecturePriceSave.do">
 <div>
-	<input type="button" value="<강좌로 돌아가기" onclick="location.href='lectureMain.do'">
+	<input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do'">
 </div>
 
 <div>

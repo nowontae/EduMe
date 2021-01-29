@@ -11,9 +11,9 @@ public class IndexController {
          return "index";
       }  
     
-    @RequestMapping("/lectureMain.do")
+    @RequestMapping("/teacherMain.do")
 	public String createLectureMain() {
-		return "lecture/lectureMain";
+		return "teacher/teacherMain";
 	}
 
 }

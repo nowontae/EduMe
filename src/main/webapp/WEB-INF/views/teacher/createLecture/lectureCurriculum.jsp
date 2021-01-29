@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="lectureTitleSave" action="lectureStudentInfoSave.do">
+<form name="lectureTitleSave" action="lectureCurriculumSave.do">
 <div>
-	<input type="button" value="<강좌로 돌아가기" onclick="location.href='lectureMain.do'">
+	<input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do'">
 </div>
 
 <div>
@@ -51,27 +51,39 @@
 </div>
 
 <div>
-	<h2>수강생 세부사항</h2>
+	<h2>커리큘럼</h2>
 </div>
 
 <div>
-	<span>개요</span>
-	<div><input type="text" value="예:나는야 개발의 신!"></div>
+	<div>섹션을 생성하여 강좌 만들기를 시작하세요.</div>
+	<div>강좌를 무료로 제공하려면 동영상 콘텐츠의 총 길이가 2시간을 초과해서는 안 됩니다.</div>
 </div>
 
 <div>
-		<span>수강생이 강좌를 통해 무엇을 배우게 됩니까?</span>
-	<div><input type="text" value="예:자바 기초"></div>
+	<input type="button" value="섹션 추가">
 </div>
+
+<div>
+	<div>
+		<span>섹션 1(숫자증가):</span>
+		<span><input type="text" value="섹션 제목"></span>
+	</div>
 	
-<div>
-		<span>강좌 요구사항 또는 사전조건이 있습니까?</span>
-	<div><input type="text" value="예:자바 용어를 읽을 수 있음"></div>
-</div>
-
-<div>
-		<span>대상 수강생이 누구입니까?</span>
-	<div><input type="text" value="예:웹 개발에 관심이 있는 초보 자바 개발자"></div>
+	<div>
+		<div>
+			<span>강의 1(숫자증가):</span>
+			<span><input type="text" value="강의 제목"></span>
+		</div>
+		<div>
+			<span>동영상 업로드</span>
+			<span><input readonly type="text" value="선택된 파일 없음"></span>
+			<span><input type="button" value="파일업로드"></span>
+		</div>
+	</div>
+	
+	<div>
+		<input type="button" value="강의 추가">
+	</div>
 </div>
 	
 <div>
