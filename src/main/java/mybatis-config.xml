@@ -4,7 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+<<<<<<< HEAD
 	<mappers>
 		<mapper resource="sql/MemberSQL.xml"/>
 	</mappers>
+=======
+<mappers>
+    <mapper resource="sql/memberSQL.xml"/>
+</mappers>
+>>>>>>> wontae/declaration
 </configuration>
