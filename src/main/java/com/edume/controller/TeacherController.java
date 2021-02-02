@@ -1,7 +1,13 @@
 package com.edume.controller;
 
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class TeacherController {
@@ -36,12 +42,12 @@ public class TeacherController {
 		return "teacher/createLecture/lecturePrice";
 	}
 	
-	@RequestMapping("testVideo.do")
+	@RequestMapping("/testVideo.do")
 	public String testVideoForm() {
 		return "teacher/teacherTestvideo/teacherTestvideo";
 	}
 	
-	@RequestMapping("chartTest.do")
+	@RequestMapping("/chartTest.do")
 	public String charTest() {
 		return "teacher/teacherResult/teacherResult";
 

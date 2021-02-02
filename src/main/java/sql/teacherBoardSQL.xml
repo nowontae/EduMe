@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="teacherBoard.ask">
+  <select id="teacherBoardAskList" resultType="com.edume.teacherBoard.model.TeacherBoardDTO">
+  	select * from (select rownum as rnum,a.* from (select * from LectureQNA order by lqidx desc) a) b where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
+  </select>
+  <select id="askTotalCnt" resultType="Integer">
+  	select count(*) from LectureQNA
+  </select>
+  <select id="askContent" parameterType="Integer" resultType="com.edume.teacherBoard.model.TeacherBoardDTO">
+  	select * from LectureQNA where midx=#{midx}
+  </select>
+  </mapper>

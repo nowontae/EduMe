@@ -6,6 +6,58 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="Chart.js"></script>
+<script type="text/javascript" src="httpRequest.js"></script>
+<script>
+function show(){
+	var target=document.getElementById("sortSelectBox");
+	var sort=target.options[target.selectedIndex].value;
+	sendRequest('getStudentXML.do',sort,showResult,'POST');
+}
+function showResult(){
+	if(XHR.readyState==4){
+		if(XHR.status==200){
+			
+			
+			var ctx = document.getElementById("myChart");
+			var myChart = new Chart(ctx, {
+				type : 'bar',
+				data : {
+					labels : [ "1~3월", "4~6월", "7~9월","10~12월" ],
+					datasets : [ {
+						label : '명',
+						data : [ 30,80,70,50 ],
+						backgroundColor:[
+							'rgba(255, 99, 132, 0.2)',
+							'rgba(54, 162, 235, 0.2)',
+							'rgba(255, 206, 86, 0.2)',
+							'rgba(75, 192, 192, 0.2)'
+						],
+						borderColor:[
+							'rgba(255, 99, 132, 1)',
+							'rgba(54, 162, 235, 1)',
+							'rgba(255, 206, 86, 1)',
+							'rgba(75, 192, 192, 1)'
+						],
+						borderWidth:2
+					} ]
+				},
+				option:{
+					maintainAspectRatio: false,
+					responsive: false,
+					scales:{
+						yAxes:[{
+							ticks:{
+								beginAtZero:true
+							}
+						}]
+					},
+				}
+			});
+			
+		}
+	}
+}
+</script>
 <style>
 #myChart{
 	width: 600px !important;
@@ -75,50 +127,13 @@ body{
 		</div>
 		<div style="border: 1px solid black;">
 			<canvas id="myChart"></canvas>
-			<select name="기준">
-				<option selected="selected">기준 날짜</option>
-				<option value="6">6개월</option>
-				<option value="12">1년</option>
+			<select name="sortChart" id="sortSelectBox" onchange="show()">
+				<option value="month" selected="selected">6개월</option>
+				<option value="year">1년</option>
 				<option value="all">전체</option>
 			</select>
 		</div>
 	</div>
 </div>
-	<script>
-		var ctx = document.getElementById("myChart");
-		var myChart = new Chart(ctx, {
-			type : 'bar',
-			data : {
-				labels : [ "1~3월", "4~6월", "7~9월","10~12월" ],
-				datasets : [ {
-					label : '명',
-					data : [ 30,80, 70, 50 ],
-					backgroundColor:[
-						'rgba(255, 99, 132, 0.2)',
-						'rgba(54, 162, 235, 0.2)',
-						'rgba(255, 206, 86, 0.2)',
-						'rgba(75, 192, 192, 0.2)'
-					],
-					borderColor:[
-						'rgba(255, 99, 132, 1)',
-						'rgba(54, 162, 235, 1)',
-						'rgba(255, 206, 86, 1)',
-						'rgba(75, 192, 192, 1)'
-					],
-					borderWidth:2
-				} ]
-			},
-			option:{
-				maintainAspectRatio: false,
-				scales:{
-					yAxes:[{
-						ticks:{
-							beginAtZero:true
-						}
-					}]
-				},
-			}
-		});
-	</script>
 </body>
 </html>
