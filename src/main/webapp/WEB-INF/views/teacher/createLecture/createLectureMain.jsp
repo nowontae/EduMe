@@ -10,6 +10,7 @@
 <form name="lectureTitle" action="lectureTitleSave.do">
 <div>
 	<input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do'">
+	<input type="submit" value="저장">
 </div>
 
 <div>
@@ -70,9 +71,6 @@
 	<div>☆☆☆☆☆</div>
 </div>
 
-<div>
-	<input type="submit" value="저장">
-</div>
 </form>
 </body>
 </html>

@@ -1,16 +1,25 @@
 package com.edume.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
-public class TeacherController {
+import com.edume.createLecture.model.CreateLectureDAO;
 
+@Controller
+public class CreateLectureController {
+	
+	//@Autowired
+	//private CreateLectureDAO clDao;
+
+
+	
 	@RequestMapping("/createLectureForm.do")
 	public String createLectureForm() {
 		return "teacher/createLecture/lectureTitle";
 	}
 	
+
 	@RequestMapping("/lectureCategory.do")
 	public String lectureCategorySave() {
 		return "teacher/createLecture/lectureCategory";

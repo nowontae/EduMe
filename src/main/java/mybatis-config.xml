@@ -6,5 +6,7 @@
 <configuration>
 	<mappers>
 		<mapper resource="sql/MemberSQL.xml"/>
+		<mapper resource="sql/TeacherBoardNoticeSQL.xml"/>
+		<mapper resource="sql/TeacherBoardReviewSQL.xml"/>
 	</mappers>
 </configuration>
