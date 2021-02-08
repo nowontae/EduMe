@@ -14,8 +14,7 @@
 <table>
 	<thead>
 	<tr>
-		<th>공지 순서</th>
-		<th>작성자</th>
+		<th>글번호</th>
 		<th>강의 번호</th>
 		<th>제목</th>
 		<th>내용</th>
@@ -26,7 +25,7 @@
 	<tbody>
 		<c:if test="${empty list}">
 			<tr>
-				<td colspan="7" align="center">
+				<td colspan="6" align="center">
 				등록된 게시글이 없습니다.
 				</td>
 			</tr>
@@ -35,7 +34,6 @@
 		<c:forEach var="dto" items="${list}">
 			<tr>
 				<td>${dto.nidx}</td>
-				<td>${dto.midx}</td>
 				<td>${dto.lidx}</td>
 				<td><a href="teacherNoticeContent.do?nidx=${dto.nidx}">${dto.nsubject}</a></td>
 				<td>${dto.ncontent}</td>
@@ -46,7 +44,7 @@
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="6" align="center">${pageStr}</td>
+			<td colspan="5" align="center">${pageStr}</td>
 			<td><a href="teacherNoticeWrite.do">글쓰기</a></td>
 		</tr>
 	</tfoot>
