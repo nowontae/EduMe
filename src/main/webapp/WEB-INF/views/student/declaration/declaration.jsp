@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>신고하기 ${cnt}</h1>
+<h1>신고하기 (midx=${sessionScope.midx})</h1>
 <br/>
 
 <div>
@@ -16,7 +16,9 @@
 기술적인 지원이 필요할때는 <a href="#">문의하기</a>를 이용해 주세요
 </div>
 
-<form action="/declaration.do" method="post">
+<form action="declaration.do" method="post">
+<input type="hidden" name="midx_to"value="${midx}">
+<input type="hidden" name="lidx" value="${lidx}">
 <textarea name="content" rows="10" cols="50"></textarea>
 <br>
 <div>
