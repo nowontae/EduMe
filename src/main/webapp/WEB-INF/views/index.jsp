@@ -36,6 +36,10 @@
 <hr>
 <a href="#">ddddd</a>
 <div> 은진 추가</div>
+<a href="MyCart.do">장바구니</a>
+<br>
+<a href="MyLectureList.do">내학습관리</a>
+
 <div> 선아 추가</div>
 <div> 은진 추가</div>
 
