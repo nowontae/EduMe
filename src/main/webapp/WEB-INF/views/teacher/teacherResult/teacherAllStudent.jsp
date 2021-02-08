@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="Chart.js"></script>
+<script type="text/javascript" src="httpRequest.js"></script>
 <style>
 #myChart{
 	width: 600px !important;
@@ -39,34 +41,34 @@ body{
 		<div style="border: 1px solid black;">
 			<ul role="tablist" class="lectureResultUl">
 				<li role="presentation" class="ResultLi">
-					<a role="tab" href="#" class="LiAtag">
+					<a role="tab" href="teacherResult.do?midx=${sessionScope.midx}" class="LiAtag">
 						<div>
 							<div>
 								<div>총 수익</div>
-								<div>0원</div>
-								<div>0원 이번 달</div>
+								<div>${allResult}원</div>
+								<div>${monthResult}원 (최근 한달)</div>
 							</div>
 						</div>
 					</a>
 				</li>
 				<li role="presentation" class="ResultLi">
-					<a role="tab" href="#" class="LiAtag">
+					<a role="tab" href="teacherAllStudent.do?midx=${sessionScope.midx}" class="LiAtag">
 						<div>
 							<div>
 								<div>총 등록</div>
-								<div>0</div>
-								<div>0 이번 달</div>
+								<div>0명</div>
+								<div>0명 (최근 한달)</div>
 							</div>
 						</div>
 					</a>
 				</li>
 				<li role="presentation" class="ResultLiLast">
-					<a role="tab" href="#" class="LiAtag">
+					<a role="tab" href="teacherGrade.do?midx=${sessionScope.midx}" class="LiAtag">
 						<div>
 							<div>
 								<div>강사 평점</div>
 								<div>0.00</div>
-								<div>0개의 평점</div>
+								<div>0개의 평점 (최근 한달)</div>
 							</div>
 						</div>
 					</a>
@@ -75,50 +77,50 @@ body{
 		</div>
 		<div style="border: 1px solid black;">
 			<canvas id="myChart"></canvas>
-			<select name="기준">
-				<option selected="selected">기준 날짜</option>
-				<option value="6">6개월</option>
-				<option value="12">1년</option>
-				<option value="all">전체</option>
-			</select>
+			최근 1년까지의 데이터만 표시됩니다.
 		</div>
 	</div>
 </div>
-	<script>
-		var ctx = document.getElementById("myChart");
-		var myChart = new Chart(ctx, {
-			type : 'bar',
-			data : {
-				labels : [ "1~3월", "4~6월", "7~9월","10~12월" ],
-				datasets : [ {
-					label : '명',
-					data : [ 30,80, 70, 50 ],
-					backgroundColor:[
-						'rgba(255, 99, 132, 0.2)',
-						'rgba(54, 162, 235, 0.2)',
-						'rgba(255, 206, 86, 0.2)',
-						'rgba(75, 192, 192, 0.2)'
-					],
-					borderColor:[
-						'rgba(255, 99, 132, 1)',
-						'rgba(54, 162, 235, 1)',
-						'rgba(255, 206, 86, 1)',
-						'rgba(75, 192, 192, 1)'
-					],
-					borderWidth:2
-				} ]
-			},
-			option:{
-				maintainAspectRatio: false,
-				scales:{
-					yAxes:[{
-						ticks:{
-							beginAtZero:true
-						}
-					}]
-				},
-			}
-		});
-	</script>
 </body>
+<script>
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+	type : 'bar',
+	data : {
+		labels : [ "1주전", "1~2주전", "2~3주전","3~4주전" ],
+		datasets : [ {
+			label : '단위: 명',
+			data : [1,2,3,4,5,6],
+			backgroundColor:[
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(255, 206, 86, 0.2)',
+				'rgba(75, 192, 192, 0.2)',
+				'rgba(153, 102, 255, 0.2)',
+				'rgba(255, 159, 64, 0.2)'
+			],
+			borderColor:[
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(255, 206, 86, 0.2)',
+				'rgba(75, 192, 192, 0.2)',
+				'rgba(153, 102, 255, 0.2)',
+				'rgba(255, 159, 64, 0.2)'
+			],
+			borderWidth:2
+		} ]
+	},
+	option:{
+		maintainAspectRatio: false,
+		responsive: false,
+		scales:{
+			yAxes:[{
+				ticks:{
+					beginAtZero:true
+				}
+			}]
+		},
+	}
+});
+</script>
 </html>

@@ -37,13 +37,13 @@
 			<td>${dto.mid }</td>
 			<td>${dto.memail }</td>
 			<td>${dto.mtel }</td>
-			<c:if test="${dto.mgrade==1 }">
+			<c:if test="${dto.mgrade== '1' }">
 			<td>관리자</td>
 			</c:if>
-			<c:if test="${dto.mgrade ==2}">
+			<c:if test="${dto.mgrade == '2'}">
 			<td>강사</td>
 			</c:if>
-			<c:if test="${dto.mgrade == 3}">
+			<c:if test="${dto.mgrade == 'Y'}">
 			<td>학생</td>
 			</c:if>
 			<td>
