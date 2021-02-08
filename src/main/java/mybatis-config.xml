@@ -10,5 +10,8 @@
 		<mapper resource="sql/CommonQnASQL.xml"/>
 		<mapper resource="sql/CommonQNA_ReplySQL.xml"/>
 		<mapper resource="sql/DeclarationSQL.xml"/>
+		<mapper resource="sql/TeacherBoardNoticeSQL.xml"/>
+		<mapper resource="sql/TeacherBoardReviewSQL.xml"/>
+
 	</mappers>
 </configuration>

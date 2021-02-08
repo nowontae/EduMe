@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="lectureTitleSave" action="lectureLadingPageSave.do">
+<form name="lectureLadingPage" action="lectureLadingPageSave.do">
 <div>
-	<input type="button" value="<강좌로 돌아가기" onclick="location.href='lectureMain.do'">
+	<input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do'">
 </div>
 
 <div>
@@ -77,7 +77,7 @@
 <div>
 <span>강의 동영상</span>
 	<div>
-		<img alt="" src="https://www.udemy.com/staticx/udemy/images/course/750x422/placeholder.png">
+		<img alt="강의 동영상" src="https://www.udemy.com/staticx/udemy/images/course/750x422/placeholder.png">
 	</div>
 	
 	<div>

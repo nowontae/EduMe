@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="lectureTitleSave" action="lectureTitleSave.do">
+<form name="lectureCurriculum" action="lectureCurriculumSave.do">
 <div>
-	<input type="button" value="<강좌로 돌아가기" onclick="location.href='lectureMain.do'">
+	<input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do'">
 </div>
 
 <div>
@@ -19,7 +19,7 @@
 			<a href="createLectureForm.do">강의 주제</a>
 		</li>
 		
-		<li>
+		<li >
 			<a href="lectureCategory.do">카테고리</a>
 		</li>
 		
@@ -50,26 +50,42 @@
 	<input type="button" value="검토를 위해 제출">
 </div>
 
-
 <div>
-	<h2>강의 주제</h2>
+	<h2>커리큘럼</h2>
 </div>
 
 <div>
-	<span>강좌 제목을 작성해주세요.</span>
-	<div><input type="text" value="강좌 제목"></div>
+	<div>섹션을 생성하여 강좌 만들기를 시작하세요.</div>
+	<div>강좌를 무료로 제공하려면 동영상 콘텐츠의 총 길이가 2시간을 초과해서는 안 됩니다.</div>
 </div>
 
 <div>
-	<span>강좌 부제목을 작성해주세요.</span>
-	<div><input type="text" value="강좌 부제목"></div>
+	<input type="button" value="섹션 추가">
 </div>
 
 <div>
-	<span>난이도를 설정해주세요.</span>
-	<div>☆☆☆☆☆</div>
+	<div>
+		<span>섹션 1(숫자증가):</span>
+		<span><input type="text" value="섹션 제목"></span>
+	</div>
+	
+	<div>
+		<div>
+			<span>강의 1(숫자증가):</span>
+			<span><input type="text" value="강의 제목"></span>
+		</div>
+		<div>
+			<span>동영상 업로드</span>
+			<span><input readonly type="text" value="선택된 파일 없음"></span>
+			<span><input type="button" value="파일업로드"></span>
+		</div>
+	</div>
+	
+	<div>
+		<input type="button" value="강의 추가">
+	</div>
 </div>
-
+	
 <div>
 	<input type="submit" value="저장">
 </div>

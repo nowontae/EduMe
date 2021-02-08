@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="teacherBoardNotice">
+
+	<!-- 공지 메인페이지 -->
+	<select id="teacherNoticeMain" parameterType="Map" resultType="com.edume.teacherBoardNotice.model.TeacherBoardNoticeDTO">
+	select * 
+	from   (select rownum as rnum,a.* 
+	  		from	(select * 
+	  		         from notice order by nidx desc) a)   b 
+	where rnum <![CDATA[>=]]> #{start} and rnum <![CDATA[<=]]> #{end}
+	</select>
+
+	<!-- 공지 글쓰기 작성-->
+	<insert id="teacherNoticeWrite" parameterType="com.edume.teacherBoardNotice.model.TeacherBoardNoticeDTO">
+	insert into
+		notice
+	values(notice_idx.nextval,
+	#{midx},
+	#{lidx},
+	#{nsubject},
+	#{ncontent},
+	#{nimg},
+	sysdate)
+	</insert>
+	
+	<!-- 공지 글쓰기 본문 -->
+	<select id="teacherNoticeContent" parameterType="Integer" resultType="com.edume.teacherBoardNotice.model.TeacherBoardNoticeDTO">
+		select * from 
+			notice 
+		where
+			nidx=#{nidx} 
+	</select>
+	
+	<select id="noticeTotalCnt" resultType="Integer">
+		select count(*) from notice
+	</select>
+</mapper>
