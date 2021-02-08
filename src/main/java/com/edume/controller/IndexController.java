@@ -6,15 +6,29 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class IndexController {
 
     @RequestMapping("/index.do")
+<<<<<<< HEAD
       public String index(HttpServletRequest req) {
     	HttpSession session = req.getSession();
     	session.setAttribute("midx", 2);
          return "index";
+=======
+      public ModelAndView index(HttpServletRequest req, HttpServletResponse resp) {
+        
+    	
+    	HttpSession session = req.getSession(true); 
+    	session.setAttribute("midx", "3");
+    	
+    	ModelAndView mav = new ModelAndView();
+    	mav.setViewName("index");
+    	return mav;
+         
+>>>>>>> wontae/decalration
       }  
     
     @RequestMapping("/teacherMain.do")

@@ -21,7 +21,7 @@
 
 <a href="admin.do">관리자 페이지</a>
 <hr>
-<a href="#">강의 리스트</a>
+<a href="lectureList.do">강의 리스트</a>
 
 
 
@@ -46,9 +46,9 @@
 <hr>
 <div> 원태 추가</div>
 <ul>
-	<li><a href="declaration.do">신고</a></li>
+	<li><a href="declaration.do?ridx=1">신고</a></li>
 	<li><a href="commonQna.do">일반 문의사항</a></li>
-	<li><a href="#">찜목록</a></li>
+	<li><a href="wishList.do">찜목록</a></li>
 	<li><a href="#">알림</a></li>
 	<li><a href="#">구매내역</a></li>
 	<li><a href="#">크레딧</a></li>

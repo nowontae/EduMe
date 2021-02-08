@@ -1,17 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script>
+function videoPause(v){
+	
+	var crTime = v.currentTime;
+	alert(crTime);
+	
+}
+
+function videoEnded(v){
+	var crTime = v.currentTime;
+	alert("끝"+crTime);
+}
+</script>
 </head>
 <body>
 <div>개발 > 프로그래밍 언어 > c</div><br />
 
-<div><h1>자료구조 알고리즘 패키지</h1></div> <br />
+<div><h1>${lectureDetail.ltitle }</h1></div> <br />
 <div>
-	<h2>이 강좌는 취업준비생을 위한 자료구조 알고리즘 패키지로서 취업에 특화된 강의입니다.</h2>
+	<h2>${lectureDetail.lsummary}</h2>
 </div>
 <br />
 <div>★★★☆☆ (00개의 평점) 000명의 수강생</div><br />
@@ -21,15 +36,27 @@
 <div>12/2020에 마지막으로 업데이트 됨  / 언어 한국어</div><br />
 
 <div>
-	<input type="button" value="WishList"/>
+	<a href="addWishList.do?lidx=${lectureDetail.lidx}">찜하기</a>
 	<input type="button" value="공유"/>
 	<input type="button" value="이 강좌 선물하기"/>
 </div>
 
 <br /><br /><br /><br /><br /><br /><br /><br />
- <video muted controls loop style="width:500px">
-      <source src="C:\Users\Wontae\Desktop\FastCampus - 자료구조 알고리즘 패키지\01 자료구조 이론\01_01 자료구조 이론 - 강의 소개 및 학습 방법.mp4" type="video/mp4">
+ <video id="lec" muted controls style="width:500px" onpause="videoPause(this)" onended="videoEnded(this)">
+      <source src="video/test1.mp4">
       <strong>Your browser does not support the video tag.</strong>
  </video>
+ 
+ 
+ <div id="curriculum">
+ <ul>
+ <c:forEach var="curi" items="${curriculum }">
+	
+ 		<li>${curi.lcsection }/${curi.lcpart }/${curi.lctitle }</li>
+ </c:forEach>
+ </ul>
+ 
+ </div>
+ 
 </body>
 </html>

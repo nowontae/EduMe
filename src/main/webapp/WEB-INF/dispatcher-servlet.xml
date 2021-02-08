@@ -12,6 +12,7 @@
    <!--  sample 
    <bean id="empDao" class="yong.emp.model.EmpDAOImple"></bean>  	-->
   	<bean id="memberDao" class="com.edume.admin.model.MemberDAOImple"/>
+<<<<<<< HEAD
   	<bean id="commonQnaDao" class="com.edume.admin.model.CommonQnaDAOImple"></bean>
   	<bean id="commonQnaReplyDao" class="com.edume.admin.model.CommonQna_ReplyDAOImple"></bean>
   	<bean id="declarationDao" class="com.edume.admin.model.DeclarationDAOImple"></bean>
@@ -19,6 +20,13 @@
   	<bean id="teacherBoardReviewDao" class="com.edume.teacherBoardReview.model.TeacherBoardReviewDAOImple"/>
 
 
+=======
+  	<bean id="lectureDao" class="com.edume.lecture.model.LectureDAOImple"/>
+  	<bean id="studentDao" class="com.edume.student.model.StudentDAOImple"/>  	
+  	<bean id="cqDao" class="com.edume.student.model.CommonQnaDAOImple"/>  	
+  	<bean id="wishListDao" class="com.edume.student.model.WishListDAOImple"/>  	
+  	
+>>>>>>> wontae/decalration
    <!-- config   -->
    <context:component-scan base-package="com.edume"></context:component-scan>
    
