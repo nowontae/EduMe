@@ -68,10 +68,6 @@
    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
       <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"></constructor-arg>
    </bean>
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'develop' of https://github.com/nowontae/EduMe.git
    
 
 

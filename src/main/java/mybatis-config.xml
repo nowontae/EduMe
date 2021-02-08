@@ -6,10 +6,8 @@
 <configuration>
 	<mappers>
 		<mapper resource="sql/MemberSQL.xml"/>
-<<<<<<< HEAD
 		<mapper resource="sql/teacherBoardSQL.xml"/>
 		<mapper resource="sql/teacherResultSQL.xml"/>
-=======
 		<mapper resource="sql/ReviewSQL.xml"/>
 		<mapper resource="sql/CommonQnASQL.xml"/>
 		<mapper resource="sql/CommonQNA_ReplySQL.xml"/>
@@ -17,7 +15,6 @@
 		<mapper resource="sql/TeacherBoardNoticeSQL.xml"/>
 		<mapper resource="sql/TeacherBoardReviewSQL.xml"/>
 
->>>>>>> branch 'develop' of https://github.com/nowontae/EduMe.git
 	</mappers>
 	
 </configuration>

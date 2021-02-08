@@ -80,30 +80,15 @@ function changeSelect(e){
 			<td>${dto.mid }</td>
 			<td>${dto.memail }</td>
 			<td>${dto.mtel }</td>
-<<<<<<< HEAD
-			<c:if test="${dto.mgrade== '1' }">
-			<td>관리자</td>
-=======
 			<td>
 			<c:if test="${dto.mgrade eq 1 }">
 			관리자
->>>>>>> branch 'develop' of https://github.com/nowontae/EduMe.git
 			</c:if>
-<<<<<<< HEAD
-			<c:if test="${dto.mgrade == '2'}">
-			<td>강사</td>
-=======
 			<c:if test="${dto.mgrade eq 2}">
 			강사
->>>>>>> branch 'develop' of https://github.com/nowontae/EduMe.git
 			</c:if>
-<<<<<<< HEAD
-			<c:if test="${dto.mgrade == 'Y'}">
-			<td>학생</td>
-=======
 			<c:if test="${3 == dto.mgrade}">
 			학생
->>>>>>> branch 'develop' of https://github.com/nowontae/EduMe.git
 			</c:if>
 			</td>
 			<td>
