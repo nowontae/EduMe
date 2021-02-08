@@ -6,5 +6,9 @@
 <configuration>
 	<mappers>
 		<mapper resource="sql/MemberSQL.xml"/>
+		<mapper resource="sql/ReviewSQL.xml"/>
+		<mapper resource="sql/CommonQnASQL.xml"/>
+		<mapper resource="sql/CommonQNA_ReplySQL.xml"/>
+		<mapper resource="sql/DeclarationSQL.xml"/>
 	</mappers>
 </configuration>

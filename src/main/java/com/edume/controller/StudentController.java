@@ -52,5 +52,19 @@ public class StudentController {
 		return "/lecture/lectureDetail";
 	}
 			
-		
+	//장바구니 페이지이동
+	@RequestMapping("/MyCart.do")
+	public ModelAndView myCart() {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("myPage/myCart");
+		return mav;
+	}
+	
+	//내학습관리 페이지 이동
+	@RequestMapping("/MyLectureList.do")
+	public ModelAndView myLectureList() {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("myPage/myLectureList");
+		return mav;
+	}
 }

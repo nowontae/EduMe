@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.edume.admin_CommonQnA">
+  
+  	<!-- 문의사항 전체 리스트 출력 -->
+  	<select id="CommonQnAList" parameterType="Map"  resultType="com.edume.admin.model.CommonQnaDTO">
+  		<!--select * from CommonQNA order by cqidx-->
+  		
+  	<!--  select m.mname, c.*
+  			from member m, CommonQnA c
+  		where m.midx=c.midx-->	
+  		select *
+		    from(select rownum as rnum,m.mname,c.*
+		    from member m,CommonQNA c
+		    where m.midx=c.midx)
+		    where rnum <![CDATA[>=]]> #{start} and rnum <![CDATA[<=]]> #{end}
+
+  	</select>
+  	<!-- 문의사항 답변 완료 글 리스트 출력  -->
+  	<select id="CommonQnAListComplete" resultType="com.edume.admin.model.CommonQnaDTO">
+  		select m.mname, c.*
+  			from CommonQNA c, member m
+  		where m.midx=c.midx 
+  			and cqreply='Y'
+  	</select>
+  	
+  	<!-- 문의사항 답변 미완료 글 리스트 출력  -->
+  	<select id="CommonQnAListNotComplete" resultType="com.edume.admin.model.CommonQnaDTO">
+  			select m.mname, c.*
+  			from CommonQNA c, member m
+  		where m.midx=c.midx 
+  			and cqreply='N'
+  	</select>
+  	
+  	<!-- 문의사항 본문글보기 -->
+  	<select id="CommonQnaContent" resultType="com.edume.admin.model.CommonQnaDTO">
+  		select m.mname, c.*
+  		 	from CommonQNA c,member m
+  		  where m.midx=c.midx and c.cqidx=#{c.cqidx}
+  	</select>
+  	<!-- 문의사항 cqreply 값 수정하기  -->
+  	<update id="AnswerComplete">
+  		update CommonQNA set
+  			 cqreply='Y'
+  		where cqidx=#{cqidx} 
+  	</update>
+  	<!-- 문의사항 총 게시물 수 -->
+  	<select id="commonQna_TotalCnt" resultType="Integer">
+  			select 
+  				count(*)
+  			from 
+  				CommonQNA
+  	</select>
+  </mapper>
