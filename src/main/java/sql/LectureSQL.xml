@@ -29,6 +29,6 @@
  		select *
  		from lectureCurriculum
  		where lidx=#{lidx}
- 		order by lcsection, lcpart
+ 		order by lcsection, lcpart 
  	</select>
  </mapper>
