@@ -77,7 +77,7 @@ body{
 		</div>
 		<div style="border: 1px solid black;">
 			<canvas id="myChart"></canvas>
-			최근 1년까지의 데이터만 표시됩니다다다다다,
+			최근 1년까지의 데이터만 표시됩니다.
 		</div>
 	</div>
 </div>
