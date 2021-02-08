@@ -12,15 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController {
 
     @RequestMapping("/index.do")
-<<<<<<< HEAD
-      public String index(HttpServletRequest req) {
-    	HttpSession session = req.getSession();
-    	session.setAttribute("midx", 2);
-         return "index";
-=======
       public ModelAndView index(HttpServletRequest req, HttpServletResponse resp) {
         
-    	
+    	// midx session 심기
     	HttpSession session = req.getSession(true); 
     	session.setAttribute("midx", "3");
     	
@@ -28,7 +22,6 @@ public class IndexController {
     	mav.setViewName("index");
     	return mav;
          
->>>>>>> wontae/decalration
       }  
     
     @RequestMapping("/teacherMain.do")

@@ -143,7 +143,6 @@ public class StudentController {
 		
 	}
 			
-<<<<<<< HEAD
 	//장바구니 페이지이동
 	@RequestMapping("/MyCart.do")
 	public ModelAndView myCart() {
@@ -159,7 +158,6 @@ public class StudentController {
 		mav.setViewName("myPage/myLectureList");
 		return mav;
 	}
-=======
 	
 	//찜목록
 	@RequestMapping("/addWishList.do")
@@ -176,5 +174,4 @@ public class StudentController {
 	}
 		
 		
->>>>>>> wontae/decalration
 }
