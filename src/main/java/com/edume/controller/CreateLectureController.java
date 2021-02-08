@@ -12,8 +12,6 @@ public class CreateLectureController {
 	//@Autowired
 	//private CreateLectureDAO clDao;
 
-
-	
 	@RequestMapping("/createLectureForm.do")
 	public String createLectureForm() {
 		return "teacher/createLecture/lectureTitle";
@@ -45,15 +43,5 @@ public class CreateLectureController {
 		return "teacher/createLecture/lecturePrice";
 	}
 	
-	@RequestMapping("testVideo.do")
-	public String testVideoForm() {
-		return "teacher/teacherTestvideo/teacherTestvideo";
-	}
-	
-	@RequestMapping("chartTest.do")
-	public String charTest() {
-		return "teacher/teacherResult/teacherResult";
 
-	}
-	
 }
