@@ -11,7 +11,13 @@ public class MemberDTO {
 	private String mtel;   //전화번호
 	private String mgrade;    //유저 등급  -> 1 관리자 , 2 강사,  3 학생(default)
 	private String mimg;   //프로필사진 경로
+<<<<<<< HEAD
 	private char  mblack;   //블랙리스트 여부 -> 1  정상 (default), 2  블랙리스트
+=======
+	
+	private int mcredit;   //잔고
+	private int mblack;   //블랙리스트 ** 신고횟수-> 3개 쌓이면 댓글, 리뷰기능을 이용 못함.
+>>>>>>> branch 'develop' of https://github.com/nowontae/EduMe.git
 	private String mfav1_idx;  //관심사1
 	private String mfav2_idx;  //관심사2
 	private String mfav3_idx;  //관심사3 
@@ -21,8 +27,14 @@ public class MemberDTO {
 		// TODO Auto-generated constructor stub
 	}
 
+<<<<<<< HEAD
 	public MemberDTO(int midx, String mname, String mid, String mpwd, String memail, String mtel, String mgrade,
 			String mimg, char mblack, String mfav1_idx, String mfav2_idx, String mfav3_idx, Date mjoindate) {
+=======
+	public MemberDTO(int midx, String mname, String mid, String mpwd, String memail, String mtel, int mgrade,
+			String mimg, int mcredit, int mblack, String mfav1_idx, String mfav2_idx, String mfav3_idx,
+			Date mjoindate) {
+>>>>>>> branch 'develop' of https://github.com/nowontae/EduMe.git
 		super();
 		this.midx = midx;
 		this.mname = mname;
@@ -32,6 +44,7 @@ public class MemberDTO {
 		this.mtel = mtel;
 		this.mgrade = mgrade;
 		this.mimg = mimg;
+		this.mcredit = mcredit;
 		this.mblack = mblack;
 		this.mfav1_idx = mfav1_idx;
 		this.mfav2_idx = mfav2_idx;
@@ -103,11 +116,19 @@ public class MemberDTO {
 		this.mimg = mimg;
 	}
 
-	public char getMblack() {
+	public int getMcredit() {
+		return mcredit;
+	}
+
+	public void setMcredit(int mcredit) {
+		this.mcredit = mcredit;
+	}
+
+	public int getMblack() {
 		return mblack;
 	}
 
-	public void setMblack(char mblack) {
+	public void setMblack(int mblack) {
 		this.mblack = mblack;
 	}
 

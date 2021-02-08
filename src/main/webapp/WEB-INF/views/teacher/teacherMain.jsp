@@ -8,6 +8,7 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 <div>
 	<a>사이트 로고</a>
 	<a href="lectureMain.do">강좌</a>
@@ -17,6 +18,19 @@
 	<a>후기</a>
 	<a href="teacherAsk.do?midx=${sessionScope.midx}">문의</a>
 </div>
+=======
+<form>
+	<div>
+		<a>사이트 로고</a>
+		<a href="teacherMain.do">강좌</a>
+		<a href="testVideo.do">테스트동영상</a>
+		<a href="teacherNoticeMain.do">공지</a>
+		<a href="chartTest.do">성과</a>
+		<a href="teacherReviewMain.do?midx=${sessionScope.midx}">후기</a>
+		<a>문의</a>
+	</div>
+</form>
+>>>>>>> branch 'develop' of https://github.com/nowontae/EduMe.git
 
 <form name="createLectureForm" action="createLectureForm.do">
 <div>

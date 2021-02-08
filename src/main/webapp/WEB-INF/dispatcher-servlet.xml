@@ -8,27 +8,30 @@
    http://www.springframework.org/schema/context 
    http://www.springframework.org/schema/context/spring-context-4.0.xsd">
   
-  
    <!-- service -->
    <!--  sample 
    <bean id="empDao" class="yong.emp.model.EmpDAOImple"></bean>  	-->
   	<bean id="memberDao" class="com.edume.admin.model.MemberDAOImple"/>
-  	
-  	
-  	
+  	<bean id="commonQnaDao" class="com.edume.admin.model.CommonQnaDAOImple"></bean>
+  	<bean id="commonQnaReplyDao" class="com.edume.admin.model.CommonQna_ReplyDAOImple"></bean>
+  	<bean id="declarationDao" class="com.edume.admin.model.DeclarationDAOImple"></bean>
+  	<bean id="teacherBoardNoticeDao" class="com.edume.teacherBoardNotice.model.TeacherBoardNoticeDAOImple"/>
+  	<bean id="teacherBoardReviewDao" class="com.edume.teacherBoardReview.model.TeacherBoardReviewDAOImple"/>
+
+
    <!-- config   -->
    <context:component-scan base-package="com.edume"></context:component-scan>
    
+
    <!-- Autowired -->
    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>
-
-
+  
 	<!-- file Upload -->
 
    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
       <property name="maxUploadSize" value="104857600"></property>
    </bean>
-   
+
    <!--  Not Yet
    <bean id="edumeDown" class="com.edume.view.DownloadView"></bean>
    -->
@@ -65,7 +68,10 @@
    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
       <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"></constructor-arg>
    </bean>
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'develop' of https://github.com/nowontae/EduMe.git
    
 
 

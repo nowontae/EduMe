@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="lectureTitleSave" action="lectureStudentInfoSave.do">
+<form name="lectureStudentInfo" action="lectureStudentInfoSave.do">
 <div>
 	<input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do'">
 </div>

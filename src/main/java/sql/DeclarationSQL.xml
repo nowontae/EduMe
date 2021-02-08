@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.edume.admin_Declaration">
+  <select id="DeclarationAllList" resultType="com.edume.admin.model.DeclarationDTO">
+  	select l.ltitle, m.*
+	from lecture l, review r,
+	(    select m_from.mname as m_from_name, m2.mname as m_to_name, d2.*
+ 	   from  member m2, declaration d2,
+	        (select m1.mname
+	        from member m1, declaration d1
+	        where m1.midx= d1.midx_from) m_from
+   	   where m2.midx=d2.midx_to) m
+	where m.ridx = r.ridx
+	and r.lidx = l.lidx
+  </select>
+  </mapper>

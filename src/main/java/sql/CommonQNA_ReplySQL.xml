@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.edume.admin_CommonQnAReply">
+  <insert id="CommonQnAReplyAdd">
+  	insert into CommonQNA_Reply values(CommonQNA_Reply_idx.nextval,#{cqidx},#{midx},#{cqreplycontent},sysdate)
+  </insert>
+  <select id="CommonQnAReplyList" resultType="com.edume.admin.model.CommonQna_ReplyDTO">
+  	select m.mname, r.*
+	from member m, CommonQNA_Reply r
+	where m.midx=r.midx
+	and cqidx=#{cqidx}
+	order by cqreplywritedate asc
+  </select>
+  <delete id="Qna_ReplyDelete" parameterType="Integer">
+  	delete from CommonQNA_Reply 
+  		where cqreply_idx=#{cqreply_idx}
+  </delete>
+  <select id="Qna_ReplyUpdateForm"  resultType="com.edume.admin.model.CommonQna_ReplyDTO">
+  	select r.*, m.mname
+  	 from CommonQNA_Reply r, member m 
+  	 where r.midx=m.midx 
+  	 and cqreply_idx=#{cqreply_idx}
+  </select>
+  <update id="Qna_ReplyUpdate" parameterType="Map">
+  update CommonQNA_Reply set cqreplycontent=#{cqreplycontent} where cqreply_idx=#{cqreply_idx}
+  </update>
+  </mapper>

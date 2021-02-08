@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="lectureTitleSave" action="lecturePriceSave.do">
+<form name="lecturePrice" action="lecturePriceSave.do">
 <div>
 	<input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do'">
 </div>
@@ -65,7 +65,7 @@
 		<span>
 			<select>
 				<option>선택</option>
-				<option value="무료">무료</option>
+				<option value="free">무료</option>
 				<option value="19,900">19,900</option>
 				<option value="29,900">29,900</option>
 				<option value="39,900">39,900</option>
