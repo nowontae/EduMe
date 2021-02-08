@@ -12,6 +12,11 @@
 <table>
 <thead>
 <tr>
+	<td colspan="2"><a href="teacherAsk.do?cp=1&midx=${midx}&boardtype=A">모두보기</a></td>
+	<td colspan="2"><a href="teacherAsk.do?cp=1&midx=${midx}&boardtype=Y">답변완료</a></td>
+	<td colspan="2"><a href="teacherAsk.do?cp=1&midx=${midx}&boardtype=N">답변미완료</a></td>
+</tr>
+<tr>
 	<th>문의 고유번호</th>
 	<th>제목</th>
 	<th>회원 고유번호</th>
@@ -31,7 +36,7 @@
 <c:forEach var="dto" items="${list}">
 	<tr>
 		<td>${dto.lqidx}</td>
-		<td><a href="teacherAnswer.do?midx=${dto.midx}">${dto.lqsubject}</a></td>
+		<td><a href="teacherAnswer.do?midx=${dto.midx}&lqidx=${dto.lqidx}">${dto.lqsubject}</a></td>
 		<td>${dto.midx}</td>
 		<td>${dto.lidx}</td>
 		<td>${dto.lqwritedate}</td>

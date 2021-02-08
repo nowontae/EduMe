@@ -47,10 +47,4 @@ public class TeacherController {
 		return "teacher/teacherTestvideo/teacherTestvideo";
 	}
 	
-	@RequestMapping("/chartTest.do")
-	public String charTest() {
-		return "teacher/teacherResult/teacherResult";
-
-	}
-	
 }

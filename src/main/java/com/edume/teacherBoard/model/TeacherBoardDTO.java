@@ -11,6 +11,9 @@ public class TeacherBoardDTO {
 	private String lqcontent;
 	private Date lqwritedate;
 	private String lqreply;
+	private String lqReplyContent;
+	private Date lqReplyCritedate;
+	
 	public TeacherBoardDTO() {
 		super();
 	}
@@ -33,6 +36,14 @@ public class TeacherBoardDTO {
 		this.lqsubject = lqsubject;
 		this.lqwritedate = lqwritedate;
 		this.lqreply = lqreply;
+	}
+	
+	public TeacherBoardDTO(int lqidx, int midx, String lqReplyContent, Date lqReplyCritedate) {
+		super();
+		this.lqidx = lqidx;
+		this.midx = midx;
+		this.lqReplyContent = lqReplyContent;
+		this.lqReplyCritedate = lqReplyCritedate;
 	}
 	public int getLqidx() {
 		return lqidx;
@@ -75,6 +86,18 @@ public class TeacherBoardDTO {
 	}
 	public void setLqreply(String lqreply) {
 		this.lqreply = lqreply;
+	}
+	public String getLqReplyContent() {
+		return lqReplyContent;
+	}
+	public void setLqReplyContent(String lqReplyContent) {
+		this.lqReplyContent = lqReplyContent;
+	}
+	public Date getLqReplyCritedate() {
+		return lqReplyCritedate;
+	}
+	public void setLqReplyCritedate(Date lqReplyCritedate) {
+		this.lqReplyCritedate = lqReplyCritedate;
 	}
 	
 	

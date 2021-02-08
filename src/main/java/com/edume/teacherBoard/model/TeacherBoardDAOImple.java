@@ -25,15 +25,63 @@ public class TeacherBoardDAOImple implements TeacherBoardDAO {
 	}
 	
 	@Override
+	public List BoardAskListY(Map map) {
+		List arr=sqlMap.selectList("boardAskReplyYList", map);
+		return arr;
+	}
+	@Override
+	public List BoardAskListN(Map map) {
+		List arr=sqlMap.selectList("boardAskReplyNList", map);
+		return arr;
+	}
+	
+	
+	
+	
+	
+	@Override
 	public int getAskListCnt() {
 		int count=sqlMap.selectOne("askTotalCnt");
 		count=count==0?1:count;
 		return count;
 	}
 	@Override
-	public TeacherBoardDTO boardAskContent(int midx) {
-		TeacherBoardDTO dto=sqlMap.selectOne("askContent", midx);
+	public int getAskListYCnt() {
+		int count=sqlMap.selectOne("askTotalYCnt");
+		return count;
+	}
+	@Override
+	public int getAskListNCnt() {
+		int count=sqlMap.selectOne("askTotalNCnt");
+		return count;
+	}
+	
+	
+	
+	
+	
+	
+	@Override
+	public TeacherBoardDTO boardAskContent(Map map) {
+		TeacherBoardDTO dto=sqlMap.selectOne("askContent", map);
 		return dto;
 	}
 	
+	@Override
+	public List boardReplyList(Map map) {
+		List arr=sqlMap.selectList("answerReplyList", map);
+		return arr;
+	}
+	
+	@Override
+	public int replyWrite(TeacherBoardDTO dto) {
+		int count=sqlMap.insert("replyInsert", dto);
+		return count;
+	}
+	
+	@Override
+	public int replyUpdate(TeacherBoardDTO dto) {
+		int count=sqlMap.update("replyUpdate", dto);
+		return count;
+	}
 }

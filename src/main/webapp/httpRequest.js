@@ -19,7 +19,7 @@ function sendRequest(url,params,callback,method){
 	}
 	
 	var httpParams=(params==null ||params=='')?null:params;
-	
+	window.alert(httpParams);
 	var httpUrl=url;
 	if(httpMethod=='GET' && httpParams!=null){
 		httpUrl=httpUrl+'?'+httpParams;
@@ -29,5 +29,6 @@ function sendRequest(url,params,callback,method){
 	XHR.open(httpMethod,httpUrl,true);
 	XHR.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 	XHR.send(httpMethod=='POST'?httpParams:null);
+	
 	
 }

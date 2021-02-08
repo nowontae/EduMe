@@ -4,12 +4,64 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="teacherBoard.ask">
   <select id="teacherBoardAskList" resultType="com.edume.teacherBoard.model.TeacherBoardDTO">
-  	select * from (select rownum as rnum,a.* from (select * from LectureQNA order by lqidx desc) a) b where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
+  	select * 
+from (select rownum as rnum,a.* 
+      from (select b.* 
+from (select lecture.lidx from lecture where midx=#{midx}) a, lectureQna b
+where a.lidx=b.lidx) a) b 
+where rnum <![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
   </select>
+  <select id="boardAskReplyYList" resultType="com.edume.teacherBoard.model.TeacherBoardDTO">
+  select * 
+from (select rownum as rnum,a.* 
+      from (select b.* 
+from (select lecture.lidx from lecture where midx=#{midx}) a, (select * from lectureQna where lqreply='Y') b
+where a.lidx=b.lidx) a) b 
+where rnum <![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
+  </select>
+  <select id="boardAskReplyNList" resultType="com.edume.teacherBoard.model.TeacherBoardDTO">
+  select * 
+from (select rownum as rnum,a.* 
+      from (select b.* 
+from (select lecture.lidx from lecture where midx=#{midx}) a, (select * from lectureQna where lqreply='N') b
+where a.lidx=b.lidx) a) b 
+where rnum <![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
+  </select>
+  
   <select id="askTotalCnt" resultType="Integer">
-  	select count(*) from LectureQNA
+	select count(*)
+	from (select rownum as rnum,a.*
+	from (select b.*
+	from (select lecture.lidx from lecture where midx=#{midx}) a, lectureQna b
+	where a.lidx=b.lidx) a) b 
   </select>
-  <select id="askContent" parameterType="Integer" resultType="com.edume.teacherBoard.model.TeacherBoardDTO">
-  	select * from LectureQNA where midx=#{midx}
+  <select id="askTotalYCnt" resultType="Integer">
+	select count(*)
+	from (select rownum as rnum,a.*
+	from (select b.*
+	from (select lecture.lidx from lecture where midx=#{midx}) a, (select * from
+	lectureQna where lqreply='Y') b
+	where a.lidx=b.lidx) a) b
   </select>
+  <select id="askTotalNCnt" resultType="Integer">
+	select count(*)
+	from (select rownum as rnum,a.*
+	from (select b.*
+	from (select lecture.lidx from lecture where midx=#{midx}) a, (select * from
+	lectureQna where lqreply='N') b
+	where a.lidx=b.lidx) a) b
+  </select>
+  
+  <select id="askContent" resultType="com.edume.teacherBoard.model.TeacherBoardDTO">
+  	select * from LectureQNA where midx=#{midx} and lqidx=#{lqidx}
+  </select>
+  <select id="answerReplyList" resultType="com.edume.teacherBoard.model.TeacherBoardDTO">
+  		select * from LectureQNA_Reply where midx=#{midx} and lqidx=#{lqidx}
+  </select>
+  <insert id="replyInsert" parameterType="com.edume.teacherBoard.model.TeacherBoardDTO">
+  	insert into LectureQNA_Reply values(#{lqidx},#{midx},#{lqReplyContent},sysdate)
+  </insert>
+  <update id="replyUpdate" parameterType="com.edume.teacherBoard.model.TeacherBoardDTO">
+  	update LectureQNA set lqreply='Y' where midx=#{midx} and lqidx=#{lqidx}
+  </update>
   </mapper>
