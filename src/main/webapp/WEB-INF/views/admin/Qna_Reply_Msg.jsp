@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <script>
 window.alert('${msg}');
-location.href='commonQnaContent.do?cqidx=${cqidx}';
+location.href='commonQnaContent.do?cqidx=${cqidx}&midx=${midx}';
 </script>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.edume.student.cart">
+ 	<!-- 내 장바구니 목록  -->
+ 	<select id="myCartList" resultType="com.edume.student.model.CartDTO">
+	select m.midx,m.mname,l.lidx, l.ltitle, l.lsubtitle,l.lthumnail,l.lorignprice
+	from cart c, member m, lecture l
+	where c.lidx=l.lidx
+	and m.midx=c.midx
+	and m.midx=#{midx}
+	</select>
+	<!-- 장바구니 항목 삭제 -->
+	<delete id="myCart_delete" parameterType="Integer">
+	delete from cart 
+	where midx= #{midx}
+	and lidx=#{lidx}
+	</delete>
+ </mapper>

@@ -3,16 +3,73 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.edume.admin_Declaration">
+  <!-- 전체 리스트 보기  -->
   <select id="DeclarationAllList" resultType="com.edume.admin.model.DeclarationDTO">
-  	select l.ltitle, m.*
-	from lecture l, review r,
-	(    select m_from.mname as m_from_name, m2.mname as m_to_name, d2.*
- 	   from  member m2, declaration d2,
-	        (select m1.mname
-	        from member m1, declaration d1
-	        where m1.midx= d1.midx_from) m_from
-   	   where m2.midx=d2.midx_to) m
-	where m.ridx = r.ridx
-	and r.lidx = l.lidx
+  	
+	select lecture.ltitle, declaration.*, m1.mname as m_from_name , m2.mname  as m_to_name
+	from lecture , review, declaration , member m1, member m2
+	where lecture.lidx = review.lidx  
+	and declaration.ridx = review.ridx 
+	and m1.midx = declaration.midx_from 
+	and m2.midx = declaration.midx_to
   </select>
+  <!-- 리뷰신고글 -확인 안된 것 status=0 기준으로 리스트 조회 -->
+  <select id="reviewDeclaration_CheckedinformationList" resultType="com.edume.admin.model.DeclarationDTO">
+  	select lecture.ltitle, review.rcomment, declaration.*, m1.mname as m_from_name, m2.mname as m_to_name
+	from lecture , review, declaration , member m1, member m2
+	where lecture.lidx = review.lidx  
+	and declaration.ridx = review.ridx 
+	and m1.midx = declaration.midx_from 
+	and m2.midx = declaration.midx_to
+	and declaration.dstatus = '0'
+  </select>
+  
+  
+  <!-- 승인된 status=Y 기준으로 리스트 조회 -->
+  <select id="reviewDeclaration_ApprovedList" resultType="com.edume.admin.model.DeclarationDTO">
+  	select lecture.ltitle, review.rcomment, declaration.*, m1.mname as m_from_name, m2.mname as m_to_name
+	from lecture , review, declaration , member m1, member m2
+	where lecture.lidx = review.lidx  
+	and declaration.ridx = review.ridx 
+	and m1.midx = declaration.midx_from 
+	and m2.midx = declaration.midx_to
+	and declaration.dstatus = 'Y'
+  </select>
+  
+   <!-- 미승인된 status=N 기준으로 리스트 조회 -->
+  <select id="reviewDeclaration_NotapprovedList" resultType="com.edume.admin.model.DeclarationDTO">
+	select lecture.ltitle, review.rcomment, declaration.*, m1.mname as m_from_name, m2.mname as m_to_name
+	from lecture , review, declaration , member m1, member m2
+	where lecture.lidx = review.lidx  
+	and declaration.ridx = review.ridx 
+	and m1.midx = declaration.midx_from 
+	and m2.midx = declaration.midx_to
+	and declaration.dstatus = 'N'
+  </select>
+  
+  <!-- 본문 보기 -->
+  <select id="Declaration_Content" resultType="com.edume.admin.model.DeclarationDTO">
+	select lecture.ltitle, review.rcomment, declaration.*, 
+      	   m1.mname as m_from_name, m2.mname as m_to_name,m1.mblack 
+	from lecture , review, declaration , member m1, member m2
+	where lecture.lidx = review.lidx  
+	and declaration.ridx = review.ridx 
+	and m1.midx = declaration.midx_from 
+	and m2.midx = declaration.midx_to
+	and declaration.didx=#{didx}
+  </select>
+  
+  <!-- 본문보기에서 신고 승인했을때 업데이트 -->
+  <update id="Declaration_approved_mblack">
+ 	 update member set mblack=mblack+1 where midx=#{midx}
+  </update>
+  <update id="Declaration_approved_status">
+  update declaration set dstatus='Y' where didx=#{didx}
+  </update>
+  
+  <!-- 본문보기에서 신고 미승인했을 때 업데이트 -->
+   <update id="Declaration_Notapproved_status">
+	update declaration set dstatus='N' where didx=#{didx}
+   </update>
+  
   </mapper>

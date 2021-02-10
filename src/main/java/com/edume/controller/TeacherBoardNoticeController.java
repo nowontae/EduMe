@@ -28,6 +28,7 @@ public class TeacherBoardNoticeController {
 	@Autowired
 	private TeacherBoardNoticeDAO teacherBoardNoticeDao;
 	
+	/*공지 메인*/
 	 @RequestMapping("/teacherNoticeMain.do")
 	 public ModelAndView teacherNoticeMain(@RequestParam(value="cp", defaultValue = "1")int cp) {
 		 int totalCnt=teacherBoardNoticeDao.getTotalCnt();

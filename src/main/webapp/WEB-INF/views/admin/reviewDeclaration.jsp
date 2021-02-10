@@ -25,15 +25,23 @@
       	 text-align: left;
       }
       
-      
-     
+
+     .dreason{
+     	display:inline-block; 
+     	width:180px; 
+     	white-space:nowrap; 
+     	overflow:hidden; 
+     	text-overflow:ellipsis;
+
+
+     }
       
 </style>
 </head>
 <body>
 <h3>리뷰 신고</h3>
 
-<a href="#">전체보기</a>  |  <a href="#">o</a>  |  <a href="#">x</a>
+<a href="admin_reviewDeclaration.do">전체보기</a>  | <a href="reviewDeclaration_CheckedinformationList.do">확인 전인 것들</a>    |  <a href="admin_reviewDeclaration_approvedList.do">승인 내역 조회</a>  |  <a href="admin_reviewDeclaration_NotapprovedList.do">미승인 내역 조회</a>
 <hr align="left">
 <!-- 이미지 경로 : img/호박.png -->
 
@@ -46,7 +54,7 @@
 		<th>신고한 사람</th>
 		<th>신고 받은 사람</th>
 		
-		<th>신고사유<!-- (표에 맞게 글자수 보여주고 )--></th>
+		<th  width=" 180">신고사유<!-- (표에 맞게 글자수 보여주고 )--></th>
 		<th>신고 시간</th>
 		<th>상태/확인전, Y(경고준것) , N(경고  안준것) </th>
 	</tr>
@@ -62,19 +70,15 @@
 		<td>${dto.ltitle }</td>
 		<td>${dto.m_from_name}</td>
 		<td>${dto.m_to_name }</td>
-		<td><div style="overflow: hidden;text-overflow: ellipsis;width: 180;"><nobr>${dto.dreason }</nobr></div></td>
+		<td><div class="dreason"><a href="reviewDeclaration_Content.do?didx=${dto.didx} ">${dto.dreason }</a></div></td>
 		<td>${dto.ddate }</td>
 		<td>${dto.dstatus }</td>
 	</tr>
 </c:forEach>
 </tbody>
 </table>
-<input type="submit" value="등록">
 
-<input type="button" value="보류">
-<input type="button" value="취소">
-<br>
-등록시 3개 횟수 세고 3회가 되면 댓글, 리뷰 기능 이용못하게 막아야함.
+
 </form>
 <br>
 <a href="admin.do">관리자 페이지</a>

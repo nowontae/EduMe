@@ -30,7 +30,7 @@
 	</c:if>
 	<c:forEach var="dto" items="${list }">
 		<tr>
-			<td><a href="commonQnaContent.do?cqidx=${dto.cqidx }">${dto.lqsubject }</a></td>
+			<td><a href="commonQnaContent.do?cqidx=${dto.cqidx }&midx=${sessionScope.midx}">${dto.lqsubject }</a></td>
 			<td>${dto.mname }</td>
 			<td>
 			<fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dto.lqwritedate }"/>

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +17,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.edume.lecture.model.LectureCurriculumDTO;
 import com.edume.lecture.model.LectureDAO;
 import com.edume.lecture.model.LectureDTO;
+import com.edume.student.model.CartDAO;
 import com.edume.student.model.CommonQnaDAO;
 import com.edume.student.model.CommonQnaDTO;
+import com.edume.student.model.CreditDAO;
+import com.edume.student.model.NoticeMsgDAO;
+import com.edume.student.model.PurchaseDAO;
 import com.edume.student.model.StudentDAO;
 import com.edume.student.model.WishListDAO;
 
@@ -41,6 +46,19 @@ public class StudentController {
 	@Autowired
 	private WishListDAO wishListDao;
 	
+	@Autowired
+	private PurchaseDAO purchaseDao;
+	
+	@Autowired
+	private CreditDAO creditDao;
+	
+	@Autowired
+	private NoticeMsgDAO noticeMsgDao;
+	
+  @Autowired
+  private CartDAO cartDao;
+	
+
 	//신고하기 폼
 	@RequestMapping(value="/declaration.do", method=RequestMethod.GET)
 	public ModelAndView declarationFrom() {
@@ -142,14 +160,55 @@ public class StudentController {
 		return mav;
 		
 	}
-			
-	//장바구니 페이지이동
+	//		-- 장바구니 --
+	
+	//내 장바구니  페이지이동
 	@RequestMapping("/MyCart.do")
-	public ModelAndView myCart() {
+	public ModelAndView myCart(HttpServletRequest req) {
+		HttpSession session=req.getSession();
+		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		List list=cartDao.myCartList(midx);
 		ModelAndView mav=new ModelAndView();
+		mav.addObject("Sesseion_midx",midx);
+		mav.addObject("list",list);
 		mav.setViewName("myPage/myCart");
 		return mav;
 	}
+	//내 장바구니 페이지에서 항목 1개 삭제
+	@RequestMapping("/myCart_Delete.do")
+	public ModelAndView myCart_delete(
+			@RequestParam(value="midx", defaultValue="0")int midx, int lidx) {
+		int result=cartDao.myCart_delete(midx, lidx);
+		String msg=result>0?"선택하신 강의 항목이 삭제되었습니다.":"선택하신 강의항목이 삭제 되지 않았습니다..";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg",msg);
+		mav.setViewName("myPage/myCartMsg");
+		return mav;
+	}
+	//내 장바구니 페이지에서 다중 선택 후 해제(체크박스 사용)
+	@RequestMapping("/myCart_SelectDelete.do")
+	public ModelAndView myCart_SelectDelete(HttpServletRequest request, int midx, int lidx) {
+		System.out.println("시작");
+		String[] arr=request.getParameterValues("ck");
+		System.out.println("값 들어오니?"+arr[0]);
+		   int[] arr_i=new int[arr.length];
+		   System.out.println("변환해줍시다.");
+		   int result=0;
+		   for(int i=0;i<arr.length;i++) {
+			   System.out.println("for문 도니?"+arr[i]);
+			   arr_i[i]=Integer.parseInt(arr[i]);
+			   System.out.println("for문 속 변환 "+arr_i[i]);
+			   result=cartDao.myCart_delete(midx, lidx);
+			   System.out.println("결과를 봅시다요");
+		   }
+		System.out.println("포문 탈출~!");
+		String msg="!";
+		ModelAndView mav =new ModelAndView();
+		mav.addObject("msg",msg);
+		mav.setViewName("myPage/myCartMsg");
+		return mav;
+	}
+	
 	
 	//내학습관리 페이지 이동
 	@RequestMapping("/MyLectureList.do")
@@ -173,5 +232,50 @@ public class StudentController {
 		
 	}
 		
+	//구매내역
+		@RequestMapping("/purchaseHistory.do")
+		public ModelAndView purchaseHistory(HttpServletRequest req) {
+			System.out.println("purchase history 1");
+			HttpSession session = req.getSession();
+			int midx = Integer.parseInt((String)session.getAttribute("midx"));
+			List list = purchaseDao.purchaseHistory(midx);
+			System.out.println("2");
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("purchaseHistory", list); 
+			mav.setViewName("/student/purchase/purchaseHistory");
+			return mav;
+			
+		}
+	//구매내역
+	@RequestMapping("/credit.do")
+	public ModelAndView creditHistory(HttpServletRequest req) {
+		System.out.println("credit history 1");
+		HttpSession session = req.getSession();
+		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		List list = creditDao.creditHistory(midx);
+		System.out.println("2");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("creditHistory", list); 
+		mav.setViewName("/student/credit/creditHistory");
+		return mav;
 		
+	}		
+	
+	//구매내역
+	@RequestMapping("/noticeMsg.do")
+	public ModelAndView noticeMsgList(HttpServletRequest req) {
+		System.out.println("noticeMsgList history 1");
+		HttpSession session = req.getSession();
+		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		List list = noticeMsgDao.noticeMsgList(midx);
+		System.out.println("2");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("noticeMsg", list); 
+		mav.setViewName("/student/noticeMsg/noticeMsg");
+		return mav;
+		
+	}	
+
+
+
 }

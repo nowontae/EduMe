@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+  
+<mapper namespace="com.edume.student">
+	<select id="noticeMsg" resultType="com.edume.student.model.NoticeMsgDTO">
+		select nmsg.*, n.lidx
+		from (
+		        select *
+		        from noticeMessage
+		        where midx_to=#{midx} ) nmsg, notice n
+		where nmsg.nidx = n.nidx
+	</select>
+</mapper>

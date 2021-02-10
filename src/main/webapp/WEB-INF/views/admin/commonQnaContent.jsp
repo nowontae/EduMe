@@ -36,20 +36,20 @@ function AnswerCompleteResult(){
 }
 </script>
 <script>
-function updateForm(cqreply_idx, cqidx, index){// 수정버튼 클릭시 실행  readonly에서 수정 가능하게끔
+function updateForm(cqreply_idx, cqidx, index, midx){// 수정버튼 클릭시 실행  readonly에서 수정 가능하게끔
 		
 		var contentIndex = "cqreplycontent"+index;
 		var buttonIndex="update_btn"+index;
 		document.getElementById(contentIndex).removeAttribute("readonly");
-		document.getElementById(buttonIndex).setAttribute('onclick','javascript:updateSubmit('+cqreply_idx+','+cqidx+','+index+')');	
+		document.getElementById(buttonIndex).setAttribute('onclick','javascript:updateSubmit('+cqreply_idx+','+cqidx+','+index+','+midx+')');	
 
 }
 
-function updateSubmit(cqreply_idx, cqidx,index) { // 수정버튼을 다시 눌렀을때 수정된 내용이 업데이트
+function updateSubmit(cqreply_idx, cqidx,index, midx) { // 수정버튼을 다시 눌렀을때 수정된 내용이 업데이트
 	var contentIndex = "cqreplycontent"+index;
 	var cqreplycontent=document.getElementById(contentIndex).value;
 	cqreplycontent=encodeURIComponent(cqreplycontent);//특수문자 전달을 위한 인코딩 주소창에 특수문자가 들어가면 에러가 나서, 특수문자를 => %12 %23 등 에러가 안나는 문자로 바꾸기
-    location.href="Qna_ReplyUpdate.do?cqreply_idx="+cqreply_idx+"&cqidxx="+cqidx+"&cqreplycontent="+cqreplycontent;
+    location.href="Qna_ReplyUpdate.do?cqreply_idx="+cqreply_idx+"&cqidxx="+cqidx+"&cqreplycontent="+cqreplycontent+"&midx="+midx;
 }
 </script>
 <style>
@@ -98,7 +98,7 @@ input,textarea:focus {
 <form name="Qna_ReplyAdd" action="Qna_ReplyAdd.do">
 
 	<input type="hidden" id="cqidx" name="cqidx" value="${dto.cqidx }">
-	<input type="hidden" id="midx" name="midx" value="${dto.midx }">
+	<input type="hidden" id="midx" name="midx" value="${Session_midx }">
 	<table>
 		<tr>
 			<td><textarea rows="10" cols="50" name="cqreplycontent" ></textarea></td>
@@ -110,23 +110,29 @@ input,textarea:focus {
 <!-- 댓글 보기 -->
 
 
-<table border="1" width="500" id="commonQna_Reply_List">
+<table border="1" width="700" id="commonQna_Reply_List">
 <c:if test="${empty list}">
 	<tr>
-		<td colspan="3" align="center">등록된 답변글이 없습니다.</td>
+		<td colspan="4" align="center">등록된 답변글이 없습니다.</td>
 	</tr>
 </c:if>	
+
+
 <c:forEach var="dt" items="${list }" varStatus="i">
 	<tr>
 
 		<td>${dt.mname }</td>
 		<td name="cqreplycontent"><textarea id="cqreplycontent${i.index}" readonly="readonly" rows="10" cols="50" name="cqreplycontent">${dt.cqreplycontent }</textarea></td>
-		
-		<td rowspan="2"><input type="button" id="update_btn${i.index }" value="수정" onclick="javascript:updateForm(${dt.cqreply_idx },${dt.cqidx },${i.index} )"></td>
-		<td rowspan="2"><input type="button" value="삭제" onclick="location.href='Qna_ReplyDelete.do?cqreply_idx=${dt.cqreply_idx }&cqidxx=${dt.cqidx }'"></td>
+		<c:if test="${Session_midx eq dt.midx }">
+			<td><input type="button" id="update_btn${i.index }" value="수정" onclick="javascript:updateForm(${dt.cqreply_idx },${dt.cqidx },${i.index},${sessionScope.midx } )"></td>
+			<td><input type="button" value="삭제" onclick="location.href='Qna_ReplyDelete.do?cqreply_idx=${dt.cqreply_idx }&cqidxx=${dt.cqidx }&midx=${midx }'"></td>
+		</c:if>
+		<c:if test="${Session_midx ne dt.midx }">
+			<td colspan="2"></td>
+		</c:if>
 	</tr>
 	<tr>
-		<td colspan="2">
+		<td colspan="4">
 		<fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dt.cqreplywritedate }"/>
 		</td>
 	</tr>
