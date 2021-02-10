@@ -20,6 +20,9 @@ import com.edume.lecture.model.LectureDTO;
 import com.edume.student.model.CartDAO;
 import com.edume.student.model.CommonQnaDAO;
 import com.edume.student.model.CommonQnaDTO;
+import com.edume.student.model.CreditDAO;
+import com.edume.student.model.NoticeMsgDAO;
+import com.edume.student.model.PurchaseDAO;
 import com.edume.student.model.StudentDAO;
 import com.edume.student.model.WishListDAO;
 
@@ -44,8 +47,18 @@ public class StudentController {
 	private WishListDAO wishListDao;
 	
 	@Autowired
-	private CartDAO cartDao;
+	private PurchaseDAO purchaseDao;
 	
+	@Autowired
+	private CreditDAO creditDao;
+	
+	@Autowired
+	private NoticeMsgDAO noticeMsgDao;
+	
+  @Autowired
+  private CartDAO cartDao;
+	
+
 	//신고하기 폼
 	@RequestMapping(value="/declaration.do", method=RequestMethod.GET)
 	public ModelAndView declarationFrom() {
@@ -218,5 +231,51 @@ public class StudentController {
 		return mav;
 		
 	}
+		
+	//구매내역
+		@RequestMapping("/purchaseHistory.do")
+		public ModelAndView purchaseHistory(HttpServletRequest req) {
+			System.out.println("purchase history 1");
+			HttpSession session = req.getSession();
+			int midx = Integer.parseInt((String)session.getAttribute("midx"));
+			List list = purchaseDao.purchaseHistory(midx);
+			System.out.println("2");
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("purchaseHistory", list); 
+			mav.setViewName("/student/purchase/purchaseHistory");
+			return mav;
+			
+		}
+	//구매내역
+	@RequestMapping("/credit.do")
+	public ModelAndView creditHistory(HttpServletRequest req) {
+		System.out.println("credit history 1");
+		HttpSession session = req.getSession();
+		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		List list = creditDao.creditHistory(midx);
+		System.out.println("2");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("creditHistory", list); 
+		mav.setViewName("/student/credit/creditHistory");
+		return mav;
+		
+	}		
+	
+	//구매내역
+	@RequestMapping("/noticeMsg.do")
+	public ModelAndView noticeMsgList(HttpServletRequest req) {
+		System.out.println("noticeMsgList history 1");
+		HttpSession session = req.getSession();
+		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		List list = noticeMsgDao.noticeMsgList(midx);
+		System.out.println("2");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("noticeMsg", list); 
+		mav.setViewName("/student/noticeMsg/noticeMsg");
+		return mav;
+		
+	}	
+
+
 
 }

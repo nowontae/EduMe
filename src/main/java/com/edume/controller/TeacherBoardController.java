@@ -30,18 +30,25 @@ public class TeacherBoardController {
 		int pageSize=5;	
 		String str = null;
 		List arr= null;
-		
+		System.out.println("teacherAsk.do midx = "+midx);
+		System.out.println("teacherAsk.do boardType = "+boardtype);
 		if(boardtype.equals("A")) {
-			int Cnt=teacherBoardDao.getAskListCnt();
+			System.out.println("a");
+			int Cnt=teacherBoardDao.getAskListCnt(midx);
+			System.out.println("a2");
 			int start=(cp-1)*listSize+1;
 			int end=cp*listSize;
 			map.put("start", start);
 			map.put("end", end);
 			map.put("midx", midx);
+			System.out.println("a3");
 			str=com.edume.page.PageModule.makePage("teacherAsk.do", cp, Cnt, listSize, pageSize, midx, boardtype);
+			System.out.println("a4");
 			arr=teacherBoardDao.BoardAskList(map);
+			System.out.println("a5");
 		}else if(boardtype.equals("Y")) {
-			int Cnt=teacherBoardDao.getAskListYCnt();
+			System.out.println("y");
+			int Cnt=teacherBoardDao.getAskListYCnt(midx);
 			int start=(cp-1)*listSize+1;
 			int end=cp*listSize;
 			map.put("start", start);
@@ -50,7 +57,8 @@ public class TeacherBoardController {
 			str=com.edume.page.PageModule.makePage("teacherAsk.do", cp, Cnt, listSize, pageSize, midx, boardtype);
 			arr=teacherBoardDao.BoardAskListY(map);
 		}else if(boardtype.equals("N")){
-			int Cnt=teacherBoardDao.getAskListNCnt();
+			System.out.println("n");
+			int Cnt=teacherBoardDao.getAskListNCnt(midx);
 			int start=(cp-1)*listSize+1;
 			int end=cp*listSize;
 			map.put("start", start);
