@@ -80,6 +80,7 @@ var check
 </table>
 
 <input type="submit" value="블랙리스트해제">
+
 </form>
 <br>
 <a href="admin.do">관리자 페이지</a>

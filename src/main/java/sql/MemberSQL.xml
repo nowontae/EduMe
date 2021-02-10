@@ -34,6 +34,7 @@
   	<select id="member_blackList" resultType="com.edume.admin.model.MemberDTO">
   		select * from member where mblack <![CDATA[>=]]> 3
   	</select>
+  	<!-- 블랙리스트 해제 -->
   	<update id="Unblacklist" parameterType="Integer">
 		update member set mblack=0 where midx=#{midx}  	
   	</update>
