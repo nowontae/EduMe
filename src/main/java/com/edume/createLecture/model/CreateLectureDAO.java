@@ -4,7 +4,7 @@ import java.util.*;
 
 public interface CreateLectureDAO {
 
-	public int lectureTitleUpdate(CreateLectureDTO dto);
-	
+
+	public int createLectureSave(CreateLectureDTO dto);
 	
 }
