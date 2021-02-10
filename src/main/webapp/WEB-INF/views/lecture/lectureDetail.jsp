@@ -24,9 +24,18 @@ function addMyCartList(lidx){// 장바구니 담기
 	//alert(result); -> true, false  값으로 출력
 	location.href="addMyCartList.do?lidx="+lidx+"&result="+result;
 }
+
+function alertMsg(msg) {
+	window.alert(msg);
+}
 </script>
 </head>
 <body>
+
+<c:if test="${!empty msg }">
+<script> alertMsg('${msg}') </script>
+</c:if>
+<h1>${lectureDetail.lidx}</h1>
 <div>개발 > 프로그래밍 언어 > c</div><br />
 
 <div><h1>${lectureDetail.ltitle }</h1></div> <br />
@@ -42,9 +51,9 @@ function addMyCartList(lidx){// 장바구니 담기
 
 <div>
 	<a href="addWishList.do?lidx=${lectureDetail.lidx}">찜하기</a>
-	<input type="button" value="장바구니" onclick="addMyCartList(${lectureDetail.lidx})">
-		<a href="addMyCartList.do?lidx=${lectureDetail.lidx}">장바구니</a>
 	
+	<input type="button" value="장바구니" onclick="addMyCartList(${lectureDetail.lidx})">
+
 	<input type="button" value="공유"/>
 	<input type="button" value="이 강좌 선물하기"/>
 </div>

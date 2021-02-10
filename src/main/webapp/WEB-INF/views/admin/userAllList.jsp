@@ -76,7 +76,7 @@ function changeSelect(e){
 			<td><img src="${dto.mimg }" alt="유저 이미지"></td>
 			<td>
 				
-				<a href="userInfo.do?midx=${dto.midx}" >${dto.mname }</a></td>
+				${dto.mname }</td>
 			<td>${dto.mid }</td>
 			<td>${dto.memail }</td>
 			<td>${dto.mtel }</td>

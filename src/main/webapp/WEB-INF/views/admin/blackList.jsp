@@ -29,10 +29,11 @@ var check
       }
       
       
-      input[type="checkbox"] {
+       
+      input[type=checkbox] {
    		 display:none;
 	  }
-      input[type="checkbox"] + label span{
+      input[type=checkbox] + label span{
    		 display: inline-block;
   		 width: 24px;
    		 height: 24px;
@@ -42,10 +43,11 @@ var check
    		 cursor: pointer; 
    		 background-size: cover;
 	  }
-	  input[type="checkbox"]:checked + label span{
+	  input[type=checkbox]:checked + label span{
 	    background:url("img/checkbox.svg")  -26px top no-repeat;
    		background-size: cover;
 	  }
+	  
       
 </style>
 </head>
@@ -68,9 +70,9 @@ var check
 	</tr>
 </c:if>
 
-<c:forEach var="dto" items="${list }">	
+<c:forEach var="dto" items="${list }" varStatus="status">	
 	<tr>
-		<td><input type="checkbox" id="reporter" name="mname_cb" value="${dto.midx }"  class="checkSelect"><label for="reporter"><span></span>${dto.mname }</td>
+		<td><input type="checkbox" id="reporter${status.index }" name="mname_cb" value="${dto.midx }"  class="checkSelect"><label for="reporter${status.index }" ><span></span></label>${dto.mname }</td>
 		<td>ID${dto.mid }</td>
 	
 		<td>${dto.mblack }<input type="hidden" value="${dto.midx }"></td>

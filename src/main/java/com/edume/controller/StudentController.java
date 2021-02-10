@@ -1,5 +1,6 @@
 package com.edume.controller;
 
+import java.lang.reflect.Parameter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -135,7 +136,7 @@ public class StudentController {
 		mav.setViewName("/lecture/lectureDetail");
 		mav.addObject("lectureDetail", ldto);
 		mav.addObject("curriculum", lcdto);
-		System.out.println("lidx="+ldto.getLidx());
+		//System.out.println("lidx="+ldto.getLidx());
 		return mav;
 		
 	}
@@ -226,20 +227,9 @@ public class StudentController {
 		
 	}
 		
-	//구매내역
-		@RequestMapping("/purchaseHistory.do")
-		public ModelAndView purchaseHistory(HttpServletRequest req) {
-			System.out.println("purchase history 1");
-			HttpSession session = req.getSession();
-			int midx = Integer.parseInt((String)session.getAttribute("midx"));
-			List list = purchaseDao.purchaseHistory(midx);
-			System.out.println("2");
-			ModelAndView mav = new ModelAndView();
-			mav.addObject("purchaseHistory", list); 
-			mav.setViewName("/student/purchase/purchaseHistory");
-			return mav;
+
 			
-		}
+
 	//구매내역
 	@RequestMapping("/credit.do")
 	public ModelAndView creditHistory(HttpServletRequest req) {
@@ -272,24 +262,33 @@ public class StudentController {
 	//장바구니 담기
 	@RequestMapping("/addMyCartList.do")
 	public ModelAndView addMyCartList(HttpServletRequest req, int lidx, Boolean result) {
-		System.out.println("시작");
 		HttpSession session = req.getSession();
 		int midx = Integer.parseInt((String)session.getAttribute("midx"));
-		System.out.println("어디까지 되니?");
-		int count=cartDao.addMyCartList(midx,lidx);
-		System.out.println("장바구니에 담겼는가?"+count);
+		
 		String msg="";
-		if(result) { // db에 담고 장바구니 페이지로 이동
-			msg="/myPage/myCart";
-		}else{// db에  담고 원래 lidx 페이지로 이동
-			msg="/lecture/lectureDetail";
-		}
-		
-			
-		
-			
+		String gopage="";
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName(msg);
+		//장바구니에 있는지 한번 확인한다.
+		int check_result=cartDao.myCartList_Check(midx, lidx);
+		
+		if(check_result>0) {
+			msg="이미 장바구니에 담겨있습니다.";
+			gopage="/lecture/lectureDetail";
+			mav.addObject("lidx",lidx);
+		}else {
+			//장바구니에 없다면 담기를 실행한다.
+			int count=cartDao.addMyCartList(midx,lidx);
+			if(result) { // db에 담고 장바구니 페이지로 이동
+				gopage="/myPage/myCartMsg";
+				msg="장바구니페이지로 이동합니다.";
+				
+			}else{// db에  담고 원래 lidx 페이지로 이동
+				msg="장바구니에 담겼습니다.";
+				gopage="/lecture/lectureDetail";
+			}
+		}
+		mav.addObject("msg", msg);
+		mav.setViewName(gopage);
 		return mav;
 	}
 

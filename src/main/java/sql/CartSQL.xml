@@ -19,6 +19,10 @@
 	where midx= #{midx}
 	and lidx=#{lidx}
 	</delete>
+	<!-- 장바구니에 이미 담겼는지 확인 -->
+	<select id="myCartList_Check" resultType="Integer">
+	select count(*) from cart where midx=#{midx} and lidx=#{lidx}
+	</select>
 	<!-- 장바구니 담기 -->
 	<insert id="addMyCartList" >
 	insert into cart values(#{midx},#{lidx})
