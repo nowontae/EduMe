@@ -12,6 +12,7 @@ public class CreateLectureDTO {
 		private String lthumnail;
 		private String lsummary;
 		private String lpurpose;
+		private int lorignprice;
 		private String ltarget;
 		private String lknowledge;
 		private int cat1_idx;
@@ -25,8 +26,8 @@ public class CreateLectureDTO {
 		}
 
 		public CreateLectureDTO(int lidx, int midx, String ltitle, String lsubtitle, int llevel, String lthumnail,
-				String lsummary, String lpurpose, String ltarget, String lknowledge, int cat1_idx, int cat2_idx,
-				int cat3_idx, Date lwritedate, String lopen) {
+				String lsummary, String lpurpose, int lorignprice, String ltarget, String lknowledge, int cat1_idx,
+				int cat2_idx, int cat3_idx, Date lwritedate, String lopen) {
 			super();
 			this.lidx = lidx;
 			this.midx = midx;
@@ -36,6 +37,7 @@ public class CreateLectureDTO {
 			this.lthumnail = lthumnail;
 			this.lsummary = lsummary;
 			this.lpurpose = lpurpose;
+			this.lorignprice = lorignprice;
 			this.ltarget = ltarget;
 			this.lknowledge = lknowledge;
 			this.cat1_idx = cat1_idx;
@@ -109,6 +111,14 @@ public class CreateLectureDTO {
 			this.lpurpose = lpurpose;
 		}
 
+		public int getLorignprice() {
+			return lorignprice;
+		}
+
+		public void setLorignprice(int lorignprice) {
+			this.lorignprice = lorignprice;
+		}
+
 		public String getLtarget() {
 			return ltarget;
 		}
@@ -164,4 +174,6 @@ public class CreateLectureDTO {
 		public void setLopen(String lopen) {
 			this.lopen = lopen;
 		}
+		
+		
 }
