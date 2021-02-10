@@ -5,17 +5,27 @@
   
 <mapper namespace="teacherBoardReview">
 
-<!-- 후기 메인페이지 -->
-  <select id="teacherReviewMain" resultType="com.edume.teacherBoardReview.model.TeacherBoardReviewDTO">
-  select * 
-	from (select rownum as rnum,a.* 
-    from (select b.* 				<!-- 강사 고유번호를 받아서 강의DB의 강의고유번호를 a, 후기를 b-->
-	from (select lecture.lidx from lecture where midx=#{midx}) a, review b
-	where a.lidx=b.lidx) a) b order by ridx desc <!-- 둘의 강의 고유번호가 같으면-->
+<!-- 강의명, 등록날짜, 평균별점 불러오기-->
+ <select id="teacherReviewMain" resultType="com.edume.teacherBoardReview.model.TeacherBoardReviewDTO">
+ select avg.*, l.ltitle, l.lwritedate
+ from  
+		(select l.lidx,  avg(rscore) as avggrade
+			from (select lidx
+       				from lecture
+        			where midx=#{midx}) l,review r
+ 			where l.lidx=r.lidx
+ 			group by l.lidx ) avg, lecture l
+ where avg.lidx = l.lidx
+  </select>
+
+
+<!-- 강의별 후기보기 -->
+  <select id="teacherReviewContent" resultType="com.edume.teacherBoardReview.model.TeacherBoardReviewDTO">
+select m.mid, r.*
+from	(select rcomment,rscore,rwritedate, midx
+        from review
+        where lidx=#{lidx}) r, member m
+where r.midx=m.midx
   </select>
   
-  <!-- 강의이름으로 리스트 불러오기 -->
-  <select id="teacherLectureReview" resultType="com.edume.teacherBoardReview.model.TeacherBoardReviewDTO">
-	
-  </select>
 </mapper>

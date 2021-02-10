@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class TeacherBoardReviewDTO {
 
-	/*후기 리스트*/
 	private int ridx;
 	private int midx;
 	private int lidx;
@@ -12,14 +11,17 @@ public class TeacherBoardReviewDTO {
 	private String rcomment;
 	private String ropen;
 	private Date rwritedate;
+	private String mid;
+	private String ltitle;
+	private Date lwritedate;
+	private int avggrade;
 	
 	public TeacherBoardReviewDTO() {
 		super();
 	}
 
-
 	public TeacherBoardReviewDTO(int ridx, int midx, int lidx, int rscore, String rcomment, String ropen,
-			Date rwritedate) {
+			Date rwritedate, String mid, String ltitle, Date lwritedate, int avggrade) {
 		super();
 		this.ridx = ridx;
 		this.midx = midx;
@@ -28,8 +30,12 @@ public class TeacherBoardReviewDTO {
 		this.rcomment = rcomment;
 		this.ropen = ropen;
 		this.rwritedate = rwritedate;
+		this.mid = mid;
+		this.ltitle = ltitle;
+		this.lwritedate = lwritedate;
+		this.avggrade = avggrade;
 	}
-	
+
 	public int getRidx() {
 		return ridx;
 	}
@@ -84,6 +90,38 @@ public class TeacherBoardReviewDTO {
 
 	public void setRwritedate(Date rwritedate) {
 		this.rwritedate = rwritedate;
+	}
+
+	public String getMid() {
+		return mid;
+	}
+
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
+
+	public String getLtitle() {
+		return ltitle;
+	}
+
+	public void setLtitle(String ltitle) {
+		this.ltitle = ltitle;
+	}
+
+	public Date getLwritedate() {
+		return lwritedate;
+	}
+
+	public void setLwritedate(Date lwritedate) {
+		this.lwritedate = lwritedate;
+	}
+
+	public int getAvggrade() {
+		return avggrade;
+	}
+
+	public void setAvggrade(int avggrade) {
+		this.avggrade = avggrade;
 	}
 	
 }
