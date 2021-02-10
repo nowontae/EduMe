@@ -7,49 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="lectureCurriculum" action="lectureCurriculumSave.do">
+<input type="button" value="<강좌로 돌아가기" onclick="location.href='createLectureMain.do'">
+<form name="lectureCurriculum" action="lectureCurriculum.do?midx=${midx}">
 <div>
-	<input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do'">
+	<input type="submit" value="저장">
 </div>
 
-<div>
-	<strong>강좌 계획</strong>
-	<ul>
-		<li>
-			<a href="createLectureForm.do">강의 주제</a>
-		</li>
-		
-		<li >
-			<a href="lectureCategory.do">카테고리</a>
-		</li>
-		
-		<li>
-			<a href="lectureStudentInfo.do">수강생 세부사항</a>
-		</li>
-	</ul>	
-</div>
-
-<div>
-	<strong>강좌 게시</strong>
-	<ul>
-		<li>
-			<a href="lectureLadingPage.do">강좌 랜딩 페이지</a>
-		</li>
-		
-		<li>
-			<a href="lectureCurriculum.do">커리큘럼</a>
-		</li>
-		
-		<li>
-			<a href="lecturePrice.do">가격 책정</a>
-		</li>
-	</ul>	
-</div>
-
-<div>
-	<input type="button" value="검토를 위해 제출">
-</div>
-
+<div id="curriculum">
 <div>
 	<h2>커리큘럼</h2>
 </div>
@@ -60,35 +24,36 @@
 </div>
 
 <div>
-	<input type="button" value="섹션 추가">
+	<input type="button" value="섹션 추가" onclick="sectionAdd()">
 </div>
 
-<div>
+<div id="sectionAll">
 	<div>
-		<span>섹션 1(숫자증가):</span>
-		<span><input type="text" value="섹션 제목"></span>
+		<span>섹션 1<input type="hidden">:</span>
+		<span><input type="text" name="lcsection"></span>
 	</div>
 	
-	<div>
+	<div id="partAll">
 		<div>
-			<span>강의 1(숫자증가):</span>
-			<span><input type="text" value="강의 제목"></span>
+			<span>강의 1(숫자증가):<input type="hidden" name="lcpart"></span>
+			<span><input type="text" name="lctitle"></span>
 		</div>
 		<div>
 			<span>동영상 업로드</span>
-			<span><input readonly type="text" value="선택된 파일 없음"></span>
-			<span><input type="button" value="파일업로드"></span>
+			<span><input type="file" name="uploadCurri"></span>
 		</div>
 	</div>
 	
 	<div>
-		<input type="button" value="강의 추가">
+		<input type="button" value="강의 추가" onclick="partAdd()">
 	</div>
 </div>
-	
+
 <div>
-	<input type="submit" value="저장">
+	<input type="button" value="이전" onclick="location.href='createLectureMain.do'">
+</div>
 </div>
 </form>
+	<input type="button" value="제출">
 </body>
 </html>

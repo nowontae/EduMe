@@ -21,6 +21,7 @@
 		<mapper resource="sql/CreditSQL.xml"/>
 		<mapper resource="sql/NoticeMsgSQL.xml"/>
 		<mapper resource="sql/CartSQL.xml"/>
+		<mapper resource="sql/CreateLecture.xml"/>		
 	</mappers>
 	
 </configuration>

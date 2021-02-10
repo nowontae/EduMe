@@ -23,12 +23,12 @@
 
 <div>
 	<span>강좌 제목</span>
-	<div><input type="text" name="ltitle" value="${arr.ltitle}test1"></div>
+	<div><input type="text" name="ltitle" value="${dto.ltitle}test1"></div>
 </div>
 
 <div>
 	<span>강좌 부제목</span>
-	<div><input type="text" name="lsubtitle" value="${arr.lsubtitle}test1"></div>
+	<div><input type="text" name="lsubtitle" value="${dto.lsubtitle}test1"></div>
 </div>
 
 <div>
@@ -42,6 +42,9 @@
 				<option value="3">★★★☆☆</option>
 				<option value="4">★★★★☆</option>
 				<option value="5">★★★★★</option>
+				
+				
+				
 			</select>
 		</span>
 	</div>
@@ -86,22 +89,22 @@
 
 <div>
 	<span>개요</span>
-	<div><input type="text" name="lsummary" value="${arr.lsummary}test1"></div>
+	<div><input type="text" name="lsummary" value="${dto.lsummary}test1"></div>
 </div>
 
 <div>
 		<span>강의 목적</span>
-	<div><input type="text" name="lpurpose" value="${arr.lpurpose}test1"></div>
+	<div><input type="text" name="lpurpose" value="${dto.lpurpose}test1"></div>
 </div>
 	
 <div>
 		<span>배경 지식</span>
-	<div><input type="text" name="lknowledge" value="${arr.lknowledge}test1"></div>
+	<div><input type="text" name="lknowledge" value="${dto.lknowledge}test1"></div>
 </div>
 
 <div>
 		<span>대상 수강생</span>
-	<div><input type="text" name="ltarget" value="${arr.ltarget}test1"></div>
+	<div><input type="text" name="ltarget" value="${dto.ltarget}test1"></div>
 </div>
 </div>
 
@@ -142,7 +145,7 @@
 	<div>
 		<span>KRW</span>
 		<span>
-			<select id="lorignprice" name="lorignprice" value="${arr.lorignprice}">
+			<select id="lorignprice" name="lorignprice" value="${dto.lorignprice}">
 				<option>선택</option>
 				<option value="0" selected="selected">무료</option>
 				<option value="19900">19,900</option>

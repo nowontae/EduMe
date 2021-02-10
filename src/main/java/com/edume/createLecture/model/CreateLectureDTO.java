@@ -21,6 +21,7 @@ public class CreateLectureDTO {
 		private Date lwritedate;
 		private String lopen;
 		
+		
 		public CreateLectureDTO() {
 			super();
 		}
