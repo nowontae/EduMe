@@ -12,4 +12,5 @@
 		where p.lidx = l.lidx
 	</select>
 
+
 </mapper>

@@ -17,10 +17,7 @@
   		<select id="findLists" resultType="com.edume.admin.model.MemberDTO">
   			select * from member where ${selects} = #{findKeys}
   		</select>
-  		<!-- 유저 정보 -->
-  		<select id="memberInfo" parameterType="integer" resultType="com.edume.admin.model.MemberDTO">
-  			select * from member where midx=#{midx}
-  		</select>
+
   		<!-- 총 게시물 수-->
   	<select id="member_TotalCnt" resultType="Integer">
   			select 

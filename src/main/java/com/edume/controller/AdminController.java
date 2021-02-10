@@ -84,16 +84,9 @@ public class AdminController {
 		   return mav;
 	    }
 	
-	   //관리자페이지 - 전체유저 리스트의  유저 정보 내역
-	   @RequestMapping("/userInfo.do")
-	   public ModelAndView userInfo(
-			   @RequestParam(value="midx", defaultValue="0")int midx) {
-		   MemberDTO dto=memberDao.memberInfo(midx);
-		   ModelAndView mav=new ModelAndView();
-		   mav.addObject("dto",dto);
-		   mav.setViewName("admin/userInfo");
-		   return mav;
-	   }
+
+	  
+	   
 	   
 	   //   --- 블랙리스트 ---
 	   

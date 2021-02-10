@@ -6,15 +6,14 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class PurchaseDAOImple implements PurchaseDAO {
-
+	
 	@Autowired
 	private SqlSessionTemplate sqlMap;
 	
+	//결제정보 보기
 	@Override
-	public List purchaseHistory(int midx) {
-
-		List list = sqlMap.selectList("purchaseHistory", midx);
-		return list;
+	public List PurchaseUserList() {
+		List arr=sqlMap.selectList("PurchaseUserList");
+		return arr;
 	}
-
 }

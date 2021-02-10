@@ -64,6 +64,8 @@ function value_check(midx) {
 	<input type="button" value="선택 삭제" onclick="javascript:value_check(${sessionScope.midx})">
 	<!-- location.href='myCart_SelectDelete.do?midx=${sessionScope.midx}&lidx=${dto.lidx } -->
 	<input type="submit" value="결제">
+	<br>
+	<a href="index.do">메인페이지</a>
 
 </form>
 </body>
