@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.edume.student">
+	<select id="purchaseHistory" resultType="com.edume.student.model.PurchaseDTO">
+		select l.ltitle, p.pprice, p.pdate
+		from (select *
+		        from purchase
+		        where midx=#{midx}) p, lecture l
+		where p.lidx = l.lidx
+	</select>
+
+</mapper>
