@@ -16,6 +16,7 @@
 		<mapper resource="sql/TeacherBoardReviewSQL.xml"/>
 		<mapper resource="sql/LectureSQL.xml"/>
 		<mapper resource="sql/StudentSQL.xml"/>
+		<mapper resource="sql/CartSQL.xml"/>
 	</mappers>
 	
 </configuration>

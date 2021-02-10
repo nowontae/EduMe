@@ -19,6 +19,7 @@ public class IndexController {
     	session.setAttribute("midx", "3");
     	
     	ModelAndView mav = new ModelAndView();
+    	
     	mav.setViewName("index");
     	return mav;
          
