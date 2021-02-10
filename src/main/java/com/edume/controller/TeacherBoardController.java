@@ -30,6 +30,16 @@ public class TeacherBoardController {
 		int pageSize=5;	
 		String str = null;
 		List arr= null;
+		int start=(cp-1)*listSize+1;
+		int end=cp*listSize;
+		map.put("midx", midx);
+		map.put("start", start);
+		map.put("end", end);
+		
+		if(boardtype.equals("A")) {
+			int Cnt=teacherBoardDao.getAskListCnt(midx);
+			str=com.edume.page.PageModule.teacherAskPage("teacherAsk.do", cp, Cnt, listSize, pageSize, midx, boardtype);
+
 		System.out.println("teacherAsk.do midx = "+midx);
 		System.out.println("teacherAsk.do boardType = "+boardtype);
 		if(boardtype.equals("A")) {
@@ -44,10 +54,11 @@ public class TeacherBoardController {
 			System.out.println("a3");
 			str=com.edume.page.PageModule.makePage("teacherAsk.do", cp, Cnt, listSize, pageSize, midx, boardtype);
 			System.out.println("a4");
+
 			arr=teacherBoardDao.BoardAskList(map);
 			System.out.println("a5");
 		}else if(boardtype.equals("Y")) {
-			System.out.println("y");
+		  System.out.println("y");
 			int Cnt=teacherBoardDao.getAskListYCnt(midx);
 			int start=(cp-1)*listSize+1;
 			int end=cp*listSize;
@@ -57,14 +68,15 @@ public class TeacherBoardController {
 			str=com.edume.page.PageModule.makePage("teacherAsk.do", cp, Cnt, listSize, pageSize, midx, boardtype);
 			arr=teacherBoardDao.BoardAskListY(map);
 		}else if(boardtype.equals("N")){
-			System.out.println("n");
+			int Cnt=teacherBoardDao.getAskListNCnt(midx);
+			str=com.edume.page.PageModule.teacherAskPage("teacherAsk.do", cp, Cnt, listSize, pageSize, midx, boardtype);
 			int Cnt=teacherBoardDao.getAskListNCnt(midx);
 			int start=(cp-1)*listSize+1;
 			int end=cp*listSize;
 			map.put("start", start);
 			map.put("end", end);
 			map.put("midx", midx);
-			str=com.edume.page.PageModule.makePage("teacherAsk.do", cp, Cnt, listSize, pageSize, midx, boardtype);
+			str=com.edume.page.PageModule.teacherAskPage("teacherAsk.do", cp, Cnt, listSize, pageSize, midx, boardtype);
 			arr=teacherBoardDao.BoardAskListN(map);
 		}
 		ModelAndView mav=new ModelAndView();
@@ -101,7 +113,7 @@ public class TeacherBoardController {
 			@RequestParam(value="lqidx",defaultValue = "0")int lqidx,
 			HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		int teacheMidx=(Integer)session.getAttribute("midx");
+		int teacheMidx=Integer.parseInt((String)session.getAttribute("midx"));
 		String msg="";
 		String page="";
 		int result=teacherBoardDao.replyWrite(dto);

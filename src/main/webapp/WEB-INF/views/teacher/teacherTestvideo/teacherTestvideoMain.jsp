@@ -10,27 +10,24 @@
 <body>
 <div>
 	<div>테스트 동영상
-		<div>테스트 동영상을 만들어 보세요 <input type="button" onclick="location.href='#'" value="테스트 동영상 만들기"></div>
+		<div>테스트 동영상을 만들어 보세요 <input type="button" onclick="location.href='makeTestvideo.do?midx=${sessionScope.midx}'" value="테스트 동영상 만들기"></div>
 	</div>
 	<div>관리자 답변 대기
 		<div>
 		<c:if test="${empty What}">
-		<c:set var="" value=""></c:set>
+		
+		</c:if>
 		<c:forEach var="" items="">
 		
 		</c:forEach>
-		</c:if>
 
 		</div>
 	</div>
 	<div>관리자 답변 완료
 		<div>
-		<c:if test="${!empty What}">
-		<c:set var="" value=""></c:set>
 		<c:forEach var="" items="">
 		
 		</c:forEach>
-		</c:if>
 		</div>
 	</div>
 </div>

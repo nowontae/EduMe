@@ -18,7 +18,7 @@
 		select sum(camount) 
 		from credit 
 		where midx=#{midx} 
-		and cpaydate between (
+		and to_char(cpaydate, 'yyyymmdd') between (
 		select to_char(add_months(sysdate,-2),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-1),'yyyymmdd') 
@@ -28,7 +28,7 @@
 		select sum(camount) 
 		from credit 
 		where midx=#{midx} 
-		and cpaydate between (
+		and to_char(cpaydate, 'yyyymmdd') between (
 		select to_char(add_months(sysdate,-3),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-2),'yyyymmdd') 
@@ -38,7 +38,7 @@
 		select sum(camount) 
 		from credit 
 		where midx=#{midx} 
-		and cpaydate between (
+		and to_char(cpaydate, 'yyyymmdd') between (
 		select to_char(add_months(sysdate,-4),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-3),'yyyymmdd') 
@@ -48,7 +48,7 @@
 		select sum(camount) 
 		from credit
 		 where midx=#{midx} 
-		 and cpaydate between (
+		 and to_char(cpaydate, 'yyyymmdd') between (
 		 select to_char(add_months(sysdate,-5),'yyyymmdd') 
 		 from dual) 
 		 and (select to_char(add_months(sysdate,-4),'yyyymmdd') 
@@ -58,7 +58,7 @@
 		select sum(camount) 
 		from credit 
 		where midx=#{midx} 
-		and cpaydate between (
+		and to_char(cpaydate, 'yyyymmdd') between (
 		select to_char(add_months(sysdate,-6),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-5),'yyyymmdd') 
@@ -77,7 +77,7 @@
 		select sum(camount) 
 		from credit 
 		where midx=#{midx} 
-		and cpaydate between (
+		and to_char(cpaydate, 'yyyymmdd') between (
 		select to_char(add_months(sysdate,-4),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-2),'yyyymmdd') 
@@ -87,7 +87,7 @@
 		select sum(camount) 
 		from credit 
 		where midx=#{midx} 
-		and cpaydate between (
+		and to_char(cpaydate, 'yyyymmdd') between (
 		select to_char(add_months(sysdate,-6),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-4),'yyyymmdd') 
@@ -97,7 +97,7 @@
 		select sum(camount) 
 		from credit 
 		where midx=#{midx} 
-		and cpaydate between (
+		and to_char(cpaydate, 'yyyymmdd') between (
 		select to_char(add_months(sysdate,-8),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-6),'yyyymmdd') 
@@ -107,7 +107,7 @@
 		select sum(camount) 
 		from credit 
 		where midx=#{midx} 
-		and cpaydate between (
+		and to_char(cpaydate, 'yyyymmdd') between (
 		select to_char(add_months(sysdate,-10),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-8),'yyyymmdd') 
@@ -117,7 +117,7 @@
 		select sum(camount) 
 		from credit 
 		where midx=#{midx} 
-		and cpaydate between (
+		and to_char(cpaydate, 'yyyymmdd') between (
 		select to_char(add_months(sysdate,-12),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-10),'yyyymmdd') 
@@ -136,7 +136,7 @@
 		select sum(camount) 
 		from credit 
 		where midx=#{midx} 
-		and cpaydate between (
+		and to_char(cpaydate, 'yyyymmdd') between (
 		select to_char(sysdate-14,'yyyymmdd') from dual) 
 		and (
 		select to_char(sysdate-7,'yyyymmdd') from dual)
@@ -145,7 +145,7 @@
 		select sum(camount) 
 		from credit 
 		where midx=#{midx} 
-		and cpaydate between (
+		and to_char(cpaydate, 'yyyymmdd') between (
 		select to_char(sysdate-21,'yyyymmdd') from dual) 
 		and (
 		select to_char(sysdate-14,'yyyymmdd') from dual)
@@ -154,15 +154,39 @@
 		select sum(camount) 
 		from credit 
 		where midx=#{midx} 
-		and cpaydate between (
+		and to_char(cpaydate, 'yyyymmdd') between (
 		select to_char(sysdate-28,'yyyymmdd') from dual) 
 		and (
 		select to_char(sysdate-21,'yyyymmdd') from dual)
 	</select>	
 	
-	<select id="teacherGrade" resultType="Integer" parameterType="map">
+
 	
+
+
+	
+	
+	
+	
+	<select id="teacherGradeAvg" resultType="Integer" parameterType="map">
+		select avg(rscore) 
+		from (select lidx from lecture where midx=#{midx}) a, review b
+		where a.lidx=b.lidx
 	</select>
+	<select id="teacherGradeAvg1M" resultType="Integer" parameterType="map">
+	select avg(rscore) 
+	from (select lidx from lecture where midx=#{midx}) a, review b
+	where a.lidx=b.lidx
+	and (select to_char(add_months(sysdate,-2), 'yyyymmdd') 
+	from dual) <![CDATA[<]]> to_char(rwritedate,'yyyymmdd')
+	</select>
+	
+	
+	
+	
+	
+	
+	
 	
 	
 </mapper>

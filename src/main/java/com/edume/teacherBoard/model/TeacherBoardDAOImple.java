@@ -48,14 +48,12 @@ public class TeacherBoardDAOImple implements TeacherBoardDAO {
 	}
 	@Override
 	public int getAskListYCnt(int midx) {
-		int count=sqlMap.selectOne("askTotalYCnt",midx);
-		System.out.println("count = "+ count);
+		int count=sqlMap.selectOne("askTotalYCnt", midx);
 		return count;
 	}
 	@Override
 	public int getAskListNCnt(int midx) {
-		int count=sqlMap.selectOne("askTotalNCnt",midx);
-		System.out.println("count = "+ count);
+		int count=sqlMap.selectOne("askTotalNCnt", midx);
 		return count;
 	}
 	
