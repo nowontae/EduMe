@@ -14,19 +14,22 @@
 	</div>
 	<div>관리자 답변 대기
 		<div>
-		<c:if test="${empty What}">
-		
+		<c:if test="${empty nList}">
+		<div>대기 중인 글없음</div>
 		</c:if>
-		<c:forEach var="" items="">
-		
+		<c:forEach var="narr" items="${nList}">
+		<div>${aarr.midx}</div>
 		</c:forEach>
 
 		</div>
 	</div>
 	<div>관리자 답변 완료
 		<div>
-		<c:forEach var="" items="">
-		
+		<c:if test="${empty allList}">
+		<div>답변 완료 글이 없음</div>
+		</c:if>
+		<c:forEach var="aarr" items="${allList}">
+		<div>${aarr.midx}</div>
 		</c:forEach>
 		</div>
 	</div>

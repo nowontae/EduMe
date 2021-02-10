@@ -43,7 +43,6 @@ public class TeacherBoardDAOImple implements TeacherBoardDAO {
 	public int getAskListCnt(int midx) {
 		int count=sqlMap.selectOne("askTotalCnt",midx);
 		count=count==0?1:count;
-		System.out.println("count = "+ count);
 		return count;
 	}
 	@Override
