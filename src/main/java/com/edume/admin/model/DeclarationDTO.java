@@ -12,16 +12,18 @@ public class DeclarationDTO {
 	private int ridx;       //리뷰고유번호
 	private String dreason; //신고사유
 	private Date ddate;	    //신고날짜
-	private char dstatus;   //신고상태
+	private String dstatus;   //신고상태
 	private String ltitle;	//lecture 테이블의 강의제목
 	private String m_from_name; // member 테이블의 신고자이름
 	private String m_to_name;   // member 테이블의 신고리뷰작성자
+	private String rcomment;  	//review 테이블의 리뷰 내용
+	private int mblack; 		//member 테이블의 블랙리스트컬럼으로 신고 된 횟수
 	
 	public DeclarationDTO() {
 		// TODO Auto-generated constructor stub
 	}
-
-	public DeclarationDTO(int didx, int midx_from, int midx_to, int ridx, String dreason, Date ddate, char dstatus,
+	//리스트 보기용
+	public DeclarationDTO(int didx, int midx_from, int midx_to, int ridx, String dreason, Date ddate, String dstatus,
 			String ltitle, String m_from_name, String m_to_name) {
 		super();
 		this.didx = didx;
@@ -35,7 +37,26 @@ public class DeclarationDTO {
 		this.m_from_name = m_from_name;
 		this.m_to_name = m_to_name;
 	}
+	// 본문 보기용
+	
 
+	public DeclarationDTO(int didx, int midx_from, int midx_to, int ridx, String dreason, Date ddate, String dstatus,
+			String ltitle, String m_from_name, String m_to_name, String rcomment, int mblack) {
+		super();
+		this.didx = didx;
+		this.midx_from = midx_from;
+		this.midx_to = midx_to;
+		this.ridx = ridx;
+		this.dreason = dreason;
+		this.ddate = ddate;
+		this.dstatus = dstatus;
+		this.ltitle = ltitle;
+		this.m_from_name = m_from_name;
+		this.m_to_name = m_to_name;
+		this.rcomment = rcomment;
+		this.mblack = mblack;
+	}
+	
 	public int getDidx() {
 		return didx;
 	}
@@ -84,11 +105,11 @@ public class DeclarationDTO {
 		this.ddate = ddate;
 	}
 
-	public char getDstatus() {
+	public String getDstatus() {
 		return dstatus;
 	}
 
-	public void setDstatus(char dstatus) {
+	public void setDstatus(String dstatus) {
 		this.dstatus = dstatus;
 	}
 
@@ -114,6 +135,18 @@ public class DeclarationDTO {
 
 	public void setM_to_name(String m_to_name) {
 		this.m_to_name = m_to_name;
+	}
+	public String getRcomment() {
+		return rcomment;
+	}
+	public void setRcomment(String rcomment) {
+		this.rcomment = rcomment;
+	}
+	public int getMblack() {
+		return mblack;
+	}
+	public void setMblack(int mblack) {
+		this.mblack = mblack;
 	}
 	
 	

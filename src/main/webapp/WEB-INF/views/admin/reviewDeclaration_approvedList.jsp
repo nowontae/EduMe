@@ -24,9 +24,7 @@
       th{
       	 text-align: left;
       }
-      
-
-     .dreason{
+       .dreason{
      	display:inline-block; 
      	width:180px; 
      	white-space:nowrap; 
@@ -35,6 +33,8 @@
 
 
      }
+      
+     
       
 </style>
 </head>

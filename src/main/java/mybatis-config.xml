@@ -19,6 +19,7 @@
 		<mapper resource="sql/PurchaseSQL.xml"/>
 		<mapper resource="sql/CreditSQL.xml"/>
 		<mapper resource="sql/NoticeMsgSQL.xml"/>
+		<mapper resource="sql/CartSQL.xml"/>
 	</mappers>
 	
 </configuration>

@@ -29,5 +29,19 @@ public class TeacherBoardReviewController {
 		mav.setViewName("teacher/teacherBoard/teacherReviewMain");
 		return mav;
 		} 
-
+	
+	@RequestMapping("/teacherReviewContent.do")
+	 public ModelAndView teacherReviewContent(@RequestParam(value="lidx", defaultValue =  "0")int lidx,
+			 @RequestParam(value="ltitle")String ltitle) {
+		Map map=new HashMap();	 
+		map.put("lidx", lidx);
+		List list=teacherBoardReviewDao.teacherReviewContent(map);
+			
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("list", list);
+		mav.addObject("ltitle", ltitle);
+		mav.setViewName("teacher/teacherBoard/teacherReviewContent");
+		return mav;
+		} 
+	
 }

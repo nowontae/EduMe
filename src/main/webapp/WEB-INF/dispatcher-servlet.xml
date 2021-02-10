@@ -24,7 +24,10 @@
   	<bean id="purchaseDao" class="com.edume.student.model.PurchaseDAOImple"/>  	
   	<bean id="creditDao" class="com.edume.student.model.CreditDAOImple"/>  	
   	<bean id="noticeMsgDao" class="com.edume.student.model.NoticeMsgDAOImple"/>  	
-
+	  <bean id="cartDao" class="com.edume.student.model.CartDAOImple"></bean>
+  
+  
+  
    <!-- config   -->
    <context:component-scan base-package="com.edume"></context:component-scan>
    

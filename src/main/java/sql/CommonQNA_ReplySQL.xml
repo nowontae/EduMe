@@ -13,6 +13,8 @@
 	and cqidx=#{cqidx}
 	order by cqreplywritedate asc
   </select>
+  
+  
   <delete id="Qna_ReplyDelete" parameterType="Integer">
   	delete from CommonQNA_Reply 
   		where cqreply_idx=#{cqreply_idx}

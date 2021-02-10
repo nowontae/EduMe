@@ -2,6 +2,28 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.edume.teacher">
+<mapper namespace="com.edume.createLecture">
+	
+	<insert id="createLectureSave" parameterType="com.edume.createLecture.model.CreateLectureDTO">
+	insert into
+		lecture
+	values(lecture_idx.nextval,
+	#{midx},
+	#{ltitle},
+	#{lsubtitle},
+	#{llevel},
+	#{lthumnail},
+	#{lsummary},
+	#{lpurpose},
+	#{lorignprice},
+	#{ltarget},
+	#{lknowledge},
+	#{cat1_idx},
+	#{cat2_idx},
+	#{cat3_idx},
+	sysdate,
+	#{lopen}	
+	)
+	</insert>
 	
 </mapper>

@@ -25,8 +25,7 @@
       	 text-align: left;
       }
       
-
-     .dreason{
+       .dreason{
      	display:inline-block; 
      	width:180px; 
      	white-space:nowrap; 
@@ -35,6 +34,7 @@
 
 
      }
+     
       
 </style>
 </head>
@@ -70,7 +70,7 @@
 		<td>${dto.ltitle }</td>
 		<td>${dto.m_from_name}</td>
 		<td>${dto.m_to_name }</td>
-		<td><div class="dreason"><a href="reviewDeclaration_Content.do?didx=${dto.didx} ">${dto.dreason }</a></div></td>
+				<td><div class="dreason"><a href="reviewDeclaration_Content.do?didx=${dto.didx} ">${dto.dreason }</a></div></td>
 		<td>${dto.ddate }</td>
 		<td>${dto.dstatus }</td>
 	</tr>

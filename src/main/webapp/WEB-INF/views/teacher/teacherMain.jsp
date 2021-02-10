@@ -19,7 +19,7 @@
 	<a href="teacherAsk.do?midx=${sessionScope.midx}">문의</a>
 </div>
 
-<form name="createLectureForm" action="createLectureForm.do">
+<form name="createLectureMain" action="createLectureMain.do">
 <div>
 	<h2>강좌</h2>
 </div>

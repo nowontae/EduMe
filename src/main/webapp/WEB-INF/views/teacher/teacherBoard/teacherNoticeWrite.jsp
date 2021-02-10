@@ -39,7 +39,7 @@ function show(){
 			</tr>
 			<tr>
 				<td colspan="2" >
-				 첨부이미지:<input type="file" name="upload" >
+				 첨부이미지:<input type="file" name="upload">
 				<!-- 다중파일 업로드 <input type="button" value="파일추가" onclick="show()"> -->
 				</td>
 			</tr>

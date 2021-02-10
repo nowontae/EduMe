@@ -19,5 +19,10 @@ public class TeacherBoardReviewDAOImple implements TeacherBoardReviewDAO {
 		List list=sqlMap.selectList("teacherReviewMain", map);
 		return list;
 	}
-	
+
+	@Override
+	public List teacherReviewContent(Map map) {
+		List list=sqlMap.selectList("teacherReviewContent", map);
+		return list;
+	}
 }
