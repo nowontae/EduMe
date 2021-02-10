@@ -53,7 +53,7 @@ where rnum <![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
 	from (select b.*
 	from (select lecture.lidx from lecture where midx=#{midx}) a, (select * from
 	lectureQna where lqreply='Y') b
-	where a.lidx=b.lidx) a), b
+	where a.lidx=b.lidx) a)
   </select>
   
   
@@ -63,7 +63,7 @@ where rnum <![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
 	from (select b.*
 	from (select lecture.lidx from lecture where midx=#{midx}) a, (select * from
 	lectureQna where lqreply='N') b
-	where a.lidx=b.lidx) a), b
+	where a.lidx=b.lidx) a)
   </select>
   
   <select id="askContent" resultType="com.edume.teacherBoard.model.TeacherBoardDTO">

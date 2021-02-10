@@ -21,9 +21,6 @@ right: auto;
 height: 100%;
 background-color: black;
 }
-#testVideoSubject{
-	width: 250px;
-}
 #testVideoExitButton{
 	
 }
@@ -57,11 +54,15 @@ background-color: black;
 </ul>
 <div>
 테스트 동영상 업로드<br>
-<input id="testVideoSubject" type="text" name="testVideoSubject" placeholder="제목을 입력해주세요"><br>
-<input type="file" name="testVideoUpload" placeholder="선택된 파일 없음" value="동영상 선택"><br>
+<input type="text" name="tvsubject" placeholder="제목을 입력해주세요" style="width: 250px;"><br>
+<input type="file" name="upload"><br>
 <b>참고</b>:모든 파일은 720p 이상, 4.0GB 이하여야 합니다.
 </div>
-<div><input type="submit" value="제출"></div>
+<div>
+<input type="hidden" value="${midx}" name="midx">
+<input type="submit" value="제출">
+<input type="reset" value="다시 작성">
+</div>
 </form>
 </body>
 </html>
