@@ -75,7 +75,7 @@ public class PageModule {
 	}
 	
 	
-	public static String makePage(String pageName,int cp,int totalCnt, int listSize, int pageSize,int midx,String boardtype) {
+	public static String teacherAskPage(String pageName,int cp,int totalCnt, int listSize, int pageSize,int midx,String boardtype) {
 		
 		StringBuffer sb=new StringBuffer();
 		

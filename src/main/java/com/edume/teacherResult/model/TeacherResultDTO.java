@@ -10,7 +10,6 @@ public class TeacherResultDTO {
 	private Integer camount;
 	private String ccoment;
 	private Date cpaydate;
-	
 	public TeacherResultDTO() {
 		super();
 	}

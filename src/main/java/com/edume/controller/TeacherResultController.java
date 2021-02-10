@@ -97,8 +97,8 @@ public class TeacherResultController {
 			if(M4camount==null) {M4camount=0;}
 			if(M5camount==null) {M5camount=0;}
 			if(M6camount==null) {M6camount=0;}
-			
 			jsonChartData="{chart:{data:["+M1camount+","+M2camount+","+M3camount+","+M4camount+","+M5camount+","+M6camount+"],labels:['1~2달전','2~4달전','4~6달전','6~8달전','8~10달전','10~12달전']}}";
+
 		}
 		
 		return jsonChartData;

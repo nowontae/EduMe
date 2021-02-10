@@ -19,7 +19,6 @@ function sendRequest(url,params,callback,method){
 	}
 	
 	var httpParams=(params==null ||params=='')?null:params;
-	window.alert(httpParams);
 	var httpUrl=url;
 	if(httpMethod=='GET' && httpParams!=null){
 		httpUrl=httpUrl+'?'+httpParams;

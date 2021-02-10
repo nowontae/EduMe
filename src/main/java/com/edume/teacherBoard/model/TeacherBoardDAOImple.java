@@ -40,19 +40,19 @@ public class TeacherBoardDAOImple implements TeacherBoardDAO {
 	
 	
 	@Override
-	public int getAskListCnt() {
-		int count=sqlMap.selectOne("askTotalCnt");
+	public int getAskListCnt(int midx) {
+		int count=sqlMap.selectOne("askTotalCnt",midx);
 		count=count==0?1:count;
 		return count;
 	}
 	@Override
-	public int getAskListYCnt() {
-		int count=sqlMap.selectOne("askTotalYCnt");
+	public int getAskListYCnt(int midx) {
+		int count=sqlMap.selectOne("askTotalYCnt", midx);
 		return count;
 	}
 	@Override
-	public int getAskListNCnt() {
-		int count=sqlMap.selectOne("askTotalNCnt");
+	public int getAskListNCnt(int midx) {
+		int count=sqlMap.selectOne("askTotalNCnt", midx);
 		return count;
 	}
 	

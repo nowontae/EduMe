@@ -7239,7 +7239,7 @@ module.exports = function(Chart) {
 
 		// label settings
 		ticks: {
-			beginAtZero: false,
+			beginAtZero: true,
 			minRotation: 0,
 			maxRotation: 50,
 			mirror: false,
