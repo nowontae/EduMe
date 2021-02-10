@@ -28,4 +28,13 @@ public class CartDAOImple implements CartDAO {
 		int count=sqlMap.delete("myCart_delete",map);
 		return count;
 	}
+	//장바구니 담기
+	@Override
+	public int addMyCartList(int midx, int lidx) {
+		Map map= new HashMap();
+		map.put("midx", midx);
+		map.put("lidx", lidx);
+		int count=sqlMap.insert("addMyCartList",map);
+		return count;
+	}
 }

@@ -18,6 +18,7 @@ import com.edume.lecture.model.LectureCurriculumDTO;
 import com.edume.lecture.model.LectureDAO;
 import com.edume.lecture.model.LectureDTO;
 import com.edume.student.model.CartDAO;
+import com.edume.student.model.CartDTO;
 import com.edume.student.model.CommonQnaDAO;
 import com.edume.student.model.CommonQnaDTO;
 import com.edume.student.model.CreditDAO;
@@ -188,21 +189,14 @@ public class StudentController {
 	//내 장바구니 페이지에서 다중 선택 후 해제(체크박스 사용)
 	@RequestMapping("/myCart_SelectDelete.do")
 	public ModelAndView myCart_SelectDelete(HttpServletRequest request, int midx, int lidx) {
-		System.out.println("시작");
 		String[] arr=request.getParameterValues("ck");
-		System.out.println("값 들어오니?"+arr[0]);
 		   int[] arr_i=new int[arr.length];
-		   System.out.println("변환해줍시다.");
 		   int result=0;
 		   for(int i=0;i<arr.length;i++) {
-			   System.out.println("for문 도니?"+arr[i]);
 			   arr_i[i]=Integer.parseInt(arr[i]);
-			   System.out.println("for문 속 변환 "+arr_i[i]);
 			   result=cartDao.myCart_delete(midx, lidx);
-			   System.out.println("결과를 봅시다요");
 		   }
-		System.out.println("포문 탈출~!");
-		String msg="!";
+		String msg=result>0?"선택한 항목이 삭제 되었습니다.":"선택한 항목이 삭제되지않았습니다.";
 		ModelAndView mav =new ModelAndView();
 		mav.addObject("msg",msg);
 		mav.setViewName("myPage/myCartMsg");
@@ -275,7 +269,29 @@ public class StudentController {
 		return mav;
 		
 	}	
-
+	//장바구니 담기
+	@RequestMapping("/addMyCartList.do")
+	public ModelAndView addMyCartList(HttpServletRequest req, int lidx, Boolean result) {
+		System.out.println("시작");
+		HttpSession session = req.getSession();
+		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		System.out.println("어디까지 되니?");
+		int count=cartDao.addMyCartList(midx,lidx);
+		System.out.println("장바구니에 담겼는가?"+count);
+		String msg="";
+		if(result) { // db에 담고 장바구니 페이지로 이동
+			msg="/myPage/myCart";
+		}else{// db에  담고 원래 lidx 페이지로 이동
+			msg="/lecture/lectureDetail";
+		}
+		
+			
+		
+			
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName(msg);
+		return mav;
+	}
 
 
 }

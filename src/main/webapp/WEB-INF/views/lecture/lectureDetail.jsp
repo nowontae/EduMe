@@ -19,6 +19,11 @@ function videoEnded(v){
 	var crTime = v.currentTime;
 	alert("끝"+crTime);
 }
+function addMyCartList(lidx){// 장바구니 담기
+	var result=window.confirm("장바구니 페이지로 이동하시겠습니까? 😊");
+	//alert(result); -> true, false  값으로 출력
+	location.href="addMyCartList.do?lidx="+lidx+"&result="+result;
+}
 </script>
 </head>
 <body>
@@ -37,6 +42,9 @@ function videoEnded(v){
 
 <div>
 	<a href="addWishList.do?lidx=${lectureDetail.lidx}">찜하기</a>
+	<input type="button" value="장바구니" onclick="addMyCartList(${lectureDetail.lidx})">
+		<a href="addMyCartList.do?lidx=${lectureDetail.lidx}">장바구니</a>
+	
 	<input type="button" value="공유"/>
 	<input type="button" value="이 강좌 선물하기"/>
 </div>

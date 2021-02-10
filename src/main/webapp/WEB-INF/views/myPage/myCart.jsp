@@ -16,7 +16,7 @@ function value_check(midx) {
     for (var i=0; i<check_count; i++) {
         if (document.getElementsByName("ck")[i].checked == true) {
         	var lidx=document.getElementsByName("lidx")[i].value;
-        	alert(lidx+"D");
+        	
         	
         	
             //alert(document.getElementsByName("ck")[i].value);
@@ -49,7 +49,7 @@ function value_check(midx) {
 <c:forEach var="dto" items="${list }">
 	
 		<tr>
-			<td>회원 강의 번호${dto.lidx }//회원고유번호${dto.midx }//
+			<td>
 			<input type="checkbox" name="ck" id="lectureName" class="checkbox" value="${dto.lidx }">
 			<input type="hidden" id="lidx_value" name="lidx" value="${dto.lidx }">
 			<input type="hidden" value="${dto.midx }">

@@ -22,7 +22,7 @@
 	</tr>
 	
 	<tr>
-		<td colspan="2"><img width="300" height="300" src="img/${dto.nimg}"></td>
+		<td colspan="2"><img width="300" height="300" src="${dto.nimg}"></td>
 	</tr>
 	
 	<tr>

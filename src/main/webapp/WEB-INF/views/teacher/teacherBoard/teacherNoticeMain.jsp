@@ -37,7 +37,7 @@
 				<td>${dto.lidx}</td>
 				<td><a href="teacherNoticeContent.do?nidx=${dto.nidx}">${dto.nsubject}</a></td>
 				<td>${dto.ncontent}</td>
-				<td><img width="300" height="300" src="img/${dto.nimg}"></td>
+				<td><img width="300" height="300" src="${dto.nimg}"></td>
 				<td>${dto.nwritedate}</td>
 			</tr>
 		</c:forEach>

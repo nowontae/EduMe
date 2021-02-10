@@ -19,4 +19,8 @@
 	where midx= #{midx}
 	and lidx=#{lidx}
 	</delete>
+	<!-- 장바구니 담기 -->
+	<insert id="addMyCartList" >
+	insert into cart values(#{midx},#{lidx})
+	</insert>
  </mapper>
