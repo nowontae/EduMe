@@ -29,7 +29,7 @@ function value_check(midx) {
 <body>
 
 <c:forEach var="dto" items="${list }" begin="0" end="0">
-<h3>${dto.mname}님 장바구니</h3>
+<h3>${dto.mname}님 장바구니</h3> 
 </c:forEach>
 <hr>
 
