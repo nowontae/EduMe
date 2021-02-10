@@ -3,27 +3,39 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.edume.createLecture">
+
+	<select id="checkLidx" resultType="Integer">
+		select MAX(lidx)+1 from lecture_fake
+	</select>
+	<insert id="createLectureInsert" parameterType="com.edume.createLecture.model.CreateLectureDTO">
+	 	 
+	 insert into lecture_fake(lidx, lwritedate, lopen)
+	 values(#{lidx},sysdate,'N' )
 	
-	<insert id="createLectureSave" parameterType="com.edume.createLecture.model.CreateLectureDTO">
-	insert into
-		lecture
-	values(lecture_idx.nextval,
-	#{midx},
-	#{ltitle},
-	#{lsubtitle},
-	#{llevel},
-	#{lthumnail},
-	#{lsummary},
-	#{lpurpose},
-	#{lorignprice},
-	#{ltarget},
-	#{lknowledge},
-	#{cat1_idx},
-	#{cat2_idx},
-	#{cat3_idx},
-	sysdate,
-	#{lopen}	
-	)
 	</insert>
 	
+	<update id="createLectureUpdate" parameterType="com.edume.createLecture.model.CreateLectureDTO">
+	update 
+		lecture_fake
+	set
+		midx=#{midx},
+		ltitle=#{ltitle},
+		lsubtitle=#{lsubtitle},
+		llevel=#{llevel},
+		lthumnail=#{lthumnail},
+		lsummary=#{lsummary},
+		lpurpose=#{lpurpose},
+		lorignprice=#{lorignprice},
+		ltarget=#{ltarget},
+		lknowledge=#{lknowledge},
+		cat1_idx=#{cat1_idx},
+		cat2_idx=#{cat2_idx},
+		cat3_idx=#{cat3_idx}
+    where 
+    	lidx=#{lidx}
+    </update>
+    
+    <select id="createLectureContent" resultType="com.edume.createLecture.model.CreateLectureDTO">
+    select * from lecture_fake where lidx=#{lidx}
+    </select>
 </mapper>

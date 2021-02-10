@@ -24,7 +24,8 @@
   	<bean id="purchaseDao" class="com.edume.student.model.PurchaseDAOImple"/>  	
   	<bean id="creditDao" class="com.edume.student.model.CreditDAOImple"/>  	
   	<bean id="noticeMsgDao" class="com.edume.student.model.NoticeMsgDAOImple"/>  	
-	  <bean id="cartDao" class="com.edume.student.model.CartDAOImple"></bean>
+	<bean id="cartDao" class="com.edume.student.model.CartDAOImple"></bean>
+	<bean id="createLectureDao" class="com.edume.createLecture.model.CreateLectureDAOImple"></bean>
   
   
   
