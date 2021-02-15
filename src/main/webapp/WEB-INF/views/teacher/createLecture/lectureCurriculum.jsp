@@ -5,9 +5,85 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+var count=0;
+function sectionAdd(){
+	count++;
+	
+	var lastDIV="";
+	
+	var sectionAllDiv=document.createElement("div");
+	sectionAllDiv.style.border="2px solid";
+	var sectionChildDiv=document.createElement("div");
+	sectionAllDiv.appendChild(sectionChildDiv);
+	
+	var newsectionSpan=document.createElement("span");
+	sectionChildDiv.appendChild(newsectionSpan);
+	
+	var newsectionHtml = "섹션"+count+":<input type='hidden' name='lcsection' value='"+count+"'>";
+	
+	newsectionHtml += "<input type='text' name='lctitle'>";
+	
+	newsectionSpan.innerHTML=newsectionHtml;
+	
+	
+	var lcsectionSpan=document.createElement("span");
+	sectionChildDiv.appendChild(lcsectionSpan);
+	
+	sectionAllDiv.setAttribute("id","sectionAll"+count);
+	
+	
+	
+	
+	var partButtonDiv=document.createElement('div');
+	sectionAllDiv.appendChild(partButtonDiv);
+	partButtonDiv.innerHTML="<input type='button' value='강의 추가' onclick='partAdd("+count+")'>";
+	
+	sectionTotalDiv=document.getElementById("sectionTotal");
+	sectionTotalDiv.appendChild(sectionAllDiv);
+
+	//var abcd=document.createElement('div');
+	//abcd.innerHTML="<input type='hidden' id='abc"+count+"' value='0'>";
+	//sectionTotalDiv.appendChild(abcd);
+
+	
+}
+
+function partAdd(count){
+
+	//var abc=document.getElementById('abc'+count).value;
+	//abc++;
+	
+	var num = document.querySelectorAll("#sectionAll" + count + ' .partdiv').length + 1;
+	
+	var partAllDiv=document.createElement("div");
+	var partAllChildDiv1=document.createElement("div");
+	var partAllChildDiv2=document.createElement("div");
+	partAllDiv.appendChild(partAllChildDiv1);
+	partAllDiv.appendChild(partAllChildDiv2);
+	partAllDiv.className = 'partdiv';
+	
+	var newPartSpan1=document.createElement("span");
+	partAllChildDiv1.appendChild(newPartSpan1);
+	newPartSpan1.innerHTML="강의"+ num +":<input type='hidden' name='lcpart' value='" + num +"'>";
+	
+	var newPartSpan2=document.createElement("span");
+	partAllChildDiv1.appendChild(newPartSpan2);
+	newPartSpan2.innerHTML="<input type='text' name='lctitle"+count+"[]'>";
+
+	var newPartSpan3=document.createElement("span");
+	partAllChildDiv2.appendChild(newPartSpan3);
+	newPartSpan3.innerHTML="동영상 업로드<input type='file' name='lcvideo'>";
+
+	var sectionAll=document.getElementById("sectionAll"+count);
+	sectionAll.appendChild(partAllDiv);
+
+	
+}
+</script>
 </head>
 <body>
-<input type="button" value="<강좌로 돌아가기" onclick="location.href='createLectureMain.do'">
+<input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do'">
 <form name="lectureCurriculum" action="lectureCurriculum.do?midx=${midx}">
 <div>
 	<input type="submit" value="저장">
@@ -27,27 +103,7 @@
 	<input type="button" value="섹션 추가" onclick="sectionAdd()">
 </div>
 
-<div id="sectionAll">
-	<div>
-		<span>섹션 1<input type="hidden">:</span>
-		<span><input type="text" name="lcsection"></span>
-	</div>
-	
-	<div id="partAll">
-		<div>
-			<span>강의 1(숫자증가):<input type="hidden" name="lcpart"></span>
-			<span><input type="text" name="lctitle"></span>
-		</div>
-		<div>
-			<span>동영상 업로드</span>
-			<span><input type="file" name="uploadCurri"></span>
-		</div>
-	</div>
-	
-	<div>
-		<input type="button" value="강의 추가" onclick="partAdd()">
-	</div>
-</div>
+<div id="sectionTotal"></div>
 
 <div>
 	<input type="button" value="이전" onclick="location.href='createLectureMain.do'">
