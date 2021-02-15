@@ -114,9 +114,7 @@ public class StudentController {
 		//	강의리스트
 		@RequestMapping(value="/lectureList.do", method=RequestMethod.GET)
 		public ModelAndView lectureList() {
-			System.out.println("1");
 			List list = lectureDao.getLectureList();
-			System.out.println("2");
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/lecture/lectureList");
 			mav.addObject("lectureList", list);
@@ -141,7 +139,22 @@ public class StudentController {
 		
 	}
 	
-	
+	//강의 상세
+		@RequestMapping("/lectureMyClass.do")
+		public ModelAndView lectureDetail(@RequestParam(value="lidx", defaultValue = "0") int lidx,
+				@RequestParam(value="section", defaultValue = "1") int section,
+				@RequestParam(value="part", defaultValue = "1") int part) {
+			lidx=1;
+			LectureCurriculumDTO ldto = lectureDao.getMyClass(lidx,section,part);
+			List lcdto = lectureDao.getLectureCurriculum(lidx);
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("/lecture/lectureMyClass");
+			mav.addObject("myClass", ldto);
+			mav.addObject("curriculum", lcdto);
+			//System.out.println("lidx="+ldto.getLidx());
+			return mav;
+			
+		}
 
 	//찜목록
 	@RequestMapping("/wishList.do")
@@ -205,11 +218,18 @@ public class StudentController {
 	}
 	
 	
-	//내학습관리 페이지 이동
-	@RequestMapping("/MyLectureList.do")
-	public ModelAndView myLectureList() {
+	//내 강의 목록 페이지 이동
+	@RequestMapping("/myLectureList.do")
+	public ModelAndView myLectureList(HttpServletRequest req) {
+		
+		HttpSession session = req.getSession();
+		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		
+		List list = lectureDao.getMyLectureList(midx);
+		
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName("myPage/myLectureList");
+		mav.setViewName("lecture/myLectureList");
+		mav.addObject("myLectureList", list);
 		return mav;
 	}
 	
@@ -231,6 +251,20 @@ public class StudentController {
 			
 
 	//구매내역
+	@RequestMapping("/purchaseHistory.do")
+	public ModelAndView purchaseHistory(HttpServletRequest req) {
+		System.out.println("purchase history 1");
+		HttpSession session = req.getSession();
+		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		List list = purchaseDao.purchaseHistory(midx);
+		System.out.println("2");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("purchaseHistory", list); 
+		mav.setViewName("/student/purchase/purchaseHistory");
+		return mav;
+		
+	}		
+	//구매내역
 	@RequestMapping("/credit.do")
 	public ModelAndView creditHistory(HttpServletRequest req) {
 		System.out.println("credit history 1");
@@ -244,15 +278,12 @@ public class StudentController {
 		return mav;
 		
 	}		
-	
 	//구매내역
 	@RequestMapping("/noticeMsg.do")
 	public ModelAndView noticeMsgList(HttpServletRequest req) {
-		System.out.println("noticeMsgList history 1");
 		HttpSession session = req.getSession();
 		int midx = Integer.parseInt((String)session.getAttribute("midx"));
 		List list = noticeMsgDao.noticeMsgList(midx);
-		System.out.println("2");
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("noticeMsg", list); 
 		mav.setViewName("/student/noticeMsg/noticeMsg");

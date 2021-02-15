@@ -7,7 +7,9 @@ public interface LectureDAO {
 	//public LectureDTO lectureDetail(int lidx);
 	public String lectureDetail(int lidx);
 	public List getLectureList();
+	public List getMyLectureList(int midx);
 	public LectureDTO getLectureDetail(int lidx);
 	public List getLectureCurriculum(int lidx);
+	public LectureCurriculumDTO getMyClass(int lidx,int section, int part);
 	
 }

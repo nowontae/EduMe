@@ -19,11 +19,25 @@
  		from lecture
  	</select>
  	
+ 	<select id="getMyLectureList" resultType="com.edume.lecture.model.LectureDTO">
+ 		select *
+ 		from lecture l, (select lidx from myLectureList where midx=#{midx}) ml
+ 		where l.lidx=ml.lidx
+ 	</select>
+ 	
  	<select id="getLectureDetail" parameterType="int" resultType="com.edume.lecture.model.LectureDTO">
  		select *
  		from lecture
  		where lidx=#{lidx}
  	</select>
+ 	
+ 	
+ 	<select id="getMyClass" parameterType="Map" resultType="com.edume.lecture.model.LectureCurriculumDTO">
+ 		select *
+ 		from lectureCurriculum
+ 		where lidx=#{lidx} and lcsection = #{section} and lcpart = #{part}
+ 	</select>
+ 	
  	
  	<select id="getLectureCurriculum" parameterType="int" resultType="com.edume.lecture.model.LectureCurriculumDTO">
  		select *

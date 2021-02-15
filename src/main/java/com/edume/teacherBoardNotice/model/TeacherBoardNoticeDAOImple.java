@@ -46,4 +46,23 @@ public class TeacherBoardNoticeDAOImple implements TeacherBoardNoticeDAO {
 		return count==0? 1:count;
 	}
 
+	/*글쓰기 공지안내 쪽지 보내기*/
+	@Override
+	public int teacherNoticeMsgWrite(TeacherBoardNoticeDTO dto) {
+		List<TeacherBoardNoticeDTO> list = sqlMap.selectList("teacherNoticeMsgWho", dto.getLidx());
+		
+		
+		Map map = new HashMap();
+		map.put("dto", dto);
+		map.put("msg", "공지 메세지");
+		
+		int count=1;
+		int result = 0;
+		for (TeacherBoardNoticeDTO midxList : list) {
+			map.put("midxList", midxList);
+			result += sqlMap.insert("teacherNoticeMsgWrite", map);
+		}
+		
+		return result;
+	}
 }
