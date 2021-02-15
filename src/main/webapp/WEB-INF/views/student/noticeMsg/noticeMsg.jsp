@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1>공지사항 알림</h1>
-
+<h1>안읽은 알림 갯수 : </h1>
 
 <c:forEach var="dto" items="${noticeMsg}">
 11/

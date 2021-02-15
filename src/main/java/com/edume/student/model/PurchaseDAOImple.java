@@ -16,4 +16,10 @@ public class PurchaseDAOImple implements PurchaseDAO {
 		List arr=sqlMap.selectList("PurchaseUserList");
 		return arr;
 	}
+	
+	@Override
+	public List purchaseHistory(int midx) {
+		List list = sqlMap.selectList("purchaseHistory",midx);
+		return list;
+	}
 }

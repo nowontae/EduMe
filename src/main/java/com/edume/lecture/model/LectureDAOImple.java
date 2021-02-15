@@ -1,6 +1,8 @@
 package com.edume.lecture.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,13 @@ public class LectureDAOImple implements LectureDAO {
 	}
 	
 	@Override
+	public List getMyLectureList(int midx) {
+		List list = sqlMap.selectList("getMyLectureList", midx);
+		return list;
+	}
+	
+	
+	@Override
 	public LectureDTO getLectureDetail(int lidx) {
 		LectureDTO ldto = sqlMap.selectOne("getLectureDetail", lidx);
 				
@@ -49,4 +58,18 @@ public class LectureDAOImple implements LectureDAO {
 		List list = sqlMap.selectList("getLectureCurriculum", lidx);
 		return list;
 	}
+	
+	
+	@Override
+	public LectureCurriculumDTO getMyClass(int lidx,int section, int part) {
+		
+		Map map = new HashMap();
+		map.put("lidx", lidx);
+		map.put("section", section);
+		map.put("part", part);
+		LectureCurriculumDTO ldto = sqlMap.selectOne("getMyClass", map);
+				
+		return ldto;
+	}
+	
 }

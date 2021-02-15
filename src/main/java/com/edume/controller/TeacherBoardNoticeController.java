@@ -3,7 +3,9 @@ package com.edume.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -58,16 +60,25 @@ public class TeacherBoardNoticeController {
 		public ModelAndView teacherNoticeWriteSubmit(TeacherBoardNoticeDTO dto,
 				@RequestParam("upload")MultipartFile upload,
 				HttpServletRequest rs) {
-		 //
+
+		 
 		 HttpSession session=rs.getSession();
 		 String path = session.getServletContext().getRealPath("/")+"img/";
-		 System.out.println(path);
+		 //System.out.println(path);
 		 
 		 dto.setNimg(upload.getOriginalFilename());
 		 copyInto(upload,path);
+		 
+		 
+		 int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		 dto.setMidx(midx);
+		 
 		 int result=teacherBoardNoticeDao.teacherNoticeWrite(dto);
 		 String msg=result>0? "글쓰기 성공!":"글쓰기 실패!";
 		
+		 
+		 Map map = new HashMap();
+		 int result2= teacherBoardNoticeDao.teacherNoticeMsgWrite(dto);
 		 ModelAndView mav=new ModelAndView();
 		 mav.addObject("msg", msg);
 		 mav.setViewName("teacher/teacherBoard/noticeWriteMsg");
