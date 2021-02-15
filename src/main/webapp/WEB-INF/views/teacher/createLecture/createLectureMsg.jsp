@@ -4,4 +4,5 @@
 window.alert('${msg}');
 location.href='createLectureUpdate.do?lidx=${lidx}';
 
+
 </script>

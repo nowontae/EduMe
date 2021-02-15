@@ -39,9 +39,12 @@ public class CreateLectureController {
 	
 	/*강좌만들기 메인페이지 겸 저장+이미지 업로드 기능*/
 	@RequestMapping(value="/createLectureSave.do", method=RequestMethod.POST)
-	public ModelAndView createLectureMain(CreateLectureDTO dto,@RequestParam(value="lidx", defaultValue = "0")int lidx,
+	public ModelAndView createLectureMain(
+			CreateLectureDTO dto, 
+			@RequestParam(value="lidx", defaultValue = "0")int lidx,
 			@RequestParam(value="lthumnail1", defaultValue="img/checkbox.svg")MultipartFile lthumnail1,
-			HttpServletRequest rs) {
+			HttpServletRequest rs
+	) {
 		
 		System.out.println("하이");
 		HttpSession session=rs.getSession();
