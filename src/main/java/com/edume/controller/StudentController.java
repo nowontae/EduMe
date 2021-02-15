@@ -283,11 +283,12 @@ public class StudentController {
 				msg="장바구니페이지로 이동합니다.";
 				
 			}else{// db에  담고 원래 lidx 페이지로 이동
-				msg="장바구니에 담겼습니다.";
+				msg="";
 				gopage="/lecture/lectureDetail";
 			}
 		}
 		mav.addObject("msg", msg);
+		mav.addObject("lidx",lidx);
 		mav.setViewName(gopage);
 		return mav;
 	}

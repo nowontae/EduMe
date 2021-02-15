@@ -36,7 +36,6 @@
 			<fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dto.lqwritedate }"/>
 			</td>
 			<td>${dto.cqreply }</td>
-			
 		</tr>
 
 	</c:forEach>

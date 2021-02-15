@@ -15,6 +15,9 @@
 <br>
 <a href="admin_CommonQnAList.do">문의하기</a>
 <br>
+<a href="CategoryCheck.do">카테고리 관리</a>
+<br>
+
 후기?
 
 <!-- 원태님 부분 -->

@@ -22,6 +22,7 @@
 		<mapper resource="sql/NoticeMsgSQL.xml"/>
 		<mapper resource="sql/CartSQL.xml"/>
 		<mapper resource="sql/CreateLecture.xml"/>		
+		<mapper resource="sql/CategorySQL.xml"/>		
 	</mappers>
 	
 </configuration>

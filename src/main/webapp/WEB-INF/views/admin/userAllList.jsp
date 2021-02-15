@@ -7,6 +7,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<style>
+.pagination {<!--페이지 중앙정렬-->
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    flex-direction: row;
+    justify-content: center;
+    width: 1200px;
+
+    
+}
+table {
+    border: 0px solid  ;
+    text-align: center;
+}
+th, td{
+	border-bottom: 1px solid #000000;
+}
+
+</style>
+
 <script>
 function changeSelect(e){
 	var value=e.options[e.selectedIndex].value;
@@ -33,6 +56,8 @@ function changeSelect(e){
 </script>
 </head>
 <body>
+
+
 <a href="admin_memberAllList.do">유저 전체 내역</a> | <a href="admin_blackList.do">블랙리스트</a>
 <h3>유저 전체 내역</h3>
 <div id="selectInfo"></div>
@@ -47,9 +72,10 @@ function changeSelect(e){
 	<input type="text" id="findKeys" name="findKeys" pattern="[0-9]+" placeholder="숫자만 입력해주세요." required="required">
 	<input type="submit" value="검색">
 </form>
-
+<br>
+	
 <!-- 전체 유저 정보 -->
-<table border="1" cellspacing="0">
+<table border="1" cellspacing="0" width="1200px" >
 	<thead>
 		<tr>
 			<th>회원 번호</th>
@@ -67,12 +93,13 @@ function changeSelect(e){
 	<tbody>
 	<c:if test="${empty list }">
 		<tr>
-			<td colspan="10" align="center">등록된 인원이 없습니다.</td>
+			<td colspan="10" align="center"  style='max-height:35px'>등록된 인원이 없습니다.</td>
 		</tr>
 	</c:if>
 	<c:forEach var="dto" items="${list }">
+	
 		<tr>
-			<td>${dto.midx }</td>
+			<td >${dto.midx }</td>
 			<td><img src="${dto.mimg }" alt="유저 이미지"></td>
 			<td>
 				
@@ -108,10 +135,14 @@ function changeSelect(e){
 	</tbody>
 
 	<tfoot>
-	<td colspan="10">${pageStr}</td> 
+	<td colspan="10"></td> 
 	</tfoot>
 </table>
+<div>${pageStr}</div>
 <br>
 <a href="admin.do">관리자 페이지</a>
+	
+
+
 </body>
 </html>

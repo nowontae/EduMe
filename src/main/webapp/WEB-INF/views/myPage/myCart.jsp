@@ -12,11 +12,9 @@ function value_check(midx) {
 
 	
     var check_count = document.getElementsByName("ck").length;
-
     for (var i=0; i<check_count; i++) {
         if (document.getElementsByName("ck")[i].checked == true) {
         	var lidx=document.getElementsByName("lidx")[i].value;
-        	
         	
         	
             //alert(document.getElementsByName("ck")[i].value);
@@ -50,7 +48,7 @@ function value_check(midx) {
 	
 		<tr>
 			<td>
-			<input type="checkbox" name="ck" id="lectureName" class="checkbox" value="${dto.lidx }">
+			<input type="checkbox" name="ck" id="lectureName" class="checkbox" value="${dto.lidx }+${status.index }">
 			<input type="hidden" id="lidx_value" name="lidx" value="${dto.lidx }">
 			<input type="hidden" value="${dto.midx }">
 			</td>
