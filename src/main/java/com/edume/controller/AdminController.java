@@ -17,6 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.edume.admin.model.Category1DAO;
+import com.edume.admin.model.Category1DTO;
+import com.edume.admin.model.Category2DAO;
+import com.edume.admin.model.Category2DTO;
+import com.edume.admin.model.Category3DAO;
+import com.edume.admin.model.Category3DTO;
 import com.edume.admin.model.CommonQnaDAO;
 import com.edume.admin.model.CommonQnaDTO;
 import com.edume.admin.model.CommonQna_ReplyDAO;
@@ -42,7 +48,14 @@ public class AdminController {
 	    private CommonQnaDAO commonQnaDao;
 	   @Autowired
 	    private CommonQna_ReplyDAO commonQnaReplyDao;
+	   @Autowired
+	    private Category1DAO category1Dao;
+	   @Autowired
+	    private Category2DAO category2Dao;
+	   @Autowired
+	   private Category3DAO category3Dao;
 
+	   
 		//관리자 페이지 이동
 	   @RequestMapping("/admin.do")
 	      public String index() {
@@ -72,10 +85,10 @@ public class AdminController {
 	   	public ModelAndView memberIdxAllList(
 	   			@RequestParam(value="cp",defaultValue = "1")int cp) {
 			int totalCnt=commonQnaDao.commonQna_TotalCnt();
-			int listSize=10;
+			int listSize=5;
 			int pageSize=5;
 			String pageStr=com.edume.page.PageModule
-					.makePage("admin_memberAllList.do", totalCnt, cp, listSize, pageSize);
+					.boopstrapPage("admin_memberAllList.do", totalCnt, cp, listSize, pageSize);
 		   List list=memberDao.memberIdxAllList(cp,listSize);
 		   ModelAndView mav=new ModelAndView();
 		   mav.addObject("list",list);
@@ -351,6 +364,137 @@ public class AdminController {
 		  mav.setViewName("admin/Qna_Reply_Msg");
 		  return mav;
 	   }
+	  
+	  //				  == 카테고리  ==
+	  //카테고리 관리 페이지 이동
+	  @RequestMapping("/CategoryCheck.do")
+	  public ModelAndView CategoryCheck() {
+		  
+		  List list=category1Dao.Category1List();
+		  ModelAndView mav=new ModelAndView();
+		  mav.addObject("list",list);
+		  mav.setViewName("admin/Category1List");
+		  
+		  return mav;
+	  }
+	  //카테고리 대분류 추가
+	  @RequestMapping("/Category1Add.do")
+	  public ModelAndView Category1Add(Category1DTO dto) {
+		  int result=category1Dao.Category1Add(dto);
+		  String msg=result>0?"카테고리(대분류)가 등록 되었습니다.":"카테고리(대분류)가 등록되지 않았습니다.";
+		  ModelAndView mav=new ModelAndView();
+		  mav.addObject("msg",msg);
+		  mav.setViewName("admin/Category1Msg");
+		  return mav;
+	  }
+	  
+	  //카테고리 대분류삭제
+	  @RequestMapping("/Category1Delete.do")
+	  public ModelAndView Category1Delete(int cat1_idx) {
+		  
+		  int result=category1Dao.Category1Delete(cat1_idx);
+		  int result2=0;
+		  int result3=0;
+		  String msg="";
+		  if(result>0) {//카테고리 1 지우기 성공
+			  result2=category2Dao.Category1_2Delete(cat1_idx);
+			  //카테고리 2 지우기 메소드 실행
+			  result3=category3Dao.Category1_3Delete(cat1_idx);
+			  //카테고리 3 지우기 메소드 실행
+				   msg=result>0?"카테고리(대분류)가 삭제 되었습니다.":"카테고리(대분류)가 삭제되지 않았습니다.";
 
-	
+		  }else {//카테고리 1 지우기 실패
+			  msg="카테고리(대분류)가 삭제되지 않았습니다...";
+		  }
+		 
+		  ModelAndView mav=new ModelAndView();
+		  mav.addObject("msg",msg);
+		  mav.setViewName("admin/Category1Msg");
+		  return mav;
+	  }
+	  //카테고리 중분류 보기 
+	  @RequestMapping("/Category2List.do")
+	  public ModelAndView Category2List(int cat1_idx,String cat_name1) {
+		  List list=category2Dao.Category2List(cat1_idx);
+		  ModelAndView mav=new ModelAndView();
+		  mav.addObject("list",list);
+		  mav.addObject("cat_name1",cat_name1);//대분류
+		  //mav.addObject("cat_name2",cat_name);//중분류
+		  mav.addObject("cat1_idx",cat1_idx);
+		  mav.setViewName("admin/Category2List");
+		  return mav;
+	  }
+	  //카테고리 중분류 추가
+	  @RequestMapping("/Category2Add.do")
+	  public ModelAndView Category2Add(Category2DTO dto, int cat1_idx,String cat_name1) {
+		  int result=category2Dao.Category2Add(dto);
+		  String msg=result>0?"카테고리(중분류)가 등록 되었습니다.":"카테고리(중분류)가 등록되지 않았습니다.";
+		  ModelAndView mav=new ModelAndView();
+		  mav.addObject("msg",msg);
+		  mav.addObject("cat1_idx",cat1_idx);
+		  mav.addObject("cat_name1",cat_name1);
+		  mav.setViewName("admin/Category2Msg");
+		  return mav;
+	  }
+	  
+	  //카테고리 중분류삭제
+	  @RequestMapping("/Category2Delete.do")
+	  public ModelAndView Category2Delete(int cat2_idx, int cat1_idx, String cat_name1) {
+		  int result=category2Dao.Category2Delete(cat2_idx); 
+		  int result2=0;
+		  String msg="";
+		  if(result>0) {
+			  result2=category3Dao.Category2_3Delete(cat2_idx);//카테고리3 지우기 메소드 실행
+			  msg=result>0?"카테고리(중분류)가 삭제 되었습니다.":"카테고리(중분류)가 삭제되지 않았습니다.";
+		  }else {
+			  msg="카테고리(중분류)가 삭제되지 않았습니다...";
+		  }
+		  ModelAndView mav=new ModelAndView();
+		  mav.addObject("msg",msg);
+		  mav.addObject("cat1_idx",cat1_idx);
+		  mav.addObject("cat_name1",cat_name1);
+		  mav.setViewName("admin/Category2Msg");
+		  return mav;
+	  }
+	  //카테고리 소분류 보기
+	  @RequestMapping("/Category3List.do")
+	  public ModelAndView Category3List(int cat1_idx,int cat2_idx, String cat_name1,String cat_name2) {
+		  List list=category3Dao.Category3List(cat1_idx, cat2_idx);
+		  ModelAndView mav=new ModelAndView();
+		  mav.addObject("list",list);
+		  mav.addObject("cat_name1",cat_name1); // 대분류 명
+		  mav.addObject("cat_name2",cat_name2); // 중분류 명
+		  mav.addObject("cat1_idx",cat1_idx);
+		  mav.addObject("cat2_idx",cat2_idx);
+		  mav.setViewName("admin/Category3List");
+		  return mav;
+	  }
+	  //카테고리 소분류 추가
+	  @RequestMapping("/Category3Add.do")
+	  public ModelAndView Category3Add(Category3DTO dto, int cat1_idx,int cat2_idx,String cat_name1,String cat_name2) {
+		  int result=category3Dao.Category3Add(dto);
+		  String msg=result>0?"카테고리(소분류)가 등록 되었습니다.":"카테고리(소분류)가 등록되지 않았습니다.";
+		  ModelAndView mav=new ModelAndView();
+		  mav.addObject("msg",msg);
+		  mav.addObject("cat1_idx",cat1_idx);
+		  mav.addObject("cat2_idx",cat2_idx);
+		  mav.addObject("cat_name1",cat_name1); //대분류명
+		  mav.addObject("cat_name2",cat_name2); //중분류명
+		  mav.setViewName("admin/Category3Msg");
+		  return mav;
+	  }
+	  //카테고리 소분류삭제
+	  @RequestMapping("/Category3Delete.do")
+	  public ModelAndView Category3Delete(int cat2_idx, int cat1_idx,int cat3_idx, String cat_name1, String cat_name2) {
+		  int result=category3Dao.Category3Delete(cat3_idx);
+		  String msg=result>0?"카테고리(소분류)가 삭제 되었습니다.":"카테고리(소분류)가 삭제되지 않았습니다.";
+		  ModelAndView mav=new ModelAndView();
+		  mav.addObject("msg",msg);
+		  mav.addObject("cat1_idx",cat1_idx);
+		  mav.addObject("cat2_idx",cat2_idx);
+		  mav.addObject("cat_name1",cat_name1);
+		  mav.addObject("cat_name2",cat_name2);
+		  mav.setViewName("admin/Category3Msg");
+		  return mav;
+	  }
 }

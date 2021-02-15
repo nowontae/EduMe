@@ -26,6 +26,9 @@
   	<bean id="noticeMsgDao" class="com.edume.student.model.NoticeMsgDAOImple"/>  	
 	<bean id="cartDao" class="com.edume.student.model.CartDAOImple"></bean>
 	<bean id="createLectureDao" class="com.edume.createLecture.model.CreateLectureDAOImple"></bean>
+	<bean id="category1Dao" class="com.edume.admin.model.Category1DAOImple"></bean>
+	<bean id="category2Dao" class="com.edume.admin.model.Category2DAOImple"></bean>
+	<bean id="category3Dao" class="com.edume.admin.model.Category3DAOImple"></bean>
   
   
   

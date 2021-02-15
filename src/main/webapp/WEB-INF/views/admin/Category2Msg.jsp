@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <script>
 window.alert('${msg}');
-location.href="MyCart.do?midx=${sessionScope.midx}&lidx=${lidx}";
+location.href="Category2List.do?cat_name1=${cat_name1}&cat1_idx=${cat1_idx}";
 </script>

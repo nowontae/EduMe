@@ -81,7 +81,7 @@ var check
 </c:forEach>
 </table>
 
-<input type="submit" value="블랙리스트해제">
+<input type="submit" value="블랙리스트 선택해제">
 
 </form>
 <br>
