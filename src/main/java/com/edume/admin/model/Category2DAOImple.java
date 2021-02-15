@@ -22,11 +22,18 @@ public class Category2DAOImple implements Category2DAO {
 		int count=sqlMap.insert("Category2Add",dto);
 		return count;
 	}
+	//카테고리 대분류 삭제
+	@Override
+	public int Category1_2Delete(int cat1_idx) {
+		int count=sqlMap.delete("Category1_2Delete",cat1_idx);
+		return count;
+	}
 	//카테고리 중분류 삭제
 	@Override
 	public int Category2Delete(int cat2_idx) {
-		int count=sqlMap.insert("Category2Delete",cat2_idx);
+		int count=sqlMap.delete("Category2Delete",cat2_idx);
 		return count;
 	}
+	
 
 }

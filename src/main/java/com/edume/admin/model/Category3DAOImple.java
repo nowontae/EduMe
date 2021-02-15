@@ -27,6 +27,19 @@ public class Category3DAOImple implements Category3DAO {
 		int count=sqlMap.insert("Category3Add",dto);
 		return count;
 	}
+	//카테고리 대분류 삭제	
+	@Override
+	public int Category1_3Delete(int cat1_idx) {
+		int count=sqlMap.delete("Category1_3Delete",cat1_idx);
+		return count;
+	}
+	//카테고리 중분류 삭제	
+	@Override
+	public int Category2_3Delete(int cat2_idx) {
+		int count=sqlMap.delete("Category2_3Delete",cat2_idx);
+		return count;
+	}
+	
 	//카테고리 소분류 삭제
 	@Override
 	public int Category3Delete(int cat3_idx) {

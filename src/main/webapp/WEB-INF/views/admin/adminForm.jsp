@@ -27,5 +27,8 @@
 <a>결제하기</a>
 <br>
 <a>구매내역</a>
+<br>
+<br>
+<a href="index.do">메인페이지</a>
 </body>
 </html>

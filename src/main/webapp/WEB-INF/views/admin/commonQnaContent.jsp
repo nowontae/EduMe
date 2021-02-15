@@ -101,7 +101,7 @@ input,textarea:focus {
 	<input type="hidden" id="midx" name="midx" value="${Session_midx }">
 	<table>
 		<tr>
-			<td><textarea rows="10" cols="50" name="cqreplycontent" ></textarea></td>
+			<td><textarea rows="10" cols="50" name="cqreplycontent" required="required" ></textarea></td>
 			<td><input type="submit" value="댓글달기"></td>
 		</tr>
 	</table>

@@ -26,7 +26,8 @@ public class Category1DAOImple implements Category1DAO {
 	//카테고리 대분류 삭제
 	@Override
 	public int Category1Delete(int cat1_idx) {
-		int count=sqlMap.insert("Category1Delete",cat1_idx);
+		int count=sqlMap.delete("Category1Delete",cat1_idx);
 		return count;
 	}
+
 }

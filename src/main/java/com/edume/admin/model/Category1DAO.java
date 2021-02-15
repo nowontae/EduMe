@@ -9,4 +9,5 @@ public interface Category1DAO {
 	public int Category1Add(Category1DTO dto);
 	//카테고리 대분류 삭제
 	public int Category1Delete(int cat1_idx);
+
 }

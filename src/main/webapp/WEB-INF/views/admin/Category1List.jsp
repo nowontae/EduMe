@@ -23,7 +23,7 @@
 		<td>
 		<input type="hidden" value="${dto.cat1_idx}">
 
-		<a href="Category2List.do?cat_name=${dto.cat_name }&cat1_idx=${dto.cat1_idx}">${dto.cat_name}</a></td>
+		<a href="Category2List.do?cat_name1=${dto.cat_name }&cat1_idx=${dto.cat1_idx}">${dto.cat_name}</a></td>
 		<td><input type="button" value="삭제" onclick="location.href='Category1Delete.do?cat1_idx=${dto.cat1_idx}'"></td>
 	</tr>
 	
@@ -35,11 +35,12 @@
 		<tr>
 			<td>
 				<input type="hidden" value="${dto.cat1_idx}">
-				<input type="text" name="cat_name">
+				<input type="text" name="cat_name" required="required">
 				<input type="submit" value="대분류 추가">
 			</td>
 		</tr>
 	</table>
 </form>
+<a href="admin.do">관리자 페이지</a>
 </body>
 </html>

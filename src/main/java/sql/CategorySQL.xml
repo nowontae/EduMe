@@ -14,6 +14,13 @@
  <delete id="Category1Delete">
  	delete from category1 where cat1_idx=#{cat1_idx}
  </delete>
+ <delete id="Category1_2Delete">
+ 	delete from category2 where cat1_idx=#{cat1_idx}
+ </delete>
+ <delete id="Category1_3Delete">
+ 	delete from category3 where cat1_idx=#{cat1_idx}
+ </delete>
+ 
  <!-- 중분류 -->
  <select id="Category2List" resultType="com.edume.admin.model.Category2DTO">
  	select * from category2 where cat1_idx=#{cat1_idx} order by cat2_idx
@@ -23,6 +30,9 @@
  </insert>
  <delete id="Category2Delete">
  	delete from category2 where cat2_idx=#{cat2_idx}
+ </delete>
+  <delete id="Category2_3Delete">
+ 	delete from category3 where cat2_idx=#{cat2_idx}
  </delete>
  <!-- 소분류 -->
 <select id="Category3List"  resultType="com.edume.admin.model.Category3DTO">

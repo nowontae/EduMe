@@ -8,10 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>대분류 > 중분류 > 소분류</div>
+<div><a href="CategoryCheck.do">대분류</a> > <a href="javascript:history.back();">중분류</a> > 소분류</div>
 <h3>카테고리 관리</h3>
 <table border="1" cellspacing="1">
-<div>${cat2_name } > ${cat_name } > </div>
+<div>${cat_name1 } > ${cat_name2 } > </div>
 <c:if test="${empty list }">
 <br>
 	<tr>
@@ -26,7 +26,7 @@
 
 
 		${dto.cat_name}</td>
-		<td><input type="button" value="삭제" onclick="location.href='Category3Delete.do?cat2_idx=${dto.cat2_idx}&cat_name=${dto.cat_name }&cat1_idx=${dto.cat1_idx}&cat3_idx=${dto.cat3_idx}'"></td>
+		<td><input type="button" value="삭제" onclick="location.href='Category3Delete.do?cat2_idx=${dto.cat2_idx}&cat_name1=${cat_name1 }&cat1_idx=${dto.cat1_idx}&cat3_idx=${dto.cat3_idx}&cat_name2=${cat_name2 }'"></td>
 	</tr>
 	
 </c:forEach>
@@ -38,11 +38,14 @@
 			<td>
 				<input type="hidden" name="cat1_idx" value="${cat1_idx}">
 				<input type="hidden" name="cat2_idx" value="${cat2_idx}">
-				<input type="text" name="cat_name">
+					<input type="hidden" name="cat_name1" value="${cat_name1}">
+					<input type="hidden" name="cat_name2" value="${cat_name2}">
+				<input type="text" name="cat_name" required="required">
 				<input type="submit" value="소분류 추가">
 			</td>
 		</tr>
 	</table>
 </form>
+<a href="admin.do">관리자 페이지</a>
 </body>
 </html>
