@@ -24,6 +24,7 @@
 		<mapper resource="sql/CreateLecture.xml"/>		
 		<mapper resource="sql/CategorySQL.xml"/>		
 		<mapper resource="sql/TestVideoSQL.xml"/>		
+		<mapper resource="sql/CreateLectureCurriculumSQL.xml"/>		
 	</mappers>
 	
 </configuration>
