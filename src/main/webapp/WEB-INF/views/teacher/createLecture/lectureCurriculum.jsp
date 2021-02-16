@@ -26,14 +26,17 @@ function sectionAdd(){
 	
 	newsectionSpan.innerHTML=newsectionHtml;
 	
-	
 	var lcsectionSpan=document.createElement("span");
 	sectionChildDiv.appendChild(lcsectionSpan);
-	
 	sectionAllDiv.setAttribute("id","sectionAll"+count);
 	
+
+	var removeNode=document.createElement('button');
+	removeNode.setAttribute('onclick','removeSection('+count+')');
+	removeNode.setAttribute('id','removeSection'+count);
+	removeNode.innerHTML='삭제';
 	
-	
+	sectionAllDiv.appendChild(removeNode);
 	
 	var partButtonDiv=document.createElement('div');
 	sectionAllDiv.appendChild(partButtonDiv);
@@ -42,18 +45,15 @@ function sectionAdd(){
 	sectionTotalDiv=document.getElementById("sectionTotal");
 	sectionTotalDiv.appendChild(sectionAllDiv);
 
-	//var abcd=document.createElement('div');
-	//abcd.innerHTML="<input type='hidden' id='abc"+count+"' value='0'>";
-	//sectionTotalDiv.appendChild(abcd);
-
-	
+}
+function removeSection(count){
+	var node=document.getElementById('sectionAll'+count);
+	var divNode=document.getElementById('sectionTotal');
+	divNode.removeChild(node);
 }
 
 function partAdd(count){
 
-	//var abc=document.getElementById('abc'+count).value;
-	//abc++;
-	
 	var num = document.querySelectorAll("#sectionAll" + count + ' .partdiv').length + 1;
 	
 	var partAllDiv=document.createElement("div");
@@ -78,7 +78,18 @@ function partAdd(count){
 	var sectionAll=document.getElementById("sectionAll"+count);
 	sectionAll.appendChild(partAllDiv);
 
+	var reNode=document.createElement('button');
+	reNode.setAttribute('onclick','remove1('+num+','+count+')');
+	reNode.innerHTML='삭제';
 	
+	partAllChildDiv1.appendChild(reNode);
+	partAllDiv.setAttribute('id',num);
+}
+
+function remove1(num,count){
+	var node=document.getElementById(num);
+	var divNode=document.getElementById('sectionAll'+count);
+	divNode.removeChild(node);
 }
 </script>
 </head>
