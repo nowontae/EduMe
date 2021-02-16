@@ -1,6 +1,7 @@
 package com.edume.controller;
 
 import java.lang.reflect.Parameter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -190,7 +191,7 @@ public class StudentController {
 	public ModelAndView myCart(HttpServletRequest req) {
 		HttpSession session=req.getSession();
 		int midx = Integer.parseInt((String)session.getAttribute("midx"));
-		List list=cartDao.myCartList(midx);
+		ArrayList list=cartDao.myCartList(midx);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("Sesseion_midx",midx);
 		mav.addObject("list",list);
@@ -332,5 +333,16 @@ public class StudentController {
 		return mav;
 	}
 
+	
+	// 장바구니 -> 결제
+	@RequestMapping("/purchase.do")
+	public ModelAndView purchaseLecture() {
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/student/purchase/purchase");
+		
+		return mav;
+		
+	}
 
 }

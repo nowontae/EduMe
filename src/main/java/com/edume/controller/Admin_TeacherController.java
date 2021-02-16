@@ -10,11 +10,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.edume.admin_teacher.model.TestVideoDAO;
 import com.edume.admin_teacher.model.TestVideoDTO;
+import com.edume.admin_teacher_lectureCheck.model.LectureCheckDAO;
+
 
 @Controller
 public class Admin_TeacherController {
 
-	
 	@Autowired
 	private TestVideoDAO testVideoDao;
 	
@@ -36,6 +37,7 @@ public class Admin_TeacherController {
 		mav.setViewName("admin_Teacher/testVideoAllList");
 		return mav;
 	}
+
 	//테스트 동영상 관리 본문 보기
 	@RequestMapping("/TestVideoContent_Management.do")
 	public ModelAndView TestVideoContent_Management(int tvidx) {

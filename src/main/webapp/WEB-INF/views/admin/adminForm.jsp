@@ -7,30 +7,34 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>°ü¸®ÀÚ ÆäÀÌÁö</h1>
-<a href="admin_memberAllList.do">ÀüÃ¼»ç¿ëÀÚ</a>  |  
-<a href="admin_blackList.do">ºí·¢¸®½ºÆ®</a>
+<h1>ê´€ë¦¬ìž íŽ˜ì´ì§€</h1>
+<a href="admin_memberAllList.do">ì „ì²´ì‚¬ìš©ìž</a>  |  
+<a href="admin_blackList.do">ë¸”ëž™ë¦¬ìŠ¤íŠ¸</a>
 <br>
-<a href="admin_reviewDeclaration.do">¸®ºä ½Å°í ±Û¸ñ·Ï</a>
+<a href="admin_reviewDeclaration.do">ë¦¬ë·° ì‹ ê³  ê¸€ëª©ë¡</a>
 <br>
-<a href="admin_CommonQnAList.do">¹®ÀÇÇÏ±â</a>
+<a href="admin_CommonQnAList.do">ë¬¸ì˜í•˜ê¸°</a>
 <br>
-<a href="CategoryCheck.do">Ä«Å×°í¸® °ü¸®</a>
+<a href="CategoryCheck.do">ì¹´í…Œê³ ë¦¬ ê´€ë¦¬</a>
 <br>
---°­»ç°ü¸®ºÎºÐ <br>
-<a href="TestVideoManagement.do">Å×½ºÆ® µ¿¿µ»ó°ü¸®</a>
-<br>
-ÈÄ±â?
+--ê°•ì‚¬ê´€ë¦¬ë¶€ë¶„ <br>
+<a href="TestVideoManagement.do">í…ŒìŠ¤íŠ¸ ë™ì˜ìƒê´€ë¦¬</a>
 
-<!-- ¿øÅÂ´Ô ºÎºÐ -->
-<a>¾Ë¸²</a>
 <br>
 
-<a>°áÁ¦ÇÏ±â</a>
+<a href="LecutreCheck.do">ê°•ì˜ë¦¬ìŠ¤íŠ¸ ê´€ë¦¬</a>
+
+í›„ê¸°?
+
+<!-- ì›íƒœë‹˜ ë¶€ë¶„ -->
+<a>ì•Œë¦¼</a>
 <br>
-<a>±¸¸Å³»¿ª</a>
+
+<a>ê²°ì œí•˜ê¸°</a>
+<br>
+<a>êµ¬ë§¤ë‚´ì—­</a>
 <br>
 <br>
-<a href="index.do">¸ÞÀÎÆäÀÌÁö</a>
+<a href="index.do">ë©”ì¸íŽ˜ì´ì§€</a>
 </body>
 </html>

@@ -161,7 +161,7 @@
 	</div>
 	
 	<div>
-		<input type="button" value="다음" onclick="location.href='lectureCurriculum.do'">
+		<input type="button" value="다음" onclick="location.href='lectureCurriculum.do?lidx=${lidx}'">
 	</div>
 </div>
 </div>

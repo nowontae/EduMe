@@ -103,10 +103,7 @@ public class CreateLectureController {
 		}	
 	}	
 	
-	@RequestMapping("/lectureCurriculum.do")
-	public String lectureCurriculum() {
-		return "teacher/createLecture/lectureCurriculum";
-	}
+	
 }	
 	
 
