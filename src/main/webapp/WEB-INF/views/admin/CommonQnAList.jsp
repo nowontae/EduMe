@@ -19,7 +19,7 @@
 		<th>제목</th>
 		<th>작성자</th>
 		<th>질문시간</th>
-		<th>댓글작성여부</th>
+		<th>답변완료여부</th>
 	</tr>
 </thead>
 <tbody>
@@ -35,7 +35,11 @@
 			<td>
 			<fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dto.lqwritedate }"/>
 			</td>
-			<td>${dto.cqreply }</td>
+			<td>
+			<c:if test="${dto.cqreply == 'N'.charAt(0) }"><b>${dto.cqreply }</b></c:if>
+			<c:if test="${dto.cqreply == 'Y'.charAt(0) }">${dto.cqreply }</c:if>
+
+			</td>
 		</tr>
 
 	</c:forEach>

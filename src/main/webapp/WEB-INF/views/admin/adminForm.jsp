@@ -17,6 +17,8 @@
 <br>
 <a href="CategoryCheck.do">카테고리 관리</a>
 <br>
+--강사관리부분
+<a href="TestVideoManagement.do">테스트 동영상관리</a>
 
 후기?
 

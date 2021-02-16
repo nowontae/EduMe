@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="admin_Testvideo">
+  
+  <select id="TestVideoAllList" resultType="com.edume.admin_teacher.model.TestVideoDTO">
+  	select * from TestVideo order by tvidx
+  </select>
+ 
+  </mapper>
