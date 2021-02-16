@@ -30,7 +30,7 @@ function videoEnded(v){
 </script>
 </head>
 <body>
-
+<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 
 <h1>${myClass.lcvideo}</h1>
 <br /><br /><br /><br /><br /><br /><br /><br />

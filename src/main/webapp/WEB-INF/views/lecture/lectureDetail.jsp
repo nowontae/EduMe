@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script type="text/javascript" src="httpRequest.js"></script>
 <script>
 function videoPause(v){
 	
@@ -30,6 +30,23 @@ function alertMsg(msg) {
 	window.alert(msg);
 }
 
+function checkMyLecture(lidx){
+	 var params = "lidx="+lidx;
+ 	 sendRequest('checkMyLecture.do',params,checkMyLectureResult,'POST');
+}
+
+function checkMyLectureResult(){
+	if(XHR.readyState==4){
+		if(XHR.status==200){
+			var data=XHR.responseText;
+			data=eval('('+data+')');
+			if(data.result == 1){
+				document.getElementById("btn-wish").remove();
+				document.getElementById("btn-cart").remove();
+			}
+		}
+	}
+}
 </script>
 <style>
 input:focus {
@@ -40,13 +57,32 @@ textarea:focus {
 }
 </style>
 </head>
-<body>
+<body onload="checkMyLecture(${lectureDetail.lidx})">
+<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
+<div class="category">
 
 <c:if test="${!empty msg }">
 <script> alertMsg('${msg}') </script>
 </c:if>
-<h1>${lectureDetail.lidx}</h1>
-<div>개발 > 프로그래밍 언어 > c</div><br />
+
+
+<h1>${lectureDetail.lidx} </h1>
+<c:forEach var="cat1" items="${sessionScope.cat1_list}">
+<c:if test="${cat1.cat1_idx == lectureDetail.cat1_idx}">
+<a href="lectureList.do?cat1_idx=${cat1.cat1_idx}">${cat1.cat_name}</a> > 
+</c:if>
+</c:forEach>
+<c:forEach var="cat2" items="${sessionScope.cat2_list}">
+<c:if test="${cat2.cat2_idx == lectureDetail.cat2_idx}">
+<a href="lectureList.do?cat1_idx=${cat1.cat1_idx}&cat2_idx=${cat2_idx }">${cat2.cat_name}</a> > 
+</c:if>
+</c:forEach>
+<c:forEach var="cat3" items="${sessionScope.cat3_list}">
+<c:if test="${cat3.cat3_idx == lectureDetail.cat3_idx}">
+<a href="lectureList.do?cat1_idx=${cat1.cat1_idx}&cat2_idx=${cat2_idx }&cat3_idx=${cat3_idx}">${cat3.cat_name}</a>
+</c:if>
+</c:forEach>
+</div>
 
 <div><h1>${lectureDetail.ltitle }</h1></div> <br />
 <div>
@@ -60,10 +96,8 @@ textarea:focus {
 <div>12/2020에 마지막으로 업데이트 됨  / 언어 한국어</div><br />
 
 <div>
-	<a href="addWishList.do?lidx=${lectureDetail.lidx}">찜하기</a>
-	
-	<input type="button" value="장바구니" onclick="addMyCartList(${lectureDetail.lidx})">
-
+	<input type="button" id="btn-wish" value="찜하기" onclick="location.href='addWishList.do?lidx=${lectureDetail.lidx}'">
+	<input type="button" id="btn-cart" value="장바구니" onclick="addMyCartList(${lectureDetail.lidx})">
 	<input type="button" value="공유"/>
 	<input type="button" value="이 강좌 선물하기"/>
 </div>

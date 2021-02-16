@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,10 +14,12 @@
 
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 	test
 	<div class="col-container">
 	<div class="row">
 	<c:forEach var="lecture" items="${myLectureList }">
+	<c:if test="${status.index%4 == 0 }"><div class="col-2"></div></c:if>
 	<div class="col-2">
 		<div class="card" style="width: 18rem;">
 			<img src="img/checkbox.svg" class="card-img-top" alt="...">
@@ -29,6 +30,7 @@
 			</div>
 		</div>
 	</div>
+	<c:if test="${status.index%4 == 0 }"><div class="col-2"></div></c:if>
 	</c:forEach>
 	</div>
 	</div>
