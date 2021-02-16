@@ -15,7 +15,7 @@
 </script>
 </head>
 <body>
-<h1>${lidx }</h1>
+<h1>${lidx}</h1>
 	<input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do'">
 <form name="createLectureSave" action="createLectureSave.do?lidx=${lidx}" method="post" enctype="multipart/form-data">
 <div>
@@ -166,7 +166,7 @@
 	</div>
 	
 	<div>
-		<input type="button" value="다음" onclick="location.href='lectureCurriculum.do'">
+		<input type="button" value="다음" onclick="location.href='lectureCurriculum.do?lidx=${dto.lidx}'">
 	</div>
 </div>
 </div>
