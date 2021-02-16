@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +29,16 @@ function addMyCartList(lidx){// 장바구니 담기
 function alertMsg(msg) {
 	window.alert(msg);
 }
+
 </script>
+<style>
+input:focus {
+    outline: none;
+}
+textarea:focus {
+    outline: none;
+}
+</style>
 </head>
 <body>
 
@@ -75,5 +85,57 @@ function alertMsg(msg) {
  
  </div>
  
+ <form action="">
+ <table border="0" cellspacing="1">
+ <thead>
+ <tr>
+ 	<th colspan="3" align="left" height="30px" style="font-size: 22px">후기</th>
+ </tr>
+ </thead>
+ <tbody>
+ <c:if test="${empty list }">
+ <tr>
+ 	<td>등록된 댓글이 없습니다.</td>
+ </tr>
+ </c:if>
+ <c:forEach var="dto" items="${list }">
+ 	<tr>
+ 		<td rowspan="4" style="vertical-align: top; border-bottom:1px solid gray"><img src="${dto.mimg }" alt="회원이미지" ></td>
+ 		<td colspan="2">${dto.mid }</td>
+ 		
+ 	</tr>
+ 	<tr>
+ 		<td>
+ 			<c:if test="${dto.rscore == 1}">
+ 			⭐
+ 			</c:if>
+ 			<c:if test="${dto.rscore == 2}">
+ 			⭐⭐
+ 			</c:if>
+ 			<c:if test="${dto.rscore == 3}">
+ 			⭐⭐⭐
+ 			</c:if>
+ 			<c:if test="${dto.rscore == 4}">
+ 			⭐⭐⭐⭐
+ 			</c:if>
+ 			<c:if test="${dto.rscore == 5}">
+ 			⭐⭐⭐⭐⭐
+ 			</c:if>
+ 		</td>
+ 		<td rowspan="2" style="vertical-align: middle;">
+ 		<input type="hidden" name="ridx${i.index}" value="${dto.ridx}">
+
+ 		<a href="declaration.do?ridx=${dto.ridx }" style="color: #0f7c90;" >신고하기</a></td>
+ 	</tr>
+ 	<tr>
+ 		<td><textarea rows="3" cols="35" style="border: none; resize: none; color: darkslategray;">${dto.rcomment }</textarea></td>
+ 	</tr>
+ 	<tr>
+ 		<td colspan="2" style="border-bottom:1px solid gray; color: gray;"><fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dto.rwritedate }"/></td>
+ 	</tr>
+ </c:forEach>
+ 	</tbody>
+ </table>
+</form> 
 </body>
 </html>
