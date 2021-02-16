@@ -3,5 +3,5 @@
 
 <script>
 window.alert('${msg }');
-location.href="reviewDeclaration_Content.do";
+location.href="reviewDeclaration_Content.do?didx=${didx}";
 </script>

@@ -29,6 +29,7 @@
 	<bean id="category1Dao" class="com.edume.admin.model.Category1DAOImple"></bean>
 	<bean id="category2Dao" class="com.edume.admin.model.Category2DAOImple"></bean>
 	<bean id="category3Dao" class="com.edume.admin.model.Category3DAOImple"></bean>
+	<bean id="testvideoDao" class="com.edume.admin_teacher.model.TestVideoDAOImple"></bean>
   
   
   

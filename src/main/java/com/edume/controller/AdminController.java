@@ -200,10 +200,10 @@ public class AdminController {
 		   if(result>0) {//신고 승인 처리 되어, mblack +1 증가 했을 경우
 			   int result2=declarationDao.Declaration_Declaration_approved_status(didx);
 			   if(result2>0) {//mblack +1 된 상태에서 승인된 결과 Y로 변경
-				   msg="리뷰 신고 승인 ";
+				   msg="리뷰 신고글이 승인처리 되었습니다. ";
 				   
 			   }else {
-				   msg="리뷰 신고 승인 실패.. ";
+				   msg="리뷰 신고글이 승인 처리 실패하였습니다. ";
 			   }
 		   }else {//신고 승인 처리 안되서, mblack +1 증가 안 했을 경우 
 			   msg="결과가 반영되지 않았습니다..";
@@ -211,6 +211,7 @@ public class AdminController {
 		   
 		   ModelAndView mav=new ModelAndView();
 		   mav.addObject("msg",msg);
+		   mav.addObject("didx",didx);
 		   mav.setViewName("admin/reviewDeclaration_Content_msg");
 		   return mav;
 	   }
@@ -221,6 +222,7 @@ public class AdminController {
 		   String msg=result>0?"리뷰신고 글이 미승인 처리 되었습니다. ":"리뷰 신고 글이 미승인 처리가 되지 않았습니다;";
 		   ModelAndView mav=new ModelAndView();
 		   mav.addObject("msg",msg);
+		   mav.addObject("didx",didx);
 		   mav.setViewName("admin/reviewDeclaration_Content_msg");
 		   return mav;
 	   }
