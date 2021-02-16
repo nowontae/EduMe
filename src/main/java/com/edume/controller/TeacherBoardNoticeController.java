@@ -66,7 +66,7 @@ public class TeacherBoardNoticeController {
 		 String path = session.getServletContext().getRealPath("/")+"img/";
 		 //System.out.println(path);
 		 
-		 dto.setNimg(upload.getOriginalFilename());
+		 dto.setNimg("img/"+upload.getOriginalFilename());
 		 copyInto(upload,path);
 		 
 		 
