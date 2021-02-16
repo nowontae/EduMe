@@ -32,7 +32,7 @@ function value_check(midx) {
 <hr>
 
 <div>전체선택</div>
-<form name="fm" action="myCart_SelectDelete.do">
+<form name="fm" action="purchase.do">
 	
 	<table border="1" width="600">
 	
@@ -44,17 +44,18 @@ function value_check(midx) {
 	</tr>
 
 </c:if>
-<c:forEach var="dto" items="${list }">
+<c:forEach var="dto" items="${list }" varStatus="status">
 	
 		<tr>
 			<td>
-			<input type="checkbox" name="ck" id="lectureName" class="checkbox" value="${dto.lidx }+${status.index }">
-			<input type="hidden" id="lidx_value" name="lidx" value="${dto.lidx }">
+			<input type="checkbox" name="ck" id="lectureName${status.index }" class="checkbox" value="${dto.lidx }+${status.index }">
+			<input type="hidden" id="lidx_value${status.index }" name="lidx" value="${dto.lidx }">
 			<input type="hidden" value="${dto.midx }">
 			</td>
 			<td><img src="${dto.lthumnail}"></td>
 			<td>${dto.ltitle }</td>
 			<td>${dto.lorignprice}</td>
+			<td>${dto.llastprice}</td>
 			<td><input type="button" value="제거" onclick="location.href='myCart_Delete.do?lidx=${dto.lidx }&midx=${sessionScope.midx}'"></td>
 		</tr>
 </c:forEach>		

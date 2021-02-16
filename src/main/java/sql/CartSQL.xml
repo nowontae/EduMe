@@ -7,12 +7,28 @@
  <mapper namespace="com.edume.student.cart">
  	<!-- 내 장바구니 목록  -->
  	<select id="myCartList" resultType="com.edume.student.model.CartDTO">
-	select m.midx,m.mname,l.lidx, l.ltitle, l.lsubtitle,l.lthumnail,l.lorignprice
+	<!--  select m.midx,m.mname,l.lidx, l.ltitle, l.lsubtitle,l.lthumnail,l.lorignprice
 	from cart c, member m, lecture l
 	where c.lidx=l.lidx
 	and m.midx=c.midx
-	and m.midx=#{midx}
+	and m.midx=#{midx}-->
+	select cl.*, ltd.lteacherdiscount, ltd.lteacherstartdiscount, ltd.lteacherenddiscount, lad.ladmindiscount, lad.ladminstartdiscount, lad.ladminenddiscount
+	from (select lidx
+	    from cart
+	    where midx=3) c,
+	    (select *
+	     from LECTURETEACHERDISCOUNT ) ltd,
+	    (select *
+	     from LECTUREADMINDISCOUNT ) lad,
+	    ( select m.midx,m.mname,l.lidx, l.ltitle, l.lsubtitle,l.lthumnail,l.lorignprice
+		from cart c, member m, lecture l
+		where c.lidx=l.lidx
+		and m.midx=c.midx
+		and m.midx=#{midx} ) cl
+	where c.lidx = ltd.lidx and c.lidx=lad.lidx and c.lidx = cl.lidx
 	</select>
+	
+	
 	<!-- 장바구니 항목 삭제 -->
 	<delete id="myCart_delete" parameterType="Integer">
 	delete from cart 
