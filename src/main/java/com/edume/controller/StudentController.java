@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.edume.admin.model.ReviewDAO;
 import com.edume.lecture.model.LectureCurriculumDTO;
 import com.edume.lecture.model.LectureDAO;
 import com.edume.lecture.model.LectureDTO;
@@ -58,8 +59,10 @@ public class StudentController {
 	@Autowired
 	private NoticeMsgDAO noticeMsgDao;
 	
-  @Autowired
-  private CartDAO cartDao;
+	 @Autowired
+	 private CartDAO cartDao;
+	 @Autowired
+	 private ReviewDAO reviewDao;
 	
 
 	//신고하기 폼
@@ -127,13 +130,16 @@ public class StudentController {
 	//강의 상세
 	@RequestMapping("/lectureDetail.do")
 	public ModelAndView lectureDetail(@RequestParam("lidx") int lidx) {
-		System.out.println("1");
+		//System.out.println("1");
 		LectureDTO ldto = lectureDao.getLectureDetail(lidx);
 		List lcdto = lectureDao.getLectureCurriculum(lidx);
-		System.out.println("2");
+
+		List list=reviewDao.reviewList_lectureDetail(lidx);//댓글보기
+		//System.out.println("2");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/lecture/lectureDetail");
 		mav.addObject("lectureDetail", ldto);
+		mav.addObject("list", list);
 		mav.addObject("curriculum", lcdto);
 		//System.out.println("lidx="+ldto.getLidx());
 		return mav;
@@ -176,6 +182,8 @@ public class StudentController {
 		return mav;
 		
 	}
+
+	
 	//		-- 장바구니 --
 	
 	//내 장바구니  페이지이동

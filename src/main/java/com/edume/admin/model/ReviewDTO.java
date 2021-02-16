@@ -9,14 +9,17 @@ public class ReviewDTO {
 	private int lidx; 		 //강의 고유 번호
 	private String rscore;	 //별점
 	private String rcomment; //내용
-	private char ropen;		 //공개여부
+	private char ropen;		 //공개여부 -> 기본 Y 글을 보여줌 / 블랙리스트 일 경우 N으로 글을 가림 
 	private Date rwritedate; //작성일자 
+	private String mid;//member테이블의 id
+	private String mimg;//member테이블의 이미지
 
 	public ReviewDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ReviewDTO(int ridx, int midx, int lidx, String rscore, String rcomment, char ropen, Date rwritedate) {
+	public ReviewDTO(int ridx, int midx, int lidx, String rscore, String rcomment, char ropen, Date rwritedate,
+			String mid, String mimg) {
 		super();
 		this.ridx = ridx;
 		this.midx = midx;
@@ -25,6 +28,8 @@ public class ReviewDTO {
 		this.rcomment = rcomment;
 		this.ropen = ropen;
 		this.rwritedate = rwritedate;
+		this.mid = mid;
+		this.mimg = mimg;
 	}
 
 	public int getRidx() {
@@ -82,5 +87,23 @@ public class ReviewDTO {
 	public void setRwritedate(Date rwritedate) {
 		this.rwritedate = rwritedate;
 	}
+
+	public String getMid() {
+		return mid;
+	}
+
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
+
+	public String getMimg() {
+		return mimg;
+	}
+
+	public void setMimg(String mimg) {
+		this.mimg = mimg;
+	}
+
+	
 	
 }
