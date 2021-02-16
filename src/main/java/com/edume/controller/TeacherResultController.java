@@ -107,30 +107,6 @@ public class TeacherResultController {
 	
 	
 	
-	@RequestMapping("/teacherAllStudent.do")
-	public ModelAndView teacherAllStudent(@RequestParam(value = "midx", defaultValue = "0")int midx) {
-		
-		Map map=new HashMap();
-		map.put("midx", midx);
-		
-		Integer allResult=teacherResultDao.getTeacherAllResult(map);
-		Integer monthResult=teacherResultDao.getTeacherResult6M_1(map);
-		
-		if(allResult == null) {allResult=0;}
-		if(monthResult == null) {monthResult=0;}
-		
-		
-		
-		ModelAndView mav=new ModelAndView();
-		
-		mav.addObject("allResult", allResult);
-		mav.addObject("monthResult", monthResult);
-		
-		return mav;	
-		
-	}
-	
-	
 	@RequestMapping("/teacherGrade.do")
 	public ModelAndView teacherGrade(@RequestParam(value = "midx", defaultValue = "0")int midx) {
 		

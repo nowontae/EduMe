@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="Chart.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <script type="text/javascript" src="httpRequest.js"></script>
 <style>
 #myChart{
@@ -28,58 +28,59 @@ body{
 	position: relative;
 }
 </style>
-
-
-
 <script>
 function firstChart(){
-var M1camount=document.getElementById("M1camount").value;
-var M2camount=document.getElementById("M2camount").value;
-var M3camount=document.getElementById("M3camount").value;
-var M4camount=document.getElementById("M4camount").value;
+  var M1camount=document.getElementById("M1camount").value;
+  var M2camount=document.getElementById("M2camount").value;
+  var M3camount=document.getElementById("M3camount").value;
+  var M4camount=document.getElementById("M4camount").value;
+  
+  const data = [
+      { value : M1camount, time : new Date("2021-02-15") },
+      { value : M2camount, time : new Date("2021-02-08") },
+      { value : M3camount, time : new Date("2021-02-01") },
+      { value : M4camount, time : new Date("2021-01-25") }
+    ];
 
-var ctx = document.getElementById("myChart");
-var myChart = new Chart(ctx, {
-	type : 'bar',
-	data : {
-		labels : ["1주전", "1~2주전", "2~3주전","3~4주전"],
-		datasets : [ {
-			label : '단위: 원',
-			data : [M1camount,M2camount,M3camount,M4camount],
-			//data : [30000,40000,1000000,500000],
-			backgroundColor:[
-				'rgba(255, 99, 132, 0.2)',
-				'rgba(54, 162, 235, 0.2)',
-				'rgba(255, 206, 86, 0.2)',
-				'rgba(75, 192, 192, 0.2)'
-			],
-			borderColor:[
-				'rgba(255, 99, 132, 1)',
-				'rgba(54, 162, 235, 1)',
-				'rgba(255, 206, 86, 1)',
-				'rgba(75, 192, 192, 1)'
-			],
-			borderWidth:2
-		} ]
-	},
-	option:{
-		legend: {
-            labels: {
-                // This more specific font property overrides the global property
-                fontColor: 'red'
-            }
-        },
-		scales:{
-			yAxes:[{
-				ticks:{
-					beginAtZero:true
-				}
-			}]
-		},
-	}
-});
+    const xScale = d3.scaleTime()
+      .domain([new Date("2021-01-25"), new Date("2021-02-15")])
+      .range([20, 330]); // [0, 350] 을 넣어도 되지만.. 그러면 축이 너무 붙어있어서 20~330으로 설정.
+    
+    const yScale = d3.scaleLinear()
+      .domain([0, 200000])
+      .range([330, 20]); // SVG 좌표상에서 y값이 높을수록 아래로 향하기 때문에 뒤집어서 330~20으로 설정.
+
+    //SVG 안에 G 태그를 생성한다.
+    const xAxisSVG = d3.select("svg").append("g").attr("transform", "translate(0,330)");
+    const yAxisSVG = d3.select("svg").append("g");
+    
+    //축을 만드는 함수를 만든다.
+    const xAxis = d3.axisBottom(xScale).tickSize(10).ticks(10);
+    const yAxis = d3.axisRight(yScale).tickSize(10).ticks(10);
+    xAxis(xAxisSVG);  //x축을 만드는 함수로 SVG > G 태그에 축을 생성한다.
+    yAxis(yAxisSVG);  //y축을 만드는 함수로 SVG > G 태그에 축을 생성한다.
+    
+    d3.select("svg").selectAll("circle")  // 1.SVG 태그 안에 있는 circle을 모두 찾는다.
+    .data(data)                         // 2.찾은 요소에 데이터를 씌운다.
+    .enter()                            // 3.찾은 요소에 개수보다 데이터가 더 많을경우..
+    .append("circle")                   // 4.circle 을 추가한다.
+    .attr("r", 5)                       //  - 반지름 5픽셀
+    .attr("cx", d=>xScale(d.time))      //  - x 위치값 설정.
+    .attr("cy", d=>yScale(d.value))     //  - y 위치값 설정. 
+    .style("fill", "black")
+    
+     //선을 생성하는 함수
+    const linearGenerator = d3.line()
+      .x(d=>xScale(d.time))
+      .y(d=>yScale(d.value))
+
+    d3.select("svg")
+      .append("path")                     // SVG 태그 안에 path 속성을 추가한다.
+      .attr("d", linearGenerator(data))   // - 라인 생성기로 'd' 속성에 들어갈 좌표정보를 얻는다.
+      .attr("fill", "none")               // - 라인 안쪽 채우지 않음.
+      .attr("stroke-width", 2)            // - 굵기
+      .attr("stroke", "black")            // - 검정색
 }
-
 
 
 function categoryChange(s, midx){
@@ -108,6 +109,8 @@ function showResult1(){
 			var data=XHR.responseText;
 			data=eval('('+data+')');
 			
+			var resultMax=Math.max.apply(null,data.chart.data);
+			
 			var result1=data.chart.data[0];
 			var result2=data.chart.data[1];
 			var result3=data.chart.data[2];
@@ -118,47 +121,56 @@ function showResult1(){
 			var chartlabel3=data.chart.labels[2];
 			var chartlabel4=data.chart.labels[3];
 			
-			
-			var ctx = document.getElementById("myChart");
-			var myChart = new Chart(ctx, {
-				type : 'bar',
-				data : {
-					labels : [ chartlabel1,chartlabel2,chartlabel3,chartlabel4],
-					datasets : [ {
-						label : '단위: 원',
-						data : [ result1,result2,result3,result4],
-						//data : [ 30000,40000,1000000,500000],
-						backgroundColor:[
-								'rgba(255, 99, 132, 0.2)',
-								'rgba(54, 162, 235, 0.2)',
-								'rgba(255, 206, 86, 0.2)',
-								'rgba(75, 192, 192, 0.2)'
-						],
-						borderColor:[
-								'rgba(255, 99, 132, 0.2)',
-								'rgba(54, 162, 235, 0.2)',
-								'rgba(255, 206, 86, 0.2)',
-								'rgba(75, 192, 192, 0.2)'
-						],
-						borderWidth:2
-					} ]
-				},
-				option:{
-					maintainAspectRatio: false,
-					responsive: false,
-					scales:{
-						yAxes:[{
-							ticks:{
-								beginAtZero:true,
-							}
-						}]
-					}
-				}
-			});
+			  const data = [
+			      { value : result1, time : new Date("2021-02-15") },
+			      { value : result2, time : new Date("2021-02-08") },
+			      { value : result3, time : new Date("2021-02-01") },
+			      { value : result4, time : new Date("2021-01-25") }
+			    ];
+
+			    const xScale = d3.scaleTime()
+			      .domain([new Date("2021-01-25"), new Date("2021-02-15")])
+			      .range([20, 330]); // [0, 350] 을 넣어도 되지만.. 그러면 축이 너무 붙어있어서 20~330으로 설정.
+			    
+			    const yScale = d3.scaleLinear()
+			      .domain([0, resultMax])
+			      .range([330, 20]); // SVG 좌표상에서 y값이 높을수록 아래로 향하기 때문에 뒤집어서 330~20으로 설정.
+
+			    //SVG 안에 G 태그를 생성한다.
+			    const xAxisSVG = d3.select("svg").append("g").attr("transform", "translate(0,330)");
+			    const yAxisSVG = d3.select("svg").append("g");
+			    
+			    //축을 만드는 함수를 만든다.
+			    const xAxis = d3.axisBottom(xScale).tickSize(10).ticks(10);
+			    const yAxis = d3.axisRight(yScale).tickSize(10).ticks(10);
+			    xAxis(xAxisSVG);  //x축을 만드는 함수로 SVG > G 태그에 축을 생성한다.
+			    yAxis(yAxisSVG);  //y축을 만드는 함수로 SVG > G 태그에 축을 생성한다.
+			    
+			    d3.select("svg").selectAll("circle")  // 1.SVG 태그 안에 있는 circle을 모두 찾는다.
+			    .data(data)                         // 2.찾은 요소에 데이터를 씌운다.
+			    .enter()                            // 3.찾은 요소에 개수보다 데이터가 더 많을경우..
+			    .append("circle")                   // 4.circle 을 추가한다.
+			    .attr("r", 5)                       //  - 반지름 5픽셀
+			    .attr("cx", d=>xScale(d.time))      //  - x 위치값 설정.
+			    .attr("cy", d=>yScale(d.value))     //  - y 위치값 설정. 
+			    .style("fill", "black")
+			    
+			     //선을 생성하는 함수
+			    const linearGenerator = d3.line()
+			      .x(d=>xScale(d.time))
+			      .y(d=>yScale(d.value))
+
+			    d3.select("svg")
+			      .append("path")                     // SVG 태그 안에 path 속성을 추가한다.
+			      .attr("d", linearGenerator(data))   // - 라인 생성기로 'd' 속성에 들어갈 좌표정보를 얻는다.
+			      .attr("fill", "none")               // - 라인 안쪽 채우지 않음.
+			      .attr("stroke-width", 2)            // - 굵기
+			      .attr("stroke", "black")            // - 검정색
 			
 		}
 	}
 }
+
 function showResult(){
 	if(XHR.readyState==4){
 		if(XHR.status==200){
@@ -172,13 +184,7 @@ function showResult(){
 			var result5=data.chart.data[4];
 			var result6=data.chart.data[5];
 			
-			//var result1=10000;
-			//var result2=20000;
-			//var result3=700000;
-			//var result4=500000;
-			//var result5=222222;
-			//var result6=55555;
-			
+
 			var chartlabel1=data.chart.labels[0];
 			var chartlabel2=data.chart.labels[1];
 			var chartlabel3=data.chart.labels[2];
@@ -186,60 +192,10 @@ function showResult(){
 			var chartlabel5=data.chart.labels[4];
 			var chartlabel6=data.chart.labels[5];
 			
-
-			
-			
-			var ctx = document.getElementById("myChart");
-			var myChart = new Chart(ctx, {
-				type : 'bar',
-				data : {
-					labels : [chartlabel1,chartlabel2,chartlabel3,chartlabel4,chartlabel5,chartlabel6,''],
-					datasets : [ {
-						label : '단위: 원',
-						
-						data : [result1,result2,result3,result4,result5,result6,0],
-					 	//  data : [810000,20000,40000,300000,500000,45000],
-						backgroundColor:[
-								'rgba(255, 99, 132, 0.2)',
-								'rgba(54, 162, 235, 0.2)',
-								'rgba(255, 206, 86, 0.2)',
-								'rgba(75, 192, 192, 0.2)',
-								'rgba(153, 102, 255, 0.2)',
-								'rgba(255, 159, 64, 0.2)',
-								'rgba(255, 159, 64, 0.2)'
-						],
-						borderColor:[
-								'rgba(255, 99, 132, 0.2)',
-								'rgba(54, 162, 235, 0.2)',
-								'rgba(255, 206, 86, 0.2)',
-								'rgba(75, 192, 192, 0.2)',
-								'rgba(153, 102, 255, 0.2)',
-								'rgba(255, 159, 64, 0.2)',
-								'rgba(255, 159, 64, 0.2)'
-						],
-						borderWidth:2
-					} ]
-				},
-				option:{
-					maintainAspectRatio: false,
-					responsive: false,
-					scales:{
-						yAxes:[{
-							ticks:{
-								beginAtZero:true,
-							}
-						}]
-					}
-				}
-			});
-			
 		}
 	}
 }
 </script>
-
-
-
 </head>
 <body onload="firstChart()">
 <div style="border: 1px solid black;">
@@ -263,17 +219,6 @@ function showResult(){
 						</div>
 					</a>
 				</li>
-				<li role="presentation" class="ResultLi">
-					<a role="tab" href="teacherAllStudent.do?midx=${sessionScope.midx}" class="LiAtag">
-						<div>
-							<div>
-								<div>총 등록</div>
-								<div>0</div>
-								<div>0 (최근 한달)</div>
-							</div>
-						</div>
-					</a>
-				</li>
 				<li role="presentation" class="ResultLiLast">
 					<a role="tab" href="teacherGrade.do?midx=${sessionScope.midx}" class="LiAtag">
 						<div>
@@ -288,7 +233,8 @@ function showResult(){
 			</ul>
 		</div>
 		<div style="border: 1px solid black;">
-			<div id="myChartDiv"><canvas id="myChart"></canvas></div>
+<svg style="width:600px; height:400px;"></svg>
+
 			<select name="searchMonth" id="sortSelectBox" onchange="categoryChange(this, ${sessionScope.midx })">
 				<option value="1">최근 1개월</option>
 				<option value="6">최근 6개월</option>
@@ -297,11 +243,11 @@ function showResult(){
 			최근 1년까지의 데이터만 표시됩니다.
 		</div>
 	</div>
-</div>
 <input type="hidden" id="M1camount" value="${M1camount}">
 <input type="hidden" id="M2camount" value="${M2camount}">
 <input type="hidden" id="M3camount" value="${M3camount}">
 <input type="hidden" id="M4camount" value="${M4camount}">
+</div>
 </body>
 
 </html>
