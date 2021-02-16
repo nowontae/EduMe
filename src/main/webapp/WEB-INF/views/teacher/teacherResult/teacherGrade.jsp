@@ -51,17 +51,6 @@ body{
 						</div>
 					</a>
 				</li>
-				<li role="presentation" class="ResultLi">
-					<a role="tab" href="teacherAllStudent.do?midx=${sessionScope.midx}" class="LiAtag">
-						<div>
-							<div>
-								<div>총 등록</div>
-								<div>0</div>
-								<div>0 (최근 한달)</div>
-							</div>
-						</div>
-					</a>
-				</li>
 				<li role="presentation" class="ResultLiLast">
 					<a role="tab" href="teacherGrade.do?midx=${sessionScope.midx}" class="LiAtag">
 						<div>
@@ -76,7 +65,7 @@ body{
 			</ul>
 		</div>
 		<div style="border: 1px solid black;">
-			<canvas id="myChart"></canvas>
+		<svg id="chartSvg"></svg>
 			최근 1년까지의 데이터만 표시됩니다.
 		</div>
 	</div>
