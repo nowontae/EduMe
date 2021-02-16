@@ -19,7 +19,7 @@
 <br>
 --강사관리부분
 <a href="TestVideoManagement.do">테스트 동영상관리</a>
-
+<a href="LecutreCheck.do">강의리스트 관리</a>
 후기?
 
 <!-- 원태님 부분 -->

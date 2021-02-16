@@ -23,7 +23,9 @@
 		<mapper resource="sql/CartSQL.xml"/>
 		<mapper resource="sql/CreateLecture.xml"/>		
 		<mapper resource="sql/CategorySQL.xml"/>		
-		<mapper resource="sql/TestVideoSQL.xml"/>		
+		<mapper resource="sql/TestVideoSQL.xml"/>
+		<mapper resource="sql/LectureCheckSQL.xml"/>
+				
 	</mappers>
 	
 </configuration>

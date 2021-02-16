@@ -16,7 +16,7 @@ public class IndexController {
         
     	// midx session 심기
     	HttpSession session = req.getSession(true); 
-    	session.setAttribute("midx", "3");
+    	session.setAttribute("midx", "1");
     	
     	ModelAndView mav = new ModelAndView();
     	
