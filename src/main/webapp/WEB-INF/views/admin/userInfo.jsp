@@ -5,11 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+body{
+padding-left:100px;
+}
+</style>
 <script>
 //window.alert('${dto.midx}');
 </script>
 </head>
 <body>
+//사용안하는 페이지 ..
 <h3>${dto.mname }님의 결제 정보</h3>
 <table border="1" cellspacing="0">
 <tr>

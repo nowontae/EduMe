@@ -34,8 +34,17 @@ function value_check(midx) {
 <div>전체선택</div>
 <form name="fm" action="purchase.do">
 	
-	<table border="1" width="600">
-	
+<table border="1" width="600">
+<thead>
+	<tr>
+		<th></th>
+		<th>이미지</th>
+		<th>강의명</th>
+		<th>정상 금액</th>
+		<th>할인된 금액</th>
+		<th></th>
+	</tr>
+</thead>	
 <c:if test="${empty list }">
 	<tr>
 		<td colspan="4">

@@ -16,13 +16,13 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
-	<div class="col-container">
+	<div class="col-container"  style="width:1800px;">
 		<div class="row">
 			<c:forEach var="lecture" items="${lectureList}" varStatus="status">
 				<c:if test="${status.index%4 == 0 }">
 					<div class="col-2"></div>
 				</c:if>
-				<div class="col-2">
+				<div class="col-2" style="  width:70%; margin-bottom: 10px;">
 					<div class="card" style="width: 18rem;">
 						<img src="img/checkbox.svg" class="card-img-top" alt="...">
 						<div class="card-body">
