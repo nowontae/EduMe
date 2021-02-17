@@ -108,4 +108,15 @@ public class TeacherResultDAOImple implements TeacherResultDAO {
 		Integer count=sqlMap.selectOne("teacherResult28D_28", map);
 		return count;
 	}
+	
+	@Override
+	public Integer getTeacherGradeAll(Map map) {
+		Integer count=sqlMap.selectOne("teacherGradeAvg", map);
+		return count;
+	}
+	@Override
+	public Integer getTeacherGradeCount1M(Map map) {
+		Integer count=sqlMap.selectOne("teacherGradeCount1M", map);
+		return count;
+	}
 }

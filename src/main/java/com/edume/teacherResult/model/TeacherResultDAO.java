@@ -25,4 +25,7 @@ public interface TeacherResultDAO {
 	public Integer getTeacherResult28D_21(Map map);
 	public Integer getTeacherResult28D_28(Map map);
 	
+	public Integer getTeacherGradeAll(Map map);
+	public Integer getTeacherGradeCount1M(Map map);
+	
 }

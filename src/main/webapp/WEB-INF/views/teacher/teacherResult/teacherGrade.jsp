@@ -14,8 +14,8 @@
 	height:400px !important;
 }
 body{
-	width: 800px;
-	height: 800px;
+	width: 1000px;
+	height: 1000px;
 }
 .lectureResultUl{
 	list-style: none;
@@ -41,7 +41,7 @@ body{
 		<div style="border: 1px solid black;">
 			<ul role="tablist" class="lectureResultUl">
 				<li role="presentation" class="ResultLi">
-					<a role="tab" href="teacherResult.do?midx=${sessionScope.midx}" class="LiAtag">
+					<a role="tab" href="teacherResult.do?midx=${sessionScope.midx}" class="LiAtag" id="resultA">
 						<div>
 							<div>
 								<div>총 수익</div>
@@ -52,12 +52,12 @@ body{
 					</a>
 				</li>
 				<li role="presentation" class="ResultLiLast">
-					<a role="tab" href="teacherGrade.do?midx=${sessionScope.midx}" class="LiAtag">
+					<a role="tab" href="teacherGrade.do?midx=${sessionScope.midx}" class="LiAtag" id="gradeA">
 						<div>
 							<div>
 								<div>강사 평점</div>
-								<div>0.00</div>
-								<div>0개의 평점 (최근 한달)</div>
+								<div>${allGrade}점 (전체)</div>
+								<div>${m1GradeCount}개 (최근 한달 평점 갯수)</div>
 							</div>
 						</div>
 					</a>
@@ -65,8 +65,6 @@ body{
 			</ul>
 		</div>
 		<div style="border: 1px solid black;">
-		<svg id="chartSvg"></svg>
-			최근 1년까지의 데이터만 표시됩니다.
 		</div>
 	</div>
 </div>

@@ -162,19 +162,16 @@
 	
 
 	
-
-
 	
-	
-	
-	
+<!-- teacherGrade 부분 -->
 	<select id="teacherGradeAvg" resultType="Integer" parameterType="map">
 		select avg(rscore) 
 		from (select lidx from lecture where midx=#{midx}) a, review b
 		where a.lidx=b.lidx
 	</select>
-	<select id="teacherGradeAvg1M" resultType="Integer" parameterType="map">
-	select avg(rscore) 
+	
+	<select id="teacherGradeCount1M" resultType="Integer" parameterType="map">
+	select count(rscore) 
 	from (select lidx from lecture where midx=#{midx}) a, review b
 	where a.lidx=b.lidx
 	and (select to_char(add_months(sysdate,-2), 'yyyymmdd') 

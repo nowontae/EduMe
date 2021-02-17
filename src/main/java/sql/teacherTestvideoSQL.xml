@@ -4,10 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="teacherTestvideo">
   <select id="teacherTestvideoListN" resultType="com.edume.teacherTestvideo.model.TeacherTestvideoDTO">
-  select * from testvideo where midx=#{midx} and tvcomment='N'
+  select * from testvideo where midx=#{midx} and tvcomment = 'N' order by tvwritedate desc
   </select>
   <select id="teacherTestvideoListAll" resultType="com.edume.teacherTestvideo.model.TeacherTestvideoDTO">
-  select * from testvideo where midx=#{midx} and tvcomment!='N'
+  select * from testvideo where midx=#{midx} and tvcomment <![CDATA[!]]>= 'N' order by tvwritedate desc
   </select>
   <insert id="teacherTestvideoinsert" parameterType="com.edume.teacherTestvideo.model.TeacherTestvideoDTO">
    insert into testvideo values(testvideo_idx.nextval,#{midx},#{tvsubject},#{tvvideopath},sysdate,'N')
