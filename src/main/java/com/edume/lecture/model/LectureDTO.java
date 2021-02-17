@@ -16,7 +16,9 @@ public class LectureDTO {
 	private int lorignprice;
 	private String ltarget; 
 	private String lknowledge;
-	private int cat_idx;
+	private int cat1_idx;
+	private int cat2_idx;
+	private int cat3_idx;
 	private Date lwritedate;
 	private String lopen;
 	
@@ -38,6 +40,31 @@ public class LectureDTO {
 	}
 
 	
+
+	public LectureDTO(int lidx, int ladmindiscount, int lteacherdiscount, String ltitle, String lsubtitle, int llevel,
+			String lthumnail, String lsummary, String lpurpose, int lorignprice, String ltarget, String lknowledge,
+			int cat1_idx, int cat2_idx, int cat3_idx, Date lwritedate, String lopen) {
+		super();
+		this.lidx = lidx;
+		this.ladmindiscount = ladmindiscount;
+		this.lteacherdiscount = lteacherdiscount;
+		this.ltitle = ltitle;
+		this.lsubtitle = lsubtitle;
+		this.llevel = llevel;
+		this.lthumnail = lthumnail;
+		this.lsummary = lsummary;
+		this.lpurpose = lpurpose;
+		this.lorignprice = lorignprice;
+		this.ltarget = ltarget;
+		this.lknowledge = lknowledge;
+		this.cat1_idx = cat1_idx;
+		this.cat2_idx = cat2_idx;
+		this.cat3_idx = cat3_idx;
+		this.lwritedate = lwritedate;
+		this.lopen = lopen;
+	}
+
+
 
 	public String getLtitle() {
 		return ltitle;
@@ -147,14 +174,39 @@ public class LectureDTO {
 
 
 
-	public int getCat_idx() {
-		return cat_idx;
+
+	public int getCat1_idx() {
+		return cat1_idx;
 	}
 
 
 
-	public void setCat_idx(int cat_idx) {
-		this.cat_idx = cat_idx;
+	public void setCat1_idx(int cat1_idx) {
+		this.cat1_idx = cat1_idx;
+	}
+
+
+
+	public int getCat2_idx() {
+		return cat2_idx;
+	}
+
+
+
+	public void setCat2_idx(int cat2_idx) {
+		this.cat2_idx = cat2_idx;
+	}
+
+
+
+	public int getCat3_idx() {
+		return cat3_idx;
+	}
+
+
+
+	public void setCat3_idx(int cat3_idx) {
+		this.cat3_idx = cat3_idx;
 	}
 
 
@@ -182,27 +234,6 @@ public class LectureDTO {
 	}
 
 
-
-	public LectureDTO(int lidx, int ladmindiscount, int lteacherdiscount, String ltitle, String lsubtitle, int llevel,
-			String lthumnail, String lsummary, String lpurpose, int lorignprice, String ltarget, String lknowledge,
-			int cat_idx, Date lwritedate, String lopen) {
-		super();
-		this.lidx = lidx;
-		this.ladmindiscount = ladmindiscount;
-		this.lteacherdiscount = lteacherdiscount;
-		this.ltitle = ltitle;
-		this.lsubtitle = lsubtitle;
-		this.llevel = llevel;
-		this.lthumnail = lthumnail;
-		this.lsummary = lsummary;
-		this.lpurpose = lpurpose;
-		this.lorignprice = lorignprice;
-		this.ltarget = ltarget;
-		this.lknowledge = lknowledge;
-		this.cat_idx = cat_idx;
-		this.lwritedate = lwritedate;
-		this.lopen = lopen;
-	}
 
 
 

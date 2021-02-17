@@ -30,7 +30,10 @@
 	<bean id="category2Dao" class="com.edume.admin.model.Category2DAOImple"></bean>
 	<bean id="category3Dao" class="com.edume.admin.model.Category3DAOImple"></bean>
 	<bean id="testvideoDao" class="com.edume.admin_teacher.model.TestVideoDAOImple"></bean>
-  
+	<bean id="reviewDao" class="com.edume.admin.model.ReviewDAOImple"></bean>
+	<bean id="lectureCheckDao" class="com.edume.admin_teacher_lectureCheck.model.LectureCheckDAOImple"></bean>
+	<bean id="createLectureCurriculumDao" class="com.edume.createLectureCurriculum.model.CreateLectureCurriculumDAOImple"></bean>
+
   
   
    <!-- config   -->

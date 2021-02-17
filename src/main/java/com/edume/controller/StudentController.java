@@ -1,6 +1,7 @@
 package com.edume.controller;
 
 import java.lang.reflect.Parameter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.edume.admin.model.ReviewDAO;
 import com.edume.lecture.model.LectureCurriculumDTO;
 import com.edume.lecture.model.LectureDAO;
 import com.edume.lecture.model.LectureDTO;
@@ -57,8 +59,10 @@ public class StudentController {
 	@Autowired
 	private NoticeMsgDAO noticeMsgDao;
 	
-  @Autowired
-  private CartDAO cartDao;
+	 @Autowired
+	 private CartDAO cartDao;
+	 @Autowired
+	 private ReviewDAO reviewDao;
 	
 
 	//신고하기 폼
@@ -111,35 +115,41 @@ public class StudentController {
 	
 	
 	
-		//	강의리스트
-		@RequestMapping(value="/lectureList.do", method=RequestMethod.GET)
-		public ModelAndView lectureList() {
-			List list = lectureDao.getLectureList();
-			ModelAndView mav = new ModelAndView();
-			mav.setViewName("/lecture/lectureList");
-			mav.addObject("lectureList", list);
-			System.out.println("3");
-			return mav;
-			
-		}
+		
 	
 	//강의 상세
 	@RequestMapping("/lectureDetail.do")
 	public ModelAndView lectureDetail(@RequestParam("lidx") int lidx) {
-		System.out.println("1");
+		//System.out.println("1");
 		LectureDTO ldto = lectureDao.getLectureDetail(lidx);
 		List lcdto = lectureDao.getLectureCurriculum(lidx);
-		System.out.println("2");
+
+		List list=reviewDao.reviewList_lectureDetail(lidx);//댓글보기
+		//System.out.println("2");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/lecture/lectureDetail");
 		mav.addObject("lectureDetail", ldto);
+		mav.addObject("list", list);
 		mav.addObject("curriculum", lcdto);
 		//System.out.println("lidx="+ldto.getLidx());
 		return mav;
 		
 	}
 	
-	//강의 상세
+	//강의 상세 진입 Ajax
+	@RequestMapping("/checkMyLecture.do")
+	public ModelAndView checkMyLecutre(@RequestParam("lidx") int lidx, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		int result = lectureDao.checkMyLecture(lidx, midx);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/lecture/checkMyLecture");
+		mav.addObject("result", result);
+		return mav;
+		
+	}
+	
+	//강의 수강
 		@RequestMapping("/lectureMyClass.do")
 		public ModelAndView lectureDetail(@RequestParam(value="lidx", defaultValue = "0") int lidx,
 				@RequestParam(value="section", defaultValue = "1") int section,
@@ -175,6 +185,8 @@ public class StudentController {
 		return mav;
 		
 	}
+
+	
 	//		-- 장바구니 --
 	
 	//내 장바구니  페이지이동
@@ -182,7 +194,7 @@ public class StudentController {
 	public ModelAndView myCart(HttpServletRequest req) {
 		HttpSession session=req.getSession();
 		int midx = Integer.parseInt((String)session.getAttribute("midx"));
-		List list=cartDao.myCartList(midx);
+		ArrayList list=cartDao.myCartList(midx);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("Sesseion_midx",midx);
 		mav.addObject("list",list);
@@ -324,5 +336,16 @@ public class StudentController {
 		return mav;
 	}
 
+	
+	// 장바구니 -> 결제
+	@RequestMapping("/purchase.do")
+	public ModelAndView purchaseLecture() {
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/student/purchase/purchase");
+		
+		return mav;
+		
+	}
 
 }

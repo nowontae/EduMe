@@ -13,10 +13,28 @@
 		and (select sysdate from dual) >= ltd.lteacherstartdiscount and (select sysdate from dual) <= ltd.lteacherenddiscount]]>
  	</select>
  	
- 	
- 	<select id="getLectureList" resultType="com.edume.lecture.model.LectureDTO">
+ 	<!-- 전체 강의 리스트 -->
+ 	<select id="getAllLectureList" resultType="com.edume.lecture.model.LectureDTO">
  		select *
  		from lecture
+ 	</select>
+ 	<!-- 대분류 강의 리스트 -->
+ 	<select id="getCat1LectureList" parameterType="Map"  resultType="com.edume.lecture.model.LectureDTO">
+ 		select *
+ 		from lecture
+ 		where cat1_idx=#{cat1_idx}
+ 	</select>
+ 	<!-- 중분류 강의 리스트 -->
+ 	<select id="getCat2LectureList" parameterType="Map"  resultType="com.edume.lecture.model.LectureDTO">
+ 		select *
+ 		from lecture
+ 		where cat1_idx=#{cat1_idx} and cat2_idx=#{cat2_idx}
+ 	</select>
+ 	<!-- 소분류 강의 리스트 -->
+ 	<select id="getCat3LectureList" parameterType="Map"  resultType="com.edume.lecture.model.LectureDTO">
+ 		select *
+ 		from lecture
+ 		where cat1_idx=#{cat1_idx} and cat2_idx=#{cat2_idx} and cat3_idx=#{cat3_idx}
  	</select>
  	
  	<select id="getMyLectureList" resultType="com.edume.lecture.model.LectureDTO">
@@ -44,5 +62,11 @@
  		from lectureCurriculum
  		where lidx=#{lidx}
  		order by lcsection, lcpart 
+ 	</select>
+ 	
+ 	<select id="checkMyLecture" parameterType="Map" resultType="Integer">
+ 		select count(lidx)
+ 		from mylecturelist
+ 		where lidx=#{lidx} and midx=#{midx}
  	</select>
  </mapper>

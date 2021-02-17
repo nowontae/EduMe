@@ -7,9 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="header.jsp" %>
 <h1>
 메인 페이지
 </h1>
+<main role="main" class="container">
+    <div class="jumbotron text-center">
+        <h1>Bootstrap 4 NavBar</h1>
+        <p class="lead text-info">NavBar with too many childs.</p>
+        
+    </div>
+</main>
 <a href="teacherMain.do">강사</a>
 <hr>
 

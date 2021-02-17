@@ -70,8 +70,7 @@ public class PageModule {
 			
 		}
 
-		return sb.toString(); //String으로 변환한다.
-		//메소드 반환타입 String
+		return sb.toString();
 	}
 	
 	

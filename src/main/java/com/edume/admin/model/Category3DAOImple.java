@@ -11,6 +11,13 @@ public class Category3DAOImple implements Category3DAO {
 	@Autowired
 	private SqlSessionTemplate sqlMap;
 	
+	
+	//카테고리 소분류 전체 리스트
+	@Override
+	public List Category3AllList() {
+		List cat3_list = sqlMap.selectList("getCat3List");
+		return cat3_list;
+	}
 	//카테고리 소분류 보기
 	@Override
 	public List Category3List(int cat1_idx,int cat2_idx) {

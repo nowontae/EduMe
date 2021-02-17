@@ -23,14 +23,14 @@ function sectionAdd(){
 	
 	var newsectionHtml = "섹션<label class='sec_num'>"+count+"</label>:<input type='hidden' name='lcsection' value='"+count+"'>";
 	
-	newsectionHtml += "<input type='text' name='lctitle'>";
+	newsectionHtml += "<input type='text' name='lctitle"+count+"'>";
 	
 	newsectionSpan.innerHTML=newsectionHtml;
 	
 	var lcsectionSpan=document.createElement("span");
 	sectionChildDiv.appendChild(lcsectionSpan);
 	sectionAllDiv.setAttribute("class","sectionAll");
-	
+	sectionAllDiv.setAttribute("id","sectionAll"+count);
 
 	var removeNode=document.createElement('button');
 	removeNode.setAttribute('onclick','removeSection(this)');
@@ -102,7 +102,7 @@ function remove1(target, cnt){
 </head>
 <body>
 <input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do'">
-<form name="lectureCurriculum" action="lectureCurriculum.do?midx=${midx}">
+<form name="lectureCurriculum" action="lectureCurriculum.do?midx=${midx}&lidx=${lidx}">
 <div>
 	<input type="submit" value="저장">
 </div>
@@ -114,7 +114,6 @@ function remove1(target, cnt){
 
 <div>
 	<div>섹션을 생성하여 강좌 만들기를 시작하세요.</div>
-	<div>강좌를 무료로 제공하려면 동영상 콘텐츠의 총 길이가 2시간을 초과해서는 안 됩니다.</div>
 </div>
 
 <div>

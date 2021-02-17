@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface Category3DAO {
+	//카테고리 소분류 전체 보기
+	public List Category3AllList();
 	//카테고리 소분류 보기
 	public List Category3List(int cat1_idx,int cat2_idx);
 	//카테고리 소분류 추가

@@ -25,7 +25,6 @@ public class LectureDAOImple implements LectureDAO {
 	public String lectureDetail(int lidx) {
 		
 		
-		System.out.println("33");
 		LectureDTO lectureDto = sqlMap.selectOne("com.edume.lecture.discount", lidx);
 		System.out.println(lectureDto.getLidx());
 		return lectureDto.toString();
@@ -33,7 +32,32 @@ public class LectureDAOImple implements LectureDAO {
 	
 	@Override
 	public List getLectureList() {
-		List list = sqlMap.selectList("getLectureList");
+		List list = sqlMap.selectList("getAllLectureList");
+		return list;
+	}
+	
+	@Override
+	public List getLectureList(int cat1_idx) {
+		Map map = new HashMap();
+		map.put("cat1_idx", cat1_idx);
+		List list = sqlMap.selectList("getCat1LectureList",map);
+		return list;
+	}
+	@Override
+	public List getLectureList(int cat1_idx, int cat2_idx) {
+		Map map = new HashMap();
+		map.put("cat1_idx", cat1_idx);
+		map.put("cat2_idx", cat2_idx);
+		List list = sqlMap.selectList("getCat2LectureList",map);
+		return list;
+	}
+	@Override
+	public List getLectureList(int cat1_idx, int cat2_idx, int cat3_idx) {
+		Map map = new HashMap();
+		map.put("cat1_idx", cat1_idx);
+		map.put("cat2_idx", cat2_idx);
+		map.put("cat3_idx", cat3_idx);
+		List list = sqlMap.selectList("getCat3LectureList",map);
 		return list;
 	}
 	
@@ -70,6 +94,15 @@ public class LectureDAOImple implements LectureDAO {
 		LectureCurriculumDTO ldto = sqlMap.selectOne("getMyClass", map);
 				
 		return ldto;
+	}
+	
+	@Override
+	public int checkMyLecture(int lidx, int midx) {
+		Map map = new HashMap();
+		map.put("lidx", lidx);
+		map.put("midx", midx);
+		int result = sqlMap.selectOne("checkMyLecture", map);
+		return result;
 	}
 	
 }
