@@ -12,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import com.edume.teacherResult.model.*;
 import java.util.*;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 
@@ -35,6 +36,13 @@ public class TeacherResultController {
 		Integer allResult=teacherResultDao.getTeacherAllResult(map);
 		Integer monthResult=teacherResultDao.getTeacherResult6M_1(map);
 
+		Integer allGrade=teacherResultDao.getTeacherGradeAll(map);
+		Integer m1GradeCount=teacherResultDao.getTeacherGradeCount1M(map);
+		
+		DecimalFormat formatter = new DecimalFormat("###,###");
+		String allresult=formatter.format(allResult);
+		String monthresult=formatter.format(monthResult);
+		
 		if(M1camount == null) {M1camount=0;}
 		if(M2camount == null) {M2camount=0;}
 		if(M3camount == null) {M3camount=0;}
@@ -42,13 +50,18 @@ public class TeacherResultController {
 		if(allResult == null) {allResult=0;}
 		if(monthResult == null) {monthResult=0;}
 		
+		if(allGrade == null) {allGrade=0;}
+		if(m1GradeCount == null) {m1GradeCount=0;}
+		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("M1camount", M1camount);
 		mav.addObject("M2camount", M2camount);
 		mav.addObject("M3camount", M3camount);
 		mav.addObject("M4camount", M4camount);
-		mav.addObject("allResult", allResult);
-		mav.addObject("monthResult", monthResult);
+		mav.addObject("allResult", allresult);
+		mav.addObject("monthResult", monthresult);
+		mav.addObject("allGrade", allGrade);
+		mav.addObject("m1GradeCount", m1GradeCount);
 		mav.setViewName("teacher/teacherResult/teacherResult");
 		return mav;
 	}
@@ -137,7 +150,7 @@ public class TeacherResultController {
 			if(M4camount==null) {M4camount=0;}
 			
 			
-			jsonChartData="{chart:{data:["+M1camount+","+M2camount+","+M3camount+","+M4camount+"],labels:["+df.format(calD1.getTime())+","+df.format(calD2.getTime())+","+df.format(calD3.getTime())+","+df.format(calD4.getTime())+"]}}";
+			jsonChartData="{\"chart\":{\"data\":["+M1camount+","+M2camount+","+M3camount+","+M4camount+"],\"labels\":[\""+df.format(calD1.getTime())+"\",\""+df.format(calD2.getTime())+"\",\""+df.format(calD3.getTime())+"\",\""+df.format(calD4.getTime())+"\"]}}";
 		}else if(sort==6){
 			M1camount=teacherResultDao.getTeacherResult6M_1(map);
 			M2camount=teacherResultDao.getTeacherResult6M_2(map);
@@ -152,7 +165,7 @@ public class TeacherResultController {
 			if(M4camount==null) {M4camount=0;}
 			if(M5camount==null) {M5camount=0;}
 			if(M6camount==null) {M6camount=0;}
-			jsonChartData="{chart:{data:["+M1camount+","+M2camount+","+M3camount+","+M4camount+","+M5camount+","+M6camount+"],labels:["+df.format(calM1.getTime())+","+df.format(calM2.getTime())+","+df.format(calM3.getTime())+","+df.format(calM4.getTime())+","+df.format(calM5.getTime())+","+df.format(calM6.getTime())+"]}}";
+			jsonChartData="{\"chart\":{\"data\":["+M1camount+","+M2camount+","+M3camount+","+M4camount+","+M5camount+","+M6camount+"],\"labels\":[\""+df.format(calM1.getTime())+"\",\""+df.format(calM2.getTime())+"\",\""+df.format(calM3.getTime())+"\",\""+df.format(calM4.getTime())+"\",\""+df.format(calM5.getTime())+"\",\""+df.format(calM6.getTime())+"\"]}}";
 		}else if(sort==12) {
 			M1camount=teacherResultDao.getTeacherResult12M_2(map);
 			M2camount=teacherResultDao.getTeacherResult12M_4(map);
@@ -167,14 +180,13 @@ public class TeacherResultController {
 			if(M4camount==null) {M4camount=0;}
 			if(M5camount==null) {M5camount=0;}
 			if(M6camount==null) {M6camount=0;}
-			jsonChartData="{chart:{data:["+M1camount+","+M2camount+","+M3camount+","+M4camount+","+M5camount+","+M6camount+"],labels:["+df.format(calY2.getTime())+","+df.format(calY4.getTime())+","+df.format(calY6.getTime())+","+df.format(calY8.getTime())+","+df.format(calY10.getTime())+","+df.format(calY12.getTime())+"]}}";
+			jsonChartData="{\"chart\":{\"data\":["+M1camount+","+M2camount+","+M3camount+","+M4camount+","+M5camount+","+M6camount+"],\"labels\":[\""+df.format(calY2.getTime())+"\",\""+df.format(calY4.getTime())+"\",\""+df.format(calY6.getTime())+"\",\""+df.format(calY8.getTime())+"\",\""+df.format(calY10.getTime())+"\",\""+df.format(calY12.getTime())+"\"]}}";
 
 		}
 		
 		return jsonChartData;
 
 	}
-	
 	
 	
 	@RequestMapping("/teacherGrade.do")
@@ -186,13 +198,25 @@ public class TeacherResultController {
 		Integer allResult=teacherResultDao.getTeacherAllResult(map);
 		Integer monthResult=teacherResultDao.getTeacherResult6M_1(map);
 		
+		Integer allGrade=teacherResultDao.getTeacherGradeAll(map);
+		Integer m1GradeCount=teacherResultDao.getTeacherGradeCount1M(map);
+		
+		DecimalFormat formatter = new DecimalFormat("###,###");
+		String allresult=formatter.format(allResult);
+		String monthresult=formatter.format(monthResult);
+		
 		if(allResult == null) {allResult=0;}
 		if(monthResult == null) {monthResult=0;}
-		
+		if(allGrade == null) {allGrade=0;}
+		if(m1GradeCount == null) {m1GradeCount=0;}
 		ModelAndView mav=new ModelAndView();
 		
-		mav.addObject("allResult", allResult);
-		mav.addObject("monthResult", monthResult);
+		mav.addObject("allResult", allresult);
+		mav.addObject("monthResult", monthresult);
+		mav.addObject("allGrade", allGrade);
+		mav.addObject("m1GradeCount", m1GradeCount);
+		
+		mav.setViewName("teacher/teacherResult/teacherGrade");
 		
 		return mav;	
 		

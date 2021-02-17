@@ -33,11 +33,14 @@ public class TeacherTestvideoController {
 	@RequestMapping("/teacherTestVideo.do")
 	public ModelAndView teacherTestVideoMain(@RequestParam(value = "midx",defaultValue = "0")int midx) {
 	
+		
 		Map map=new HashMap();
 		map.put("midx", midx);
 		
 		List allList=teacherTestvideoDao.testvideoAll(map);
 		List nList=teacherTestvideoDao.testvideoN(map);
+		
+		
 		
 		ModelAndView mav=new ModelAndView();
 		
