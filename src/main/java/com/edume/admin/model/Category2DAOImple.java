@@ -10,6 +10,13 @@ public class Category2DAOImple implements Category2DAO {
 	@Autowired
 	private SqlSessionTemplate sqlMap;
 	
+	
+	//카테고리 중분류 전체 리스트
+	@Override
+	public List Category2AllList() {
+		List cat2_list = sqlMap.selectList("getCat2List");
+		return cat2_list;
+	}
 	//카테고리 중분류 보기
 	@Override
 	public List Category2List(int cat1_idx) {

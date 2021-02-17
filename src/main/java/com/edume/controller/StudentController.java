@@ -115,17 +115,7 @@ public class StudentController {
 	
 	
 	
-		//	강의리스트
-		@RequestMapping(value="/lectureList.do", method=RequestMethod.GET)
-		public ModelAndView lectureList() {
-			List list = lectureDao.getLectureList();
-			ModelAndView mav = new ModelAndView();
-			mav.setViewName("/lecture/lectureList");
-			mav.addObject("lectureList", list);
-			System.out.println("3");
-			return mav;
-			
-		}
+		
 	
 	//강의 상세
 	@RequestMapping("/lectureDetail.do")
@@ -146,7 +136,20 @@ public class StudentController {
 		
 	}
 	
-	//강의 상세
+	//강의 상세 진입 Ajax
+	@RequestMapping("/checkMyLecture.do")
+	public ModelAndView checkMyLecutre(@RequestParam("lidx") int lidx, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		int result = lectureDao.checkMyLecture(lidx, midx);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/lecture/checkMyLecture");
+		mav.addObject("result", result);
+		return mav;
+		
+	}
+	
+	//강의 수강
 		@RequestMapping("/lectureMyClass.do")
 		public ModelAndView lectureDetail(@RequestParam(value="lidx", defaultValue = "0") int lidx,
 				@RequestParam(value="section", defaultValue = "1") int section,
