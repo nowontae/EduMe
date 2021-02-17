@@ -21,9 +21,9 @@ function sectionAdd(){
 	var newsectionSpan=document.createElement("span");
 	sectionChildDiv.appendChild(newsectionSpan);
 	
-	var newsectionHtml = "섹션<label class='sec_num'>"+count+"</label>:<input type='hidden' name='lcsection' value='"+count+"'>";
+	var newsectionHtml = "섹션<label class='sec_num'>"+count+"</label>:<input type='hidden' id='lcsection"+count+"' name='lcsection' value='"+count+"'>";
 	
-	newsectionHtml += "<input type='text' name='lctitle"+count+"'>";
+	newsectionHtml += "<input type='text' class='sec_title' name='lctitle"+count+"'>";
 	
 	newsectionSpan.innerHTML=newsectionHtml;
 	
@@ -53,12 +53,20 @@ function removeSection(target){
 	$('.sec_num').each(function (index, item) { //전체 섹션에 다시 넘버링
 		$(item).text(index + 1);
 		$(item).next().val(index + 1);
+		$(item).parent().parent().parent().find('.sec_title').each(function (index2, item2){
+			$(item2).attr('name','lctitle'+(index+1));			
+		});
+		$(item).parent().parent().parent().find('.sec_video').each(function (index2, item2){
+			$(item2).attr('name','lcvideo'+(index+1));			
+		});
 	});
+	
+	
 }
 
 function partAdd(obj, cnt){
 	var num = $('.sectionAll').eq(cnt - 1).find('.partdiv').length + 1; //현재 섹션 내 강의 수
-	
+	var titleCount = $('.sectionAll').eq(cnt - 1).find('.sec_num').text();
 	var partAllDiv=document.createElement("div");
 	var partAllChildDiv1=document.createElement("div");
 	var partAllChildDiv2=document.createElement("div");
@@ -66,17 +74,21 @@ function partAdd(obj, cnt){
 	partAllDiv.appendChild(partAllChildDiv2);
 	partAllDiv.className = 'partdiv';
 	
+	
+	var partTitleNum = partAllDiv.parentNode
 	var newPartSpan1=document.createElement("span");
 	partAllChildDiv1.appendChild(newPartSpan1);
 	newPartSpan1.innerHTML="강의<label class='part_num'>"+ num +"</label>:<input type='hidden' class='lcpart' name='lcpart' value='" + num +"'>";
 	
 	var newPartSpan2=document.createElement("span");
 	partAllChildDiv1.appendChild(newPartSpan2);
-	newPartSpan2.innerHTML="<input type='text' name='lctitle"+count+"[]'>";
+	
+	
+	newPartSpan2.innerHTML="<input class='sec_title' type='text' name='lctitle"+titleCount+"'>";
 
 	var newPartSpan3=document.createElement("span");
 	partAllChildDiv2.appendChild(newPartSpan3);
-	newPartSpan3.innerHTML="동영상 업로드<input type='file' name='lcvideo'>";
+	newPartSpan3.innerHTML="동영상 업로드<input type='file' name='lcvideo"+titleCount+"'>";
 
 	var reNode=document.createElement('button');
 	reNode.setAttribute('onclick','remove1(this, ' + cnt + ')');
@@ -102,10 +114,7 @@ function remove1(target, cnt){
 </head>
 <body>
 <input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do'">
-<form name="lectureCurriculum" action="lectureCurriculum.do?midx=${midx}&lidx=${lidx}">
-<div>
-	<input type="submit" value="저장">
-</div>
+<form name="lectureCurriculum" action="lectureCurriculumSubmit.do?lidx=${lidx}" method="post" enctype="multipart/form-data">
 
 <div id="curriculum">
 <div>
@@ -126,7 +135,7 @@ function remove1(target, cnt){
 	<input type="button" value="이전" onclick="location.href='createLectureMain.do'">
 </div>
 </div>
+	<input type="submit" value="제출">
 </form>
-	<input type="button" value="제출">
 </body>
 </html>

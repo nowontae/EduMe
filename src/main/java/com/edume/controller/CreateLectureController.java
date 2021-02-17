@@ -29,8 +29,8 @@ public class CreateLectureController {
 	/*강좌만들기 클릭 시 null값으로 insert*/
 	@RequestMapping(value="/createLectureMain.do", method=RequestMethod.GET)
 	public ModelAndView createLectureMainForm() {
+		
 		int lidx=createLectureDao.createLectureInsert();
-	
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("lidx",lidx);
 		mav.setViewName("teacher/createLecture/createLectureMain");
@@ -43,10 +43,8 @@ public class CreateLectureController {
 			CreateLectureDTO dto, 
 			@RequestParam(value="lidx", defaultValue = "0")int lidx,
 			@RequestParam(value="lthumnail1", defaultValue="img/checkbox.svg")MultipartFile lthumnail1,
-			HttpServletRequest rs
-	) {
-		
-		System.out.println("하이");
+			HttpServletRequest rs) {
+
 		HttpSession session=rs.getSession();
 		String path = session.getServletContext().getRealPath("/")+"img/";
 		System.out.println(path);
