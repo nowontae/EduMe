@@ -7,6 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+body{
+padding-left:100px;
+}
+</style>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 <style>
@@ -26,6 +31,41 @@ table {
 }
 th, td{
 	border-bottom: 1px solid #000000;
+}
+a:link { color: black; text-decoration: none;}
+ a:visited { color: black; text-decoration: none;}
+ a:hover { color: black; text-decoration: underline;}
+ .search_button {
+
+    width:70px;
+	height:30px;
+    background-color: #1a6dca;
+    border: none;
+    color:#fff;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+	border-radius:10px;
+	border: none;
+    outline:none;
+}
+.adminPage_button{
+	width:110px;
+	height:30px;
+    background-color:#4F94CD;
+    border: none;
+    color:#fff;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+	border-radius:10px;
+	border: none;
+    outline:none;
+
 }
 
 </style>
@@ -57,9 +97,15 @@ function changeSelect(e){
 </head>
 <body>
 
+<div style="width: 1200px; background-color:#CDB79E; height: 40px; display: table-cell;   vertical-align: middle;" >
+&nbsp;&nbsp;&nbsp;<a href="admin_memberAllList.do"><b>전체  유저 정보</b></a>&nbsp;  |  &nbsp;<a href="admin_blackList.do">블랙리스트 정보</a>
+</div>
+<div style="width: 1200px; text-align: right;"><input type="button" value="관리자페이지" class="adminPage_button" onclick = "location.href = 'admin.do'" ></div>
 
-<a href="admin_memberAllList.do">유저 전체 내역</a> | <a href="admin_blackList.do">블랙리스트</a>
-<h3>유저 전체 내역</h3>
+<h3 style=" width:600px; padding-bottom: 3px;"  >전체  유저 정보</h3>
+
+
+
 <div id="selectInfo"></div>
 <!-- 검색 -->
 <form name="userInfoList" action="admin_userInfoList.do">
@@ -69,8 +115,8 @@ function changeSelect(e){
 		<option value="mid">회원ID</option>
 		<option value="mgrade">회원등급</option>
 	</select>
-	<input type="text" id="findKeys" name="findKeys" pattern="[0-9]+" placeholder="숫자만 입력해주세요." required="required">
-	<input type="submit" value="검색">
+	<input type="text" id="findKeys" name="findKeys" pattern="[0-9]+" placeholder="숫자만 입력해주세요." required="required" style=" border-radius:10px; outline:none; width:220px;">
+	<input type="submit" class="search_button" value="검색">
 </form>
 <br>
 	
@@ -138,9 +184,8 @@ function changeSelect(e){
 	<td colspan="10"></td> 
 	</tfoot>
 </table>
-<div>${pageStr}</div>
-<br>
-<a href="admin.do">관리자 페이지</a>
+<div style="padding-top: 5px;">${pageStr}</div>
+
 	
 
 

@@ -74,7 +74,7 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
     <a class="navbar-brand" href="index.do">EduMe</a>
  
     <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto" >
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">카테고리 </a>  
                 <ul class="dropdown-menu" aria-labelledby="dropdown1">
@@ -106,13 +106,14 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
             </li>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
         <!--검색-->
-        <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" style=" border-radius: 50px; width:1000px;" >
+        <form class="form-inline mt-2 mt-md-0" style="width:700px;">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" style=" border-radius: 50px; width:70%;" >
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-        <!--   &nbsp; &nbsp; &nbsp;-->
+
+       
         <c:if test="${mgrade == 0}"> <!-- 로그인전 기본값이 뭐인지 확인하기 -->
-         <li class="nav-item">
+         <li class="nav-item"  >
             <a class="nav-link disabled" href="#">로그인</a>
         </li>
         <li class="nav-item">
@@ -127,10 +128,10 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
       	</c:if>
         <c:if test="${mgrade == 2}"><!-- 강사 -->
         <li class="nav-item">
-            <a class="nav-link disabled" href="#">강사</a>
+            <a class="nav-link disabled" href="#" style="width:800px; text-align: right;">강사</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="#">내학습</a>
+            <a class="nav-link disabled" href="#" style="width:100px; text-align: center;">내학습</a>
         </li>
      	</c:if>
   		<c:if test="${mgrade == 3}"><!-- 학생 -->
@@ -139,6 +140,7 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
             <a class="nav-link disabled" href="#">내학습</a>
         </li>
       </c:if>
+
     </div>
 </div>
 </body>
