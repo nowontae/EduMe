@@ -3,9 +3,20 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.edume.createLectureCurriculum">
-	
-	<insert id="CreateLectureCurriculumInsert" parameterType="com.edume.createLectureCurriculum.model.CreateLectureCurriculumDTO">
-	 insert into curri_fake values(lidx,lcsection,lcpart,lctitle,lcvideo,lcsample)
-	</insert>
 
+	<select id="createLectureAll" parameterType="Integer" resultType="com.edume.createLecture.model.CreateLectureDTO">
+	select * from lecture_fake where lidx=#{lidx}
+	</select>
+	
+	<insert id="createLectureInsert1" parameterType="com.edume.createLecture.model.CreateLectureDTO">
+	insert into lecture values(lecture_idx.nextval,#{midx},#{ltitle},#{lsubtitle},#{llevel},#{lthumnail},#{lsummary},#{lpurpose},#{lorignprice},#{ltarget},#{lknowledge},#{cat1_idx},#{cat2_idx},#{cat3_idx},sysdate,'N')
+	</insert>
+	
+	<select id="lidxSearch" parameterType="com.edume.createLecture.model.CreateLectureDTO" resultType="Integer"> 
+	select lidx from lecture where ltitle=#{ltitle} and lsubtitle=#{lsubtitle} and lknowledge=#{lknowledge} and lwritedate=#{lwritedate}
+	</select>
+	
+	<insert id="lectureCurriculumSubmit" parameterType="com.edume.createLectureCurriculum.model.CreateLectureCurriculumDTO">
+	 insert into LectureCurriculum values(#{lidx},#{lcsection},#{lcpart},#{lctitle},#{lcvideo},#{lcsample})
+	</insert>
 </mapper>
