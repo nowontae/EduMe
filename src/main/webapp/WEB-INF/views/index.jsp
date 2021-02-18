@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file="header.jsp" %>
+<%@include file="/WEB-INF/views/header.jsp" %>
 <h1>
 메인 페이지
 </h1>
