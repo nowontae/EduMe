@@ -37,6 +37,18 @@ public class CreateLectureDAOImple implements CreateLectureDAO {
 		CreateLectureDTO dto=sqlMap.selectOne("createLectureContent", map);
 		return dto;
 	}
+
+	@Override
+	public List lectureYList(Map map) {
+		List list=sqlMap.selectList("lectureYList", map);
+		return list;
+	}
+
+	@Override
+	public List lectureNList(Map map) {
+		List list=sqlMap.selectList("lectureNList", map);
+		return list;
+	}
 	
 	
 	
