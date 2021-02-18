@@ -40,9 +40,6 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
 
     </script>
     <style>
-    
-
-    
 .navbar .dropdown-toggle, .navbar .dropdown-menu a {
     cursor: pointer;
 }
@@ -85,10 +82,16 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
 </style>
 
 <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4 " role="navigation" >
-    
+
+
     <!--에듀 사이트 이름-->
+    <div>
     <a class="navbar-brand" href="index.do">EduMe</a>
- 
+ 	</div>
+ 	
+ 	
+<div class="out" style="width:100%; position: relative" >
+<div class="in" style="position: absolute; left:50%; margin: -25px -450px">
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto" >
             <li class="nav-item dropdown">
@@ -144,10 +147,10 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
       	</c:if>
         <c:if test="${mgrade == 2}"><!-- 강사 -->
         <li class="nav-item">
-            <a class="nav-link disabled" href="#" style="width:800px; text-align: right;">강사</a>
+            <a class="nav-link disabled" href="#" >강사</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="#" style="width:100px; text-align: center;">내학습</a>
+            <a class="nav-link disabled" href="#" >내학습</a>
         </li>
      	</c:if>
   		<c:if test="${mgrade == 3}"><!-- 학생 -->
@@ -179,6 +182,10 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
 		
 		
     </div>
+   </div>
+   </div>
+    
+   
 </div>
 </body>
 </html>

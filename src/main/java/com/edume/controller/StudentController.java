@@ -174,12 +174,10 @@ public class StudentController {
 		int midx = Integer.parseInt((String)session.getAttribute("midx"));
 		List list = wishListDao.getWishList(midx);
 		System.out.println("컨트롤러 list 사이즈 : "+list.size());
-		String test1 ="test1";
 		
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("list", list);
-		mav.addObject("test1", test1);
 		mav.setViewName("/student/wishList/wishList");
 		
 		return mav;
