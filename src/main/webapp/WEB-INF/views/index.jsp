@@ -8,9 +8,6 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/header.jsp" %>
-<h1>
-메인 페이지
-</h1>
 <main role="main" class="container"  >
     <div class="jumbotron text-center" style="background-image:url('img/owner1.jpg'); background-size: cover; width: 1000px; height:800px">
         <h1>삶은 자기 자신을 찾는 여정이 아니다<br>자기 자신을 만드는 과정이다</h1>

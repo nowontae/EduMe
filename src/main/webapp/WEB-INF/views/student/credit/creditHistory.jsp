@@ -16,6 +16,8 @@
 <c:forEach var="dto" items="${creditHistory }">
 	크레딧 / ${dto.camount } /
 	 <c:if test="${dto.ccode==1}">추가됨</c:if>
+	 <c:if test="${dto.ccode==2}">환불됨</c:if>
+	 <c:if test="${dto.ccode==3}">지급됨</c:if>
 	 <c:if test="${dto.ccode==4}">사용됨</c:if> / <fmt:formatDate value="${dto.cpaydate }" pattern="yyyy년 MM월 dd일"/> 
 </c:forEach>
 </body>

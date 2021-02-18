@@ -60,9 +60,9 @@ textarea:focus {
 <body onload="checkMyLecture(${lectureDetail.lidx})">
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 
+<div class="out" style="witdh:100%;  postion:relative">
+<div class="in" style="position:absolute; left:50%;  margin:0px -400px">
 
-<div class="out" style="width:100%; position: relative" >
-<div class="in" style="position: absolute; left:50%;margin: 0px -400px">
 <div class="category">
 
 <c:if test="${!empty msg }">
