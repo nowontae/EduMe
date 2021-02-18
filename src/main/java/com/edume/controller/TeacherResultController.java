@@ -33,16 +33,15 @@ public class TeacherResultController {
 		Integer M2camount=teacherResultDao.getTeacherResult28D_14(map);
 		Integer M3camount=teacherResultDao.getTeacherResult28D_21(map);
 		Integer M4camount=teacherResultDao.getTeacherResult28D_28(map);
+		
+
 		Integer allResult=teacherResultDao.getTeacherAllResult(map);
 		Integer monthResult=teacherResultDao.getTeacherResult6M_1(map);
 
 		Integer allGrade=teacherResultDao.getTeacherGradeAll(map);
 		Integer m1GradeCount=teacherResultDao.getTeacherGradeCount1M(map);
 		
-		DecimalFormat formatter = new DecimalFormat("###,###");
-		String allresult=formatter.format(allResult);
-		String monthresult=formatter.format(monthResult);
-		
+
 		if(M1camount == null) {M1camount=0;}
 		if(M2camount == null) {M2camount=0;}
 		if(M3camount == null) {M3camount=0;}
@@ -52,6 +51,10 @@ public class TeacherResultController {
 		
 		if(allGrade == null) {allGrade=0;}
 		if(m1GradeCount == null) {m1GradeCount=0;}
+		
+		DecimalFormat formatter = new DecimalFormat("###,###");
+		String allresult=formatter.format(allResult);
+		String monthresult=formatter.format(monthResult);
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("M1camount", M1camount);
@@ -92,7 +95,14 @@ public class TeacherResultController {
 		Calendar calY8 = Calendar.getInstance();
 		Calendar calY10 = Calendar.getInstance();
 		Calendar calY12 = Calendar.getInstance();
-
+		
+		Calendar today = Calendar.getInstance();
+		Calendar month = Calendar.getInstance();
+		Calendar year = Calendar.getInstance();
+		
+		today.setTime(new Date());
+		month.setTime(new Date());
+		year.setTime(new Date());
 		
 		calD1.setTime(new Date());
 		calD2.setTime(new Date());
@@ -115,6 +125,11 @@ public class TeacherResultController {
 		
 		
 		DateFormat df= new SimpleDateFormat("yyyy-MM-dd");
+	
+		df.format(today.getTime());
+		df.format(month.getTime());
+		df.format(year.getTime());
+	
 		calD1.add(Calendar.DATE, -7);
 		calD2.add(Calendar.DATE, -14);
 		calD3.add(Calendar.DATE, -21);
@@ -150,7 +165,7 @@ public class TeacherResultController {
 			if(M4camount==null) {M4camount=0;}
 			
 			
-			jsonChartData="{\"chart\":{\"data\":["+M1camount+","+M2camount+","+M3camount+","+M4camount+"],\"labels\":[\""+df.format(calD1.getTime())+"\",\""+df.format(calD2.getTime())+"\",\""+df.format(calD3.getTime())+"\",\""+df.format(calD4.getTime())+"\"]}}";
+			jsonChartData="{\"chart\":{\"data\":["+M1camount+","+M2camount+","+M3camount+","+M4camount+"],\"labels\":[\""+df.format(calD1.getTime())+"\",\""+df.format(calD2.getTime())+"\",\""+df.format(calD3.getTime())+"\",\""+df.format(calD4.getTime())+"\"],\"dateD\":[\""+df.format(today.getTime())+"\"]}}";
 		}else if(sort==6){
 			M1camount=teacherResultDao.getTeacherResult6M_1(map);
 			M2camount=teacherResultDao.getTeacherResult6M_2(map);
@@ -165,7 +180,7 @@ public class TeacherResultController {
 			if(M4camount==null) {M4camount=0;}
 			if(M5camount==null) {M5camount=0;}
 			if(M6camount==null) {M6camount=0;}
-			jsonChartData="{\"chart\":{\"data\":["+M1camount+","+M2camount+","+M3camount+","+M4camount+","+M5camount+","+M6camount+"],\"labels\":[\""+df.format(calM1.getTime())+"\",\""+df.format(calM2.getTime())+"\",\""+df.format(calM3.getTime())+"\",\""+df.format(calM4.getTime())+"\",\""+df.format(calM5.getTime())+"\",\""+df.format(calM6.getTime())+"\"]}}";
+			jsonChartData="{\"chart\":{\"data\":["+M1camount+","+M2camount+","+M3camount+","+M4camount+","+M5camount+","+M6camount+"],\"labels\":[\""+df.format(calM1.getTime())+"\",\""+df.format(calM2.getTime())+"\",\""+df.format(calM3.getTime())+"\",\""+df.format(calM4.getTime())+"\",\""+df.format(calM5.getTime())+"\",\""+df.format(calM6.getTime())+"\"],\"dateD\":[\""+df.format(month.getTime())+"\"]}}";
 		}else if(sort==12) {
 			M1camount=teacherResultDao.getTeacherResult12M_2(map);
 			M2camount=teacherResultDao.getTeacherResult12M_4(map);
@@ -180,7 +195,7 @@ public class TeacherResultController {
 			if(M4camount==null) {M4camount=0;}
 			if(M5camount==null) {M5camount=0;}
 			if(M6camount==null) {M6camount=0;}
-			jsonChartData="{\"chart\":{\"data\":["+M1camount+","+M2camount+","+M3camount+","+M4camount+","+M5camount+","+M6camount+"],\"labels\":[\""+df.format(calY2.getTime())+"\",\""+df.format(calY4.getTime())+"\",\""+df.format(calY6.getTime())+"\",\""+df.format(calY8.getTime())+"\",\""+df.format(calY10.getTime())+"\",\""+df.format(calY12.getTime())+"\"]}}";
+			jsonChartData="{\"chart\":{\"data\":["+M1camount+","+M2camount+","+M3camount+","+M4camount+","+M5camount+","+M6camount+"],\"labels\":[\""+df.format(calY2.getTime())+"\",\""+df.format(calY4.getTime())+"\",\""+df.format(calY6.getTime())+"\",\""+df.format(calY8.getTime())+"\",\""+df.format(calY10.getTime())+"\",\""+df.format(calY12.getTime())+"\"],\"dateD\":[\""+df.format(year.getTime())+"\"]}}";
 
 		}
 		
@@ -201,14 +216,17 @@ public class TeacherResultController {
 		Integer allGrade=teacherResultDao.getTeacherGradeAll(map);
 		Integer m1GradeCount=teacherResultDao.getTeacherGradeCount1M(map);
 		
-		DecimalFormat formatter = new DecimalFormat("###,###");
-		String allresult=formatter.format(allResult);
-		String monthresult=formatter.format(monthResult);
 		
 		if(allResult == null) {allResult=0;}
 		if(monthResult == null) {monthResult=0;}
 		if(allGrade == null) {allGrade=0;}
 		if(m1GradeCount == null) {m1GradeCount=0;}
+		
+		DecimalFormat formatter = new DecimalFormat("###,###");
+		String allresult=formatter.format(allResult);
+		String monthresult=formatter.format(monthResult);
+		
+		
 		ModelAndView mav=new ModelAndView();
 		
 		mav.addObject("allResult", allresult);

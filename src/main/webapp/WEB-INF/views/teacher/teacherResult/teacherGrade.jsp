@@ -9,23 +9,23 @@
 <script type="text/javascript" src="Chart.js"></script>
 <script type="text/javascript" src="httpRequest.js"></script>
 <style>
-#myChart{
-	width: 600px !important;
-	height:400px !important;
-}
 body{
 	width: 1000px;
 	height: 1000px;
 }
 .lectureResultUl{
 	list-style: none;
-	padding-left: 0px;
+	padding-left: 5px;
 }
-.ResultLi{
+#resultA{
 	float: left;
+	width: 200px;
 }
-#ResultLiLast{
-	position: relative;
+#gradeA{
+	width: 200px;
+}
+#dumiA{
+clear: both;
 }
 </style>
 </head>
@@ -40,8 +40,8 @@ body{
 	<div style="border: 1px solid black;">
 		<div style="border: 1px solid black;">
 			<ul role="tablist" class="lectureResultUl">
-				<li role="presentation" class="ResultLi">
-					<a role="tab" href="teacherResult.do?midx=${sessionScope.midx}" class="LiAtag" id="resultA">
+				<li role="presentation" id="resultA">
+					<a role="tab" href="teacherResult.do?midx=${sessionScope.midx}" class="LiAtag">
 						<div>
 							<div>
 								<div>총 수익</div>
@@ -51,8 +51,8 @@ body{
 						</div>
 					</a>
 				</li>
-				<li role="presentation" class="ResultLiLast">
-					<a role="tab" href="teacherGrade.do?midx=${sessionScope.midx}" class="LiAtag" id="gradeA">
+				<li role="presentation" id="gradeA">
+					<a role="tab" href="teacherGrade.do?midx=${sessionScope.midx}" class="LiAtag">
 						<div>
 							<div>
 								<div>강사 평점</div>
@@ -62,6 +62,7 @@ body{
 						</div>
 					</a>
 				</li>
+				<li role="presentation" id="dumiA"></li>
 			</ul>
 		</div>
 		<div style="border: 1px solid black;">
