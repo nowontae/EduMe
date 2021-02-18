@@ -50,9 +50,9 @@ public class CreateLectureCurriculumController {
 		// 3) 본 DB lidx 가져오기
 		// 4) 본 DB curriculum Table에 쑤셔넣기
 		
-		CreateLectureDTO dto= createLectureCurriculumDao.createLectureAll(lidx);
-		int result1=createLectureCurriculumDao.createLectureInsert(dto);
-		int resultLidx=createLectureCurriculumDao.createLectureInsert(dto);
+		CreateLectureDTO dto= createLectureCurriculumDao.createLectureAll(lidx); // Fake DB에서 가져오기
+		int result1=createLectureCurriculumDao.createLectureInsert(dto);  // 본 DB에 insert
+		int resultLidx=createLectureCurriculumDao.lidxSearch(dto); // 본 DB에 lidx 가져오기
 		
 		
 		CreateLectureCurriculumDTO dto1 = new CreateLectureCurriculumDTO();

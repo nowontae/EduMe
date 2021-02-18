@@ -40,9 +40,6 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
 
     </script>
     <style>
-    
-
-    
 .navbar .dropdown-toggle, .navbar .dropdown-menu a {
     cursor: pointer;
 }
@@ -85,10 +82,16 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
 </style>
 
 <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4 " role="navigation" >
-    
+
+
     <!--에듀 사이트 이름-->
+    <div>
     <a class="navbar-brand" href="index.do">EduMe</a>
- 
+ 	</div>
+ 	
+ 	
+<div class="out" style="width:100%; position: relative" >
+<div class="in" style="position: absolute; left:50%; margin: -25px -450px">
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto" >
             <li class="nav-item dropdown">
@@ -183,6 +186,10 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
 		
 		
     </div>
+   </div>
+   </div>
+    
+   
 </div>
 </body>
 </html>

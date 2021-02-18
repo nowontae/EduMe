@@ -47,10 +47,6 @@
 		
 	</insert>
 	
-	
-	
-	
-	
 	<!-- 공지 글쓰기 본문 -->
 	<select id="teacherNoticeContent" parameterType="Integer" resultType="com.edume.teacherBoardNotice.model.TeacherBoardNoticeDTO">
 		select * from 

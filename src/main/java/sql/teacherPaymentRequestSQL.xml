@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="teacherPaymentRequest">
+ 	<select id="teacherPaymentCredit" resultType="Integer" parameterType="map">
+ 		select sum(camount) 
+		from credit 
+		where midx=#{midx} and (
+		select to_char(add_months(sysdate,-1),'yyyymmdd') 
+		from dual) <![CDATA[>]]> to_char(cpaydate,'yyyymmdd')
+	</select>
+  	<select id="teacherBankInfo" resultType="com.edume.teacherPaymentRequest.model.TeacherPaymentRequestDTO" parameterType="map">
+  		select tbank,tacctname,tacctnum from teacher where midx=#{midx}
+  	</select>
+  	<insert id="paymentInsert" parameterType="com.edume.teacherPaymentRequest.model.TeacherPaymentRequestDTO">
+  		insert into payment values(payment_idx.nextval,#{midx},#{pay_amount},sysdate,sysdate)
+  	</insert>
+  	<select id="waitPaymentRequest" resultType="com.edume.teacherPaymentRequest.model.TeacherPaymentRequestDTO" parameterType="map">
+  		select pay_amount,pay_reqdate from payment where pay_reqdate=pay_date and midx=#{midx}
+  	</select>
+  	<select id="completePaymentRequest" resultType="com.edume.teacherPaymentRequest.model.TeacherPaymentRequestDTO" parameterType="map">
+  		select pay_amount,pay_date from payment where midx=#{midx} and pay_reqdate!=pay_date
+  	</select>
+  </mapper>
