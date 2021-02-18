@@ -31,18 +31,26 @@ function value_check(midx) {
 <style>
 .all{
 	height: 900px;
-	padding-left:100px;
+}
+h3{
+	width: 850px;
+    height: 100px;
+    padding-top: 18px;
+    text-align: left;
 }
 table {
 	width:800px;
     border: 0px solid  ;
     text-align: center;
-
+	margin: 0 auto;
 }
 th, td{
 		border-bottom: 1px solid #000000;
 
 }
+
+
+
 .del_bt {
 
     width:70px;
@@ -97,19 +105,23 @@ th, td{
 <%@include file="/WEB-INF/views/header.jsp" %>
 
 <div class="all">
-	<c:forEach var="dto" items="${list }" begin="0" end="0">
-	<h3 style=" width:800px; height: 100px; padding-top: 18px;" >${dto.mname}님 장바구니</h3>
-	</c:forEach>
+	
 	
 	
 	<form name="fm" action="purchase.do">
 		
 	<table >
-	
+	<thead>
+	<tr>
+		<td colspan="5">
+				<h3>장바구니</h3>
+		</td>
+	</tr>
+	</thead>
 	<c:if test="${empty list }">
 		<tr>
-			<td colspan="4" height=" 500px">
-				추가된 항목이 없습니다.
+			<td colspan="5" height=" 500px">
+				추가된 강좌가 없습니다.
 			</td>
 		</tr>
 	
@@ -135,13 +147,24 @@ th, td{
 
 					</td>
 			</tr>
-	</c:forEach>		
+	</c:forEach>
+		<tr>
+			
+			<td colspan="5" style="border-bottom: none; padding-top: 5px;" align="left">
+			<c:choose>
+				<c:when test="${empty list }">
+				</c:when>
+				<c:otherwise>
+					<input type="button" class="selectDel_bt" value="선택 삭제" onclick="javascript:value_check(${sessionScope.midx})">
+					<!-- location.href='myCart_SelectDelete.do?midx=${sessionScope.midx}&lidx=${dto.lidx } -->
+					<input type="submit" class="bt" value="결제">
+				</c:otherwise>
+			</c:choose>
+			</td>
+		</tr>
 		</table>
-		<div style="padding-top: 3px;">
-		<input type="button" class="selectDel_bt" value="선택 삭제" onclick="javascript:value_check(${sessionScope.midx})">
-		<!-- location.href='myCart_SelectDelete.do?midx=${sessionScope.midx}&lidx=${dto.lidx } -->
-		<input type="submit" class="bt" value="결제">
-		</div>
+		
+		
 	</form>
 </div>
 <%@include file="/WEB-INF/views/footer.jsp" %>

@@ -18,13 +18,13 @@
 	
 }
 h3{
-	width:800px; 
+	width:850px; 
 	height: 100px; 
 	padding-top: 18px;
 	text-align:left;
 }
 table {
-	width:800px;
+	width:850px;
     border: 0px solid  ;
     text-align: center;
     margin: 0 auto;
@@ -32,8 +32,12 @@ table {
 }
 th, td{
 		border-bottom: 1px solid #000000;
-		height:46px;
-
+		
+}
+th{	
+	font-size: 16px;
+	height:46px;
+}
 </style>
 </head>
 <body>
@@ -46,13 +50,21 @@ th, td{
 		<td colspan="3" ><h3>구매 내역</h3></td>
 	</tr>
 		<tr>
-			<td>강좌</td>
-			<td>결제일시</td>
-			<td>결제 금액</td>
+			<th width="350px">강좌</th>
+			<th width="300px">결제일시</th>
+			<th width="200px">결제 금액</th>
 		</tr>
+		<c:if test="${empty purchaseHistory }">
+		<tr>
+			<td colspan="3" height=" 500px">
+				결제하신 내역이 없습니다.
+			</td>
+		</tr>
+	
+		</c:if>
 		<c:forEach var="dto" items="${purchaseHistory }">
 		<tr>
-			<td>${dto.ltitle }</td>
+			<td style="height:41px;">${dto.ltitle }</td>
 			<td><fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dto.pdate }"/></td>
 			<td><fmt:formatNumber value="${dto.pprice}" pattern="₩ #,###,###"/></td>
 		</tr>
