@@ -67,6 +67,6 @@
 	<li></li>
 </ul>
 
-
+<%@include file="footer.jsp" %>
 </body>
 </html>
