@@ -59,6 +59,10 @@ textarea:focus {
 </head>
 <body onload="checkMyLecture(${lectureDetail.lidx})">
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
+
+
+<div class="out" style="width:100%; position: relative" >
+<div class="in" style="position: absolute; left:50%;margin: 0px -250px">
 <div class="category">
 
 <c:if test="${!empty msg }">
@@ -91,9 +95,9 @@ textarea:focus {
 <br />
 <div>★★★☆☆ (00개의 평점) 000명의 수강생</div><br />
 
-<div>생성자 <a href="#">강사이름</a></div><br />
+<div>생성자 <a href="#">${lectureDetail.mname }</a></div><br />
 
-<div>12/2020에 마지막으로 업데이트 됨  / 언어 한국어</div><br />
+<div>'${lectureDetail.lwritedate }'에 마지막으로 업데이트 됨  / 언어 한국어</div><br />
 
 <div>
 	<input type="button" id="btn-wish" value="찜하기" onclick="location.href='addWishList.do?lidx=${lectureDetail.lidx}'">
@@ -171,5 +175,8 @@ textarea:focus {
  	</tbody>
  </table>
 </form> 
+
+</div>
+</div>
 </body>
 </html>

@@ -40,6 +40,9 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
 
     </script>
     <style>
+    
+
+    
 .navbar .dropdown-toggle, .navbar .dropdown-menu a {
     cursor: pointer;
 }
@@ -69,7 +72,9 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
     }
 }
 </style>
-<div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
+
+<div class="navbar navbar-expand-md navbar-dark bg-dark mb-4 " role="navigation" >
+    
     <!--에듀 사이트 이름-->
     <a class="navbar-brand" href="index.do">EduMe</a>
  

@@ -44,9 +44,9 @@
  	</select>
  	
  	<select id="getLectureDetail" parameterType="int" resultType="com.edume.lecture.model.LectureDTO">
- 		select *
- 		from lecture
- 		where lidx=#{lidx}
+ 		select l.*, m.mname
+ 		from lecture l, member m
+ 		where l.lidx=#{lidx} and l.midx = m.midx
  	</select>
  	
  	
