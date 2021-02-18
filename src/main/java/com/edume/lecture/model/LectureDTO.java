@@ -21,6 +21,7 @@ public class LectureDTO {
 	private int cat3_idx;
 	private Date lwritedate;
 	private String lopen;
+	private String mname;
 	
 	
 	
@@ -254,6 +255,18 @@ public class LectureDTO {
 	}
 	public void setLteacherdiscount(int lteacherdiscount) {
 		this.lteacherdiscount = lteacherdiscount;
+	}
+
+
+
+	public String getMname() {
+		return mname;
+	}
+
+
+
+	public void setMname(String mname) {
+		this.mname = mname;
 	}
 	
 	

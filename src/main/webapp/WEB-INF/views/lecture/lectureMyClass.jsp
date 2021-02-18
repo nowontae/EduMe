@@ -58,7 +58,7 @@ function videoEnded(v){
       </div>
   	</c:if>
   	<c:if test="${curi.lcpart != 0 }">
-      <div id="collapse${curi.lcsection }" class="collapse show" aria-labelledby="heading${curi.lcsection }" data-parent="#accordionExample">
+      <div id="collapse${curi.lcsection }" class="collapse" aria-labelledby="heading${curi.lcsection }" data-parent="#accordionExample">
         <div class="card-body">
          content  ${curi.lcsection}/${curi.lcpart}/${curi.lctitle }
         </div>
