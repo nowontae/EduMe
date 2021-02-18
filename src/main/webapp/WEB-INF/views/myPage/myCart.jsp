@@ -96,7 +96,6 @@ th, td{
 <body>
 <%@include file="/WEB-INF/views/header.jsp" %>
 
-
 <div class="all">
 	<c:forEach var="dto" items="${list }" begin="0" end="0">
 	<h3 style=" width:800px; height: 100px; padding-top: 18px;" >${dto.mname}님 장바구니</h3>
@@ -105,11 +104,11 @@ th, td{
 	
 	<form name="fm" action="purchase.do">
 		
-	<table>
+	<table >
 	
 	<c:if test="${empty list }">
 		<tr>
-			<td colspan="4">
+			<td colspan="4" height=" 500px">
 				추가된 항목이 없습니다.
 			</td>
 		</tr>
