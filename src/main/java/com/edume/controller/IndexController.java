@@ -68,10 +68,15 @@ public class IndexController {
     	
     	List list=createLectureDao.lectureYList(map);
     	List list1=createLectureDao.lectureNList(map);
+    	List list2=createLectureDao.lectureFakeList(map);
     	
+    	System.out.println(list.size());
+    	System.out.println(list1.size());
+    	System.out.println(list2.size());
     	ModelAndView mav=new ModelAndView();
     	mav.addObject("list", list);
     	mav.addObject("list1", list1);
+    	mav.addObject("list2", list2);
     	mav.setViewName("teacher/teacherMain");
 		
     	return mav;

@@ -22,7 +22,6 @@
 		ltitle=#{ltitle},
 		lsubtitle=#{lsubtitle},
 		llevel=#{llevel},
-		lthumnail=#{lthumnail},
 		lsummary=#{lsummary},
 		lpurpose=#{lpurpose},
 		lorignprice=#{lorignprice},
@@ -34,7 +33,14 @@
     where 
     	lidx=#{lidx}
     </update>
-    
+    <update id="createLectureUpdateImg" parameterType="Map">
+    update 
+		lecture_fake
+	set
+		lthumnail=#{fileName}
+    where 
+    	lidx=#{lidx}
+    </update>
     <select id="createLectureContent" resultType="com.edume.createLecture.model.CreateLectureDTO">
     select * from lecture_fake where lidx=#{lidx}
     </select>
@@ -45,6 +51,10 @@
     
      <select id="lectureNList" resultType="com.edume.createLecture.model.CreateLectureDTO" parameterType="Map">
      select * from lecture where lopen='N' and midx=#{midx}
+    </select>
+    
+     <select id="lectureFakeList" resultType="com.edume.createLecture.model.CreateLectureDTO" parameterType="Map">
+     select * from lecture_fake where midx=#{midx}
     </select>
     
 </mapper>

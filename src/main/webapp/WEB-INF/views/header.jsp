@@ -133,30 +133,30 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
        
         <c:if test="${mgrade == 0}"> <!-- 로그인전 기본값이 뭐인지 확인하기 -->
          <li class="nav-item"  >
-            <a class="nav-link disabled" href="#">로그인</a>
+            <a class="nav-link " href="#">로그인</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="#">회원가입</a>
+            <a class="nav-link " href="#">회원가입</a>
         </li>
         </c:if>
           <c:if test="${mgrade == 1}"><!-- 관리자 -->
 
         <li class="nav-item">
-            <a class="nav-link disabled" href="#">관리자</a>
+            <a class="nav-link " href="#">관리자</a>
         </li>
       	</c:if>
         <c:if test="${mgrade == 2}"><!-- 강사 -->
         <li class="nav-item">
-            <a class="nav-link disabled" href="#" >강사</a>
+            <a class="nav-link " href="admin.do" >강사</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="#" >내학습</a>
+            <a class="nav-link " href="#" >내학습</a>
         </li>
      	</c:if>
   		<c:if test="${mgrade == 3}"><!-- 학생 -->
 
         <li class="nav-item">
-            <a class="nav-link disabled" href="#"><a href="myLectureList.do">내학습</a></a>
+            <a class="nav-link" href="#"><a href="myLectureList.do">내학습</a></a>
         </li>
       </c:if>
 		

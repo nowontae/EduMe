@@ -39,4 +39,10 @@ public class CreateLectureCurriculumDAOImple implements CreateLectureCurriculumD
 		int count=sqlMap.insert("lectureCurriculumSubmit", dto);
 		return count;
 	}
+	
+	@Override
+	public int createLectureDelete(int lidx) {
+		int result=sqlMap.delete("createLectureDelete", lidx);
+		return result;
+	}
 }

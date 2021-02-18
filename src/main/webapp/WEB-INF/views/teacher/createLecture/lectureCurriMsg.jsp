@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <script>
 window.alert('${msg}');
-location.href='teacherMain.do';
+location.href='teacherMain.do?midx='+${midx};
 </script>

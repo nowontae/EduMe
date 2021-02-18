@@ -20,8 +20,7 @@ function firstChart(){
 		      { value : m1camount, time : new Date("2021-02-11") }
 		    ];
 		  
-		  
-		  var canvas = d3.select("body").append("svg").attr("width", 800).attr("height", 600).attr("id","chartSvg")
+		  var canvas = d3.select("#svgArea").append("svg").attr("width", 800).attr("height", 600).attr("id","chartSvg")
 		  
 		    const xScale = d3.scaleTime()
 		      .domain([new Date("2021-01-21"), new Date("2021-02-11")])
@@ -125,7 +124,7 @@ function showResult1(){
 			    ];
 			  
 			  
-			  var canvas = d3.select("body").append("svg").attr("width", 800).attr("height", 600).attr("id","chartSvg")
+			  var canvas = d3.select("#svgArea").append("svg").attr("width", 800).attr("height", 600).attr("id","chartSvg")
 			  
 
 			    const xScale = d3.scaleTime()
@@ -213,7 +212,7 @@ function showResult(){
 			      { value : resultY1, time : new Date(chartlabelY1) }
 			    ];
 			  
-			  var canvas = d3.select("body").append("svg").attr("width", 800).attr("height", 600).attr("id","chartSvg")
+			  var canvas = d3.select("#svgArea").append("svg").attr("width", 800).attr("height", 600).attr("id","chartSvg")
 			  
 
 			    const xScale = d3.scaleTime()

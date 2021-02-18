@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script type="text/javascript" src="httpRequest.js"></script>
-<script type="text/javascript" src="resultChart.js"></script>
+<script type="text/javascript" src="resultChart.js?ver=1"></script>
 <style>
 body{
 	width: 1000px;
@@ -30,7 +30,9 @@ clear: both;
 }
 </style>
 </head>
-<body onload="firstChart()" id="bodyID">
+<body onload="firstChart()" >
+<%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
+<div id="bodyID">
 <div style="border: 1px solid black;">
 	<div style="border: 1px solid black;">
 	<h2>개요</h2>
@@ -80,5 +82,10 @@ clear: both;
 <input type="hidden" id="M3camount" value="${M3camount}">
 <input type="hidden" id="M4camount" value="${M4camount}">
 </div>
+<div id="svgArea" class="svgArea"><p>adsfasdf</p></div>
+</div>
+
+<%@include file="/WEB-INF/views/teacher/teacherFooter.jsp" %>
 </body>
+
 </html>

@@ -8,22 +8,23 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
 <div>
 	<h2>후기</h2>
 </div>
 
-<table>
+<table class="table">
 	<thead>
-	<tr>
-		<th>강의명</th>
-		<th>평균별점</th>
-		<th>등록날짜</th>
+	<tr >
+		<th scope="col">강의명</th>
+		<th scope="col">평균별점</th>
+		<th scope="col">등록날짜</th>
 	</tr>
 	</thead>	
 	<tbody>
 		<c:if test="${empty list}">
 			<tr>
-				<td colspan="3" align="center">
+				<td scope="row" colspan="3" align="center">
 				등록된 게시글이 없습니다.
 				</td>
 			</tr>
@@ -31,12 +32,14 @@
 		
 		<c:forEach var="dto" items="${list}">
 			<tr>
-				<td><a href="teacherReviewContent.do?lidx=${dto.lidx}&ltitle=${dto.ltitle}">${dto.ltitle}</a></td>
+				<td scope="row" ><a href="teacherReviewContent.do?lidx=${dto.lidx}&ltitle=${dto.ltitle}">${dto.ltitle}</a></td>
 				<td>${dto.avggrade}</td>
 				<td>${dto.lwritedate}</td>
 			</tr>
 		</c:forEach>
 	</tbody>
 </table>
+
+<%@include file="/WEB-INF/views/teacher/teacherFooter.jsp" %>
 </body>
 </html>
