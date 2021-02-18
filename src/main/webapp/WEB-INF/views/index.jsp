@@ -15,7 +15,7 @@
         
     </div>
 </main>
-<a href="teacherMain.do">강사</a>
+<a href="teacherMain.do?midx=${sessionScope.midx}">강사</a>
 <hr>
 
 

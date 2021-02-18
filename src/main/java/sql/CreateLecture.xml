@@ -38,4 +38,13 @@
     <select id="createLectureContent" resultType="com.edume.createLecture.model.CreateLectureDTO">
     select * from lecture_fake where lidx=#{lidx}
     </select>
+    
+    <select id="lectureYList" resultType="com.edume.createLecture.model.CreateLectureDTO" parameterType="Map">
+    select * from lecture where lopen='Y' and midx=#{midx}
+    </select>
+    
+     <select id="lectureNList" resultType="com.edume.createLecture.model.CreateLectureDTO" parameterType="Map">
+     select * from lecture where lopen='N' and midx=#{midx}
+    </select>
+    
 </mapper>
