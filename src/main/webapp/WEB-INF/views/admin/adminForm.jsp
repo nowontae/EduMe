@@ -85,7 +85,7 @@ h3{
 					<div class="allAdmin">
 					<h3>강사 관리</h3>
 				
-					<a href="LecutreCheck.do">강의리스트 관리페이지</a>
+					<a href="lectureCheck.do">강의리스트 관리</a>
 					<br>
 					<a href="TestVideoManagement.do">테스트 동영상 관리</a>
 					<br>

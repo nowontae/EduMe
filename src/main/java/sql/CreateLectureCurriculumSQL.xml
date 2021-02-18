@@ -13,7 +13,7 @@
 	</insert>
 	
 	<select id="lidxSearch" parameterType="com.edume.createLecture.model.CreateLectureDTO" resultType="Integer"> 
-	select lidx from lecture where ltitle=#{ltitle} and lsubtitle=#{lsubtitle} and lknowledge=#{lknowledge} and lwritedate=#{lwritedate}
+	select lidx from lecture where ltitle=#{ltitle} and lsubtitle=#{lsubtitle} and lknowledge=#{lknowledge}
 	</select>
 	
 	<insert id="lectureCurriculumSubmit" parameterType="com.edume.createLectureCurriculum.model.CreateLectureCurriculumDTO">
