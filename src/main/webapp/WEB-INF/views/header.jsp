@@ -142,28 +142,30 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
           <c:if test="${mgrade == 1}"><!-- 관리자 -->
 
         <li class="nav-item">
-            <a class="nav-link disabled" href="#">관리자</a>
+            <a class="nav-link" href="admin.do" style="width:800px;  text-align: right;">관리자</a>
         </li>
       	</c:if>
         <c:if test="${mgrade == 2}"><!-- 강사 -->
         <li class="nav-item">
-            <a class="nav-link disabled" href="#" >강사</a>
+            <a class="nav-link" href="teacherMain.do" style="width:800px; text-align: right;">강사</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="#" >내학습</a>
+            <a class="nav-link" href="myLectureList.do" style="width:100px; text-align: center;">내학습</a>
         </li>
      	</c:if>
   		<c:if test="${mgrade == 3}"><!-- 학생 -->
 
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#"><a href="myLectureList.do">내학습</a></a>
+        <li class="nav-item" >
+            <a class="nav-link" href="myLectureList.do" style="width:800px; text-align: right;">내학습</a>
         </li>
+        
+        
       </c:if>
-		
-		<li class="nav-item dropdown"  >
+		<!-- 사람 아이콘 부분 -->
+        <li class="nav-item dropdown"  >
 	        <a class="nav-link dropdown-toggle" id="dropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/site/user.png" alt="내정보이미지" width="32px" height="32px"></a>
 	        <ul class="dropdown-menu" aria-labelledby="dropdown2" >
-	            <li class="dropdown-item" href="#" style="border-bottom:1px solid gray;"><a>내 프로필 이미지</a></li>
+	            <li class="dropdown-item" href="#" style="border-bottom:1px solid gray;" ><a style="width:100px; text-align: center;">내 프로필 이미지</a></li>
 	            
 	            <li class="dropdown-item" href="#"><a href="myLectureList.do">내학습</a></li>
 	            <li class="dropdown-item" href="#"><a href="MyCart.do">장바구니</a></li>
@@ -171,6 +173,7 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
 	            <li class="dropdown-item" href="#" style="border-bottom:1px solid gray;"><a href="noticeMsg.do" >알림</a></li>
 	            
 	            <li class="dropdown-item" href="#"><a href="purchaseHistory.do">구매내역</a></li>
+	            <li class="dropdown-item" href="#"><a href="#">환불내역</a></li>
 	            <li class="dropdown-item" href="#"><a href="credit.do">크레딧</a></li>
 	            <li class="dropdown-item" href="#"><a href="declaration.do?ridx=1">신고하기</a></li>
 	            <li class="dropdown-item" href="#" style="border-bottom:1px solid gray;"><a href="commonQna.do">일반 문의사항</a></li>
@@ -178,6 +181,7 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
 	            <li class="dropdown-item" href="#" ><a>로그아웃</a></li>
 	        </ul>
    		 </li>
+		
 		
 		
 		
