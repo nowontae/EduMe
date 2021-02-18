@@ -61,6 +61,7 @@
 	<li><a href="purchaseHistory.do">구매내역</a></li>
 	<li><a href="credit.do">크레딧</a></li>
 	<li><a href="myLectureList.do">내 강의 리스트</a></li>
+	
 	<li><a href="lectureList.do">강의 리스트</a></li>
 	<li><a href="lectureDetail.do">강의 상세</a></li>
 	<li><a href="lectureMyClass.do">강의 듣기</a></li>

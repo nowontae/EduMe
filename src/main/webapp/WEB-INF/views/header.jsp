@@ -69,8 +69,19 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
         border-bottom: .3em solid transparent;
         border-top: .3em solid transparent;
         border-left: .3em solid;
+        
     }
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: none;
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
 }
+
 </style>
 
 <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4 " role="navigation" >
@@ -81,7 +92,7 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto" >
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">카테고리 </a>  
+                <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top: 12px;">카테고리 </a>  
                 <ul class="dropdown-menu" aria-labelledby="dropdown1">
                 	<li class="dropdown-item dropdown">
                         <a class="dropdown-toggle" id="dropdown1-0}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="location.href='lectureList.do'">전체 강의 목록</a>
@@ -111,7 +122,7 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
             </li>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
         <!--검색-->
-        <form class="form-inline mt-2 mt-md-0" style="width:700px;">
+        <form class="form-inline mt-2 mt-md-0" style="width:500px;">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" style=" border-radius: 50px; width:70%;" >
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
@@ -142,10 +153,31 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
   		<c:if test="${mgrade == 3}"><!-- 학생 -->
 
         <li class="nav-item">
-            <a class="nav-link disabled" href="#">내학습</a>
+            <a class="nav-link disabled" href="#"><a href="myLectureList.do">내학습</a></a>
         </li>
       </c:if>
-
+		
+		<li class="nav-item dropdown"  >
+	        <a class="nav-link dropdown-toggle" id="dropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/site/user.png" alt="내정보이미지" width="32px" height="32px"></a>
+	        <ul class="dropdown-menu" aria-labelledby="dropdown2" >
+	            <li class="dropdown-item" href="#" style="border-bottom:1px solid gray;"><a>내 프로필 이미지</a></li>
+	            
+	            <li class="dropdown-item" href="#"><a href="myLectureList.do">내학습</a></li>
+	            <li class="dropdown-item" href="#"><a href="MyCart.do">장바구니</a></li>
+	            <li class="dropdown-item" href="#" style="border-bottom:1px solid gray;"><a href="wishList.do">찜한 강좌 목록</a></li>
+	            <li class="dropdown-item" href="#" style="border-bottom:1px solid gray;"><a href="noticeMsg.do" >알림</a></li>
+	            
+	            <li class="dropdown-item" href="#"><a href="purchaseHistory.do">구매내역</a></li>
+	            <li class="dropdown-item" href="#"><a href="credit.do">크레딧</a></li>
+	            <li class="dropdown-item" href="#"><a href="declaration.do?ridx=1">신고하기</a></li>
+	            <li class="dropdown-item" href="#" style="border-bottom:1px solid gray;"><a href="commonQna.do">일반 문의사항</a></li>
+	           
+	            <li class="dropdown-item" href="#" ><a>로그아웃</a></li>
+	        </ul>
+   		 </li>
+		
+		
+		
     </div>
 </div>
 </body>
