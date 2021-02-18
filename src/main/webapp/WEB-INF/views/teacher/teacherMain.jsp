@@ -17,6 +17,7 @@
 	<a href="teacherResult.do?midx=${sessionScope.midx}">성과</a>
 	<a href="teacherReviewMain.do?midx=${sessionScope.midx}">후기</a>
 	<a href="teacherAsk.do?midx=${sessionScope.midx}">문의</a>
+	<a href="teacherPaymentRequest.do?midx=${sessionScope.midx}">지급 요청</a>
 </div>
 
 <form name="createLectureMain" action="createLectureMain.do">
