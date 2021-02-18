@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="/WEB-INF/views/header.jsp" %>
 <h1>크레딧</h1>
 
 <c:forEach var="dto" items="${creditHistory }">

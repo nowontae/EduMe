@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<%@include file="/WEB-INF/views/header.jsp" %>
 
 <h1>구매 내역</h1>
 <ul>

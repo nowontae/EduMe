@@ -62,7 +62,7 @@ textarea:focus {
 
 
 <div class="out" style="width:100%; position: relative" >
-<div class="in" style="position: absolute; left:50%;margin: 0px -250px">
+<div class="in" style="position: absolute; left:50%;margin: 0px -400px">
 <div class="category">
 
 <c:if test="${!empty msg }">
@@ -70,7 +70,6 @@ textarea:focus {
 </c:if>
 
 
-<h1>${lectureDetail.lidx} </h1>
 <c:forEach var="cat1" items="${sessionScope.cat1_list}">
 <c:if test="${cat1.cat1_idx == lectureDetail.cat1_idx}">
 <a href="lectureList.do?cat1_idx=${cat1.cat1_idx}">${cat1.cat_name}</a> > 
@@ -97,7 +96,7 @@ textarea:focus {
 
 <div>생성자 <a href="#">${lectureDetail.mname }</a></div><br />
 
-<div>'${lectureDetail.lwritedate }'에 마지막으로 업데이트 됨  / 언어 한국어</div><br />
+<div>'${lectureDetail.lwritedate }'에 마지막으로 업데이트 됨 </div><br />
 
 <div>
 	<input type="button" id="btn-wish" value="찜하기" onclick="location.href='addWishList.do?lidx=${lectureDetail.lidx}'">
@@ -107,24 +106,48 @@ textarea:focus {
 </div>
 
 <br /><br /><br /><br /><br /><br /><br /><br />
- <video id="lec" muted controls style="width:500px" onpause="videoPause(this)" onended="videoEnded(this)">
+ <video id="lec" muted controls style="width:800px" onpause="videoPause(this)" onended="videoEnded(this)">
       <source src="video/test1.mp4">
       <strong>Your browser does not support the video tag.</strong>
  </video>
  
  
  <div id="curriculum">
- <ul>
- <c:forEach var="curi" items="${curriculum }">
-	
- 		<li>${curi.lcsection }/${curi.lcpart }/${curi.lctitle }</li>
- </c:forEach>
- </ul>
  
+ <div class="accordion" id="accordionExample">
+ 	<c:forEach var="curi" items="${curriculum }" varStatus="num">
+ 	<c:if test="${curi.lcsection != 1 && curi.lcpart == 0 }"></div></c:if>
+    <c:if test="${curi.lcsection == 1 }"><c:set var="extendValue">true</c:set></c:if>
+	<c:if test="${curi.lcsection != 1 }"><c:set var="extendValue">false</c:set></c:if>
+    <c:if test="${curi.lcpart == 0 }">
+    <div class="card">
+      <div class="card-header" id="heading${curi.lcsection}">
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${curi.lcsection }" aria-expanded="${extendValue}" aria-controls="collapse${curi.lcsection }">
+            Head ${curi.lcsection}/${curi.lcpart}/${curi.lctitle }
+          </button>
+        </h2>
+      </div>
+  	</c:if>
+  	<c:if test="${curi.lcpart != 0 }">
+      <div id="collapse${curi.lcsection }" class="collapse" aria-labelledby="heading${curi.lcsection }" data-parent="#accordionExample">
+        <div class="card-body">
+         content  ${curi.lcsection}/${curi.lcpart}/${curi.lctitle }
+        </div>
+      </div>
+    </c:if>
+ </c:forEach>
  </div>
+</div> <!-- end div="curricullum" -->
+ 
+ 
+ 
+ 
+ <br /><br /><br /><br />
+ <!--  review -->
  
  <form action="">
- <table border="0" cellspacing="1">
+ <table border="0" cellspacing="1" style="margin:0 auto">
  <thead>
  <tr>
  	<th colspan="3" align="left" height="30px" style="font-size: 22px">후기</th>

@@ -30,9 +30,8 @@ function videoEnded(v){
 </script>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
+<%@include file="/WEB-INF/views/header.jsp" %>
 
-<h1>${myClass.lcvideo}</h1>
 <br /><br /><br /><br /><br /><br /><br /><br />
  <video id="lec" muted controls style="width:500px" onpause="videoPause(this)"   onended="videoEnded(this)">
       <source src="${myClass.lcvideo}">
@@ -66,7 +65,6 @@ function videoEnded(v){
   			<div class="progress-bar" role="progressbar" style="width : 30% " aria-valuenow="30" aria-valuemin="0" aria-valuemax="300"></div>
 		</div>
       </div>
-    </div>
     </c:if>
  </c:forEach>
  </div>
