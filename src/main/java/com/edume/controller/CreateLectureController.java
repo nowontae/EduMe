@@ -42,7 +42,7 @@ public class CreateLectureController {
 	public ModelAndView createLectureMain(
 			CreateLectureDTO dto, 
 			@RequestParam(value="lidx", defaultValue = "0")int lidx,
-			@RequestParam(value="lthumnail1", defaultValue="img/checkbox.svg")MultipartFile lthumnail1,
+			@RequestParam(value="lthumnail1")MultipartFile lthumnail1,
 			HttpServletRequest rs) {
 
 		HttpSession session=rs.getSession();
@@ -77,7 +77,7 @@ public class CreateLectureController {
 	/*저장 후 안에 내용 저장해서 그대로 돌아가기*/
 	@RequestMapping(value = "/createLectureUpdate.do", method=RequestMethod.POST)
 	public ModelAndView createLectureUpdateSubmit(CreateLectureDTO dto,@RequestParam(value="lidx", defaultValue = "0")int lidx,
-			@RequestParam(value="lthumnail1", defaultValue="img/checkbox.svg")MultipartFile lthumnail1,
+			@RequestParam(value="lthumnail1")MultipartFile lthumnail1,
 			HttpServletRequest rs) {
 		
 		ModelAndView mav=new ModelAndView();
