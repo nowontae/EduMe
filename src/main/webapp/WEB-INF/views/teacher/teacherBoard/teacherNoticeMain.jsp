@@ -6,13 +6,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#notice{
+	margin-bottom: 40px;
+    margin-top: 35px;
+}
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+</style>
 </head>
 <body>
 <%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
-<div>
+<div id="notice">
 	<h2>공지</h2>
 </div>
-<table>
+<table class="table">
 	<thead>
 	<tr>
 		<th>글번호</th>

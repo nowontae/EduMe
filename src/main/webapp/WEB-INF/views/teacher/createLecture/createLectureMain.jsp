@@ -6,6 +6,36 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.return{
+	float: left;
+	margin-right: 30px;
+}
+.save{
+	float: inherit;
+}
+#title{
+	margin-top: 20px;
+}
+#category{
+	margin-top: 25px;
+}
+#studentInfo{
+	margin-top: 25px;
+}
+#price{
+	margin-top: 25px;
+}
+#landingPage{
+	margin-top: 25px;
+}
+.next{
+	margin-top: 8px;
+}
+.text{
+	margin-bottom: 5px;
+}
+</style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
@@ -101,27 +131,26 @@ function thumUpload(lidx){
 </head>
 <body>
 
-<h1>${lidx }</h1>
-	<input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do?midx=${midx}'">
+	<input type="button" class="return" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do?midx=${midx}'">
 <form id="createLectureSave" name="createLectureSave" action="createLectureSave.do?lidx=${lidx}" method="post" enctype="multipart/form-data">
 <input type="hidden" name="midx" value="${midx}">
 <div>
-	<input type="submit" value="저장">
+	<input type="submit" class="save" value="저장">
 </div>
 
 <div id="title">
 <div>
-	<h2>강의 주제</h2>
+	<h4>강의 주제</h4>
 </div>
 
 <div>
 	<span>강좌 제목</span>
-	<div><input type="text" name="ltitle" value="${arr.ltitle}"></div>
+	<div><input type="text" name="ltitle" value="${arr.ltitle}" required="required"></div>
 </div>
 
 <div>
 	<span>강좌 부제목</span>
-	<div><input type="text" name="lsubtitle" value="${arr.lsubtitle}"></div>
+	<div><input type="text" name="lsubtitle" value="${arr.lsubtitle}" required="required"></div>
 </div>
 
 <div>
@@ -144,7 +173,7 @@ function thumUpload(lidx){
 
 <div id="category">
 <div>
-	<h2>카테고리</h2>
+	<h4>카테고리</h4>
 </div>
 
 <div class="cat1_list">
@@ -184,44 +213,40 @@ function thumUpload(lidx){
 
 <div id="studentInfo">
 <div>
-	<h2>수강생 세부사항</h2>
+	<h4>수강생 세부사항</h4>
 </div>
 
 <div>
 	<span>개요</span>
-	<div><input type="text" name="lsummary" value="${arr.lsummary}"></div>
+	<div><input type="text" name="lsummary" value="${arr.lsummary}" required="required"></div>
 </div>
 
 <div>
 		<span>강의 목적</span>
-	<div><input type="text" name="lpurpose" value="${arr.lpurpose}"></div>
+	<div><input type="text" name="lpurpose" value="${arr.lpurpose}" ></div>
 </div>
 	
 <div>
 		<span>배경 지식</span>
-	<div><input type="text" name="lknowledge" value="${arr.lknowledge}"></div>
+	<div><input type="text" name="lknowledge" value="${arr.lknowledge}" required="required"></div>
 </div>
 
 <div>
 		<span>대상 수강생</span>
-	<div><input type="text" name="ltarget" value="${arr.ltarget}"></div>
+	<div><input type="text" name="ltarget" value="${arr.ltarget}" required="required"></div>
 </div>
 </div>
 
 
 <div id="price">
 <div>
-	<h2>가격 책정</h2>
+	<h4>가격 책정</h4>
 </div>
 
 <div>
-	<div>
-		<p>EduMe에서는EduMe 행사의 강좌에 대한 정가 테스트를 시작했습니다. 
-		테스트 기간에는 마켓이나 수강생에 따라 정가가 다르게 표시될 수 있습니다.</p>
-	</div>
 	
 	<div>
-		<span>KRW</span>
+		가격 책정: 
 		<span>
 			<select id="lorignprice" name="lorignprice" value="${arr.lorignprice}">
 				<option>선택</option>
@@ -238,40 +263,37 @@ function thumUpload(lidx){
 				<option value="109900">109,900</option>
 			</select>
 		</span>
-		<span>강좌의 가격 계층을 선택하고 ‘저장’을 클릭하십시오. 강좌를 무료로 제공하려면 동영상 콘텐츠의 총 길이가 2시간을 초과해서는 안 됩니다.</span>
+		<span>원</span>
 	</div>
 	
-	<div>
-		<input type="button" value="다음" onclick="clickNextBtn()">
-	</div>
 </div>
 </div>
 </form>
-
 
 <form id="createLectureSaveImg" name="createLectureSaveImg" action="createLectureSaveImg.do?lidx=${lidx}" method="post" enctype="multipart/form-data">
 <div id="landingPage">
 <div>
-	<h2>강좌 랜딩 페이지</h2>
-</div>
-
-<div>
-<span>강좌 이미지</span>
-	<div>
-		<img id="thumImg" alt="강좌 이미지" src="https://www.udemy.com/staticx/udemy/images/course/750x422/placeholder.png">
-	</div>
+	<h4>강좌 랜딩 페이지</h4>
+	<span>강좌 이미지</span>
+		<div>
+			<img id="thumImg" alt="강좌 이미지" src="https://www.udemy.com/staticx/udemy/images/course/750x422/placeholder.png">
+		</div>
 	
-	<div>
-		<span>여기에 강좌 이미지를 업로드하십시오. *중요:750x422 픽셀의 .jpg, .jpeg, .gif, 또는 .png. 이미지에 텍스트가 포함되지 않아야 함</span>
-	</div>
+		<div class="text">
+			<span>여기에 강좌 이미지를 업로드하십시오. *중요:750x422 픽셀의 .jpg, .jpeg, .gif, 또는 .png. 이미지에 텍스트가 포함되지 않아야 함</span>
+		</div>
 	
-	<div>
-		<span>
-		<input type="file" id="thumnailUpload" name="lthumnail1" onchange="javascript:thumUpload(${lidx})"> 
-		</span>
+		<div>
+			<span>
+			<input type="file" id="thumnailUpload" name="lthumnail1" onchange="javascript:thumUpload(${lidx})"> 
+			</span>
+		</div>
 	</div>
-</div>
 </div>
 </form>
+
+<div>
+	<input type="button" value="다음" class="next" onclick="clickNextBtn()">
+</div>
 </body>
 </html>

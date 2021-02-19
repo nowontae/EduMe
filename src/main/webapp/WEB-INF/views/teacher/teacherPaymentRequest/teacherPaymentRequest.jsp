@@ -7,31 +7,51 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#payTitle{
+	margin-bottom: 40px;
+    margin-top: 35px;
+}
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+#textBottom{
+	margin-bottom: 20px;
+}
+#requestWait{
+	margin-top: 40px;
+}
+.blank{
+	padding-right: 10px;
+}
+</style>
 </head>
 <body>
-<div></div>
-<div>
+<%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
+<div id="payTitle">
 	<h2>강사 수익 지급 요청</h2>
 </div>
-
-<div>
-	<div>현재 요청 가능한 잔액:<input type="text" id="remainingAmount" value="${teacherMoney}" readonly="readonly">&nbsp;&nbsp;*현 날짜 1달 전까지의 총잔액입니다.</div>
+<table class="table">
+<div id="textBottom">
+	현재 요청 가능한 잔액: <input type="text" id="remainingAmount" value="${teacherMoney}" readonly="readonly">&nbsp;&nbsp;
+	*현 날짜 1달 전까지의 총잔액입니다.
 </div>
-<div>
-은행명: <input type="text" name="tbank" value="${dto.tbank}" readonly="readonly">
-계좌주: <input type="text" name="tacctname" value="${dto.tacctname}" readonly="readonly">
-계좌번호: <input type="text" name="tacctnum" value="${dto.tacctnum}" readonly="readonly">
 <form action="paymentRequestSubmit.do" name="paymentRequest">
-<div>
-<input type="hidden" name="midx" value="${midx}">
-요청할 금액:<input type="text" name="pay_amount" required="required">
-<input type="submit" value="요청하기">
-</div>
+<span class="blank">은행명: <input type="text" name="tbank" value="${dto.tbank}" readonly="readonly"></span>
+<span class="blank">계좌주: <input type="text" name="tacctname" value="${dto.tacctname}" readonly="readonly"></span>
+<span class="blank">계좌번호: <input type="text" name="tacctnum" value="${dto.tacctnum}" readonly="readonly"></span>
+<span class="blank">
+	<input type="hidden" name="midx" value="${midx}">
+		요청할 금액: <input type="text" name="pay_amount" required="required"> <input type="submit" value="요청하기">
+</span>
 </form>
-</div>
-<div>
-<h2>요청 대기</h2>
-	<table>
+</table>
+
+<div id="requestWait">
+<h4>요청 대기</h4>
+	<table class="table">
 		<thead>
 			<tr>
 				<th>요청 금액</th>
@@ -56,8 +76,8 @@
 	</table>
 </div>
 <div>
-<h2>지급 완료</h2>
-	<table>
+<h4>지급 완료</h4>
+	<table class="table">
 		<thead>
 			<tr>
 				<th>요청 금액</th>

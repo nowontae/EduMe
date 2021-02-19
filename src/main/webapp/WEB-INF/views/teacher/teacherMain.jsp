@@ -6,21 +6,28 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<style>
+#lecture{
+	margin-bottom: 40px;
+    margin-top: 35px;
+}
+#blankBottom{
+    padding-bottom: 5px;
+}
+#title{
+	margin-bottom: 10px;
+}
+</style>
 </head>
 <body>
 <%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
 	
-	<div>
+	<div id="lecture">
 		<h2>강좌</h2>
+			<div id="blankBottom">강좌 검토 과정에 최대 6일이 소요될 수 있습니다. EduMe에 강좌를 생성해보세요!</div>
+			<div><input type="button" onclick="javascript:location.href='createLectureMain.do'" value="신규 강좌"></div>
 	</div>
-
-	<div>강좌 검토 과정에 최대 6일이 소요될 수 있습니다. EduMe에 강좌를 생성해보세요!</div>
-
-	<div>
-		<input type="button" onclick="javascript:location.href='createLectureMain.do'" value="신규 강좌">
-	</div>
-
+	
 	<h4>등록된 강의</h4>
 	<table class="table">
 	<thead>
@@ -66,7 +73,7 @@
 		</c:forEach>
 	</table>
 
-	<h4>등록대기 강의</h4>
+	<div id="title"><h4>등록대기 강의</h4></div>
 	<table class="table">
 	<thead>
 		<tr>
@@ -116,7 +123,7 @@
 
 
 
-	<h4>작성 중인 강의</h4>
+	<div id="title"><h4>작성 중인 강의</h4></div>
 	<table class="table">
 	<thead>
 		<tr>
