@@ -69,7 +69,8 @@ public class CreateLectureController {
 		//img save
 		String path = session.getServletContext().getRealPath("/");
 		int tmpPath = session.getServletContext().getRealPath("/").indexOf("\\", 4);
-		path = path.substring(0, tmpPath) + "\\EduMe\\src\\main\\webapp\\img\\";
+		path = path.substring(0, tmpPath) + "\\FinalProject\\EduMe\\src\\main\\webapp\\img\\";
+		
 		copyInto(lthumnail1,path);
 		
 		

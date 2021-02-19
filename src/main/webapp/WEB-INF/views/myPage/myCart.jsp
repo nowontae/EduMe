@@ -130,6 +130,7 @@ th, td{
 	<c:forEach var="dto" items="${list }" varStatus="status">
 		
 			<tr>
+
 				<td rowspan="2" width="40px">
 				<input type="checkbox" name="ck" id="lectureName${status.index }" class="checkbox" value="${dto.lidx  }">
 				<input type="hidden" id="lidx_value${status.index }" name="lidx" value="${dto.lidx }">
