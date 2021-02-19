@@ -9,34 +9,6 @@
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
-<style>
-.all{
-	height: 900px;
-	display: table;
-	margin: auto;
-	padding-top: 55px;
-}
-a:link { color: black; text-decoration: none;}
-a:visited { color: black; text-decoration: none;}
-a:hover { color: black; text-decoration: underline;}
-	
-table {
-    text-align: center;
-    margin-top: 20px;
-}
-    
-th{
-    text-align: center;
-}
-th, td{
-    vertical-align: middle;
-}
-input,textarea:focus {
-        outline: none;
-}
-
-</style>
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script>
 function AnswerComplete(midx){
@@ -91,6 +63,27 @@ function updateSubmit(cqreply_idx, cqidx,index, midx) { // 수정버튼을 다�
 }
 </script>
 <style>
+.all{
+	height: 900px;
+	display: table;
+	margin: auto;
+	padding-top: 55px;
+}
+a:link { color: black; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: black; text-decoration: underline;}
+	
+table {
+    text-align: center;
+    margin-top: 20px;
+}
+    
+th{
+    text-align: center;
+}
+th, td{
+    vertical-align: middle;
+}
 input,textarea:focus {
         outline: none;
 }
@@ -178,15 +171,15 @@ input,textarea:focus {
 	</c:if>
 	</div>
 	
-	<!-- 문의하기 테이블 -->
+	<!-- 문의 글 본문 테이블 -->
 	<input type="hidden" id="cqidx" value="${dto.cqidx }">
 	<table class="table">
 		<tr>
-			<td height="41" width="150px;">작성자</td>
+			<td scope="row">작성자</td>
 			<td>${dto.mname }</td>
 		</tr>
 		<tr>
-			<td height="41">제목</td>
+			<td>제목</td>
 			<td>${dto. lqsubject}</td>
 		</tr>
 		<tr>
