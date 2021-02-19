@@ -20,7 +20,8 @@ public class CreateLectureDAOImple implements CreateLectureDAO {
 		if(lidx == null ) {
 			lidx = 1;
 		}
-		sqlMap.selectOne("createLectureInsert", lidx);
+		int result=sqlMap.insert("createLectureInsert", lidx);
+		System.out.println("result = "+result);
 		System.out.println("lidx = "+ lidx);
 		 
 		return lidx;
@@ -32,6 +33,17 @@ public class CreateLectureDAOImple implements CreateLectureDAO {
 		return count;
 	}
 
+	@Override
+	public int createLectureUpdateImg(String fileName, int lidx) {
+		System.out.println("filename = "+fileName);
+		System.out.println("lidx = "+lidx);
+		
+		Map map = new HashMap();
+		map.put("fileName", fileName);
+		map.put("lidx", lidx);
+		int result=sqlMap.update("createLectureUpdateImg", map);
+		return result;
+	}
 	@Override
 	public CreateLectureDTO createLectureContent(Map map) {
 		CreateLectureDTO dto=sqlMap.selectOne("createLectureContent", map);
@@ -50,6 +62,10 @@ public class CreateLectureDAOImple implements CreateLectureDAO {
 		return list;
 	}
 	
-	
+	@Override
+	public List lectureFakeList(Map map) {
+		List list=sqlMap.selectList("lectureFakeList", map);
+		return list;
+	}
 	
 }

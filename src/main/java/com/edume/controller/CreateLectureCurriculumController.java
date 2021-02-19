@@ -108,14 +108,22 @@ public class CreateLectureCurriculumController {
 		}
 		
 		
+		String msg = "제출 실패!";
+		
+		if(result==checkResultCount) {
+			// 완료 메세지
+			msg = "제출 완료!";
+			
+			
+			//fake DB에서 지우기
+			createLectureCurriculumDao.createLectureDelete(lidx);
+		}
 		
 		
-		
-		
-		String msg=result==checkResultCount? "제출 완료!":"제출 실패!";
 	
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg", msg);
+		mav.addObject("midx", dto.getMidx());
 		//mav.addObject("lcvideo1", lcvideo1);
 		mav.setViewName("teacher/createLecture/lectureCurriMsg");
 		return mav;

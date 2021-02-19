@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
 <div>
 	<h2>공지</h2>
 </div>
@@ -49,5 +50,6 @@
 		</tr>
 	</tfoot>
 </table>
+<%@include file="/WEB-INF/views/teacher/teacherFooter.jsp" %>
 </body>
 </html>

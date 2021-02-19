@@ -113,7 +113,7 @@ function remove1(target, cnt){
 </script>
 </head>
 <body>
-<input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do'">
+<input type="button" value="<강좌로 돌아가기" onclick="location.href='createLectureUpdate.do?lidx=${lidx}'">
 <form name="lectureCurriculum" action="lectureCurriculumSubmit.do?lidx=${lidx}" method="post" enctype="multipart/form-data">
 
 <div id="curriculum">

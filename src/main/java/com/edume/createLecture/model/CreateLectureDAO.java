@@ -9,4 +9,6 @@ public interface CreateLectureDAO {
 	public CreateLectureDTO createLectureContent(Map map); /*저장 후 안에 내용 저장해서 그대로 돌아가기*/
 	public List lectureYList(Map map); /*공개여부Y인 등록된 강의*/
 	public List lectureNList(Map map); /*공개여부N인 등록된 강의*/
+	public List lectureFakeList(Map map); /*등록 대기중인 강의*/
+	public int createLectureUpdateImg(String fileName,int lidx);
 }

@@ -19,4 +19,9 @@
 	<insert id="lectureCurriculumSubmit" parameterType="com.edume.createLectureCurriculum.model.CreateLectureCurriculumDTO">
 	 insert into LectureCurriculum values(#{lidx},#{lcsection},#{lcpart},#{lctitle},#{lcvideo},#{lcsample})
 	</insert>
+	
+	
+	<delete id="createLectureDelete">
+	delete lecture_fake where lidx=#{lidx}
+	</delete>
 </mapper>

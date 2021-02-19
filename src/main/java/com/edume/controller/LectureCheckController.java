@@ -63,7 +63,7 @@ public class LectureCheckController {
 		}
 		
 		 /*본문보기*/
-		 @RequestMapping("/lectureLtitleContent.do")
+		 @RequestMapping("/lectureContentSee.do")
 		 public ModelAndView lectureNContent(@RequestParam(value="lidx", defaultValue = "0") int lidx,
 				@RequestParam(value="section", defaultValue = "1") int section,
 				@RequestParam(value="part", defaultValue = "1") int part)  {
