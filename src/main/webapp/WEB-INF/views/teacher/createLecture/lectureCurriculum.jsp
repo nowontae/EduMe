@@ -9,7 +9,7 @@
 <script>
 var count=0;
 function sectionAdd(){
-	count = $('.sec_num').length + 1; //현재 전체 섹션 수
+count = $('.sec_num').length + 1; //현재 전체 섹션 수
 	
 	var lastDIV="";
 	
@@ -21,18 +21,15 @@ function sectionAdd(){
 	var newsectionSpan=document.createElement("span");
 	sectionChildDiv.appendChild(newsectionSpan);
 	
-	var newsectionHtml = "<input type='hidden' id='lcsection"+count+"' name='lcsection' value='"+count+"'>"
-						+'<table class="tlabe" style="width:50vw"><tr><td> ' 
-						+ "섹션<label class='sec_num'>"+count+"</label></td>";
+	var newsectionHtml = "섹션<label class='sec_num'>"+count+"</label>:<input type='hidden' id='lcsection"+count+"' name='lcsection' value='"+count+"'>";
 	
-	newsectionHtml += "<td><input type='text' class='sec_title' name='lctitle"+count+"'></td>";
+	newsectionHtml += "<input type='text' class='sec_title' name='lctitle"+count+"'>";
 	
 	newsectionSpan.innerHTML=newsectionHtml;
 	
 	var lcsectionSpan=document.createElement("span");
 	sectionChildDiv.appendChild(lcsectionSpan);
 	sectionAllDiv.setAttribute("class","sectionAll");
-	sectionAllDiv.setAttribute("class","my-3");
 	sectionAllDiv.setAttribute("id","sectionAll"+count);
 
 	var removeNode=document.createElement('button');
