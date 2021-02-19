@@ -50,7 +50,7 @@
 			<tr>
 				<td>${dto.lidx}</td>
 				<td>${dto.midx}</td>
-				<td><a href="lectureLtitleContent.do?lidx=${dto.lidx}">${dto.ltitle}</a></td>
+				<td><a href="lectureContentSee.do?lidx=${dto.lidx}">${dto.ltitle}</a></td>
 				<td>${dto.lsubtitle}</td>
 				<td>${dto.llevel}</td>
 				<td><img width="100" height="100" src="img/${dto.lthumnail}"></td>

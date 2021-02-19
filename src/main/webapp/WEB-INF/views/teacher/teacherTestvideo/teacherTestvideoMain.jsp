@@ -6,14 +6,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#testMov{
+	margin-bottom: 40px;
+    margin-top: 35px;
+}
+#blankBottom {
+    padding-bottom: 5px;
+}
+#coment{
+	margin-top: 25px;
+	
+}
+</style>
 </head>
 <body>
 <%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
 <div>
-	<div>테스트 동영상
-		<div>테스트 동영상을 만들어 보세요 <input type="button" onclick="location.href='makeTestvideo.do?midx=${sessionScope.midx}'" value="테스트 동영상 만들기"></div>
+	<div id="testMov">
+		<h2>테스트 동영상</h2>
+		<div id="blankBottom">테스트 동영상을 만들어 보세요!</div>
+		<div><input type="button" onclick="location.href='makeTestvideo.do?midx=${sessionScope.midx}'" value="테스트 동영상 만들기"></div>
 	</div>
-	<div>관리자 답변 대기
+	<div>
+		<h4>관리자 답변 대기</h4>
 		<table class="table">
 			<thead>
 				<tr>
@@ -40,7 +56,8 @@
 			</tbody>
 		</table>
 	</div>
-	<div>관리자 답변 완료
+	<div id="coment">
+		<h4>관리자 답변 완료</h4>
 		<table class="table">
 			<thead>
 				<tr>

@@ -40,7 +40,7 @@ public class IndexController {
     	HttpSession session = req.getSession(true); 
 
     	session.setAttribute("mgrade", "3");
-    	session.setAttribute("midx", "3");
+    	session.setAttribute("midx", "2");
 
 
     	List cat1_list = category1Dao.Category1List();
