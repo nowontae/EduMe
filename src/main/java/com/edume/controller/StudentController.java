@@ -227,24 +227,7 @@ public class StudentController {
 		return mav;
 	}
 	
-	
-	// 장바구니에서 구매 
-		@RequestMapping("/purchase.do")
-		public ModelAndView purchase(HttpServletRequest request, 
-				int midx) {
-			String[] arr=request.getParameterValues("ck");
-			   int[] arr_i=new int[arr.length];
-			   int result=0;
-			   for(int i=0;i<arr.length;i++) {
-				   arr_i[i]=Integer.parseInt(arr[i]);
-				   result=cartDao.myCart_delete(midx, lidx);
-			   }
-			String msg=result>0?"선택한 항목이 삭제 되었습니다.":"선택한 항목이 삭제되지않았습니다.";
-			ModelAndView mav =new ModelAndView();
-			mav.addObject("msg",msg);
-			mav.setViewName("myPage/myCartMsg");
-			return mav;
-		}
+
 		
 	
 	//내 강의 목록 페이지 이동
