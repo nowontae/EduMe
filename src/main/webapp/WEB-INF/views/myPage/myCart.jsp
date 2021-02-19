@@ -17,15 +17,24 @@ function value_check(midx) {
 
 	
     var check_count = document.getElementsByName("ck").length;
+    var params = "";
     for (var i=0; i<check_count; i++) {
         if (document.getElementsByName("ck")[i].checked == true) {
         	var lidx=document.getElementsByName("lidx")[i].value;
         	
-        	
-            //alert(document.getElementsByName("ck")[i].value);
-            location.href="myCart_SelectDelete.do?midx="+midx+"&lidx="+lidx+"&ck="+check_count;
+        	console.log("111");
+           // alert(document.getElementsByName("ck")[i].value);
+           params  +=  "&lidx="+lidx;
+           
         }
     }
+    params = "?midx="+midx+params;
+   // alert(params);
+    location.href="myCart_SelectDelete.do"+params;
+}
+function show(){
+	
+	 
 }
 </script>
 <style>

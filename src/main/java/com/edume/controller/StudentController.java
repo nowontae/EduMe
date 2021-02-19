@@ -212,13 +212,13 @@ public class StudentController {
 	}
 	//내 장바구니 페이지에서 다중 선택 후 해제(체크박스 사용)
 	@RequestMapping("/myCart_SelectDelete.do")
-	public ModelAndView myCart_SelectDelete(HttpServletRequest request, int midx, int lidx) {
-		String[] arr=request.getParameterValues("ck");
+	public ModelAndView myCart_SelectDelete(HttpServletRequest request, int midx) {
+		String[] arr=request.getParameterValues("lidx");
 		   int[] arr_i=new int[arr.length];
 		   int result=0;
 		   for(int i=0;i<arr.length;i++) {
 			   arr_i[i]=Integer.parseInt(arr[i]);
-			   result=cartDao.myCart_delete(midx, lidx);
+			   result=cartDao.myCart_delete(midx, arr_i[i]);
 		   }
 		String msg=result>0?"선택한 항목이 삭제 되었습니다.":"선택한 항목이 삭제되지않았습니다.";
 		ModelAndView mav =new ModelAndView();

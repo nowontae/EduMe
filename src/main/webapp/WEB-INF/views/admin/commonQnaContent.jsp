@@ -35,28 +35,35 @@ th, td{
 input,textarea:focus {
         outline: none;
 }
+
 </style>
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script>
-function AnswerComplete(){
-	var params = document.getElementById('cqidx').value;
+function AnswerComplete(midx){
+	var params = '&cqidx='+document.getElementById('cqidx').value+'&midx='+midx;
 	
-	sendRequest('AnswerComplete.do?cqidx='+params,params,AnswerCompleteResult,'POST');
+	sendRequest('AnswerComplete.do',params,AnswerCompleteResult,'POST');
 }
 
 function AnswerCompleteResult(){
 	if(XHR.readyState==4){
 		if(XHR.status=-200){
 			var data=XHR.responseText;
-			var indexNumber=data.indexOf('1');
+			console.log(data);
 			
-			if(data.charAt(indexNumber) == '1') {
+			var jsonData = JSON.parse(data);
+			//console.log(jsonData);
+			
+			//var indexNumber=data.indexOf('1');
+			
+			if(jsonData.result==1) {
 				// data == 1이면 성공
 				// 버튼 숨기기
+				//alert('why/?');
 				document.getElementById('AnswerComplete').style.display='none;'
 				// 그 자리에 답변완료 입력
 				var contentDiv=document.getElementById('cqreply_div');
-				contentDiv.innerText='답변완료';
+				contentDiv.innerHTML='<input type="button" class="bt_answer" disabled="disabled" value= "답변완료">';
 				
 			}
 		
@@ -86,7 +93,8 @@ function updateSubmit(cqreply_idx, cqidx,index, midx) { // 수정버튼을 다�
 <style>
 input,textarea:focus {
         outline: none;
-   }
+}
+
  .list_button{
 	width:170px;
 	height:30px;
@@ -134,6 +142,21 @@ input,textarea:focus {
 	border: none;
     outline:none;
 }
+.bt_answer{
+	width:170px;
+	height:30px;
+    background-color: #144884;;
+    border: none;
+    color:#fff;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+	border-radius:10px;
+	border: none;
+    outline:none;
+}
 </style>
 </head>
 <body>
@@ -145,12 +168,12 @@ input,textarea:focus {
 	<div id="cqreply_div">
 	<!-- char형을 long으로 비교하게 되어있어 charAt(0)을 적어 첫글자만 비교하게 한다. -->
 	<c:if test="${dto.cqreply == 'Y'.charAt(0) }">
-	<div style="width:170px; height:30px; border: 1px; border-radius:10px;">답변완료 </div>
+	<div><input type="button" class="bt_answer" disabled="disabled" value= "답변완료"> </div>
 	<!-- 답변이 완료되어 더이상 할게 없음 : 결과만 보여줌-->
 	</c:if>
 	
 	<c:if test="${dto.cqreply == 'N'.charAt(0) }">
-	<input type="button" id="AnswerComplete" class="list_button" onclick="AnswerComplete()" value="답변완료처리">
+	<input type="button" id="AnswerComplete" class="list_button" onclick="AnswerComplete(${dto.midx})" value="답변완료처리">
 	<!-- 답변완료 되지않아 처리 버튼까지 눌러줘야 완료 처리됨 -->
 	</c:if>
 	</div>
