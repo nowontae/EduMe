@@ -26,11 +26,11 @@
 	<div id="testMov">
 		<h2>테스트 동영상</h2>
 		<div id="blankBottom">테스트 동영상을 만들어 보세요!</div>
-		<div><input type="button" onclick="location.href='makeTestvideo.do?midx=${sessionScope.midx}'" value="테스트 동영상 만들기"></div>
+		<div><input class="btn btn-primary" type="button" onclick="location.href='makeTestvideo.do?midx=${sessionScope.midx}'" value="테스트 동영상 만들기"></div>
 	</div>
 	<div>
 		<h4>관리자 답변 대기</h4>
-		<table class="table">
+		<table class="table" style="width:50vw">
 			<thead>
 				<tr>
 					<th scope="col">제목</th>
@@ -58,7 +58,7 @@
 	</div>
 	<div id="coment">
 		<h4>관리자 답변 완료</h4>
-		<table class="table">
+		<table class="table" style="width:50vw">
 			<thead>
 				<tr>
 					<th scope="col">제목</th>

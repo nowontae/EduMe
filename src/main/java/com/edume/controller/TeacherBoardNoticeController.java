@@ -42,7 +42,6 @@ public class TeacherBoardNoticeController {
 			
 			ModelAndView mav=new ModelAndView();
 			mav.addObject("list", list);
-			
 			mav.addObject("pageStr", pageStr);
 			
 			mav.setViewName("teacher/teacherBoard/teacherNoticeMain");
@@ -101,8 +100,9 @@ public class TeacherBoardNoticeController {
 	 
 	 /*공지 본문보기*/
 	 @RequestMapping(value="/teacherNoticeContent.do", produces= "text/plain;charset=utf-8")
-	 public ModelAndView teacherNoticeContent(@RequestParam(value="nidx", defaultValue = "0")int nidx) {
-	 TeacherBoardNoticeDTO dto=teacherBoardNoticeDao.teacherNoticeContent(nidx);
+	 public ModelAndView teacherNoticeContent(@RequestParam(value="nidx", defaultValue = "0")int nidx,
+			 @RequestParam("lidx")int lidx) {
+	 TeacherBoardNoticeDTO dto=teacherBoardNoticeDao.teacherNoticeContent(nidx, lidx);
 	 
 	 ModelAndView mav=new ModelAndView();
 	 if(dto==null) {

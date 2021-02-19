@@ -8,6 +8,7 @@ public class TeacherBoardNoticeDTO {
 		private int nidx;
 		private int midx;
 		private int lidx;
+		private String ltitle;
 		private String nsubject;
 		private String ncontent;
 		private String nimg;
@@ -84,5 +85,14 @@ public class TeacherBoardNoticeDTO {
 		public void setNwritedate(Date nwritedate) {
 			this.nwritedate = nwritedate;
 		}
+
+		public String getLtitle() {
+			return ltitle;
+		}
+
+		public void setLtitle(String ltitle) {
+			this.ltitle = ltitle;
+		}
+		
 				
 	}

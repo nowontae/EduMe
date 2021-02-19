@@ -130,12 +130,17 @@ function thumUpload(lidx){
 </script>
 </head>
 <body>
+<!-- Navi  -->
+<%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
 
-	<input type="button" class="return" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do?midx=${midx}'">
+
+
+
+<input type="button" class="return btn btn-primary" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do?midx=${midx}'">
 <form id="createLectureSave" name="createLectureSave" action="createLectureSave.do?lidx=${lidx}" method="post" enctype="multipart/form-data">
 <input type="hidden" name="midx" value="${midx}">
 <div>
-	<input type="submit" class="save" value="저장">
+	<input type="submit" class="save  btn btn-primary" value="저장">
 </div>
 
 <div id="title">
@@ -145,19 +150,19 @@ function thumUpload(lidx){
 
 <div>
 	<span>강좌 제목</span>
-	<div><input type="text" name="ltitle" value="${arr.ltitle}" required="required"></div>
+	<div><input type="text"  class="form-control"   name="ltitle" value="${arr.ltitle}" required="required"></div>
 </div>
 
 <div>
 	<span>강좌 부제목</span>
-	<div><input type="text" name="lsubtitle" value="${arr.lsubtitle}" required="required"></div>
+	<div><input type="text"  class="form-control"  name="lsubtitle" value="${arr.lsubtitle}" required="required"></div>
 </div>
 
 <div>
 	<span>난이도</span>
 	<div>
 		<span>
-			<select name="llevel">
+			<select  class="form-control"  name="llevel">
 				<option hidden>===선택===</option>
 				<option value="1">★☆☆☆☆</option>
 				<option value="2">★★☆☆☆</option>
@@ -171,6 +176,10 @@ function thumUpload(lidx){
 </div>
 </div>
 
+<!-- ------------------------------- -->
+<hr>
+<!-- ------------------------------- -->
+
 <div id="category">
 <div>
 	<h4>카테고리</h4>
@@ -179,7 +188,7 @@ function thumUpload(lidx){
 <div class="cat1_list">
 <span>공유하려는 지식에 가장 적합한 카테고리는 무엇입니까?</span>
 	<div>
-		<select name="cat1_idx" onchange="cat2_list(this.value)">
+		<select   class="form-control"  name="cat1_idx" onchange="cat2_list(this.value)">
 			<option id="cat1_fir" value="0"  onselect="blockCat2List()">대분류</option>
 			<c:forEach var="cat1" items="${cat1_list}" varStatus="status">
 			<option value="${cat1.cat1_idx}">${cat1.cat_name}</option>
@@ -189,7 +198,7 @@ function thumUpload(lidx){
 </div>
 
 <div class="cat2_list">
-	<select name="cat2_idx" id="cat2_sel" disabled="disabled" onchange="cat3_list(this.value)">
+	<select   class="form-control"  name="cat2_idx" id="cat2_sel" disabled="disabled" onchange="cat3_list(this.value)">
 		<option  value="0" onselect="blockCat3List()" >중분류</option>
 		<div class="cat2_list_option">
 		<c:forEach var="cat2" items="${cat2_list}" varStatus="status">
@@ -200,7 +209,7 @@ function thumUpload(lidx){
 </div>
 	
 <div class="cat3_list">
-	<select name="cat3_idx" id="cat3_sel" disabled="disabled">
+	<select  class="form-control"  name="cat3_idx" id="cat3_sel" disabled="disabled">
 		<option value="0">소분류</option>
 		<div class="cat3_list_option">
 		<c:forEach var="cat3" items="${cat3_list}" varStatus="status">
@@ -211,6 +220,11 @@ function thumUpload(lidx){
 </div>
 </div>
 
+<!-- ------------------------------- -->
+<hr>
+<!-- ------------------------------- -->
+
+
 <div id="studentInfo">
 <div>
 	<h4>수강생 세부사항</h4>
@@ -218,24 +232,29 @@ function thumUpload(lidx){
 
 <div>
 	<span>개요</span>
-	<div><input type="text" name="lsummary" value="${arr.lsummary}" required="required"></div>
+	<div><input class="form-control"  type="text" name="lsummary" value="${arr.lsummary}" required="required"></div>
 </div>
 
 <div>
 		<span>강의 목적</span>
-	<div><input type="text" name="lpurpose" value="${arr.lpurpose}" ></div>
+	<div><input  class="form-control" type="text" name="lpurpose" value="${arr.lpurpose}" ></div>
 </div>
 	
 <div>
 		<span>배경 지식</span>
-	<div><input type="text" name="lknowledge" value="${arr.lknowledge}" required="required"></div>
+	<div><input class="form-control"  type="text" name="lknowledge" value="${arr.lknowledge}" required="required"></div>
 </div>
 
 <div>
 		<span>대상 수강생</span>
-	<div><input type="text" name="ltarget" value="${arr.ltarget}" required="required"></div>
+	<div><input  class="form-control" type="text" name="ltarget" value="${arr.ltarget}" required="required"></div>
 </div>
 </div>
+
+<!-- ------------------------------- -->
+<hr>
+<!-- ------------------------------- -->
+
 
 
 <div id="price">
@@ -246,46 +265,54 @@ function thumUpload(lidx){
 <div>
 	
 	<div>
-		가격 책정: 
-		<span>
-			<select id="lorignprice" name="lorignprice" value="${arr.lorignprice}">
-				<option>선택</option>
-				<option value="0">무료</option>
-				<option value="19900">19,900</option>
-				<option value="29900">29,900</option>
-				<option value="39900">39,900</option>
-				<option value="49900">49,900</option>
-				<option value="59900">59,900</option>
-				<option value="69900">69,900</option>
-				<option value="79900">79,900</option>
-				<option value="89900">89,900</option>
-				<option value="99900">99,900</option>
-				<option value="109900">109,900</option>
-			</select>
-		</span>
-		<span>원</span>
+		<select class="form-control"  id="lorignprice" name="lorignprice" value="${arr.lorignprice}">
+			<option>선택</option>
+			<option value="0">무료</option>
+			<option value="19900">19,900 원</option>
+			<option value="29900">29,900 원</option>
+			<option value="39900">39,900 원</option>
+			<option value="49900">49,900 원</option>
+			<option value="59900">59,900 원</option>
+			<option value="69900">69,900 원</option>
+			<option value="79900">79,900 원</option>
+			<option value="89900">89,900 원</option>
+			<option value="99900">99,900 원</option>
+			<option value="109900">109,900 원</option>
+		</select>
 	</div>
 	
 </div>
 </div>
 </form>
 
+<!-- ------------------------------- -->
+<hr>
+<!-- ------------------------------- -->
+
+
 <form id="createLectureSaveImg" name="createLectureSaveImg" action="createLectureSaveImg.do?lidx=${lidx}" method="post" enctype="multipart/form-data">
 <div id="landingPage">
 <div>
 	<h4>강좌 랜딩 페이지</h4>
 	<span>강좌 이미지</span>
+	
+	<figure class="figure">
+  		<img id="thumImg" src="https://www.udemy.com/staticx/udemy/images/course/750x422/placeholder.png" class="figure-img img-fluid rounded" alt="">
+  		<figcaption class="figure-caption">여기에 강좌 이미지를 업로드하십시오. *중요:750x422 픽셀의 .jpg, .jpeg, .gif, 또는 .png. 이미지에 텍스트가 포함되지 않아야 함</figcaption>
+	</figure>
+
+<!-- 
 		<div>
-			<img id="thumImg" alt="강좌 이미지" src="https://www.udemy.com/staticx/udemy/images/course/750x422/placeholder.png">
+			<img  id="thumImg" alt="강좌 이미지" src="https://www.udemy.com/staticx/udemy/images/course/750x422/placeholder.png">
 		</div>
 	
 		<div class="text">
 			<span>여기에 강좌 이미지를 업로드하십시오. *중요:750x422 픽셀의 .jpg, .jpeg, .gif, 또는 .png. 이미지에 텍스트가 포함되지 않아야 함</span>
 		</div>
-	
+ -->	
 		<div>
 			<span>
-			<input type="file" id="thumnailUpload" name="lthumnail1" onchange="javascript:thumUpload(${lidx})"> 
+			<input   class="form-control-file"  type="file" id="thumnailUpload" name="lthumnail1" onchange="javascript:thumUpload(${lidx})"> 
 			</span>
 		</div>
 	</div>
@@ -293,7 +320,10 @@ function thumUpload(lidx){
 </form>
 
 <div>
-	<input type="button" value="다음" class="next" onclick="clickNextBtn()">
+	<input type="button" value="다음" class="next btn btn-primary" onclick="clickNextBtn()">
 </div>
+
+
+<%@include file="/WEB-INF/views/teacher/teacherFooter.jsp" %>
 </body>
 </html>

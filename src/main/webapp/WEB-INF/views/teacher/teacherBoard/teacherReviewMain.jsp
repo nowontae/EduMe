@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>     
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,7 @@
 	<h2>후기</h2>
 </div>
 
-<table class="table">
+<table class="table" style="width:50vw">
 	<thead>
 	<tr>
 		<th scope="col" id="starAvg">강의명</th>
@@ -43,7 +44,7 @@
 			<tr>
 				<td scope="row" id="starAvg"><a href="teacherReviewContent.do?lidx=${dto.lidx}&ltitle=${dto.ltitle}">${dto.ltitle}</a></td>
 				<td id="starAvg">${dto.avggrade}</td>
-				<td>${dto.lwritedate}</td>
+				<td><fmt:formatDate value="${dto.lwritedate}" pattern="yyyy-MM-dd HH:mm"/></td>
 			</tr>
 		</c:forEach>
 	</tbody>

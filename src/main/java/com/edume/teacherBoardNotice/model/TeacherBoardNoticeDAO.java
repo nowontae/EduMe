@@ -7,5 +7,5 @@ public interface TeacherBoardNoticeDAO {
 	public int getTotalCnt(); 
 	public int teacherNoticeWrite(TeacherBoardNoticeDTO dto);
 	public int teacherNoticeMsgWrite(TeacherBoardNoticeDTO dto);
-	public TeacherBoardNoticeDTO teacherNoticeContent(int nidx);
+	public TeacherBoardNoticeDTO teacherNoticeContent(int nidx, int lidx);
 }
