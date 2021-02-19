@@ -87,8 +87,7 @@ public class CreateLectureController {
 	}
 	
 	
-	/*실제 파일 복사 관련 메서드*/
-	 
+	/*실제 파일 복사 관련 메서드*/ 
 	private void copyInto(MultipartFile upload,String path) {
 		try {
 			byte bytes[]=upload.getBytes(); //복사 할 원본
@@ -101,41 +100,4 @@ public class CreateLectureController {
 		}	
 	}	
 	
-	
 }	
-	
-
-	
-	
-	/*
-	@RequestMapping("/lectureTitle.do")
-	public String lectureTitle() {
-		return "teacher/createLecture/lectureTitle";
-	}
-	
-	@RequestMapping("/lectureCategory.do")
-	public String lectureCategorySave() {
-		return "teacher/createLecture/lectureCategory";
-	}
-	
-	@RequestMapping("/lectureStudentInfo.do")
-	public String lectureStudentInfoSave() {
-		return "teacher/createLecture/lectureStudentInfo";
-	}
-	
-	@RequestMapping("/lectureLadingPage.do")
-	public String lectureLadingPage() {
-		return "teacher/createLecture/lectureLadingPage";
-	}
-
-	@RequestMapping("/lectureCurriculum.do")
-	public String lectureCurriculum() {
-		return "teacher/createLecture/lectureCurriculum";
-	}
-
-	@RequestMapping("/lecturePrice.do")
-	public String lecturePrice() {
-		return "teacher/createLecture/lecturePrice";
-	}
-	*/
-
