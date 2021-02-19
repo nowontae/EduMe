@@ -93,7 +93,7 @@ a:link { color: black; text-decoration: none;}
 	</c:if>
 	<c:forEach var="dto" items="${list }">
 		<tr>
-			<td height="41"><a href="commonQnaContent.do?cqidx=${dto.cqidx }&midx=${sessionScope.midx}"><font color="	#00008B"><b>${dto.lqsubject }</b></font></a></td>
+			<td height="41"><a href="commonQnaContent.do?cqidx=${dto.cqidx }&midx=${sessionScope.midx}"><font color="	#00008B"><b>${dto.cqsubject }</b></font></a></td>
 			<td>${dto.mname }</td>
 			<td>
 			<fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dto.lqwritedate }"/>

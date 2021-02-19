@@ -155,7 +155,7 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
      	</c:if>
   		<c:if test="${mgrade == 3}"><!-- 학생 -->
         <li class="nav-item" >
-            <a class="nav-link" href="myLectureList.do" style="padding-top: 12px;">내학습</a
+            <a class="nav-link" href="myLectureList.do" style="padding-top: 12px;">내학습</a>
         </li>
       </c:if>
 		
