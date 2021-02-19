@@ -272,10 +272,10 @@ public class AdminController {
 	   //관리자페이지-문의사항 본문글, 답변글 내용보기
 	   @RequestMapping("/commonQnaContent.do")
 	   public ModelAndView CommonQnAContent( 
-			   @RequestParam(value="cqidx", defaultValue="0")int cqidx,@RequestParam(value="midx", defaultValue="0")int midx, HttpServletRequest req) {
+			   @RequestParam(value="cqidx", defaultValue="0")int cqidx, HttpServletRequest req) {
 		   //세션심기
-			//HttpSession session=req.getSession();
-			//int midx = Integer.parseInt((String)session.getAttribute("midx"));
+			HttpSession session=req.getSession();
+			int midx = Integer.parseInt((String)session.getAttribute("midx"));
 		   //System.out.println(midx);
 		   CommonQnaDTO dto=commonQnaDao.CommonQnaContent(cqidx);
 		   List list=commonQnaReplyDao.ReplyList(cqidx);
@@ -292,16 +292,20 @@ public class AdminController {
 	   @RequestMapping("/AnswerComplete.do")
 	   public ModelAndView AnswerComplete(
 			   @RequestParam(value="cqidx", defaultValue="0")int cqidx, int midx) {
-		   //System.out.println("cqidx = "+ cqidx);
+		   //System.out.println("----- ajax reply start ----");
+		  // System.out.println("cqidx = "+ cqidx);
+		   //System.out.println("midx = "+ midx);
 		   int result=commonQnaDao.AnswerComplete(cqidx);
-		   
+		   String resultJson = "{\"result\":"+result+"}";
 		   //System.out.println("실행횟수"+result);
 		   ModelAndView mav= new ModelAndView();
-		   mav.addObject("result",result);
+		   mav.addObject("result",resultJson);
 		   mav.addObject("midx",midx);
 		   mav.setViewName("admin/commonQnaContent_ok");
 		   return mav;
 	   }
+	   
+	   
 	   // 문의사항 답변 댓글 달기
 	   @RequestMapping("/Qna_ReplyAdd.do")
 	   public ModelAndView ReplyWrite(CommonQna_ReplyDTO dto, int midx){
