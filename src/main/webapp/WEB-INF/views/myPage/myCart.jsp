@@ -109,7 +109,7 @@ th, td{
 	
 	
 	
-	<form name="fm" action="purchase.do">
+	<form name="fm" action="purchase.do?midx=${sessionScope.midx}" method="post">
 		
 	<table >
 	<thead>
@@ -130,13 +130,14 @@ th, td{
 	<c:forEach var="dto" items="${list }" varStatus="status">
 		
 			<tr>
-				<td rowspan="2" >
-				<input type="checkbox" name="ck" id="lectureName${status.index }" class="checkbox" value="${dto.lidx }+${status.index }">
+
+				<td rowspan="2" width="40px">
+				<input type="checkbox" name="ck" id="lectureName${status.index }" class="checkbox" value="${dto.lidx  }">
 				<input type="hidden" id="lidx_value${status.index }" name="lidx" value="${dto.lidx }">
 				<input type="hidden" value="${dto.midx }">
 				</td>
-				<td rowspan="2"  style="padding-top: 5px; padding-bottom: 5px;"><img src="${dto.lthumnail}" width="130px" height="74px" alt="강의사진"></td>
-				<td rowspan="2" >${dto.ltitle }</td>
+				<td rowspan="2" width="134px" height="76px" style="padding-top: 5px; padding-bottom: 5px;"><img src="img/${dto.lthumnail}" width="130px" height="74px" alt="강의사진"></td>
+				<td rowspan="2" width="350px;">${dto.ltitle }</td>
 				<td style="text-decoration:line-through;border-bottom: 0px; padding-top: 10px">
 				<fmt:formatNumber value="${dto.lorignprice}" pattern="₩ #,###,###"/>
 				</td>

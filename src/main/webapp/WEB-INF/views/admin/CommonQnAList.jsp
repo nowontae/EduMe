@@ -68,44 +68,51 @@ th, td{
 </style>
 </head>
 <body>
+
 <div class="all">
-	<div style="width: 1200px; text-align: right;"><input type="button" value="관리자페이지" class="adminPage_button" onclick = "location.href = 'admin.do'" ></div>
-	
-	<h3 style="height:50px;" >문의사항</h3>
-		<div style="background-color:#CDC0B0;  vertical-align: middle; padding-top: 3px; font-size: 16px; height: 30px;" >
-	&nbsp;&nbsp;&nbsp;<a href="admin_CommonQnAList.do">전체보기</a> &nbsp; |&nbsp; <a href="admin_CommonQnAListComplete.do">답변완료</a> &nbsp;   | &nbsp; <a href="admin_CommonQnAListNotComplete.do">답변 미완료</a> 
-	</div>
-	
-	<table class="table">
-	<thead> 
+<div style="width: 1200px; text-align: right;"><input type="button" value="관리자페이지" class="adminPage_button" onclick = "location.href = 'admin.do'" ></div>
+
+<h3 style=" width:600px; padding-bottom: 5px; padding-top: 20px;" >문의사항</h3>
+
+
+<div style="width: 900px;  height: 40px; display: table-cell; background-color:#CDC0B0;  vertical-align: middle;" >
+&nbsp;&nbsp;&nbsp;<a href="admin_CommonQnAList.do">전체보기 &nbsp; |&nbsp; <a href="admin_CommonQnAListComplete.do">답변완료</a> &nbsp;   | &nbsp; <a href="admin_CommonQnAListNotComplete.do">답변 미완료</a> 
+</div>
+
+
+<table border="0" cellspacing="0" style="margin-top: 10px;">
+<thead>
+	<tr>
+		<th width="250px" height="41">제목</th>
+		<th width="150px">작성자</th>
+		<th width="200px">질문시간</th>
+		<th width="130px">관리자 답변 상태</th>
+	</tr>
+</thead>
+<tbody>
+	<c:if test="${empty list }">
 		<tr>
-			<th scope="col">제목</th>
-			<th scope="col">작성자</th>
-			<th scope="col">질문시간</th>
-			<th scope="col">관리자 답변 상태</th>
+			<td colspan="4" height="41"> 등록된  문의사항이 없습니다.</td>
 		</tr>
-	</thead>
-	<tbody>
-		<c:if test="${empty list }">
-			<tr>
-				<td colspan="4" height="41"> 등록된  문의사항이 없습니다.</td>
-			</tr>
-		</c:if>
-		<c:forEach var="dto" items="${list }">
-			<tr>
-				<td height="41" scope="row"><a href="commonQnaContent.do?cqidx=${dto.cqidx }&midx=${sessionScope.midx}"><font color="	#00008B"><b>${dto.lqsubject }</b></font></a></td>
-				<td>${dto.mname }</td>
-				<td>
-				<fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dto.lqwritedate }"/>
-				</td>
-				<td>
-				<c:if test="${dto.cqreply == 'N'.charAt(0) }"><b>${dto.cqreply }</b></c:if>
-				<c:if test="${dto.cqreply == 'Y'.charAt(0) }">${dto.cqreply }</c:if>
-	
-				</td>
-			</tr>
-	
-		</c:forEach>
+	</c:if>
+	<c:forEach var="dto" items="${list }">
+		<tr>
+			<td height="41"><a href="commonQnaContent.do?cqidx=${dto.cqidx }&midx=${sessionScope.midx}"><font color="	#00008B"><b>${dto.cqsubject }</b></font></a></td>
+			<td>${dto.mname }</td>
+			<td>
+			<fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dto.lqwritedate }"/>
+			</td>
+			<td>
+			<c:if test="${dto.cqreply == 'N'.charAt(0) }"><b>${dto.cqreply }</b></c:if>
+			<c:if test="${dto.cqreply == 'Y'.charAt(0) }">${dto.cqreply }</c:if>
+
+			</td>
+		</tr>
+
+	</c:forEach>
+
+
+
 	</table>
 	
 		<div align="center" style="padding-top: 8px; ">
