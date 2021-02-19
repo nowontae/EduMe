@@ -10,24 +10,28 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
 <style>
-	body{
-	padding-left:100px;
-	}
-
+.all{
+	height: 900px;
+	display: table;
+	margin: auto;
+	padding-top: 55px;
+}
  a:link { color: black; text-decoration: none;}
  a:visited { color: black; text-decoration: none;}
  a:hover { color: black; text-decoration: underline;}
 
 	
 	table {
-	width:600px;
+	width:800px;
     border: 0px solid  ;
     text-align: center;
 	}
 	th, td{
 		border-bottom: 1px solid #000000;
 	}
-      
+    h3{	   width:600px; 
+           padding-bottom: 20px;
+    }  
       
        
       input[type=checkbox] {
@@ -99,43 +103,46 @@
 </style>
 </head>
 <body>
-<div style="width: 1200px; background-color:#CDB79E; height: 40px; display: table-cell;   vertical-align: middle;" >
-&nbsp;&nbsp;&nbsp;<a href="admin_memberAllList.do">전체  유저 정보</a>&nbsp;  |  &nbsp;<a href="admin_blackList.do"><b>블랙리스트 정보</b></a>
+<div style=" background-color:#CDB79E; padding: 10px 17.56%;">
+	&nbsp;&nbsp;&nbsp;<a href="admin_memberAllList.do">전체  유저 정보</a>&nbsp;  |  &nbsp;<a href="admin_blackList.do"><b>블랙리스트 정보</b></a>
 </div>
-<div style="width: 1200px; text-align: right;"><input type="button"  class="adminPage_button" value="관리자페이지" class="adminPage_button" onclick = "location.href = 'admin.do'" ></div>
 
-<h3 style=" width:600px; padding-bottom: 5px;" style=" width:600px; padding-bottom: 5px;" >블랙리스트</h3>
+<div class="all">
 
-<!-- 이미지 경로 : img/호박.png -->
-<form action="UnblackSelectlist.do">
-<table border="0" cellspacing="0" width="600">
-	<tr>
-		<th width="120px">이름</th>
-		<th width="150px">ID</th>
-		<th  width="100px">신고횟수</th>
-		<th  width="100px"> </th>
-	</tr>
+	<div style="width: 1200px; text-align: right;"><input type="button"  class="adminPage_button" value="관리자페이지" class="adminPage_button" onclick = "location.href = 'admin.do'" ></div>
 	
-<c:if test="${empty list }">
-	<tr>
-		<td colspan="4" align="center">등록된 인원이 없습니다.</td>
-	</tr>
-</c:if>
-
-<c:forEach var="dto" items="${list }" varStatus="status">	
-	<tr>
-		<td><input type="checkbox" id="reporter${status.index }" name="mname_cb" value="${dto.midx }"  class="checkSelect"><label for="reporter${status.index }" ><span></span></label>${dto.mname }</td>
-		<td>ID${dto.mid }</td>
+	<h3 >블랙리스트</h3>
 	
-		<td>${dto.mblack }<input type="hidden" value="${dto.midx }"></td>
-		<td><input type="button" class="release_button" value="해제" onclick="location.href='admin_Unblacklist.do?midx=${dto.midx}'"></td>
+	<!-- 이미지 경로 : img/호박.png -->
+	<form action="UnblackSelectlist.do">
+	<table border="0" cellspacing="0" width="600">
+		<tr>
+			<th width="120px">이름</th>
+			<th width="150px">ID</th>
+			<th  width="100px">신고횟수</th>
+			<th  width="100px"> </th>
+		</tr>
 		
-	</tr>
-</c:forEach>
-</table>
-
-<div style="padding-top: 5px;"><input type="submit" class="release2_button" value="블랙리스트 선택해제"></div>
-
+	<c:if test="${empty list }">
+		<tr>
+			<td colspan="4" align="center">등록된 인원이 없습니다.</td>
+		</tr>
+	</c:if>
+	
+	<c:forEach var="dto" items="${list }" varStatus="status">	
+		<tr>
+			<td><input type="checkbox" id="reporter${status.index }" name="mname_cb" value="${dto.midx }"  class="checkSelect"><label for="reporter${status.index }" ><span></span></label>${dto.mname }</td>
+			<td>ID${dto.mid }</td>
+		
+			<td>${dto.mblack }<input type="hidden" value="${dto.midx }"></td>
+			<td><input type="button" class="release_button" value="해제" onclick="location.href='admin_Unblacklist.do?midx=${dto.midx}'"></td>
+			
+		</tr>
+	</c:forEach>
+	</table>
+	
+	<div style="padding-top: 5px;"><input type="submit" class="release2_button" value="블랙리스트 선택해제"></div>
+</div>
 </form>
 </body>
 </html>
