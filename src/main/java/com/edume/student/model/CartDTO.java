@@ -19,7 +19,7 @@ public class CartDTO {
 	private Date ladminstartdiscount;   // ladmindiscount 관리자 할인율
 	private Date ladminenddiscount;   // ladmindiscount 관리자 할인율
 	
-	public CartDTO() {
+	CartDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
