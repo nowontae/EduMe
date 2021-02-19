@@ -11,22 +11,30 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
 <style>
-body{
-padding-left:100px;
+.all{
+	height: 900px;
+	display: table;
+	margin: auto;
+	padding-top: 55px;
 }
 a:link { color: black; text-decoration: none;}
- a:visited { color: black; text-decoration: none;}
- a:hover { color: black; text-decoration: underline;}
-	table {
-	width:750px;
+a:visited { color: black; text-decoration: none;}
+a:hover { color: black; text-decoration: underline;}
+	
+table {
+    text-align: center;
+    margin-top: 20px;
+}
     
-	}
-	th, td{
-		 border-bottom: 1px solid #bcbcbc;
-	}
-	th{
-	width:150px;
-	}
+th{
+    text-align: center;
+}
+th, td{
+    vertical-align: middle;
+}
+input,textarea:focus {
+        outline: none;
+}
 </style>
 <script type="text/javascript" src="js/httpRequest.js"></script>
 <script>
@@ -129,90 +137,92 @@ input,textarea:focus {
 </style>
 </head>
 <body>
-<div style="width: 1200px; text-align: right;"><input type="button" value="관리자페이지" class="adminPage_button" onclick = "location.href = 'admin.do'" ></div>
-<h3 style=" width:750px; padding-bottom: 5px; padding-top: 20px;" >문의하기 본문</h3>
-
-<!-- 상단 버튼 부분 -->
-<div id="cqreply_div">
-<!-- char형을 long으로 비교하게 되어있어 charAt(0)을 적어 첫글자만 비교하게 한다. -->
-<c:if test="${dto.cqreply == 'Y'.charAt(0) }">
-<div>답변완료 </div>
-<!-- 답변이 완료되어 더이상 할게 없음 : 결과만 보여줌-->
-</c:if>
-
-<c:if test="${dto.cqreply == 'N'.charAt(0) }">
-<input type="button" id="AnswerComplete" class="list_button" onclick="AnswerComplete()" value="답변완료처리">
-<!-- 답변완료 되지않아 처리 버튼까지 눌러줘야 완료 처리됨 -->
-</c:if>
-</div>
-
-<!-- 문의하기 테이블 -->
-<input type="hidden" id="cqidx" value="${dto.cqidx }">
-<table style="width:750px;  border: 0; ">
-	<tr>
-		<td height="41" width="150px;">작성자</td>
-		<td>${dto.mname }</td>
-	</tr>
-	<tr>
-		<td height="41">제목</td>
-		<td>${dto. lqsubject}</td>
-	</tr>
-	<tr>
-		<td height="55" height="177px" >내용</td>
-		<td style="padding-top: 7px; padding-bottom: 5px;"><textarea rows="5" cols="70"  style="border-radius: 10px; resize: none; padding:10px;">${dto.lqcontent }</textarea></td>
-	</tr>
-</table>
-
-
-<!-- 댓글 달기 부분 -->
-<form name="Qna_ReplyAdd" action="Qna_ReplyAdd.do">
-
-	<input type="hidden" id="cqidx" name="cqidx" value="${dto.cqidx }">
-	<input type="hidden" id="midx" name="midx" value="${Session_midx }">
-	<table  style="width:750px; height: 100px; border: 0; ">
+<div class="all">
+	<div style="width: 800px; text-align: right;"><input type="button" value="관리자페이지" class="adminPage_button" onclick = "location.href = 'admin.do'" ></div>
+	<h3 style=" width:750px; padding-bottom: 5px; padding-top: 20px;" >문의하기 본문</h3>
+	
+	<!-- 상단 버튼 부분 -->
+	<div id="cqreply_div">
+	<!-- char형을 long으로 비교하게 되어있어 charAt(0)을 적어 첫글자만 비교하게 한다. -->
+	<c:if test="${dto.cqreply == 'Y'.charAt(0) }">
+	<div style="width:170px; height:30px; border: 1px; border-radius:10px;">답변완료 </div>
+	<!-- 답변이 완료되어 더이상 할게 없음 : 결과만 보여줌-->
+	</c:if>
+	
+	<c:if test="${dto.cqreply == 'N'.charAt(0) }">
+	<input type="button" id="AnswerComplete" class="list_button" onclick="AnswerComplete()" value="답변완료처리">
+	<!-- 답변완료 되지않아 처리 버튼까지 눌러줘야 완료 처리됨 -->
+	</c:if>
+	</div>
+	
+	<!-- 문의하기 테이블 -->
+	<input type="hidden" id="cqidx" value="${dto.cqidx }">
+	<table class="table">
 		<tr>
-			<td style="padding-top: 7px; padding-bottom: 7px;"><textarea rows="5" cols="75" name="cqreplycontent" required="required"  style="border-radius: 10px; resize: none; padding:10px;"></textarea></td>
-			<td width="150px;" ><input type="submit" class="release_Add_button"value="답변달기"></td>
+			<td height="41" width="150px;">작성자</td>
+			<td>${dto.mname }</td>
+		</tr>
+		<tr>
+			<td height="41">제목</td>
+			<td>${dto. lqsubject}</td>
+		</tr>
+		<tr>
+			<td height="55" height="177px" >내용</td>
+			<td style="padding-top: 7px; padding-bottom: 5px;"><textarea rows="5" cols="70"  style="border-radius: 10px; resize: none; padding:10px;">${dto.lqcontent }</textarea></td>
 		</tr>
 	</table>
-</form>
-<br>
-<!-- 댓글 보기 -->
-
-
-<table style="width:750px; height: 100px; border: 0; " id="commonQna_Reply_List">
-<c:if test="${empty list}">
-	<tr>
-		<td colspan="4" align="center">등록된 답변글이 없습니다.</td>
-	</tr>
-</c:if>	
-
-
-<c:forEach var="dt" items="${list }" varStatus="i">
-	<tr>
-
-		<td width="150px;" height="174px;" style="border-bottom: 0px; padding-top: 5px; padding-bottom: 5px;">${dt.mname }</td>
-		<td name="cqreplycontent" style="border-bottom: 0px; padding-top: 5px; padding-bottom: 5px;"><textarea id="cqreplycontent${i.index}" readonly="readonly"  rows="6" cols="70" name="cqreplycontent" style="border-radius: 10px; resize: none; padding:10px;">${dt.cqreplycontent }</textarea></td>
-		<c:if test="${Session_midx eq dt.midx }">
-			<td style="border-bottom: 0px; "><input type="button" id="update_btn${i.index }" value="수정" class="release_Add_button" onclick="javascript:updateForm(${dt.cqreply_idx },${dt.cqidx },${i.index},${sessionScope.midx } )"></td>
-			<td style="border-bottom: 0px;"><input type="button" value="삭제" class="release_Add_button" onclick="location.href='Qna_ReplyDelete.do?cqreply_idx=${dt.cqreply_idx }&cqidxx=${dt.cqidx }&midx=${midx }'"></td>
-		</c:if>
-		<c:if test="${Session_midx ne dt.midx }">
-			<td colspan="2" style="border-bottom: 0px;"></td>
-		</c:if>
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="3" height="35px" >
-		<fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dt.cqreplywritedate }"/>
-		</td>
-	</tr>
-</c:forEach>
-</table>
-
-
-<div style="padding-top: 5px; width:750px;" align="center" >
-<input type="button" value="목록" class="list_button" onclick = "location.href = 'admin_CommonQnAList.do'"  >
+	
+	
+	<!-- 댓글 달기 부분 -->
+	<form name="Qna_ReplyAdd" action="Qna_ReplyAdd.do">
+	
+		<input type="hidden" id="cqidx" name="cqidx" value="${dto.cqidx }">
+		<input type="hidden" id="midx" name="midx" value="${Session_midx }">
+		<table class="table">
+			<tr>
+				<td style="padding-top: 7px; padding-bottom: 7px;"><textarea rows="5" cols="75" name="cqreplycontent" required="required"  style="border-radius: 10px; resize: none; padding:10px;"></textarea></td>
+				<td width="150px;" ><input type="submit" class="release_Add_button"value="답변달기"></td>
+			</tr>
+		</table>
+	</form>
+	<br>
+	<!-- 댓글 보기 -->
+	
+	
+	<table class="" id="commonQna_Reply_List">
+	<c:if test="${empty list}">
+		<tr>
+			<td colspan="4" align="center">등록된 답변글이 없습니다.</td>
+		</tr>
+	</c:if>	
+	
+	
+	<c:forEach var="dt" items="${list }" varStatus="i">
+		<tr>
+	
+			<td width="150px;" height="174px;" style="border-bottom: 0px; padding-top: 5px; padding-bottom: 5px;">${dt.mname }</td>
+			<td name="cqreplycontent" style="border-bottom: 0px; padding-top: 5px; padding-bottom: 5px;"><textarea id="cqreplycontent${i.index}" readonly="readonly"  rows="6" cols="70" name="cqreplycontent" style="border-radius: 10px; resize: none; padding:10px;">${dt.cqreplycontent }</textarea></td>
+			<c:if test="${Session_midx eq dt.midx }">
+				<td style="border-bottom: 0px; "><input type="button" id="update_btn${i.index }" value="수정" class="release_Add_button" onclick="javascript:updateForm(${dt.cqreply_idx },${dt.cqidx },${i.index},${sessionScope.midx } )"></td>
+				<td style="border-bottom: 0px;"><input type="button" value="삭제" class="release_Add_button" onclick="location.href='Qna_ReplyDelete.do?cqreply_idx=${dt.cqreply_idx }&cqidxx=${dt.cqidx }&midx=${midx }'"></td>
+			</c:if>
+			<c:if test="${Session_midx ne dt.midx }">
+				<td colspan="2" style="border-bottom: 0px;"></td>
+			</c:if>
+		</tr>
+		<tr>
+			<td></td>
+			<td colspan="3" height="35px" >
+			<fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dt.cqreplywritedate }"/>
+			</td>
+		</tr>
+	</c:forEach>
+	</table>
+	
+	
+	<div style="padding-top: 5px; width:750px;" align="center" >
+	<input type="button" value="목록" class="list_button" onclick = "location.href = 'admin_CommonQnAList.do'"  >
+	</div>
 </div>
 </body>
 </html>

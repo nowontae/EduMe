@@ -11,25 +11,28 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
 <style>
-body{
-padding-left:100px;
+.all{
+	height: 900px;
+	display: table;
+	margin: auto;
+	padding-top: 55px;
 }
 a:link { color: black; text-decoration: none;}
- a:visited { color: black; text-decoration: none;}
- a:hover { color: black; text-decoration: underline;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: #black; text-decoration: none;}
 	
-	 table, th, td {
-        border-bottom: 1px solid #bcbcbc;
-      
-      }
-      table {
-        width: 900px;
-
-      }
-      th{
-      	 text-align: left;
-      }
-       .adminPage_button{
+table {
+    text-align: center;
+    margin-top: 20px;
+}
+    
+th{
+    text-align: center;
+}
+th, td{
+    vertical-align: middle;
+}
+.adminPage_button{
 	width:110px;
 	height:30px;
     background-color:#4F94CD;
@@ -65,58 +68,49 @@ a:link { color: black; text-decoration: none;}
 </style>
 </head>
 <body>
-
-<div style="width: 1200px; text-align: right;"><input type="button" value="관리자페이지" class="adminPage_button" onclick = "location.href = 'admin.do'" ></div>
-
-<h3 style=" width:600px; padding-bottom: 5px; padding-top: 20px;" >문의사항</h3>
-
-
-<div style="width: 900px;  height: 40px; display: table-cell; background-color:#CDC0B0;  vertical-align: middle;" >
-&nbsp;&nbsp;&nbsp;<a href="admin_CommonQnAList.do">전체보기 &nbsp; |&nbsp; <a href="admin_CommonQnAListComplete.do">답변완료</a> &nbsp;   | &nbsp; <a href="admin_CommonQnAListNotComplete.do">답변 미완료</a> 
-</div>
-
-
-<table border="0" cellspacing="0" style="margin-top: 10px;">
-<thead>
-	<tr>
-		<th width="250px" height="41">제목</th>
-		<th width="150px">작성자</th>
-		<th width="200px">질문시간</th>
-		<th width="130px">관리자 답변 상태</th>
-	</tr>
-</thead>
-<tbody>
-	<c:if test="${empty list }">
-		<tr>
-			<td colspan="4" height="41"> 등록된  문의사항이 없습니다.</td>
-		</tr>
-	</c:if>
-	<c:forEach var="dto" items="${list }">
-		<tr>
-			<td height="41"><a href="commonQnaContent.do?cqidx=${dto.cqidx }&midx=${sessionScope.midx}"><font color="	#00008B"><b>${dto.lqsubject }</b></font></a></td>
-			<td>${dto.mname }</td>
-			<td>
-			<fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dto.lqwritedate }"/>
-			</td>
-			<td>
-			<c:if test="${dto.cqreply == 'N'.charAt(0) }"><b>${dto.cqreply }</b></c:if>
-			<c:if test="${dto.cqreply == 'Y'.charAt(0) }">${dto.cqreply }</c:if>
-
-			</td>
-		</tr>
-
-	</c:forEach>
-
-</tbody>
-	<tfoot>
-		<tr>
-			<td colspan="4" ></td>
-		</tr>
-	</tfoot>
-</table>
-
-	<div align="center" style="width:1000px; padding-top: 8px; ">
-	${pageStr }
+<div class="all">
+	<div style="width: 1200px; text-align: right;"><input type="button" value="관리자페이지" class="adminPage_button" onclick = "location.href = 'admin.do'" ></div>
+	
+	<h3 style="height:50px;" >문의사항</h3>
+		<div style="background-color:#CDC0B0;  vertical-align: middle; padding-top: 3px; font-size: 16px; height: 30px;" >
+	&nbsp;&nbsp;&nbsp;<a href="admin_CommonQnAList.do">전체보기</a> &nbsp; |&nbsp; <a href="admin_CommonQnAListComplete.do">답변완료</a> &nbsp;   | &nbsp; <a href="admin_CommonQnAListNotComplete.do">답변 미완료</a> 
 	</div>
+	
+	<table class="table">
+	<thead> 
+		<tr>
+			<th scope="col">제목</th>
+			<th scope="col">작성자</th>
+			<th scope="col">질문시간</th>
+			<th scope="col">관리자 답변 상태</th>
+		</tr>
+	</thead>
+	<tbody>
+		<c:if test="${empty list }">
+			<tr>
+				<td colspan="4" height="41"> 등록된  문의사항이 없습니다.</td>
+			</tr>
+		</c:if>
+		<c:forEach var="dto" items="${list }">
+			<tr>
+				<td height="41" scope="row"><a href="commonQnaContent.do?cqidx=${dto.cqidx }&midx=${sessionScope.midx}"><font color="	#00008B"><b>${dto.lqsubject }</b></font></a></td>
+				<td>${dto.mname }</td>
+				<td>
+				<fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dto.lqwritedate }"/>
+				</td>
+				<td>
+				<c:if test="${dto.cqreply == 'N'.charAt(0) }"><b>${dto.cqreply }</b></c:if>
+				<c:if test="${dto.cqreply == 'Y'.charAt(0) }">${dto.cqreply }</c:if>
+	
+				</td>
+			</tr>
+	
+		</c:forEach>
+	</table>
+	
+		<div align="center" style="padding-top: 8px; ">
+		${pageStr }
+		</div>
+</div>
 </body>
 </html>
