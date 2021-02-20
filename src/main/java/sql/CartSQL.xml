@@ -15,7 +15,7 @@
 	select cl.*, ltd.lteacherdiscount, ltd.lteacherstartdiscount, ltd.lteacherenddiscount, lad.ladmindiscount, lad.ladminstartdiscount, lad.ladminenddiscount
 	from (select lidx
 	    from cart
-	    where midx=3) c,
+	    where midx=#{midx}) c,
 	    (select *
 	     from LECTURETEACHERDISCOUNT ) ltd,
 	    (select *
@@ -43,4 +43,49 @@
 	<insert id="addMyCartList" >
 	insert into cart values(#{midx},#{lidx})
 	</insert>
+	
+	<!--강의 구매  -->
+	<!--1. 구매내역 등록  -->
+	<insert id="purchaseLecture" parameterType="Map">
+	insert into myLectureList values(#{midx},#{lidx})
+	</insert>
+	
+	<!--2. 결제내역 등록  -->
+	<!--2-1. 결제용 정보 추출 -->
+	<select id="purchaseLectureInfo" resultType="com.edume.student.model.CartDTO">
+	select cl.*, ltd.lteacherdiscount, ltd.lteacherstartdiscount, ltd.lteacherenddiscount, lad.ladmindiscount, lad.ladminstartdiscount, lad.ladminenddiscount
+	from 
+	    (select *
+	     from LECTURETEACHERDISCOUNT
+         where lidx=#{lidx} ) ltd,
+	    (select *
+	     from LECTUREADMINDISCOUNT 
+         where lidx=#{lidx}) lad,
+	    ( select L.midx,l.lidx, l.ltitle, l.lsubtitle,l.lthumnail,l.lorignprice
+		from  lecture l
+		where lidx=#{lidx} ) cl
+	where cl.lidx = ltd.lidx and cl.lidx=lad.lidx 
+	</select>
+	
+	<!-- 2-2. 결제정보 업데이트 -->
+	<insert id="updatePurchase" parameterType="com.edume.student.model.PurchaseDTO">
+	insert into purchase values(purchase_idx.nextval, #{midx},#{lidx},#{pprice},#{pteacherincome},#{padminincome}, sysdate)
+	</insert>
+	
+	<select id="searchLectureMidx" resultType="Integer">
+	select midx from lecture where lidx=#{lidx}
+	</select>
+	
+	<update id="updateUserCredit" parameterType="Map">
+	update member set mcredit = mcredit+#{dto.pteacherincome} where midx=#{teacherMidx}
+	</update>
+	<!-- 3. 크레딧에 정보 기록 -->
+	<insert id="updateCreditHistory" parameterType="Map">
+	insert into credit values(credit_idx.nextval, #{teacherMidx}, 1, #{dto.pteacherincome},'강의 판매 금액',sysdate )
+	</insert>
+	
+	<!--3. 장바구니 삭제  -->
+	<!--위에 Delete 활용 -->
+	<!--  -->
+	
  </mapper>

@@ -11,25 +11,28 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
 <style>
-body{
-padding-left:100px;
+.all{
+	height: 900px;
+	display: table;
+	margin: auto;
+	padding-top: 55px;
 }
 a:link { color: black; text-decoration: none;}
- a:visited { color: black; text-decoration: none;}
- a:hover { color: black; text-decoration: underline;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: #black; text-decoration: none;}
 	
-	 table, th, td {
-        border-bottom: 1px solid #bcbcbc;
-      
-      }
-      table {
-        width: 900px;
-
-      }
-      th{
-      	 text-align: left;
-      }
-       .adminPage_button{
+table {
+    text-align: center;
+    margin-top: 20px;
+}
+    
+th{
+    text-align: center;
+}
+th, td{
+    vertical-align: middle;
+}
+.adminPage_button{
 	width:110px;
 	height:30px;
     background-color:#4F94CD;
@@ -66,6 +69,7 @@ a:link { color: black; text-decoration: none;}
 </head>
 <body>
 
+<div class="all">
 <div style="width: 1200px; text-align: right;"><input type="button" value="관리자페이지" class="adminPage_button" onclick = "location.href = 'admin.do'" ></div>
 
 <h3 style=" width:600px; padding-bottom: 5px; padding-top: 20px;" >문의사항</h3>
@@ -93,7 +97,7 @@ a:link { color: black; text-decoration: none;}
 	</c:if>
 	<c:forEach var="dto" items="${list }">
 		<tr>
-			<td height="41"><a href="commonQnaContent.do?cqidx=${dto.cqidx }&midx=${sessionScope.midx}"><font color="	#00008B"><b>${dto.lqsubject }</b></font></a></td>
+			<td height="41"><a href="commonQnaContent.do?cqidx=${dto.cqidx }&midx=${sessionScope.midx}"><font color="	#00008B"><b>${dto.cqsubject }</b></font></a></td>
 			<td>${dto.mname }</td>
 			<td>
 			<fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dto.lqwritedate }"/>
@@ -107,16 +111,13 @@ a:link { color: black; text-decoration: none;}
 
 	</c:forEach>
 
-</tbody>
-	<tfoot>
-		<tr>
-			<td colspan="4" ></td>
-		</tr>
-	</tfoot>
-</table>
 
-	<div align="center" style="width:1000px; padding-top: 8px; ">
-	${pageStr }
-	</div>
+
+	</table>
+	
+		<div align="center" style="padding-top: 8px; ">
+		${pageStr }
+		</div>
+</div>
 </body>
 </html>

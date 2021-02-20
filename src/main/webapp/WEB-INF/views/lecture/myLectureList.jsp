@@ -11,14 +11,19 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
-	test
+	<div class=row>
+	<div class="col-2"></div>
+	<h1>나의 강의 목록</h1>
+	<br><br><br><br>
+	</div>
+	
 	<div class="col-container">
 	<div class="row">
-	<c:forEach var="lecture" items="${myLectureList }">
+	<c:forEach var="lecture" items="${myLectureList }" varStatus="status">
 	<c:if test="${status.index%4 == 0 }"><div class="col-2"></div></c:if>
 	<div class="col-2">
 		<div class="card" style="width: 18rem;">
-			<img src="img/checkbox.svg" class="card-img-top" alt="...">
+			<img src="img/${lecture.lthumnail}" class="card-img-top" alt="...">
 			<div class="card-body">
 				<h5 class="card-title">${lecture.ltitle }</h5>
 				<p class="card-text">${lecture.lsubtitle }</p>
@@ -26,7 +31,7 @@
 			</div>
 		</div>
 	</div>
-	<c:if test="${status.index%4 == 0 }"><div class="col-2"></div></c:if>
+	<c:if test="${status.index%4 == 3 }"><div class="col-2"></div></c:if>
 	</c:forEach>
 	</div>
 	</div>

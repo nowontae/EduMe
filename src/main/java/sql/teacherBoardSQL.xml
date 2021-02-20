@@ -10,9 +10,9 @@
   <select id="teacherBoardAskList" resultType="com.edume.teacherBoard.model.TeacherBoardDTO">
   	select * 
 from (select rownum as rnum,a.* 
-      from (select b.* 
-from (select lecture.lidx from lecture where midx=#{midx}) a, lectureQna b
-where a.lidx=b.lidx) a) b 
+      from (select b.*, a.ltitle, m.mname
+from (select lecture.lidx, lecture.ltitle from lecture where midx=#{midx}) a, lectureQna b, member m
+where a.lidx=b.lidx and b.midx=m.midx) a) b 
 where rnum <![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
   </select>
   
@@ -20,19 +20,20 @@ where rnum <![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
   <select id="boardAskReplyYList" resultType="com.edume.teacherBoard.model.TeacherBoardDTO">
   select * 
 from (select rownum as rnum,a.* 
-      from (select b.* 
-from (select lecture.lidx from lecture where midx=#{midx}) a, (select * from lectureQna where lqreply='Y') b
-where a.lidx=b.lidx) a) b 
+      from (select b.*, a.ltitle, m.mname
+from (select lecture.lidx, lecture.ltitle from lecture where midx=#{midx}) a, (select * from lectureQna where lqreply='Y') b, member m
+where a.lidx=b.lidx and b.midx=m.midx) a) b 
 where rnum <![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
+
   </select>
   
   
   <select id="boardAskReplyNList" resultType="com.edume.teacherBoard.model.TeacherBoardDTO">
   select * 
 from (select rownum as rnum,a.* 
-      from (select b.* 
-from (select lecture.lidx from lecture where midx=#{midx}) a, (select * from lectureQna where lqreply='N') b
-where a.lidx=b.lidx) a) b 
+      from (select b.*, a.ltitle, m.mname
+from (select lecture.lidx, lecture.ltitle from lecture where midx=#{midx}) a, (select * from lectureQna where lqreply='N') b, member m
+where a.lidx=b.lidx and b.midx=m.midx) a) b 
 where rnum <![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
   </select>
   

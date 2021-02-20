@@ -107,6 +107,8 @@ function clickNextBtn(){
 </script>
 </head>
 <body>
+<%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
+
 <h1>${lidx}</h1>
 	<input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do'">
 <form id="createLectureSave" name="createLectureSave" action="createLectureSave.do?lidx=${dto.lidx}" method="post" enctype="multipart/form-data">
@@ -309,6 +311,6 @@ function clickNextBtn(){
 	<input type="button" value="다음" onclick="clickNextBtn()">
 </div>
 	
-
+<%@include file="/WEB-INF/views/teacher/teacherFooter.jsp" %>
 </body>
 </html>

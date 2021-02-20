@@ -8,26 +8,33 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
 <div>
 	<h2>공지 본문</h2>
 </div>
 
-<table>
+<table class="table" style="width:50%">
 	<tr>
-		<td>강의번호 ${dto.lidx}</td>
+		<td scope="row"  >강의 이름 </td>
+		<td >${dto.ltitle}</td>
 	</tr>
 	
 	<tr>
-		<td>제목 ${dto.nsubject}</td>
+		<td scope="row">공지 제목 </td>
+		<td>${dto.nsubject}</td>
 	</tr>
 	
 	<tr>
-		<td colspan="2"><img width="300" height="300" src="${dto.nimg}"></td>
+		<td scope="row">공지 사진 </td>
+		<td><img width="300" height="300" src="${dto.nimg}"></td>
 	</tr>
 	
 	<tr>
-		<td colspan="2"><textarea readonly rows="6" cols="45" name="ncontent"> ${dto.ncontent}</textarea></td>
+		<td scope="row">공지 내용</td>
+		<td><textarea readonly rows="6" cols="45" name="ncontent"> ${dto.ncontent}</textarea></td>
 	</tr>
 </table>
+
+<%@include file="/WEB-INF/views/teacher/teacherFooter.jsp" %>
 </body>
 </html>

@@ -48,11 +48,12 @@
 	</insert>
 	
 	<!-- 공지 글쓰기 본문 -->
-	<select id="teacherNoticeContent" parameterType="Integer" resultType="com.edume.teacherBoardNotice.model.TeacherBoardNoticeDTO">
-		select * from 
-			notice 
+	<select id="teacherNoticeContent" parameterType="Map" resultType="com.edume.teacherBoardNotice.model.TeacherBoardNoticeDTO">
+		select n.*, l.* 
+		from 
+			notice n, (select ltitle from lecture where lidx=#{lidx} ) l
 		where
-			nidx=#{nidx} 
+			n.nidx=#{nidx} 
 	</select>
 	
 	<select id="noticeTotalCnt" resultType="Integer">

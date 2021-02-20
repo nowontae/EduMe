@@ -11,26 +11,27 @@
 
 
 <style>
-body{
-padding-left:100px;
+.all{
+	height: 900px;
+	display: table;
+	margin: auto;
+	padding-top: 55px;
 }
 a:link { color: black; text-decoration: none;}
- a:visited { color: black; text-decoration: none;}
- a:hover { color: black; text-decoration: underline;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: black; text-decoration: none;}
 	
-	 table, th, td {
-        border-bottom: 1px solid #bcbcbc;
-      
-      }
-      table {
-        width: 1100px;
-
-      }
-      th{
-      	 text-align: left;
-      }
-      
-
+table {
+    text-align: center;
+    margin-top: 20px;
+}
+    
+th{
+    text-align: center;
+}
+th, td{
+    vertical-align: middle;
+}
      .dreason{
      	display:inline-block; 
      	width:180px; 
@@ -58,47 +59,50 @@ a:link { color: black; text-decoration: none;}
       
 </style>
 </head>
-<body><div style="width: 1200px; text-align: right;"><input type="button" value="관리자페이지" class="adminPage_button" onclick = "location.href = 'admin.do'" ></div>
+<body>
 
-<h3 style=" width:600px; padding-bottom: 5px; padding-top: 20px;" >리뷰 신고</h3>
-
-<div style="width: 1100px;  height: 40px; display: table-cell; background-color:#CDC0B0;  vertical-align: middle;" >
-&nbsp;&nbsp;&nbsp;<a href="admin_reviewDeclaration.do">전체보기</a> &nbsp; |&nbsp; <a href="reviewDeclaration_CheckedinformationList.do"><b>확인 전인 것들 0</b></a> &nbsp;   | &nbsp; <a href="admin_reviewDeclaration_approvedList.do">승인 내역 조회 Y</a> &nbsp; |&nbsp;  <a href="admin_reviewDeclaration_NotapprovedList.do">미승인 내역 조회 N</a>
+<div class="all">
+	<div style="width: 1200px; text-align: right;"><input type="button" value="관리자페이지" class="adminPage_button" onclick = "location.href = 'admin.do'" ></div>
+	
+	<h3  style="height:50px;">리뷰 신고</h3>
+	<div style="background-color:#CDC0B0;  vertical-align: middle; padding-top: 3px; font-size: 16px; height: 30px;" >
+	&nbsp;&nbsp;&nbsp;<a href="admin_reviewDeclaration.do">전체보기</a> &nbsp; |&nbsp; <a href="reviewDeclaration_CheckedinformationList.do"><b>확인 전인 것들 0</b></a> &nbsp;   | &nbsp; <a href="admin_reviewDeclaration_approvedList.do">승인 내역 조회 Y</a> &nbsp; |&nbsp;  <a href="admin_reviewDeclaration_NotapprovedList.do">미승인 내역 조회 N</a>
+	</div>
+	
+	<form>
+	<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">강의명</th>
+			<th scope="col">신고한 사람</th>
+			<th scope="col">신고 받은 사람</th>
+			
+			<th scope="col">신고사유<!-- (표에 맞게 글자수 보여주고 )--></th>
+			<th scope="col">신고한 시간</th>
+			<th scope="col">상태</th>
+		</tr>
+	</thead>
+	<tbody>
+	<c:if test="${empty list }">
+		<tr>
+			<td colspan="7" >등록된 신고글이 없습니다.</td>
+		</tr>
+	</c:if>
+	<c:forEach var="dto" items="${list }">
+		<tr>
+			<td height="41" scope="row">${dto.ltitle }</td>
+			<td>${dto.m_from_name}</td>
+			<td>${dto.m_to_name }</td>
+					<td><div class="dreason"><a href="reviewDeclaration_Content.do?didx=${dto.didx} "><font color="	#00008B"><b>${dto.dreason }</b></font></a></div></td>
+			<td>${dto.ddate }</td>
+			<td>${dto.dstatus }</td>
+		</tr>
+	</c:forEach>
+	</tbody>
+	</table>
+	
+	
+	</form>
 </div>
-<form>
-<table border="0" cellspacing="0" style="margin-top: 10px;">
-<thead>
-	<tr>
-		<th width="250px" height="41">강의명</th>
-		<th width="150px">신고한 사람</th>
-		<th width="150px">신고 받은 사람</th>
-		
-		<th width=" 220">신고사유<!-- (표에 맞게 글자수 보여주고 )--></th>
-		<th width="170px">신고한 시간</th>
-		<th width="130px">상태</th>
-	</tr>
-</thead>
-<tbody>
-<c:if test="${empty list }">
-	<tr>
-		<td colspan="7"height="41" align="center" >등록된 신고글이 없습니다.</td>
-	</tr>
-</c:if>
-<c:forEach var="dto" items="${list }">
-	<tr>
-		<td height="41">${dto.ltitle }</td>
-		<td>${dto.m_from_name}</td>
-		<td>${dto.m_to_name }</td>
-				<td><div class="dreason"><a href="reviewDeclaration_Content.do?didx=${dto.didx} "><font color="	#00008B"><b>${dto.dreason }</b></font></a></div></td>
-		<td>${dto.ddate }</td>
-		<td>${dto.dstatus }</td>
-	</tr>
-</c:forEach>
-</tbody>
-</table>
-
-
-</form>
-
 </body>
 </html>

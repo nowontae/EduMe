@@ -6,7 +6,9 @@ public class TeacherBoardDTO {
 	
 	private int lqidx;
 	private int midx;
+	private String mname;
 	private int lidx;
+	private String ltitle;
 	private String lqsubject;
 	private String lqcontent;
 	private Date lqwritedate;
@@ -42,6 +44,23 @@ public class TeacherBoardDTO {
 		super();
 		this.lqidx = lqidx;
 		this.midx = midx;
+		this.lqReplyContent = lqReplyContent;
+		this.lqReplyCritedate = lqReplyCritedate;
+	}
+	
+	
+	public TeacherBoardDTO(int lqidx, int midx, String mname, int lidx, String ltitle, String lqsubject, String lqcontent,
+			Date lqwritedate, String lqreply, String lqReplyContent, Date lqReplyCritedate) {
+		super();
+		this.lqidx = lqidx;
+		this.midx = midx;
+		this.mname = mname;
+		this.lidx = lidx;
+		this.ltitle = ltitle;
+		this.lqsubject = lqsubject;
+		this.lqcontent = lqcontent;
+		this.lqwritedate = lqwritedate;
+		this.lqreply = lqreply;
 		this.lqReplyContent = lqReplyContent;
 		this.lqReplyCritedate = lqReplyCritedate;
 	}
@@ -98,6 +117,18 @@ public class TeacherBoardDTO {
 	}
 	public void setLqReplyCritedate(Date lqReplyCritedate) {
 		this.lqReplyCritedate = lqReplyCritedate;
+	}
+	public String getMname() {
+		return mname;
+	}
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
+	public String getLtitle() {
+		return ltitle;
+	}
+	public void setLtitle(String ltitle) {
+		this.ltitle = ltitle;
 	}
 	
 	

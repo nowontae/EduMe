@@ -43,6 +43,7 @@ public class IndexController {
     	session.setAttribute("midx", "2");
 
 
+
     	List cat1_list = category1Dao.Category1List();
     	List cat2_list = category2Dao.Category2AllList();
     	List cat3_list = category3Dao.Category3AllList();
