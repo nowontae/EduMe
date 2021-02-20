@@ -26,6 +26,9 @@
 .blank{
 	padding-right: 10px;
 }
+#infoTable th, td{
+	text-align:left !important;
+}
 </style>
 </head>
 <body>
@@ -33,30 +36,40 @@
 <div id="payTitle">
 	<h2>강사 수익 지급 요청</h2>
 </div>
-<table class="table">
-<div id="textBottom">
-	현재 요청 가능한 잔액: <input type="text" id="remainingAmount" value="${teacherMoney}" readonly="readonly">&nbsp;&nbsp;
-	*현 날짜 1달 전까지의 총잔액입니다.
-</div>
 <form action="paymentRequestSubmit.do" name="paymentRequest">
-<span class="blank">은행명: <input type="text" name="tbank" value="${dto.tbank}" readonly="readonly"></span>
-<span class="blank">계좌주: <input type="text" name="tacctname" value="${dto.tacctname}" readonly="readonly"></span>
-<span class="blank">계좌번호: <input type="text" name="tacctnum" value="${dto.tacctnum}" readonly="readonly"></span>
-<span class="blank">
-	<input type="hidden" name="midx" value="${midx}">
-		요청할 금액: <input type="text" name="pay_amount" required="required"> <input type="submit" value="요청하기">
-</span>
-</form>
+<table id="infoTable" class="table border-0" style="width:50vw">
+	<tr>
+		<th>현재 요청 가능한 잔액</th>
+		<td><input type="text" id="remainingAmount" value="${teacherMoney}" readonly="readonly">&nbsp;&nbsp;
+	*현 날짜 1달 전까지의 총잔액입니다.</td>
+	</tr>
+	<tr>
+		<th>은행명</th>
+		<td><input type="text" name="tbank" value="${dto.tbank}" readonly="readonly"></td>
+	</tr>
+	<tr>
+		<th>은행명</th>
+		<td><input type="text" name="tacctname" value="${dto.tacctname}" readonly="readonly"></td>
+	</tr>
+	<tr>
+		<th>계좌번호</th>
+		<td> <input type="text" name="tacctnum" value="${dto.tacctnum}" readonly="readonly"></td>
+	</tr>
+	<tr>
+		<th>요청할 금액</th>
+		<td><input type="text" name="pay_amount" required="required"> <input type="submit" class="btn btn-primary" value="요청하기"></td>
+	</tr>
 </table>
+</form>
 
 <div id="requestWait">
 <h4>요청 대기</h4>
-	<table class="table">
+	<table class="table" style="width:50vw">
 		<thead>
 			<tr>
-				<th>요청 금액</th>
-				<th>요청 시간</th>
-				<th>요청 상태</th>
+				<th scope="col">요청 금액</th>
+				<th scope="col">요청 시간</th>
+				<th scope="col">요청 상태</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -67,7 +80,7 @@
 			</c:if>
 			<c:forEach var="dto" items="${arr}">
 				<tr>
-					<td><fmt:formatNumber value="${dto.pay_amount}" pattern="#,###"/></td>
+					<td scope="row"><fmt:formatNumber value="${dto.pay_amount}" pattern="#,###"/></td>
 					<td>${dto.pay_reqDate}</td>
 					<td>대기중</td>
 				</tr>
@@ -77,12 +90,12 @@
 </div>
 <div>
 <h4>지급 완료</h4>
-	<table class="table">
+	<table class="table" style="width:50vw">
 		<thead>
 			<tr>
-				<th>요청 금액</th>
-				<th>요청 완료 시간</th>
-				<th>요청 상태</th>
+				<th scope="col">요청 금액</th>
+				<th scope="col">요청 완료 시간</th>
+				<th scope="col">요청 상태</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -93,7 +106,7 @@
 			</c:if>
 			<c:forEach var="dto2" items="${arr2}">
 				<tr>
-					<td><fmt:formatNumber value="${dto2.pay_amount}" pattern="#,###"/></td>
+					<td scope="row"><fmt:formatNumber value="${dto2.pay_amount}" pattern="#,###"/></td>
 					<td>${dto2.pay_date}</td>
 					<td>지급 완료</td>
 				</tr>

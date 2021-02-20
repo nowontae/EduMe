@@ -19,7 +19,7 @@
 	
 	<div class="col-container">
 	<div class="row">
-	<c:forEach var="lecture" items="${myLectureList }">
+	<c:forEach var="lecture" items="${myLectureList }" varStatus="status">
 	<c:if test="${status.index%4 == 0 }"><div class="col-2"></div></c:if>
 	<div class="col-2">
 		<div class="card" style="width: 18rem;">
@@ -31,7 +31,7 @@
 			</div>
 		</div>
 	</div>
-	<c:if test="${status.index%4 == 0 }"><div class="col-2"></div></c:if>
+	<c:if test="${status.index%4 == 3 }"><div class="col-2"></div></c:if>
 	</c:forEach>
 	</div>
 	</div>

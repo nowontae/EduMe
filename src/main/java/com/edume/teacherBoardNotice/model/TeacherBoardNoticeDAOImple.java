@@ -36,8 +36,13 @@ public class TeacherBoardNoticeDAOImple implements TeacherBoardNoticeDAO {
 
 	/*글쓰기 본문보기*/
 	@Override
-	public TeacherBoardNoticeDTO teacherNoticeContent(int nidx) {
-		TeacherBoardNoticeDTO dto=sqlMap.selectOne("teacherNoticeContent", nidx);
+	public TeacherBoardNoticeDTO teacherNoticeContent(int nidx, int lidx) {
+		
+		Map map = new HashMap();
+		map.put("nidx", nidx);
+		map.put("lidx", lidx);
+		
+		TeacherBoardNoticeDTO dto=sqlMap.selectOne("teacherNoticeContent", map );
 		return dto;
 	}
 	

@@ -9,7 +9,7 @@
 <script>
 var count=0;
 function sectionAdd(){
-	count = $('.sec_num').length + 1; //현재 전체 섹션 수
+count = $('.sec_num').length + 1; //현재 전체 섹션 수
 	
 	var lastDIV="";
 	
@@ -113,7 +113,8 @@ function remove1(target, cnt){
 </script>
 </head>
 <body>
-<input type="button" value="<강좌로 돌아가기" onclick="location.href='createLectureUpdate.do?lidx=${lidx}'">
+<%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
+<input type="button" class="btn btn-primary" value="<강좌로 돌아가기" onclick="location.href='createLectureUpdate.do?lidx=${lidx}'">
 <form name="lectureCurriculum" action="lectureCurriculumSubmit.do?lidx=${lidx}" method="post" enctype="multipart/form-data">
 
 <div id="curriculum">
@@ -126,16 +127,19 @@ function remove1(target, cnt){
 </div>
 
 <div>
-	<input type="button" value="섹션 추가" onclick="sectionAdd()">
+	<input type="button" class="btn btn-secondary" value="섹션 추가" onclick="sectionAdd()">
 </div>
 
 <div id="sectionTotal"></div>
 
 <div>
-	<input type="button" value="이전" onclick="location.href='createLectureMain.do'">
+	<input type="button" class="btn btn-primary" value="이전" onclick="location.href='createLectureMain.do'">
 </div>
 </div>
-	<input type="submit" value="제출">
+	<input type="submit" class="btn btn-primary" value="제출">
 </form>
+
+
+<%@include file="/WEB-INF/views/teacher/teacherFooter.jsp" %>
 </body>
 </html>

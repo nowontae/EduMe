@@ -192,10 +192,18 @@ public class StudentController {
 	public ModelAndView myCart(HttpServletRequest req) {
 		HttpSession session=req.getSession();
 		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		System.out.println("cart midx=" + midx);
 		ArrayList list=cartDao.myCartList(midx);
+		
+		int lastPrice = 0;
+		for(int i=0;i< list.size(); i++) {
+			CartDTO tmp = (CartDTO)list.get(i);
+			lastPrice += tmp.getLlastprice();
+		}
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("Sesseion_midx",midx);
 		mav.addObject("list",list);
+		mav.addObject("lastPrice",lastPrice);
 		mav.setViewName("myPage/myCart");
 		return mav;
 	}
@@ -226,6 +234,31 @@ public class StudentController {
 		mav.setViewName("myPage/myCartMsg");
 		return mav;
 	}
+	//내 장바구니 페이지에서 결제
+	@RequestMapping("/myCart_PurchaseLecture.do")
+	public ModelAndView myCart_PurchaseLecture(HttpServletRequest request, int midx) {
+		String[] arr=request.getParameterValues("lidx");
+		   int result=0;
+		   for(int i=0;i<arr.length;i++) {
+			   
+			   System.out.println("하나씩 결제 시작");
+			   System.out.println("midx="+midx+"/lidx="+arr[i]);
+			   int lidx=Integer.parseInt(arr[i]);
+			   
+			// 장바구니에서 구매 -1 (구매 목록 등록)  
+			// 장바구니에서 구매 -2 (장바구니 삭제 )
+			// 장바구니에서 구매 -3 (결제내역 등록)
+			// 장바구니에서 구매 -4 (크레딧 등록)
+			   result+=cartDao.myCart_PurchaseLecture(midx, lidx); // result = 1
+			   result+=cartDao.myCart_updatePurchase(midx, lidx);  // result = 1 + 3
+			   result+=cartDao.myCart_delete(midx, lidx); // result = 1 + 3 + 1
+		   }
+		String msg=	result==5*arr.length?"구매완료":"에러 발생";
+		ModelAndView mav =new ModelAndView();
+		mav.addObject("msg",msg);
+		mav.setViewName("myPage/myCartMsg");
+		return mav;
+	}
 	
 
 		
@@ -238,7 +271,6 @@ public class StudentController {
 		int midx = Integer.parseInt((String)session.getAttribute("midx"));
 		
 		List list = lectureDao.getMyLectureList(midx);
-		
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("lecture/myLectureList");
 		mav.addObject("myLectureList", list);

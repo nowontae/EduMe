@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>  
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>      
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +13,12 @@
     margin-top: 35px;
 }
 .table {
-    width: 100%;
+    width: 50vw !important;
     margin-bottom: 1rem;
     color: #212529;
+}
+.table td{
+	vertical-align: middle !important;
 }
 </style>
 </head>
@@ -47,10 +51,10 @@
 			<tr>
 				<td>${dto.nidx}</td>
 				<td>${dto.lidx}</td>
-				<td><a href="teacherNoticeContent.do?nidx=${dto.nidx}">${dto.nsubject}</a></td>
+				<td><a href="teacherNoticeContent.do?nidx=${dto.nidx}&lidx=${dto.lidx}">${dto.nsubject}</a></td>
 				<td>${dto.ncontent}</td>
 				<td><img width="100" height="100" src="${dto.nimg}"></td>
-				<td>${dto.nwritedate}</td>
+				<td><fmt:formatDate value="${dto.nwritedate}" pattern="yyyy-MM-dd HH:mm"/></td>
 			</tr>
 		</c:forEach>
 	</tbody>

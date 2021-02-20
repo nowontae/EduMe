@@ -22,7 +22,6 @@ function value_check(midx) {
         if (document.getElementsByName("ck")[i].checked == true) {
         	var lidx=document.getElementsByName("lidx")[i].value;
         	
-        	console.log("111");
            // alert(document.getElementsByName("ck")[i].value);
            params  +=  "&lidx="+lidx;
            
@@ -32,10 +31,44 @@ function value_check(midx) {
    // alert(params);
     location.href="myCart_SelectDelete.do"+params;
 }
-function show(){
-	
+function purchaseLecture(midx){
+
+    var check_count = document.getElementsByName("ck").length;
+    var params = "";
+    for (var i=0; i<check_count; i++) {
+        if (document.getElementsByName("ck")[i].checked == true) {
+        	var lidx=document.getElementsByName("lidx")[i].value;
+        	
+           // alert(document.getElementsByName("ck")[i].value);
+           params  +=  "&lidx="+lidx;
+           
+        }
+    }
+    params = "?midx="+midx+params;
+   // alert(params);
+    location.href="myCart_PurchaseLecture.do"+params;
 	 
 }
+
+function changePrice(){
+	
+	var check_count = document.getElementsByName("ck").length;
+    var totalPrice = 0;
+    for (var i=0; i<check_count; i++) {
+        if (document.getElementsByName("ck")[i].checked == true) {
+        	var tmp = document.getElementsByName("lastPrice")[i].innerText;
+        	tmp = tmp.substring(1,tmp.length);
+        	tmp = tmp.replace(',','');
+        	tmp = Number.parseInt(tmp.substring(1,tmp.length));
+        	totalPrice += tmp;
+        }
+    }
+    
+    var changePrice = new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW' }).format(totalPrice);
+    var targetPosition = document.getElementById("lastPrice");
+    targetPosition.innerText=changePrice;
+}
+
 </script>
 <style>
 .all{
@@ -139,9 +172,8 @@ th, td{
 	<c:forEach var="dto" items="${list }" varStatus="status">
 		
 			<tr>
-
 				<td rowspan="2" width="40px">
-				<input type="checkbox" name="ck" id="lectureName${status.index }" class="checkbox" value="${dto.lidx  }">
+				<input type="checkbox" name="ck" id="lectureName${status.index }" class="checkbox" value="${dto.lidx  }" checked="checked" onchange="changePrice()">
 				<input type="hidden" id="lidx_value${status.index }" name="lidx" value="${dto.lidx }">
 				<input type="hidden" value="${dto.midx }">
 				</td>
@@ -154,11 +186,18 @@ th, td{
 			</tr>
 			<tr>
 					<td style="padding-bottom: 10px;">
-					<font style="color: red;"><b><fmt:formatNumber value="${dto.llastprice}" pattern="₩ #,###,###"/></b></font>
+					<font style="color: red;"><b name="lastPrice"><fmt:formatNumber value="${dto.llastprice}" pattern="₩ #,###,###"/></b></font>
 
 					</td>
 			</tr>
 	</c:forEach>
+	
+		<tr>
+			<td colspan="2"></td>
+			<td>최종 결제 금액</td>
+			<td><font style="color: red; font-size: 25px"><b id="lastPrice"><fmt:formatNumber value="${lastPrice}" pattern="₩ #,###,###"/></b></font></td>
+			<td></td>
+		</tr>
 		<tr>
 			
 			<td colspan="5" style="border-bottom: none; padding-top: 5px;" align="left">
@@ -168,12 +207,13 @@ th, td{
 				<c:otherwise>
 					<input type="button" class="selectDel_bt" value="선택 삭제" onclick="javascript:value_check(${sessionScope.midx})">
 					<!-- location.href='myCart_SelectDelete.do?midx=${sessionScope.midx}&lidx=${dto.lidx } -->
-					<input type="submit" class="bt" value="결제">
+					<input type="button" class="bt" value="결제" onclick="javascript:purchaseLecture(${sessionScope.midx})">
 				</c:otherwise>
 			</c:choose>
 			</td>
 		</tr>
-		</table>
+		
+	</table>
 		
 		
 	</form>

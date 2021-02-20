@@ -8,25 +8,36 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
+
+<div class="text-right my-3" style="width:50vw">
+<form action="replyCheckY.do" name="replyCheckY">
+<input type="hidden" value="${dto.lqidx}" name="lqidx">
+<input type="hidden" value="${dto.midx}" name="midx">
+<input type="submit" class="btn btn-primary" value="답변완료로 바꾸기">
+</form>
+</div>
 <form action="teacherAnswerSubmit.do" name="lqreplyForm">
-<table style="width: 700px;">
+<table class="table" style="width: 50vw;">
 	<thead>
 		<tr>
-			<th>문의접수 번호</th>
+			<td scope="row">문의접수 번호</th>
 			<td>${dto.lqidx}</td>
-			<th>회원번호</th>
+			<td>회원번호</th>
 			<td>${dto.midx}</td>
-			<th>강의번호</th>
+			<td>강의번호</th>
 			<td>${dto.lidx}</td>
 		</tr>
 		<tr>
-			<th>제목</th>
+			<td scope="row">제목</th>
 			<td colspan="3">${dto.lqsubject}</td>
-			<th>작성일</th>
+			<td>작성일</th>
 			<td>${dto.lqwritedate}</td>
 		</tr>
 		<tr>
-			<td colspan="6" align="left" valign="top">
+			<td scope="row" >문의 내용</td>
+			<td colspan="5" align="left" valign="top">
 				<textarea rows="10" cols="100" readonly="readonly">${dto.lqcontent}</textarea>
 			</td>
 		</tr>
@@ -34,7 +45,7 @@
 	<tbody>
 		<c:if test="${empty list}">
 			<tr>
-				<td></td>
+				<td colspan="6" class="border-top-0"></td>
 			</tr>
 		</c:if>
 		<c:forEach var="arr" items="${list}">
@@ -47,18 +58,16 @@
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="5"><textarea rows="3" cols="80" name="lqReplyContent"></textarea></td>
-			<td><input type="submit" value="댓글 작성"></td>
+			<td></td>
+			<td colspan="4"><textarea rows="3" cols="90" name="lqReplyContent"></textarea></td>
+			<td><input type="submit" class="btn btn-primary" value="댓글 작성"></td>
 		</tr>
 	</tfoot>
 </table>
 <input type="hidden" value="${dto.lqidx}" name="lqidx">
 <input type="hidden"  value="${dto.midx}" name="midx">
 </form>
-<form action="replyCheckY.do" name="replyCheckY">
-<input type="hidden" value="${dto.lqidx}" name="lqidx">
-<input type="hidden" value="${dto.midx}" name="midx">
-<input type="submit" value="답변완료로 바꾸기">
-</form>
+
+<%@include file="/WEB-INF/views/teacher/teacherFooter.jsp" %>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>      
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +9,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
 <div>
 	<h2>${ltitle} 후기</h2>
 </div>
 
-<table>
+<table class="table" style="width:50vw">
 	<thead>
-	<tr>
+	<tr scope="col">
 		<th>회원ID</th>
 		<th>내용</th>
 		<th>별점</th>
@@ -24,7 +26,7 @@
 	<tbody>
 		<c:if test="${empty list}">
 			<tr>
-				<td colspan="4" align="center">
+				<td scope="row" colspan="4" align="center">
 				등록된 게시글이 없습니다.
 				</td>
 			</tr>
@@ -32,13 +34,15 @@
 		
 		<c:forEach var="dto" items="${list}">
 			<tr>
-				<td>${dto.mid}</td>
+				<td scope="row" >${dto.mid}</td>
 				<td>${dto.rcomment}</td>
 				<td>${dto.rscore}</td>
-				<td>${dto.rwritedate}</td>
+				<td><fmt:formatDate value="${dto.rwritedate}" pattern="yyyy-MM-dd HH:mm"/></td>
 			</tr>
 		</c:forEach>
 	</tbody>
 </table>	
+
+<%@include file="/WEB-INF/views/teacher/teacherFooter.jsp" %>
 </body>
 </html>

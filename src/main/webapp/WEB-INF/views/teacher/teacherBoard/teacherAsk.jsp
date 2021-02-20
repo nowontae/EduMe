@@ -21,7 +21,7 @@
 <body>
 <%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
 <div id="ask"><h2>문의</h2></div>
-<table class="table">
+<table class="table" style="width:50vw">
 <thead>
 <tr>
 	<td colspan="2"><a href="teacherAsk.do?cp=1&midx=${midx}&boardtype=A">모두보기</a></td>
@@ -29,12 +29,12 @@
 	<td colspan="2"><a href="teacherAsk.do?cp=1&midx=${midx}&boardtype=N">답변미완료</a></td>
 </tr>
 <tr>
-	<th>문의 고유번호</th>
-	<th>제목</th>
-	<th>회원 고유번호</th>
-	<th>강의 고유번호</th>
-	<th>작성 일자</th>
-	<th>댓글 작성 여부</th>
+	<th scope="col">번호</th>
+	<th scope="col">질문 제목</th>
+	<th scope="col">회원 이름</th>
+	<th scope="col">강의 제목</th>
+	<th scope="col">작성 일자</th>
+	<th scope="col">댓글 작성 여부</th>
 </tr>
 </thead>
 <tbody>
@@ -47,10 +47,10 @@
 </c:if>
 <c:forEach var="dto" items="${list}">
 	<tr>
-		<td>${dto.lqidx}</td>
+		<td scope="row">${dto.lqidx}</td>
 		<td><a href="teacherAnswer.do?midx=${dto.midx}&lqidx=${dto.lqidx}">${dto.lqsubject}</a></td>
-		<td>${dto.midx}</td>
-		<td>${dto.lidx}</td>
+		<td>${dto.mname}</td>
+		<td>${dto.ltitle}</td>
 		<td>${dto.lqwritedate}</td>
 		<td>${dto.lqreply}</td>
 	</tr>

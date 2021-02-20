@@ -16,4 +16,11 @@ public interface CartDAO {
 	
 	//장바구니 담기
 	public int addMyCartList(int midx, int lidx);
+	
+	//장바구니에서 구매
+	public int myCart_PurchaseLecture(int midx, int lidx);
+	
+	public int myCart_updatePurchase(int midx, int lidx);
+	
+	public int myCart_updateCredit(int midx, int lidx);
 }
