@@ -219,18 +219,18 @@ input,textarea:focus {
 			<td  scope="col"    style="border-bottom:none;">${dt.mname }</td>
 			<td    style="border-bottom:none;" name="cqreplycontent"  scope="col"><textarea id="cqreplycontent${i.index}" readonly="readonly"  rows="6" cols="70" name="cqreplycontent" style="border-radius: 10px; resize: none; ">${dt.cqreplycontent }</textarea></td>
 			<c:if test="${Session_midx eq dt.midx }">
-				<td  scope="col"><input type="button" id="update_btn${i.index }" value="수정" class="release_Add_button" onclick="javascript:updateForm(${dt.cqreply_idx },${dt.cqidx },${i.index},${sessionScope.midx } )"></td>
-				<td  scope="col"><input type="button" value="삭제" class="release_Add_button" onclick="location.href='Qna_ReplyDelete.do?cqreply_idx=${dt.cqreply_idx }&cqidxx=${dt.cqidx }&midx=${midx }'"></td>
+				<td  scope="col" style="border-bottom:none;"><input type="button" id="update_btn${i.index }" value="수정" class="release_Add_button" onclick="javascript:updateForm(${dt.cqreply_idx },${dt.cqidx },${i.index},${sessionScope.midx } )"></td>
+				<td  scope="col" style="border-bottom:none;"><input type="button" value="삭제" class="release_Add_button" onclick="location.href='Qna_ReplyDelete.do?cqreply_idx=${dt.cqreply_idx }&cqidxx=${dt.cqidx }&midx=${midx }'"></td>
 			</c:if>
 			<c:if test="${Session_midx ne dt.midx }">
-				<td></td>
+				<td style="border-bottom:none;"></td>
 			</c:if>
 		</tr>
 		<tr>
 			<td></td>
 			<td>
 			<fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dt.cqreplywritedate }"/>
-			</td>
+			</td><td colspan="2"></td>
 		</tr>
 	</c:forEach>
 	</table>

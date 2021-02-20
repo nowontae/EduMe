@@ -106,7 +106,7 @@ alert('c');
 					 <c:if test="${dto.ccode==4}">사용됨</c:if>
 				</td>
 				<td><fmt:formatDate value="${dto.cpaydate }" pattern="yyyy년 MM월 dd일"/></td>
-				<td style="color:red;">만료없음 ?? <!--  db없음 . 이렇게 써도 될지 확인!--></td>
+				<td>만료없음</td>
 				<td id="td">
 					<fmt:formatNumber value="${sum }" pattern="#,###,###원"/>
 					<c:out value=""/>
