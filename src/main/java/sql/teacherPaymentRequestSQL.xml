@@ -10,6 +10,13 @@
 		select to_char(add_months(sysdate,-1),'yyyymmdd') 
 		from dual) <![CDATA[>]]> to_char(cpaydate,'yyyymmdd')
 	</select>
+	<select id="teacherPaymentCredit2" resultType="Integer" parameterType="map">
+	select sum(camount) from credit where midx=#{midx} and ccode=2 or ccode=3 and (
+		select to_char(add_months(sysdate,-1),'yyyymmdd') 
+		from dual) <![CDATA[<]]> to_char(cpaydate,'yyyymmdd')
+ 
+	</select>
+	
   	<select id="teacherBankInfo" resultType="com.edume.teacherPaymentRequest.model.TeacherPaymentRequestDTO" parameterType="map">
   		select tbank,tacctname,tacctnum from teacher where midx=#{midx}
   	</select>
@@ -22,4 +29,46 @@
   	<select id="completePaymentRequest" resultType="com.edume.teacherPaymentRequest.model.TeacherPaymentRequestDTO" parameterType="map">
   		select pay_amount,pay_date from payment where midx=#{midx} and pay_reqdate!=pay_date
   	</select>
+  	
+  	<select id="paymentRequest" resultType="com.edume.admin_Payment.model.PaymentDTO">
+  	select b.midx,b.pay_idx,b.pay_amount,b.pay_reqDate,a.tbank,a.tacctname,a.tacctnum
+	from 
+	(select teacher.midx,teacher.tbank,teacher.tacctname,teacher.tacctnum from teacher) a, payment b
+	where a.midx=b.midx and b.pay_reqDate=b.pay_date
+	order by b.pay_reqDate asc
+  	</select>
+  	
+  	<select id="memberAllCredit" resultType="Integer" parameterType="map">
+  		select sum(camount) from credit where midx=#{midx}
+  	</select>
+  	
+  	<update id="updatePaymentDate" parameterType="com.edume.admin_Payment.model.PaymentDTO">
+  		update payment set pay_date=sysdate where pay_idx=#{pay_idx}
+  	</update>
+  	
+  	<insert id="creditPaymentInsert" parameterType="com.edume.admin_Payment.model.PaymentDTO">
+  		insert into credit values(credit_idx.nextval,#{midx},3,-#{camount},#{ccoment},sysdate)
+  	</insert>
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
   </mapper>

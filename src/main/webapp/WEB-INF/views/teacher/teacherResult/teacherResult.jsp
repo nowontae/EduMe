@@ -63,7 +63,12 @@ clear: both;
 	<div id="ResultTitle">
 	<h2>성과</h2>
 	</div>
-	<div id="marginAll">
+
+	<div style="border: 1px solid black;">
+		<div style="border: 1px solid black;" id="ulDiv">
+
+      
+     <div id="marginAll">
 		<div id="line">
 			<ul role="tablist" class="lectureResultUl">
 				<li role="presentation" id="resultA">
@@ -85,7 +90,6 @@ clear: both;
 							</div>
 						</div>
 				</li>
-				<li role="presentation" id="dumiA"></li>
 			</ul>
 		</div>
 		<div id="chartDiv">

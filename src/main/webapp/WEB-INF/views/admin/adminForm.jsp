@@ -79,6 +79,8 @@ h3{
 						<br>
 						<a href="TestVideoManagement.do">테스트 동영상 관리</a>
 						<br>
+						<a href="adminPayment.do">강사 수익 요청 관리</a>
+						<br>
 					</div>
 					<br>
 					<div class="allAdmin">

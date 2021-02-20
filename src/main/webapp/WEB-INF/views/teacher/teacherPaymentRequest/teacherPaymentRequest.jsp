@@ -7,6 +7,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function keyEvent1(){
+var allAmount=document.getElementById('remainingAmount').value;
+var payReq=document.getElementById('paymentRequestMoney').value;
+
+allAmount=parseInt(allAmount);
+payReq=parseInt(payReq);
+
+var reqButton=document.getElementById('reqButton');
+if(allAmount<payReq){
+	
+	reqButton.setAttribute("disabled","disabled");
+}else if(allAmount>=payReq){
+	
+	reqButton.removeAttribute("disabled");
+}
+
+}
+
+</script>
 <style>
 #payTitle{
 	margin-bottom: 40px;

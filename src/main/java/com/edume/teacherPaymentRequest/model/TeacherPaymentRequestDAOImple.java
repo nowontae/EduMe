@@ -28,6 +28,12 @@ public class TeacherPaymentRequestDAOImple implements TeacherPaymentRequestDAO {
 	}
 	
 	@Override
+	public Integer teacherPaymentCredit2(Map map) {
+		Integer count=sqlMap.selectOne("teacherPaymentCredit2", map);
+		return count;
+	}
+	
+	@Override
 	public TeacherPaymentRequestDTO teacherBankInfo(Map map) {
 		TeacherPaymentRequestDTO dto=sqlMap.selectOne("teacherBankInfo", map);
 		return dto;
