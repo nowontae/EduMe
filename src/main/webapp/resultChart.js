@@ -93,7 +93,8 @@ function showResult1(){
 	if(XHR.readyState==4){
 		if(XHR.status==200){
 			
-			var bodyNode=document.getElementById("bodyID");
+			var bodyNode=document.getElementById("svgArea");
+			
 			var svgNode=document.getElementById("chartSvg");
 			bodyNode.removeChild(svgNode);
 			
@@ -176,7 +177,7 @@ function showResult(){
 	if(XHR.readyState==4){
 		if(XHR.status==200){
 			
-			var bodyNode=document.getElementById("bodyID");
+			var bodyNode=document.getElementById("svgArea");
 			var svgNode=document.getElementById("chartSvg");
 			bodyNode.removeChild(svgNode);
 			

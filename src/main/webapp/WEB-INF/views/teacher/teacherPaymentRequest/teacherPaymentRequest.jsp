@@ -7,15 +7,36 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function keyEvent1(){
+var allAmount=document.getElementById('remainingAmount').value;
+var payReq=document.getElementById('paymentRequestMoney').value;
+
+allAmount=parseInt(allAmount);
+payReq=parseInt(payReq);
+
+var reqButton=document.getElementById('reqButton');
+if(allAmount<payReq){
+	
+	reqButton.setAttribute("disabled","disabled");
+}else if(allAmount>=payReq){
+	
+	reqButton.removeAttribute("disabled");
+}
+
+}
+
+</script>
 </head>
-<body>
-<div></div>
+
+
 <div>
 	<h2>강사 수익 지급 요청</h2>
 </div>
 
 <div>
-	<div>현재 요청 가능한 잔액:<input type="text" id="remainingAmount" value="${teacherMoney}" readonly="readonly">&nbsp;&nbsp;*현 날짜 1달 전까지의 총잔액입니다.</div>
+	<input type="hidden" id="remainingAmount" value="${teacherMoneyCopy}">
+	<div>현재 요청 가능한 잔액:<input type="text" id="remaining" value="${teacherMoney}" readonly="readonly">&nbsp;&nbsp;*현 날짜 1달 전까지의 총잔액입니다.</div>
 </div>
 <div>
 은행명: <input type="text" name="tbank" value="${dto.tbank}" readonly="readonly">
@@ -24,13 +45,13 @@
 <form action="paymentRequestSubmit.do" name="paymentRequest">
 <div>
 <input type="hidden" name="midx" value="${midx}">
-요청할 금액:<input type="text" name="pay_amount" required="required">
-<input type="submit" value="요청하기">
+요청할 금액:<input type="text" name="pay_amount" required="required" id="paymentRequestMoney" onkeyup="keyEvent1()">
+<input type="submit" value="요청하기" id="reqButton" >
 </div>
 </form>
 </div>
 <div>
-<h2>요청 대기</h2>
+<div><h2>요청 대기</h2>&nbsp;1주일내 미지급 시 문의사항 게시판을 이용하세요</div>
 	<table>
 		<thead>
 			<tr>

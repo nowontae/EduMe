@@ -14,19 +14,10 @@ body{
 	width: 1000px;
 	height: 1000px;
 }
-.lectureResultUl{
-	list-style: none;
-	padding-left: 5px;
-}
-#resultA{
-	float: left;
-	width: 200px;
-}
-#gradeA{
-	width: 200px;
-}
-#dumiA{
-clear: both;
+#ulDiv ul li{
+	list-style-type: none;
+	display: inline;
+	margin-left: 10px;
 }
 </style>
 </head>
@@ -41,7 +32,7 @@ clear: both;
 	<h3>성과에 대한 최고의 통찰력 얻기</h3>
 	</div>
 	<div style="border: 1px solid black;">
-		<div style="border: 1px solid black;">
+		<div style="border: 1px solid black;" id="ulDiv">
 			<ul role="tablist" class="lectureResultUl">
 				<li role="presentation" id="resultA">
 					<a role="tab" href="teacherResult.do?midx=${sessionScope.midx}" class="LiAtag">
@@ -65,7 +56,6 @@ clear: both;
 						</div>
 					</a>
 				</li>
-				<li role="presentation" id="dumiA"></li>
 			</ul>
 		</div>
 		<div style="border: 1px solid black;" id="chartDiv">
@@ -82,7 +72,7 @@ clear: both;
 <input type="hidden" id="M3camount" value="${M3camount}">
 <input type="hidden" id="M4camount" value="${M4camount}">
 </div>
-<div id="svgArea" class="svgArea"><p>adsfasdf</p></div>
+<div id="svgArea" class="svgArea"><p></p></div>
 </div>
 
 <%@include file="/WEB-INF/views/teacher/teacherFooter.jsp" %>

@@ -5,6 +5,7 @@ import java.util.*;
 public interface TeacherPaymentRequestDAO {
 	
 	public Integer teacherPaymentCredit(Map map);
+	public Integer teacherPaymentCredit2(Map map);
 	public TeacherPaymentRequestDTO teacherBankInfo(Map map);
 	public int paymentInsert(TeacherPaymentRequestDTO dto);
 	public List waitPaymentRequest(Map map);
