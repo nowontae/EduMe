@@ -70,23 +70,22 @@ th, td{
 <body>
 
 <div class="all">
+
 <div style="width: 1200px; text-align: right;"><input type="button" value="관리자페이지" class="adminPage_button" onclick = "location.href = 'admin.do'" ></div>
+<h3  style="height:50px;">문의사항</h3>
 
-<h3 style=" width:600px; padding-bottom: 5px; padding-top: 20px;" >문의사항</h3>
-
-
-<div style="width: 900px;  height: 40px; display: table-cell; background-color:#CDC0B0;  vertical-align: middle;" >
+<div style="background-color:#CDC0B0;  vertical-align: middle; padding-top: 3px; font-size: 16px; height: 30px;" >
 &nbsp;&nbsp;&nbsp;<a href="admin_CommonQnAList.do">전체보기 &nbsp; |&nbsp; <a href="admin_CommonQnAListComplete.do">답변완료</a> &nbsp;   | &nbsp; <a href="admin_CommonQnAListNotComplete.do">답변 미완료</a> 
 </div>
 
 
-<table border="0" cellspacing="0" style="margin-top: 10px;">
+<table class="table">
 <thead>
 	<tr>
-		<th width="250px" height="41">제목</th>
-		<th width="150px">작성자</th>
-		<th width="200px">질문시간</th>
-		<th width="130px">관리자 답변 상태</th>
+		<th scope="col">제목</th>
+		<th scope="col">작성자</th>
+		<th scope="col">질문시간</th>
+		<th scope="col">관리자 답변 상태</th>
 	</tr>
 </thead>
 <tbody>
@@ -97,7 +96,7 @@ th, td{
 	</c:if>
 	<c:forEach var="dto" items="${list }">
 		<tr>
-			<td height="41"><a href="commonQnaContent.do?cqidx=${dto.cqidx }&midx=${sessionScope.midx}"><font color="	#00008B"><b>${dto.cqsubject }</b></font></a></td>
+			<td scope="row"><a href="commonQnaContent.do?cqidx=${dto.cqidx }&midx=${sessionScope.midx}"><font color="	#00008B"><b>${dto.lqsubject }</b></font></a></td>
 			<td>${dto.mname }</td>
 			<td>
 			<fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dto.lqwritedate }"/>

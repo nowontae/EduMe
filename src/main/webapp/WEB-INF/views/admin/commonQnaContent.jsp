@@ -196,8 +196,8 @@ input,textarea:focus {
 		<input type="hidden" id="midx" name="midx" value="${Session_midx }">
 		<table class="table">
 			<tr>
-				<td style="padding-top: 7px; padding-bottom: 7px;"><textarea rows="5" cols="75" name="cqreplycontent" required="required"  style="border-radius: 10px; resize: none; padding:10px;"></textarea></td>
-				<td width="150px;" ><input type="submit" class="release_Add_button"value="답변달기"></td>
+				<td  scope="col"><textarea rows="5" cols="75" name="cqreplycontent" required="required"  style="border-radius: 10px; resize: none; padding:10px;"></textarea></td>
+				<td  scope="col" ><input type="submit" class="release_Add_button"value="답변달기"></td>
 			</tr>
 		</table>
 	</form>
@@ -205,7 +205,7 @@ input,textarea:focus {
 	<!-- 댓글 보기 -->
 	
 	
-	<table class="" id="commonQna_Reply_List">
+	<table class="table" id="commonQna_Reply_List">
 	<c:if test="${empty list}">
 		<tr>
 			<td colspan="4" align="center">등록된 답변글이 없습니다.</td>
@@ -216,19 +216,19 @@ input,textarea:focus {
 	<c:forEach var="dt" items="${list }" varStatus="i">
 		<tr>
 	
-			<td width="150px;" height="174px;" style="border-bottom: 0px; padding-top: 5px; padding-bottom: 5px;">${dt.mname }</td>
-			<td name="cqreplycontent" style="border-bottom: 0px; padding-top: 5px; padding-bottom: 5px;"><textarea id="cqreplycontent${i.index}" readonly="readonly"  rows="6" cols="70" name="cqreplycontent" style="border-radius: 10px; resize: none; padding:10px;">${dt.cqreplycontent }</textarea></td>
+			<td  scope="col"    style="border-bottom:none;">${dt.mname }</td>
+			<td    style="border-bottom:none;" name="cqreplycontent"  scope="col"><textarea id="cqreplycontent${i.index}" readonly="readonly"  rows="6" cols="70" name="cqreplycontent" style="border-radius: 10px; resize: none; ">${dt.cqreplycontent }</textarea></td>
 			<c:if test="${Session_midx eq dt.midx }">
-				<td style="border-bottom: 0px; "><input type="button" id="update_btn${i.index }" value="수정" class="release_Add_button" onclick="javascript:updateForm(${dt.cqreply_idx },${dt.cqidx },${i.index},${sessionScope.midx } )"></td>
-				<td style="border-bottom: 0px;"><input type="button" value="삭제" class="release_Add_button" onclick="location.href='Qna_ReplyDelete.do?cqreply_idx=${dt.cqreply_idx }&cqidxx=${dt.cqidx }&midx=${midx }'"></td>
+				<td  scope="col"><input type="button" id="update_btn${i.index }" value="수정" class="release_Add_button" onclick="javascript:updateForm(${dt.cqreply_idx },${dt.cqidx },${i.index},${sessionScope.midx } )"></td>
+				<td  scope="col"><input type="button" value="삭제" class="release_Add_button" onclick="location.href='Qna_ReplyDelete.do?cqreply_idx=${dt.cqreply_idx }&cqidxx=${dt.cqidx }&midx=${midx }'"></td>
 			</c:if>
 			<c:if test="${Session_midx ne dt.midx }">
-				<td colspan="2" style="border-bottom: 0px;"></td>
+				<td></td>
 			</c:if>
 		</tr>
 		<tr>
 			<td></td>
-			<td colspan="3" height="35px" >
+			<td>
 			<fmt:formatDate  pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${dt.cqreplywritedate }"/>
 			</td>
 		</tr>
