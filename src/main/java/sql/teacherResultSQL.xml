@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="teacherResult">
 	<select id="teacherAllResult" resultType="Integer" parameterType="map">
-		select sum(camount) from credit where midx=#{midx}
+		select sum(camount) from credit where midx=#{midx} and ccode=1
 	</select>
 
 	<select id="teacherResult6M_1" resultType="Integer" parameterType="map" >
@@ -12,7 +12,7 @@
 		from credit 
 		where midx=#{midx} and (
 		select to_char(add_months(sysdate,-1),'yyyymmdd') 
-		from dual) <![CDATA[<]]> to_char(cpaydate,'yyyymmdd')
+		from dual) <![CDATA[<]]> to_char(cpaydate,'yyyymmdd') and ccode=1
 	</select>
 	<select id="teacherResult6M_2" resultType="Integer" parameterType="map">
 		select sum(camount) 
@@ -21,8 +21,8 @@
 		and to_char(cpaydate, 'yyyymmdd') between (
 		select to_char(add_months(sysdate,-2),'yyyymmdd') 
 		from dual) 
-		and (select to_char(add_months(sysdate,-1),'yyyymmdd') 
-		from dual)
+		and (select to_char(add_months(sysdate,-1),'yyyymmdd')
+		from dual) and ccode=1
 	</select>
 	<select id="teacherResult6M_3" resultType="Integer" parameterType="map">
 		select sum(camount) 
@@ -32,7 +32,7 @@
 		select to_char(add_months(sysdate,-3),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-2),'yyyymmdd') 
-		from dual)
+		from dual) and ccode=1
 	</select>
 	<select id="teacherResult6M_4" resultType="Integer" parameterType="map">
 		select sum(camount) 
@@ -42,7 +42,7 @@
 		select to_char(add_months(sysdate,-4),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-3),'yyyymmdd') 
-		from dual)
+		from dual) and ccode=1
 	</select>
 	<select id="teacherResult6M_5" resultType="Integer" parameterType="map">
 		select sum(camount) 
@@ -52,7 +52,7 @@
 		 select to_char(add_months(sysdate,-5),'yyyymmdd') 
 		 from dual) 
 		 and (select to_char(add_months(sysdate,-4),'yyyymmdd') 
-		 from dual)	
+		 from dual)	 and ccode=1
 	</select>
 	<select id="teacherResult6M_6" resultType="Integer" parameterType="map">
 		select sum(camount) 
@@ -62,7 +62,7 @@
 		select to_char(add_months(sysdate,-6),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-5),'yyyymmdd') 
-		from dual)
+		from dual) and ccode=1
 	</select>
 
 
@@ -71,7 +71,7 @@
 		from credit 
 		where midx=#{midx} and (
 		select to_char(add_months(sysdate,-2),'yyyymmdd') 
-		from dual) <![CDATA[<]]> to_char(cpaydate,'yyyymmdd')
+		from dual) <![CDATA[<]]> to_char(cpaydate,'yyyymmdd') and ccode=1
 	</select>	
 	<select id="teacherResult12M_4" resultType="Integer" parameterType="map">
 		select sum(camount) 
@@ -81,7 +81,7 @@
 		select to_char(add_months(sysdate,-4),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-2),'yyyymmdd') 
-		from dual)	
+		from dual) and ccode=1
 	</select>
 	<select id="teacherResult12M_6" resultType="Integer" parameterType="map">
 		select sum(camount) 
@@ -91,7 +91,7 @@
 		select to_char(add_months(sysdate,-6),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-4),'yyyymmdd') 
-		from dual)	
+		from dual) and ccode=1
 	</select>
 	<select id="teacherResult12M_8" resultType="Integer" parameterType="map">
 		select sum(camount) 
@@ -101,7 +101,7 @@
 		select to_char(add_months(sysdate,-8),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-6),'yyyymmdd') 
-		from dual)	
+		from dual)	and ccode=1
 	</select>	
 	<select id="teacherResult12M_10" resultType="Integer" parameterType="map">
 		select sum(camount) 
@@ -111,7 +111,7 @@
 		select to_char(add_months(sysdate,-10),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-8),'yyyymmdd') 
-		from dual)	
+		from dual)	and ccode=1
 	</select>	
 	<select id="teacherResult12M_12" resultType="Integer" parameterType="map">
 		select sum(camount) 
@@ -121,7 +121,7 @@
 		select to_char(add_months(sysdate,-12),'yyyymmdd') 
 		from dual) 
 		and (select to_char(add_months(sysdate,-10),'yyyymmdd') 
-		from dual)	
+		from dual)	and ccode=1
 	</select>
 	
 	
@@ -130,7 +130,7 @@
 		from credit 
 		where midx=#{midx} 
 		and (select to_char(sysdate-7,'yyyymmdd') 
-		from dual) <![CDATA[<]]> to_char(cpaydate,'yyyymmdd')
+		from dual) <![CDATA[<]]> to_char(cpaydate,'yyyymmdd') and ccode=1
 	</select>
 	<select id="teacherResult28D_14" resultType="Integer" parameterType="map">
 		select sum(camount) 
@@ -139,7 +139,7 @@
 		and to_char(cpaydate, 'yyyymmdd') between (
 		select to_char(sysdate-14,'yyyymmdd') from dual) 
 		and (
-		select to_char(sysdate-7,'yyyymmdd') from dual)
+		select to_char(sysdate-7,'yyyymmdd') from dual) and ccode=1
 	</select>
 	<select id="teacherResult28D_21" resultType="Integer" parameterType="map">
 		select sum(camount) 
@@ -148,7 +148,7 @@
 		and to_char(cpaydate, 'yyyymmdd') between (
 		select to_char(sysdate-21,'yyyymmdd') from dual) 
 		and (
-		select to_char(sysdate-14,'yyyymmdd') from dual)
+		select to_char(sysdate-14,'yyyymmdd') from dual) and ccode=1
 	</select>	
 	<select id="teacherResult28D_28" resultType="Integer" parameterType="map">
 		select sum(camount) 
@@ -157,7 +157,7 @@
 		and to_char(cpaydate, 'yyyymmdd') between (
 		select to_char(sysdate-28,'yyyymmdd') from dual) 
 		and (
-		select to_char(sysdate-21,'yyyymmdd') from dual)
+		select to_char(sysdate-21,'yyyymmdd') from dual) and ccode=1
 	</select>	
 	
 
