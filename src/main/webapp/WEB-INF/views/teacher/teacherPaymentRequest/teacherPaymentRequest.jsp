@@ -33,7 +33,7 @@ if(allAmount<payReq){
 <div>
 	<h2>강사 수익 지급 요청</h2>
 </div>
-
+<!-- atex -->
 <div>
 	<input type="hidden" id="remainingAmount" value="${teacherMoneyCopy}">
 	<div>현재 요청 가능한 잔액:<input type="text" id="remaining" value="${teacherMoney}" readonly="readonly">&nbsp;&nbsp;*현 날짜 1달 전까지의 총잔액입니다.</div>
