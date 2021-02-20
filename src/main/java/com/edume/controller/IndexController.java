@@ -39,7 +39,7 @@ public class IndexController {
     	// midx session 심기
     	HttpSession session = req.getSession(true); 
 
-    	session.setAttribute("mgrade", "3");
+    	session.setAttribute("mgrade", "2");
     	session.setAttribute("midx", "2");
 
 

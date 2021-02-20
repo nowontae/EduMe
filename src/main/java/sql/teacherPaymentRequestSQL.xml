@@ -11,7 +11,7 @@
 		from dual) <![CDATA[>]]> to_char(cpaydate,'yyyymmdd')
 	</select>
 	<select id="teacherPaymentCredit2" resultType="Integer" parameterType="map">
-	select sum(camount) from credit where midx=#{midx} and ccode=2 or ccode=3 and (
+	select sum(camount) from credit where midx=#{midx} and ccode=2 or ccode=3  and (
 		select to_char(add_months(sysdate,-1),'yyyymmdd') 
 		from dual) <![CDATA[<]]> to_char(cpaydate,'yyyymmdd')
  

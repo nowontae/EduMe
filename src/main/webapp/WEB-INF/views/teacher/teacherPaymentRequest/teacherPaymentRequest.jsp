@@ -15,6 +15,7 @@ var payReq=document.getElementById('paymentRequestMoney').value;
 allAmount=parseInt(allAmount);
 payReq=parseInt(payReq);
 
+
 var reqButton=document.getElementById('reqButton');
 if(allAmount<payReq){
 	
@@ -22,6 +23,10 @@ if(allAmount<payReq){
 }else if(allAmount>=payReq){
 	
 	reqButton.removeAttribute("disabled");
+}
+
+if(payReq<10000){
+	reqButton.setAttribute("disabled","disabled");
 }
 
 }
@@ -78,7 +83,7 @@ if(allAmount<payReq){
 	</tr>
 	<tr>
 		<th>요청할 금액</th>
-		<td><input type="text" name="pay_amount" required="required" id="paymentRequestMoney" onkeyup="keyEvent1()"> <input type="submit" class="btn btn-primary" value="요청하기" id="reqButton"></td>
+		<td><input type="text" name="pay_amount" required="required" id="paymentRequestMoney" onkeyup="keyEvent1()"> <input type="submit" class="btn btn-primary" value="요청하기" id="reqButton">&nbsp;&nbsp;&nbsp;*최소 신청금액은 10,000원 입니다.</td>
 	</tr>
 </table>
 </form>

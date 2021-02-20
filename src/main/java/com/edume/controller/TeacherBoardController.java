@@ -112,11 +112,13 @@ public class TeacherBoardController {
 			@RequestParam(value="lqidx",defaultValue = "0")int lqidx,
 			HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		int teacheMidx=(Integer)session.getAttribute("midx");
+		int teacheMidx=Integer.parseInt((String)session.getAttribute("midx"));
 		String msg="";
 		String page="";
 		
+		
 		ModelAndView mav=new ModelAndView();
+		
 		int replyResult=teacherBoardDao.replyUpdate(dto);
 		if(replyResult>0) {
 			msg="수정되었습니다.";
