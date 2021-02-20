@@ -57,6 +57,7 @@ if(allAmount<payReq){
 	<h2>강사 수익 지급 요청</h2>
 </div>
 <form action="paymentRequestSubmit.do" name="paymentRequest">
+<input type="hidden" value="${teacherMoneyCopy}" id="remainingAmount">
 <table id="infoTable" class="table border-0" style="width:50vw">
 	<tr>
 		<th>현재 요청 가능한 잔액</th>
@@ -77,7 +78,7 @@ if(allAmount<payReq){
 	</tr>
 	<tr>
 		<th>요청할 금액</th>
-		<td><input type="text" name="pay_amount" required="required"> <input type="submit" class="btn btn-primary" value="요청하기"></td>
+		<td><input type="text" name="pay_amount" required="required" id="paymentRequestMoney" onkeyup="keyEvent1()"> <input type="submit" class="btn btn-primary" value="요청하기" id="reqButton"></td>
 	</tr>
 </table>
 </form>
