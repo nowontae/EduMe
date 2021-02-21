@@ -131,12 +131,12 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
         </form>
 
        
-        <c:if test="${mgrade == 0}"> <!-- 로그인전 기본값이 뭐인지 확인하기 -->
+        <c:if test="${empty mgrade}"> <!-- 로그인전 기본값이 뭐인지 확인하기 -->
          <li class="nav-item"  >
-            <a class="nav-link disabled" href="#" style="padding-top: 12px;">로그인</a>
+            <a class="nav-link " href="login.do" style="padding-top: 12px;">로그인</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="#" style="padding-top: 12px;">회원가입</a>
+            <a class="nav-link " href="memberJoin.do" style="padding-top: 12px;">회원가입</a>
         </li>
         </c:if>
           <c:if test="${mgrade == 1}"><!-- 관리자 -->
@@ -174,7 +174,7 @@ $('.navbar .dropdown').on('hidden.bs.dropdown', function () {
 	            <li class="dropdown-item" href="#"><a href="declaration.do?ridx=1">신고하기</a></li>
 	            <li class="dropdown-item" href="#" style="border-bottom:1px solid gray;"><a href="commonQna.do">일반 문의사항</a></li>
 	           
-	            <li class="dropdown-item" href="#" ><a>로그아웃</a></li>
+	            <li class="dropdown-item" href="#" ><a href="logout.do">로그아웃</a></li>
 	        </ul>
    		 </li>
 		

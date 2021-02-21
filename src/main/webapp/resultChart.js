@@ -28,10 +28,10 @@ function firstChart(){
 		    
 		    const yScale = d3.scaleLinear()
 		      .domain([0, maxM])
-		      .range([500, 20]); // SVG 좌표상에서 y값이 높을수록 아래로 향하기 때문에 뒤집어서 330~20으로 설정.
+		      .range([350, 20]); // SVG 좌표상에서 y값이 높을수록 아래로 향하기 때문에 뒤집어서 330~20으로 설정.
 
 		    //SVG 안에 G 태그를 생성한다.
-		    const xAxisSVG = d3.select("svg").append("g").attr("transform", "translate(0,500)");
+		    const xAxisSVG = d3.select("svg").append("g").attr("transform", "translate(0,350)");
 		    const yAxisSVG = d3.select("svg").append("g");
 		    
 		    //축을 만드는 함수를 만든다.
@@ -134,10 +134,10 @@ function showResult1(){
 			    
 			    const yScale = d3.scaleLinear()
 			      .domain([0, resultMax])
-			      .range([500, 20]); // SVG 좌표상에서 y값이 높을수록 아래로 향하기 때문에 뒤집어서 330~20으로 설정.
-
+			      .range([350, 20]); // SVG 좌표상에서 y값이 높을수록 아래로 향하기 때문에 뒤집어서 330~20으로 설정.
+				
 			    //SVG 안에 G 태그를 생성한다.
-			    const xAxisSVG = d3.select("svg").append("g").attr("transform", "translate(0,500)");
+			    const xAxisSVG = d3.select("svg").append("g").attr("transform", "translate(0,350)");
 			    const yAxisSVG = d3.select("svg").append("g");
 			    
 			    //축을 만드는 함수를 만든다.
@@ -222,10 +222,10 @@ function showResult(){
 			    
 			    const yScale = d3.scaleLinear()
 			      .domain([0, resultYMax])
-			      .range([500, 20]); // SVG 좌표상에서 y값이 높을수록 아래로 향하기 때문에 뒤집어서 330~20으로 설정.
+			      .range([350, 20]); // SVG 좌표상에서 y값이 높을수록 아래로 향하기 때문에 뒤집어서 330~20으로 설정.
 
 			    //SVG 안에 G 태그를 생성한다.
-			    const xAxisSVG = d3.select("svg").append("g").attr("transform", "translate(0,500)");
+			    const xAxisSVG = d3.select("svg").append("g").attr("transform", "translate(0,350)");
 			    const yAxisSVG = d3.select("svg").append("g");
 			    
 			    //축을 만드는 함수를 만든다.

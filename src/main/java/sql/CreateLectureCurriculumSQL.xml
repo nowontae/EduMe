@@ -9,9 +9,19 @@
 	</select>
 	
 	<insert id="createLectureInsert1" parameterType="com.edume.createLecture.model.CreateLectureDTO">
-	insert into lecture values(lecture_idx.nextval,#{midx},#{ltitle},#{lsubtitle},#{llevel},#{lthumnail},#{lsummary},#{lpurpose},#{lorignprice},#{ltarget},#{lknowledge},#{cat1_idx},#{cat2_idx},#{cat3_idx},sysdate,'N')
+	<selectKey keyProperty="lidx" resultType="int" order="BEFORE">
+		select lecture_idx.nextval from dual
+	</selectKey>
+		insert into lecture values(#{lidx},#{midx},#{ltitle},#{lsubtitle},#{llevel},#{lthumnail},#{lsummary},#{lpurpose},#{lorignprice},#{ltarget},#{lknowledge},#{cat1_idx},#{cat2_idx},#{cat3_idx},sysdate,'N')
 	</insert>
 	
+	<insert id="createLectureTeacherDiscount">
+		insert into lectureTeacherDiscount values(#{lidx},0,sysdate,'2999-12-31')
+	</insert>
+	
+	<insert id="createLectureAdminDiscount">
+		insert into lectureAdminDiscount values(#{lidx},0,sysdate,'2999-12-31')
+	</insert>
 	<select id="lidxSearch" parameterType="com.edume.createLecture.model.CreateLectureDTO" resultType="Integer"> 
 	select lidx from lecture where ltitle=#{ltitle} and lsubtitle=#{lsubtitle} and lknowledge=#{lknowledge}
 	</select>

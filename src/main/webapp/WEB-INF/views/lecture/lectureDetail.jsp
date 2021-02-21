@@ -23,7 +23,13 @@ function videoEnded(v){
 function addMyCartList(lidx){// 장바구니 담기
 	var result=window.confirm("장바구니에 담겼습니다 \n장바구니 페이지로 이동하시겠습니까? 😊");
 	//alert(result); -> true, false  값으로 출력
-	location.href="addMyCartList.do?lidx="+lidx+"&result="+result;
+	if(result){
+		location.href="addMyCartList.do?lidx="+lidx;	
+	} else {
+		document.getElementById("btn-wish").remove();
+		document.getElementById("btn-cart").remove();
+	}
+	
 }
 
 function alertMsg(msg) {

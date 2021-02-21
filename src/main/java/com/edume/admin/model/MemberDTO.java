@@ -9,7 +9,7 @@ public class MemberDTO {
 	private String mpwd;   //비밀번호
 	private String memail; //이메일
 	private String mtel;   //전화번호
-	private int mgrade;    //유저 등급  -> 1 관리자 , 2 강사,  3 학생(default)
+	private String mgrade;    //유저 등급  -> 1 관리자 , 2 강사,  3 학생(default)
 	private String mimg;   //프로필사진 경로
 	private int mcredit;   //잔고
 	private int mblack;   //블랙리스트 ** 신고횟수-> 3개 쌓이면 댓글, 리뷰기능을 이용 못함.
@@ -22,7 +22,7 @@ public class MemberDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MemberDTO(int midx, String mname, String mid, String mpwd, String memail, String mtel, int mgrade,
+	public MemberDTO(int midx, String mname, String mid, String mpwd, String memail, String mtel, String mgrade,
 			String mimg, int mcredit, int mblack, String mfav1_idx, String mfav2_idx, String mfav3_idx,
 			Date mjoindate) {
 		super();
@@ -90,11 +90,11 @@ public class MemberDTO {
 		this.mtel = mtel;
 	}
 
-	public int getMgrade() {
+	public String getMgrade() {
 		return mgrade;
 	}
 
-	public void setMgrade(int mgrade) {
+	public void setMgrade(String mgrade) {
 		this.mgrade = mgrade;
 	}
 

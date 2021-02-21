@@ -111,7 +111,7 @@ table td {
 		<c:forEach var="dto" items="${list2}">
 		<tr>
 			<td scope="row"><img width="200" height="100" src="img/${dto.lthumnail}"></td>
-			<td><a href="lectureContentSee.do?lidx=${dto.lidx}">${dto.ltitle}</a></td>
+			<td><a href="createLectureUpdate.do?lidx=${dto.lidx}">${dto.ltitle}</a></td>
 			<td><fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${dto.lorignprice}" /></td>
 			<td><fmt:formatDate value="${dto.lwritedate}" pattern="yyyy-MM-dd HH:mm"/></td>
 		</tr>

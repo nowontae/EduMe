@@ -99,8 +99,8 @@ public class CreateLectureController {
 		System.out.println("-----lecture save start------");
 	
 		HttpSession session=rs.getSession();
-		int midx = Integer.parseInt((String)session.getAttribute("midx"));
-		
+		//int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		int midx = (Integer)session.getAttribute("midx");
 		int result=createLectureDao.createLectureUpdate(dto);
 		String msg=result>0? "저장 완료!":"저장 실패!";
 		
@@ -132,8 +132,8 @@ public class CreateLectureController {
 		CreateLectureDTO dto=createLectureDao.createLectureContent(map);
 		
 		HttpSession session=rs.getSession();
-		int midx = Integer.parseInt((String)session.getAttribute("midx"));
-		
+		//int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		int midx = (Integer)session.getAttribute("midx");
 		List cat1_list = category1Dao.Category1List();
     	List cat2_list = category2Dao.Category2AllList();
     	List cat3_list = category3Dao.Category3AllList();
@@ -141,6 +141,7 @@ public class CreateLectureController {
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("dto", dto);
 		mav.addObject("midx", midx);
+		mav.addObject("lidx", lidx);
 		mav.addObject("cat1_list", cat1_list);
 		mav.addObject("cat2_list", cat2_list);
 		mav.addObject("cat3_list", cat3_list);

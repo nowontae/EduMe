@@ -17,24 +17,25 @@
  	<select id="getAllLectureList" resultType="com.edume.lecture.model.LectureDTO">
  		select *
  		from lecture
+ 		where lopen LIKE 'Y'
  	</select>
  	<!-- 대분류 강의 리스트 -->
  	<select id="getCat1LectureList" parameterType="Map"  resultType="com.edume.lecture.model.LectureDTO">
  		select *
  		from lecture
- 		where cat1_idx=#{cat1_idx}
+ 		where cat1_idx=#{cat1_idx} and lopen LIKE 'Y'
  	</select>
  	<!-- 중분류 강의 리스트 -->
  	<select id="getCat2LectureList" parameterType="Map"  resultType="com.edume.lecture.model.LectureDTO">
  		select *
  		from lecture
- 		where cat1_idx=#{cat1_idx} and cat2_idx=#{cat2_idx}
+ 		where cat1_idx=#{cat1_idx} and cat2_idx=#{cat2_idx} and lopen LIKE 'Y'
  	</select>
  	<!-- 소분류 강의 리스트 -->
  	<select id="getCat3LectureList" parameterType="Map"  resultType="com.edume.lecture.model.LectureDTO">
  		select *
  		from lecture
- 		where cat1_idx=#{cat1_idx} and cat2_idx=#{cat2_idx} and cat3_idx=#{cat3_idx}
+ 		where cat1_idx=#{cat1_idx} and cat2_idx=#{cat2_idx} and cat3_idx=#{cat3_idx} and  lopen LIKE 'Y'
  	</select>
  	
  	<select id="getMyLectureList" resultType="com.edume.lecture.model.LectureDTO">

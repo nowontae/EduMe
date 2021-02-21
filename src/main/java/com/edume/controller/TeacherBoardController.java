@@ -83,7 +83,8 @@ public class TeacherBoardController {
 			@RequestParam(value="lqidx",defaultValue = "0")int lqidx,
 			HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		int teacheMidx=Integer.parseInt((String)session.getAttribute("midx"));
+		//int teacheMidx=Integer.parseInt((String)session.getAttribute("midx"));
+		int teacherMidx = (Integer)session.getAttribute("midx");
 		String msg="";
 		String page="";
 		int result=teacherBoardDao.replyWrite(dto);
@@ -94,13 +95,13 @@ public class TeacherBoardController {
 		if(result>0 && replyResult>0) {
 			msg="등록되었습니다.";
 			mav.addObject("msg", msg);
-			page="teacherAsk.do?midx="+teacheMidx;
+			page="teacherAsk.do?midx="+teacherMidx;
 			mav.addObject("page", page);
 			mav.setViewName("teacher/teacherBoard/teacherMsg");
 		}else {
 			msg="실패";
 			mav.addObject("msg", msg);
-			page="teacherAsk.do?midx="+teacheMidx;
+			page="teacherAsk.do?midx="+teacherMidx;
 			mav.addObject("page", page);
 			mav.setViewName("teacher/teacherBoard/teacherMsg");
 		}
@@ -111,23 +112,28 @@ public class TeacherBoardController {
 			@RequestParam(value="midx",defaultValue = "0")int midx,
 			@RequestParam(value="lqidx",defaultValue = "0")int lqidx,
 			HttpServletRequest req) {
+		System.out.println("replyY ");
 		HttpSession session = req.getSession();
-		int teacheMidx=(Integer)session.getAttribute("midx");
+		//int teacheMidx=Integer.parseInt((String)session.getAttribute("midx"));
+		int teacherMidx = (Integer)session.getAttribute("midx");
 		String msg="";
 		String page="";
 		
 		ModelAndView mav=new ModelAndView();
+		System.out.println("update befor ");
+		System.out.println(dto.getLqidx()+"/"+dto.getMidx());
 		int replyResult=teacherBoardDao.replyUpdate(dto);
+		System.out.println("replyY ");
 		if(replyResult>0) {
 			msg="수정되었습니다.";
 			mav.addObject("msg", msg);
-			page="teacherAsk.do?midx="+teacheMidx;
+			page="teacherAsk.do?midx="+teacherMidx;
 			mav.addObject("page", page);
 			mav.setViewName("teacher/teacherBoard/teacherMsg");
 		}else {
 			msg="실패";
 			mav.addObject("msg", msg);
-			page="teacherAsk.do?midx="+teacheMidx;
+			page="teacherAsk.do?midx="+teacherMidx;
 			mav.addObject("page", page);
 			mav.setViewName("teacher/teacherBoard/teacherMsg");
 		}

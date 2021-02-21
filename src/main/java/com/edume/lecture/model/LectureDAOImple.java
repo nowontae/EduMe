@@ -105,4 +105,5 @@ public class LectureDAOImple implements LectureDAO {
 		return result;
 	}
 	
+	
 }

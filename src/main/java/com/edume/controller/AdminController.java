@@ -275,7 +275,8 @@ public class AdminController {
 			   @RequestParam(value="cqidx", defaultValue="0")int cqidx, HttpServletRequest req) {
 		   //세션심기
 			HttpSession session=req.getSession();
-			int midx = Integer.parseInt((String)session.getAttribute("midx"));
+			//int midx = Integer.parseInt((String)session.getAttribute("midx"));
+			int midx = (Integer)session.getAttribute("midx");
 		   //System.out.println(midx);
 		   CommonQnaDTO dto=commonQnaDao.CommonQnaContent(cqidx);
 		   List list=commonQnaReplyDao.ReplyList(cqidx);

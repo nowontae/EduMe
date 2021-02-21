@@ -71,15 +71,10 @@ function clickNextBtn(){
 }
 
 
-	$(document).ready(function () {
-		$('#llevel').val('${dto.llevel}');
-		$('#lorignprice').val('${dto.lorignprice}');
-		
-	});
+
 	
 	
-	
-	function thumUpload(lidx){
+function thumUpload(lidx){
 		
 		 var form = $('#createLectureSaveImg')[0];
 	     var formData = new FormData(form);
@@ -104,18 +99,31 @@ function clickNextBtn(){
 	    	 $("#thumImg").attr("src",path);
 	     })
 	}
+	
+
+$(document).ready(function () {
+	
+
+	$("#llevel").val('${dto.llevel}').prop("selected", true);
+	
+	$('#lorignprice').val('${dto.lorignprice}');
+	
+});
+
 </script>
 </head>
 <body>
 <%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
 
-<h1>${lidx}</h1>
-	<input type="button" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do'">
-<form id="createLectureSave" name="createLectureSave" action="createLectureSave.do?lidx=${dto.lidx}" method="post" enctype="multipart/form-data">
-<input type="hidden" name="midx" value="${midx}">
+<input type="button" class="return btn btn-primary" value="<강좌로 돌아가기" onclick="location.href='teacherMain.do?midx=${midx}'">
 
+
+
+
+<form id="createLectureSave" name="createLectureSave" action="createLectureSave.do?lidx=${lidx}" method="post" enctype="multipart/form-data">
+<input type="hidden" name="midx" value="${midx}">
 <div>
-	<input type="submit" value="저장">
+	<input type="submit" class="save  btn btn-primary" value="저장">
 </div>
 
 <div id="title">
@@ -125,19 +133,19 @@ function clickNextBtn(){
 
 <div>
 	<span>강좌 제목</span>
-	<div><input type="text" name="ltitle" value="${dto.ltitle}"></div>
+	<div><input type="text"  class="form-control"   name="ltitle" value="${dto.ltitle}" required="required"></div>
 </div>
 
 <div>
 	<span>강좌 부제목</span>
-	<div><input type="text" name="lsubtitle" value="${dto.lsubtitle}"></div>
+	<div><input type="text"  class="form-control"  name="lsubtitle" value="${dto.lsubtitle}" required="required"></div>
 </div>
 
 <div>
 	<span>난이도</span>
 	<div>
 		<span>
-			<select id="llevel" name="llevel">
+			<select  id="llevel"class="form-control"  name="llevel">
 				<option hidden>===선택===</option>
 				<option value="1">★☆☆☆☆</option>
 				<option value="2">★★☆☆☆</option>
@@ -151,39 +159,42 @@ function clickNextBtn(){
 </div>
 </div>
 
+<!-- ------------------------------- -->
+<hr>
+<!-- ------------------------------- -->
+
 <div id="category">
 <div>
-	<h2>카테고리</h2>
+	<h4>카테고리</h4>
 </div>
 
 <div class="cat1_list">
 <span>공유하려는 지식에 가장 적합한 카테고리는 무엇입니까?</span>
 	<div>
-		<select name="cat1_idx" onchange="cat2_list(this.value)">
+		<select   class="form-control"  name="cat1_idx" onchange="cat2_list(this.value)">
 			<option id="cat1_fir" value="0"  onselect="blockCat2List()">대분류</option>
 			<c:forEach var="cat1" items="${cat1_list}" varStatus="status">
-			<option <c:if test="${dto.cat1_idx eq cat1.cat1_idx}">selected="selected"</c:if> 
-			value="${cat1.cat1_idx}" class="cat1_option" >${cat1.cat_name}</option>
+			<c:if test="${dto.cat1_idx eq cat1.cat1_idx}">
+			<option value="${cat1.cat1_idx}" selected="selected">${cat1.cat_name}</option>
+			</c:if>
+			<c:if test="${dto.cat1_idx ne cat1.cat1_idx}">
+			<option value="${cat1.cat1_idx}">${cat1.cat_name}</option>
+			</c:if>
 			</c:forEach>
 		</select>
 	</div>	
 </div>
 
 <div class="cat2_list">
-	<select name="cat2_idx" id="cat2_sel" onchange="cat3_list(this.value)">
+	<select   class="form-control"  name="cat2_idx" id="cat2_sel" disabled="disabled" onchange="cat3_list(this.value)">
 		<option  value="0" onselect="blockCat3List()" >중분류</option>
 		<div class="cat2_list_option">
 		<c:forEach var="cat2" items="${cat2_list}" varStatus="status">
 		<c:if test="${dto.cat2_idx eq cat2.cat2_idx}">
-			<option selected="selected" value="${cat2.cat2_idx}" class="cat2_option cat1_idx_${cat2.cat1_idx} cat2_idx_${cat2.cat2_idx}" onselect="cat3_list(this)">${cat2.cat_name}</option>
+			<option value="${cat2.cat2_idx}" selected="selected" class="cat2_option cat1_idx_${cat2.cat1_idx} cat2_idx_${cat2.cat2_idx}" onselect="cat3_list(this)">${cat2.cat_name}</option>
 		</c:if>
 		<c:if test="${dto.cat2_idx ne cat2.cat2_idx}">
-			<c:if test="${dto.cat1_idx eq cat2.cat1_idx}">
-				<option value="${cat2.cat2_idx}" class="cat2_option cat1_idx_${cat2.cat1_idx} cat2_idx_${cat2.cat2_idx}" onselect="cat3_list(this)">${cat2.cat_name}</option>
-			</c:if>
-			<c:if test="${dto.cat1_idx ne cat2.cat1_idx}">
-				<option style="display:none" value="${cat2.cat2_idx}" class="cat2_option cat1_idx_${cat2.cat1_idx} cat2_idx_${cat2.cat2_idx}" onselect="cat3_list(this)">${cat2.cat_name}</option>
-			</c:if>
+			<option value="${cat2.cat2_idx}" class="cat2_option cat1_idx_${cat2.cat1_idx} cat2_idx_${cat2.cat2_idx}" onselect="cat3_list(this)">${cat2.cat_name}</option>
 		</c:if>
 		</c:forEach>
 		</div>
@@ -191,20 +202,15 @@ function clickNextBtn(){
 </div>
 	
 <div class="cat3_list">
-	<select name="cat3_idx" id="cat3_sel" >
+	<select  class="form-control"  name="cat3_idx" id="cat3_sel" disabled="disabled">
 		<option value="0">소분류</option>
 		<div class="cat3_list_option">
 		<c:forEach var="cat3" items="${cat3_list}" varStatus="status">
 		<c:if test="${dto.cat3_idx eq cat3.cat3_idx}">
-			<option selected="selected" value="${cat3.cat3_idx}" class="cat2_option cat1_idx_${cat2.cat1_idx} cat2_idx_${cat2.cat2_idx}" >${cat3.cat_name}</option>
+			<option value="${cat3.cat3_idx}" selected="selected" class="cat3_option cat2_idx_${cat3.cat2_idx}" >${cat3.cat_name}</option>
 		</c:if>
 		<c:if test="${dto.cat3_idx ne cat3.cat3_idx}">
-			<c:if test="${dto.cat2_idx eq cat3.cat2_idx}">
-				<option value="${cat3.cat3_idx}" class="cat3_option cat2_idx_${cat3.cat2_idx} cat3_idx_${cat3.cat3_idx}" >${cat3.cat_name}</option>
-			</c:if>
-			<c:if test="${dto.cat2_idx eq cat3.cat2_idx}">
-			<option style="display:none"value="${cat3.cat3_idx}" class="cat3_option cat2_idx_${cat3.cat2_idx} cat3_idx_${cat3.cat3_idx}" >${cat3.cat_name}</option>
-			</c:if>
+			<option value="${cat3.cat3_idx}" class="cat3_option cat2_idx_${cat3.cat2_idx}" >${cat3.cat_name}</option>
 		</c:if>
 		</c:forEach>
 		</div>
@@ -212,103 +218,111 @@ function clickNextBtn(){
 </div>
 </div>
 
+<!-- ------------------------------- -->
+<hr>
+<!-- ------------------------------- -->
+
+
 <div id="studentInfo">
 <div>
-	<h2>수강생 세부사항</h2>
+	<h4>수강생 세부사항</h4>
 </div>
 
 <div>
 	<span>개요</span>
-	<div><input type="text" name="lsummary" value="${dto.lsummary}"></div>
+	<div><input class="form-control"  type="text" name="lsummary" value="${dto.lsummary}" required="required"></div>
 </div>
 
 <div>
 		<span>강의 목적</span>
-	<div><input type="text" name="lpurpose" value="${dto.lpurpose}"></div>
+	<div><input  class="form-control" type="text" name="lpurpose" value="${dto.lpurpose}" ></div>
 </div>
 	
 <div>
 		<span>배경 지식</span>
-	<div><input type="text" name="lknowledge" value="${dto.lknowledge}"></div>
+	<div><input class="form-control"  type="text" name="lknowledge" value="${dto.lknowledge}" required="required"></div>
 </div>
 
 <div>
 		<span>대상 수강생</span>
-	<div><input type="text" name="ltarget" value="${dto.ltarget}"></div>
+	<div><input  class="form-control" type="text" name="ltarget" value="${dto.ltarget}" required="required"></div>
 </div>
 </div>
+
+<!-- ------------------------------- -->
+<hr>
+<!-- ------------------------------- -->
 
 
 
 <div id="price">
 <div>
-	<h2>가격 책정</h2>
+	<h4>가격 책정</h4>
 </div>
 
 <div>
-	<div>
-		<p>EduMe에서는EduMe 행사의 강좌에 대한 정가 테스트를 시작했습니다. 
-		테스트 기간에는 마켓이나 수강생에 따라 정가가 다르게 표시될 수 있습니다.</p>
-	</div>
 	
 	<div>
-		<span>KRW</span>
-		<span>
-			<select id="lorignprice" name="lorignprice">
-				<option>선택</option>
-				<option value="0">무료</option>
-				<option value="19900">19,900</option>
-				<option value="29900">29,900</option>
-				<option value="39900">39,900</option>
-				<option value="49900">49,900</option>
-				<option value="59900">59,900</option>
-				<option value="69900">69,900</option>
-				<option value="79900">79,900</option>
-				<option value="89900">89,900</option>
-				<option value="99900">99,900</option>
-				<option value="109900">109,900</option>
-			</select>
-		</span>
-		<span>강좌의 가격 계층을 선택하고 ‘저장’을 클릭하십시오. 강좌를 무료로 제공하려면 동영상 콘텐츠의 총 길이가 2시간을 초과해서는 안 됩니다.</span>
+		<select class="form-control"  id="lorignprice" name="lorignprice" value="${dto.lorignprice}">
+			<option>선택</option>
+			<option value="0">무료</option>
+			<option value="19900">19,900 원</option>
+			<option value="29900">29,900 원</option>
+			<option value="39900">39,900 원</option>
+			<option value="49900">49,900 원</option>
+			<option value="59900">59,900 원</option>
+			<option value="69900">69,900 원</option>
+			<option value="79900">79,900 원</option>
+			<option value="89900">89,900 원</option>
+			<option value="99900">99,900 원</option>
+			<option value="109900">109,900 원</option>
+		</select>
 	</div>
-	
 	
 </div>
 </div>
 </form>
+
+<!-- ------------------------------- -->
+<hr>
+<!-- ------------------------------- -->
+
 
 
 
 <form id="createLectureSaveImg" name="createLectureSaveImg" action="createLectureSaveImg.do?lidx=${lidx}" method="post" enctype="multipart/form-data">
 <div id="landingPage">
 <div>
-	<h2>강좌 랜딩 페이지</h2>
-</div>
+	<h4>강좌 랜딩 페이지</h4>
+	<span>강좌 이미지</span>
+	
+	<figure class="figure">
+  		<img id="thumImg" src="img/${ dto.lthumnail}" class="figure-img img-fluid rounded" alt="">
+  		<figcaption class="figure-caption">여기에 강좌 이미지를 업로드하십시오. *중요:750x422 픽셀의 .jpg, .jpeg, .gif, 또는 .png. 이미지에 텍스트가 포함되지 않아야 함</figcaption>
+	</figure>
 
-<div>
-<span>강좌 이미지</span>
-	<div>
-		<img id="thumImg" alt="강좌 이미지" src="img/${dto.lthumnail}">
-	</div>
+<!-- 
+		<div>
+			<img  id="thumImg" alt="강좌 이미지" src="https://www.udemy.com/staticx/udemy/images/course/750x422/placeholder.png">
+		</div>
 	
-	<div>
-		<span>여기에 강좌 이미지를 업로드하십시오. *중요:750x422 픽셀의 .jpg, .jpeg, .gif, 또는 .png. 이미지에 텍스트가 포함되지 않아야 함</span>
+		<div class="text">
+			<span>여기에 강좌 이미지를 업로드하십시오. *중요:750x422 픽셀의 .jpg, .jpeg, .gif, 또는 .png. 이미지에 텍스트가 포함되지 않아야 함</span>
+		</div>
+ -->	
+		<div>
+			<span>
+			<input   class="form-control-file"  type="file" id="thumnailUpload" name="lthumnail1" onchange="javascript:thumUpload(${lidx})"> 
+			</span>
+		</div>
 	</div>
-	
-	<div>
-		<span>
-		<input type="file" id="thumnailUpload" name="lthumnail1" onchange="javascript:thumUpload(${dto.lidx})"> 
-		</span>
-	</div>
-</div>
 </div>
 </form>
 
 
-
 <!-- 다음 페이지 이동 버튼 -->
 <div>
-	<input type="button" value="다음" onclick="clickNextBtn()">
+	<input type="button" value="다음" class="next btn btn-primary" onclick="clickNextBtn()">
 </div>
 	
 <%@include file="/WEB-INF/views/teacher/teacherFooter.jsp" %>

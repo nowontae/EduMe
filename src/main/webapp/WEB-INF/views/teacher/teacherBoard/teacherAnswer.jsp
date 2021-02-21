@@ -11,11 +11,15 @@
 
 <%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
 
+<div class="my-5"><h2>문의</h2></div>
+
 <div class="text-right my-3" style="width:50vw">
 <form action="replyCheckY.do" name="replyCheckY">
 <input type="hidden" value="${dto.lqidx}" name="lqidx">
 <input type="hidden" value="${dto.midx}" name="midx">
-<input type="submit" class="btn btn-primary" value="답변완료로 바꾸기">
+<c:if test="${dto.lqreply=='N'}">
+	<input type="submit" class="btn btn-primary" value="답변완료로 바꾸기">
+</c:if>
 </form>
 </div>
 <form action="teacherAnswerSubmit.do" name="lqreplyForm">

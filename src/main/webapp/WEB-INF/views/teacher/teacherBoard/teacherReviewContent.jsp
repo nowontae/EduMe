@@ -10,7 +10,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
-<div>
+<div class=" my-5">
 	<h2>${ltitle} 후기</h2>
 </div>
 

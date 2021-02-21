@@ -140,7 +140,8 @@ public class StudentController {
 	@RequestMapping("/checkMyLecture.do")
 	public ModelAndView checkMyLecutre(@RequestParam("lidx") int lidx, HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		//int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		int midx = (Integer)session.getAttribute("midx");
 		int result = lectureDao.checkMyLecture(lidx, midx);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/lecture/checkMyLecture");
@@ -171,7 +172,8 @@ public class StudentController {
 	public ModelAndView wishList(HttpServletRequest req) {
 		System.out.println("wishList 1");
 		HttpSession session = req.getSession();
-		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		//int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		int midx = (Integer)session.getAttribute("midx");
 		List list = wishListDao.getWishList(midx);
 		System.out.println("컨트롤러 list 사이즈 : "+list.size());
 		
@@ -190,8 +192,10 @@ public class StudentController {
 	//내 장바구니  페이지이동
 	@RequestMapping("/MyCart.do")
 	public ModelAndView myCart(HttpServletRequest req) {
+		
+		System.out.println("mycart into");
 		HttpSession session=req.getSession();
-		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		int midx = (Integer)session.getAttribute("midx");
 		System.out.println("cart midx=" + midx);
 		ArrayList list=cartDao.myCartList(midx);
 		
@@ -268,8 +272,8 @@ public class StudentController {
 	public ModelAndView myLectureList(HttpServletRequest req) {
 		
 		HttpSession session = req.getSession();
-		int midx = Integer.parseInt((String)session.getAttribute("midx"));
-		
+		//int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		int midx = (Integer)session.getAttribute("midx");
 		List list = lectureDao.getMyLectureList(midx);
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("lecture/myLectureList");
@@ -282,7 +286,8 @@ public class StudentController {
 	public ModelAndView wishListAdd(HttpServletRequest req, @RequestParam("lidx")int lidx) {
 		System.out.println("add wish 1");
 		HttpSession session = req.getSession();
-		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		//int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		int midx = (Integer)session.getAttribute("midx");
 		int result = wishListDao.addWishList(midx, lidx);
 		System.out.println("2");
 		ModelAndView mav = new ModelAndView();
@@ -299,7 +304,10 @@ public class StudentController {
 	public ModelAndView purchaseHistory(HttpServletRequest req) {
 		System.out.println("purchase history 1");
 		HttpSession session = req.getSession();
-		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		//int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		int midx = (Integer)session.getAttribute("midx");
+		
+		
 		List list = purchaseDao.purchaseHistory(midx);
 		System.out.println("2");
 		ModelAndView mav = new ModelAndView();
@@ -313,7 +321,10 @@ public class StudentController {
 	public ModelAndView creditHistory(HttpServletRequest req) {
 		System.out.println("credit history 1");
 		HttpSession session = req.getSession();
-		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		//int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		int midx = (Integer)session.getAttribute("midx");
+		
+		
 		List list = creditDao.creditHistory(midx);
 		System.out.println("2");
 		ModelAndView mav = new ModelAndView();
@@ -326,7 +337,9 @@ public class StudentController {
 	@RequestMapping("/noticeMsg.do")
 	public ModelAndView noticeMsgList(HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		//int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		
+		int midx = (Integer)session.getAttribute("midx");
 		List list = noticeMsgDao.noticeMsgList(midx);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("noticeMsg", list); 
@@ -338,8 +351,8 @@ public class StudentController {
 	@RequestMapping("/addMyCartList.do")
 	public ModelAndView addMyCartList(HttpServletRequest req, int lidx, Boolean result) {
 		HttpSession session = req.getSession();
-		int midx = Integer.parseInt((String)session.getAttribute("midx"));
-		
+		//int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		int midx = (Integer)session.getAttribute("midx");
 		String msg="";
 		String gopage="";
 		ModelAndView mav=new ModelAndView();
