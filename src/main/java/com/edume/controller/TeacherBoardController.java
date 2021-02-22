@@ -114,14 +114,15 @@ public class TeacherBoardController {
 			HttpServletRequest req) {
 		System.out.println("replyY ");
 		HttpSession session = req.getSession();
+
 		//int teacheMidx=Integer.parseInt((String)session.getAttribute("midx"));
 		int teacherMidx = (Integer)session.getAttribute("midx");
+
 		String msg="";
 		String page="";
 		
+		
 		ModelAndView mav=new ModelAndView();
-		System.out.println("update befor ");
-		System.out.println(dto.getLqidx()+"/"+dto.getMidx());
 		int replyResult=teacherBoardDao.replyUpdate(dto);
 		System.out.println("replyY ");
 		if(replyResult>0) {

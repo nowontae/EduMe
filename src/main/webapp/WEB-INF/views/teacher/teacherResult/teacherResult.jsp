@@ -102,6 +102,13 @@ clear: both;
 
  </div> <!-- BodyID -->
 
+
+<div id="svgArea" class="svgArea"><p></p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <%@include file="/WEB-INF/views/teacher/teacherFooter.jsp" %>
 </body>
 

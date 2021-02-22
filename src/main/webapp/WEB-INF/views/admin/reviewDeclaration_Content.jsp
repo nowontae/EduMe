@@ -65,6 +65,21 @@ input,textarea:focus {
 	border: none;
     outline:none;
 	}
+	.bts{
+	width:90px;
+	height:30px;
+    background-color: #1a6dca;
+    border: none;
+    color:#fff;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+	border-radius:10px;
+	border: none;
+    outline:none;
+}
 </style>
 </head>
 <body>
@@ -110,8 +125,8 @@ input,textarea:focus {
 		<tr>
 			<td colspan="2" align="center">
 	
-				<input type="submit" value="승인">
-				<input type="button" value="미승인" onclick="location.href='Declaration_Notapproved.do?didx=${dto.didx}'">
+				<input type="submit" value="승인" class="bts">
+				<input type="button" value="미승인" class="bts" onclick="location.href='Declaration_Notapproved.do?didx=${dto.didx}'">
 			</td>
 		</tr>
 		</c:if>
@@ -123,7 +138,7 @@ input,textarea:focus {
 	</table>
 	</form>
 	<div style="padding-top: 5px; width:750px;" align="center" >
-	<input type="button" value="목록" class="list_button" onclick = "location.href = 'admin_reviewDeclaration.do'"  >
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="목록" class="list_button" onclick = "location.href = 'admin_reviewDeclaration.do'"  >
 	</div>
 </div>
 </body>
