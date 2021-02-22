@@ -122,7 +122,7 @@ textarea:focus {
  
  <div class="accordion" id="accordionExample">
  	<c:forEach var="curi" items="${curriculum }" varStatus="num">
- 	<c:if test="${curi.lcsection != 1 && curi.lcpart == 0 }"></div></c:if>
+ 	<!--<c:if test="${curi.lcsection != 1 && curi.lcpart == 0 }"></div></c:if>-->
     <c:if test="${curi.lcsection == 1 }"><c:set var="extendValue">true</c:set></c:if>
 	<c:if test="${curi.lcsection != 1 }"><c:set var="extendValue">false</c:set></c:if>
     <c:if test="${curi.lcpart == 0 }">

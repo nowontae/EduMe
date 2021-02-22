@@ -54,7 +54,7 @@ public class CreateLectureCurriculumController {
 		CreateLectureDTO dto= createLectureCurriculumDao.createLectureAll(lidx); // Fake DB에서 가져오기
 		int resultLidx=createLectureCurriculumDao.createLectureInsert(dto);  // 본 DB에 insert
 		//int resultLidx=createLectureCurriculumDao.lidxSearch(dto); // 본 DB에 lidx 가져오기
-		System.out.println("resultLidx="+resultLidx);
+		System.out.println("resultLidx(getLidx)="+dto.getLidx());
 		int result = createLectureCurriculumDao.createLectureDiscount(dto.getLidx());
 		System.out.println(result);
 		CreateLectureCurriculumDTO dto1 = new CreateLectureCurriculumDTO();
@@ -81,15 +81,19 @@ public class CreateLectureCurriculumController {
 		
 		result=0;
 		int checkResultCount=0;
+		
+		
 		HttpSession session=rs.getSession();
-		String path = session.getServletContext().getRealPath("/")+"video/";
+		String path = session.getServletContext().getRealPath("/");
+		int tmpPath = session.getServletContext().getRealPath("/").indexOf("\\", 4);
+		path = path.substring(0, tmpPath) + "\\EduMe\\src\\main\\webapp\\img\\";
 		//section 갯수만큼
 		for(int i=0; i< lctitle.size(); i++) {
 			
 			
 			//part 갯수만큼
 			for(int j=0; j < lctitle.get(i).size(); j++) {
-				dto1.setLidx(resultLidx);
+				dto1.setLidx(dto.getLidx());
 				dto1.setLcsection(i+1);
 				dto1.setLcpart(j);
 				dto1.setLctitle(lctitle.get(i).get(j));

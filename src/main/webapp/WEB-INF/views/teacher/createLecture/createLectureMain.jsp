@@ -232,17 +232,17 @@ function thumUpload(lidx){
 
 <div>
 	<span>개요</span>
-	<div><input class="form-control"  type="text" name="lsummary" value="${arr.lsummary}" required="required"></div>
+	<div><textarea class="form-control" row="3"  type="text" name="lsummary" value="${arr.lsummary}" required="required"></textarea></div>
 </div>
 
 <div>
 		<span>강의 목적</span>
-	<div><input  class="form-control" type="text" name="lpurpose" value="${arr.lpurpose}" ></div>
+	<div><textarea  class="form-control"  row="3" type="text" name="lpurpose" value="${arr.lpurpose}" > </textarea></div>
 </div>
 	
 <div>
 		<span>배경 지식</span>
-	<div><input class="form-control"  type="text" name="lknowledge" value="${arr.lknowledge}" required="required"></div>
+	<div><textarea class="form-control"  row="3"  type="text" name="lknowledge" value="${arr.lknowledge}" required="required"> </textarea></div>
 </div>
 
 <div>

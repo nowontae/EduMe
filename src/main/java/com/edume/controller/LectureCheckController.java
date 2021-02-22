@@ -82,6 +82,7 @@ public class LectureCheckController {
 				} else {
 					mav.addObject("dto", dto);
 					mav.addObject("myClass", ldto);
+					mav.addObject("myClassVideo", ldto.getLcvideo());
 					mav.addObject("curriculum", lcdto);
 					mav.setViewName("admin_Teacher/lectureLtitleContent");
 				}

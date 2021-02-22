@@ -87,12 +87,16 @@ public class LectureDAOImple implements LectureDAO {
 	@Override
 	public LectureCurriculumDTO getMyClass(int lidx,int section, int part) {
 		
+		
+		System.out.println("getMyClass/ "+lidx+"/"+section+"/"+part );
 		Map map = new HashMap();
 		map.put("lidx", lidx);
 		map.put("section", section);
 		map.put("part", part);
 		LectureCurriculumDTO ldto = sqlMap.selectOne("getMyClass", map);
-				
+		
+		
+		System.out.println(ldto.getLcsection()+"/"+ldto.getLcpart()+"/"+ldto.getLctitle()+"/"+ldto.getLcvideo());
 		return ldto;
 	}
 	

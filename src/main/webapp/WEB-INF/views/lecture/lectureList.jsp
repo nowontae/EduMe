@@ -50,7 +50,7 @@ img.d-block.mx-auto {
 				</c:if>
 				<div class="col-2" style="  width:70%; margin-bottom: 10px;">
 					<div class="card" style="width: 18rem;">
-						<img src="img/checkbox.svg" class="card-img-top" alt="...">
+						<img src="img/${lecture.lthumnail }" class="card-img-top" alt="...">
 						<div class="card-body">
 							<h5 class="card-title">${lecture.ltitle }</h5>
 							<p class="card-text">${lecture.lsubtitle }</p>
