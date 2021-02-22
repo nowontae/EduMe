@@ -21,31 +21,37 @@ function show(){
 </script>
 </head>
 <body>
-<div>
+
+<%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
+<div class="my-5">
 	<h2>공지</h2>
 </div>
 	<form name="teacherNoticeWrite" action="teacherNoticeSubmit.do" method="post" enctype="multipart/form-data">
-		<table id="inputList">
+		<table id="inputList" class="talbe">
 			<tr>
-				<td>강의번호 <input type="text" name="lidx"></td>
+				<td scope="row">강의번호 </td>
+				<td><input class="form-control" type="text" name="lidx"></td>
 			</tr>
 			
 			<tr>
-				<td>제목<input type="text" name="nsubject"></td>
+				<td scope="row">제목</td>
+				<td><input class="form-control"  type="text" name="nsubject"></td>
 			</tr>
 			
 			<tr>
-				<td><textarea rows="6" cols="45" name="ncontent"></textarea></td>
+				<td scope="row">내용</td>
+				<td><textarea class="form-control"  rows="6" cols="45" name="ncontent"></textarea></td>
 			</tr>
 			<tr>
-				<td colspan="2" >
-				 첨부이미지:<input type="file" name="upload">
-				<!-- 다중파일 업로드 <input type="button" value="파일추가" onclick="show()"> -->
-				</td>
+				<td>첨부이미지</td><!-- 다중파일 업로드 <input type="button" value="파일추가" onclick="show()"> -->
+				<td><input class="form-control-file" type="file" name="upload"></td>
 			</tr>
 		</table>
-		<input type="submit" value="등록">
-		<input type="reset" value="취소">
+		
+		<br><br>	
+		<input type="submit" class="btn btn-primary" value="등록">
+		<input type="reset" class="btn btn-primary" value="취소">
 	</form>
+<%@include file="/WEB-INF/views/teacher/teacherFooter.jsp" %>
 </body>
 </html>

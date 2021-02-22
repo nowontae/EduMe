@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script type="text/javascript" src="httpRequest.js"></script>
-<script type="text/javascript" src="resultChart.js?ver=1"></script>
+<script type="text/javascript" src="resultChart.js?"></script>
 <style>
 #ResultTitle{
 	margin-bottom: 40px;
@@ -58,53 +58,50 @@ clear: both;
 </head>
 <body onload="firstChart()" >
 <%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
+
+<!--  전체 본문 영역 -->
 <div id="bodyID">
-<div>
+
+	<!-- 성과 제목 -->
 	<div id="ResultTitle">
-	<h2>성과</h2>
+		<h2>성과</h2>
+	</div>  
+
+	<table class="table" style="width:50vw !important; margin:0 auto">
+	   	<tr>
+	   		<th scope="col">총수익</th>
+			<th scope="col">강사 평점</th>
+		</tr>
+		<tr>
+			<td>${allResult}원</td>
+			<td>${allGrade}점 (전체)</td>
+		</tr>
+		<tr>
+			<td>${monthResult}원 (최근 한달)</td>
+			<td>${m1GradeCount}개 (최근 한달 평점 갯수)</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="text-right">
+				<span>날짜 범위</span>
+				<select name="searchMonth" id="sortSelectBox" onchange="categoryChange(this, ${sessionScope.midx})">
+					<option value="1">최근 1개월</option>
+					<option value="6">최근 6개월</option>
+					<option value="12">최근 1년</option>
+				</select>
+			</td>
+	</table>
+	
+	<div id="hiddenData">
+		<input type="hidden" id="M1camount" value="${M1camount}">
+		<input type="hidden" id="M2camount" value="${M2camount}">
+		<input type="hidden" id="M3camount" value="${M3camount}">
+		<input type="hidden" id="M4camount" value="${M4camount}">
 	</div>
 
-	<div style="border: 1px solid black;">
-		<div style="border: 1px solid black;" id="ulDiv">
+	<div id="svgArea" class="svgArea"><p></p></div>
 
-      
-     <div id="marginAll">
-		<div id="line">
-			<ul role="tablist" class="lectureResultUl">
-				<li role="presentation" id="resultA">
-					
-						<div>
-							<div>
-								<div id="pont">총 수익</div>
-								<div>${allResult}원</div>
-								<div>${monthResult}원 (최근 한달)</div>
-							</div>
-						</div>
-				</li>
-				<li role="presentation" id="gradeA">
-						<div>
-							<div>
-								<div id="pont">강사 평점</div>
-								<div>${allGrade}점 (전체)</div>
-								<div>${m1GradeCount}개 (최근 한달 평점 갯수)</div>
-							</div>
-						</div>
-				</li>
-			</ul>
-		</div>
-		<div id="chartDiv">
-			<div>날짜범위: 
-			<select name="searchMonth" id="sortSelectBox" onchange="categoryChange(this, ${sessionScope.midx})">
-				<option value="1">최근 1개월</option>
-				<option value="6">최근 6개월</option>
-				<option value="12">최근 1년</option>
-			</select>
-		</div>
-	</div>
-<input type="hidden" id="M1camount" value="${M1camount}">
-<input type="hidden" id="M2camount" value="${M2camount}">
-<input type="hidden" id="M3camount" value="${M3camount}">
-<input type="hidden" id="M4camount" value="${M4camount}">
+ </div> <!-- BodyID -->
+
 
 <div id="svgArea" class="svgArea"><p></p></div>
 </div>

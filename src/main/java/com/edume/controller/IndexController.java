@@ -7,16 +7,20 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.html.FormSubmitEvent.MethodType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edume.admin.model.Category1DAO;
 import com.edume.admin.model.Category2DAO;
 import com.edume.admin.model.Category3DAO;
+import com.edume.admin.model.MemberDAO;
+import com.edume.admin.model.MemberDTO;
 import com.edume.createLecture.model.CreateLectureDAO;
 import com.edume.createLecture.model.CreateLectureDTO;
 
@@ -32,6 +36,8 @@ public class IndexController {
 	private Category3DAO category3Dao;
 	@Autowired
 	private CreateLectureDAO createLectureDao;
+	@Autowired
+	private MemberDAO memberDao;
 	
 	@RequestMapping("/index.do")
       public ModelAndView index(HttpServletRequest req, HttpServletResponse resp) {
@@ -39,8 +45,8 @@ public class IndexController {
     	// midx session 심기
     	HttpSession session = req.getSession(true); 
 
-    	session.setAttribute("mgrade", "2");
-    	session.setAttribute("midx", "2");
+    	//session.setAttribute("mgrade", "3");
+    	//session.setAttribute("midx", "2");
 
 
 
@@ -53,13 +59,46 @@ public class IndexController {
     	session.setAttribute("cat3_list", cat3_list);
     	
     	ModelAndView mav = new ModelAndView();
-//    	mav.addObject("cat1_list", cat1_list);
-//    	mav.addObject("cat2_list", cat2_list);
-//    	mav.addObject("cat3_list", cat3_list);
+    	mav.addObject("cat1_list", cat1_list);
+   		mav.addObject("cat2_list", cat2_list);
+		mav.addObject("cat3_list", cat3_list);
     	mav.setViewName("index");
     	return mav;
          
       }  
+	
+	// 로그인 Form
+	@RequestMapping(value="/login.do", method = RequestMethod.GET)
+	public String loginForm() {
+		return "common/login";		
+	}
+	
+	// 로그인  값
+	@RequestMapping(value="/login.do", method = RequestMethod.POST)
+	public ModelAndView loginSubmt(@RequestParam("mid")String mid,
+			@RequestParam("mpwd")String mpwd ,
+			HttpServletRequest req) {
+		
+		
+		MemberDTO dtoResult = memberDao.memberLogin(mid, mpwd);
+		
+		HttpSession session = req.getSession(); 
+		session.setAttribute("midx", dtoResult.getMidx());
+		session.setAttribute("mgrade", dtoResult.getMgrade());
+		
+		System.out.println("login : "+dtoResult.getMidx() +"/"+ dtoResult.getMgrade());
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("index");
+				
+		return mav;		
+	}
+	
+	@RequestMapping("/logout.do")
+	public String logout(HttpServletRequest req) {
+		HttpSession session = req.getSession(true); 
+		session.invalidate();
+		return "index";
+	}
     
 	/*등록된 강의 리스트 불러오기*/
     @RequestMapping("/teacherMain.do")

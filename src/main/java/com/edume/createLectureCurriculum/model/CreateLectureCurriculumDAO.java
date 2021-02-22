@@ -11,4 +11,5 @@ public interface CreateLectureCurriculumDAO {
 	public int lidxSearch(CreateLectureDTO dto);
 	public int lectureCurriculumSubmit(CreateLectureCurriculumDTO dto);
 	public int createLectureDelete(int lidx);
+	public int createLectureDiscount(int lidx);
 }

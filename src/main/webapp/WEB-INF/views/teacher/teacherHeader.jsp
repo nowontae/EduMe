@@ -10,12 +10,12 @@
 	<!-- side bar -->
 	<div class="col-2 sidebar1">
        	<div class="logo">
-           	<img src="img/e.jpg" style="width:60px" class="img-responsive center-block rounded-circle" alt="Logo">
+           	<img src="img/e.jpg" style="width:60px" class="img-responsive center-block rounded-circle" alt="Logo" onclick="location.href='index.do'" />
 		</div>
            <br>
            <div class="left-navigation">
            	<ul class="list">
-               	<h5><strong>EduMe</strong></h5>
+               	<a href="index.do"><h5><strong>EduMe</strong></h5></a>
 				<li><a href="teacherMain.do?midx=${sessionScope.midx }">강좌</a></li>
 				<li><a href="teacherTestVideo.do?midx=${sessionScope.midx}">테스트동영상</a></li>
 				<li><a href="teacherNoticeMain.do">공지</a></li>

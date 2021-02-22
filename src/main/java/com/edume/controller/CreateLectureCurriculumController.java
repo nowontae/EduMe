@@ -52,9 +52,11 @@ public class CreateLectureCurriculumController {
 		
 		
 		CreateLectureDTO dto= createLectureCurriculumDao.createLectureAll(lidx); // Fake DB에서 가져오기
-		int result1=createLectureCurriculumDao.createLectureInsert(dto);  // 본 DB에 insert
-		int resultLidx=createLectureCurriculumDao.lidxSearch(dto); // 본 DB에 lidx 가져오기
-		
+		int resultLidx=createLectureCurriculumDao.createLectureInsert(dto);  // 본 DB에 insert
+		//int resultLidx=createLectureCurriculumDao.lidxSearch(dto); // 본 DB에 lidx 가져오기
+		System.out.println("resultLidx="+resultLidx);
+		int result = createLectureCurriculumDao.createLectureDiscount(dto.getLidx());
+		System.out.println(result);
 		CreateLectureCurriculumDTO dto1 = new CreateLectureCurriculumDTO();
 		//section이 몇개인지
 		String lcsection[] = rs.getParameterValues("lcsection");
@@ -77,7 +79,7 @@ public class CreateLectureCurriculumController {
 			lcvideo.add(arrListTmpVideo);
 		}
 		
-		int result=0;
+		result=0;
 		int checkResultCount=0;
 		HttpSession session=rs.getSession();
 		String path = session.getServletContext().getRealPath("/")+"video/";
@@ -93,7 +95,7 @@ public class CreateLectureCurriculumController {
 				dto1.setLctitle(lctitle.get(i).get(j));
 				dto1.setLcvideo("section");
 				dto1.setLcsample("N");
-				//System.out.print("section = "+i+"/ part = "+j+" / title= "+lctitle.get(i).get(j));
+				System.out.print("section = "+i+"/ part = "+j+" / title= "+lctitle.get(i).get(j));
 				if(j>0) {
 					dto1.setLcvideo(lcvideo.get(i).get(j-1).getOriginalFilename());
 					copyInto(lcvideo.get(i).get(j-1),path); 

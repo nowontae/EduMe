@@ -9,7 +9,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/teacher/teacherHeader.jsp" %>
-<div>
+<div class="my-3">
 	<h2>공지 본문</h2>
 </div>
 
@@ -31,7 +31,7 @@
 	
 	<tr>
 		<td scope="row">공지 내용</td>
-		<td><textarea readonly rows="6" cols="45" name="ncontent"> ${dto.ncontent}</textarea></td>
+		<td><textarea class="form-control" readonly rows="6" cols="45" name="ncontent"> ${dto.ncontent}</textarea></td>
 	</tr>
 </table>
 

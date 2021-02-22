@@ -20,4 +20,7 @@ public interface MemberDAO {
 	
 	//블랙리스트 해제
 	public int Unblacklist(int midx);
+	
+	//login
+	public MemberDTO memberLogin(String mid,String mpwd);
 }

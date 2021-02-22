@@ -45,4 +45,11 @@ public class CreateLectureCurriculumDAOImple implements CreateLectureCurriculumD
 		int result=sqlMap.delete("createLectureDelete", lidx);
 		return result;
 	}
+	
+	@Override
+	public int createLectureDiscount(int lidx) {
+		int result=sqlMap.delete("createLectureTeacherDiscount", lidx);
+		result +=sqlMap.delete("createLectureAdminDiscount", lidx);
+		return result;
+	}
 }

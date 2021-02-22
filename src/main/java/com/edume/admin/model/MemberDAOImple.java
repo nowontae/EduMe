@@ -72,5 +72,16 @@ public class MemberDAOImple implements MemberDAO {
 		int count=sqlMap.update("Unblacklist",midx);
 		return count;
 	}
+	
+	//login
+	@Override
+	public MemberDTO memberLogin(String mid,String mpwd) {
+
+		Map map = new HashMap();
+		map.put("mid", mid);
+		map.put("mpwd", mpwd);
+		MemberDTO dtoResult=sqlMap.selectOne("login",map);
+		return dtoResult;
+	}
 }
  
