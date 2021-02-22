@@ -2,7 +2,9 @@ package com.edume.controller;
 
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edume.admin.model.ReviewDAO;
+import com.edume.admin_teacher_lectureCheck.model.LectureCheckDAO;
+import com.edume.admin_teacher_lectureCheck.model.LectureCheckDTO;
 import com.edume.lecture.model.LectureCurriculumDTO;
 import com.edume.lecture.model.LectureDAO;
 import com.edume.lecture.model.LectureDTO;
@@ -63,6 +67,8 @@ public class StudentController {
 	 private CartDAO cartDao;
 	 @Autowired
 	 private ReviewDAO reviewDao;
+	 @Autowired
+	 private LectureCheckDAO lectureCheckDao;
 	
 
 	//신고하기 폼
@@ -155,9 +161,14 @@ public class StudentController {
 		public ModelAndView lectureDetail(@RequestParam(value="lidx", defaultValue = "0") int lidx,
 				@RequestParam(value="section", defaultValue = "1") int section,
 				@RequestParam(value="part", defaultValue = "1") int part) {
-			lidx=1;
-			LectureCurriculumDTO ldto = lectureDao.getMyClass(lidx,section,part);
-			List lcdto = lectureDao.getLectureCurriculum(lidx);
+			
+			Map map = new HashMap();
+			map.put("lidx", lidx);
+			
+			LectureCheckDTO dto = lectureCheckDao.lectureContent(map); //강의
+			LectureCurriculumDTO ldto = lectureDao.getMyClass(lidx, section, part); //커리큘럼 강의번호,섹션,강의
+			List lcdto = lectureDao.getLectureCurriculum(lidx); //커리큘럼 내용전체
+			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/lecture/lectureMyClass");
 			mav.addObject("myClass", ldto);
@@ -349,7 +360,7 @@ public class StudentController {
 	}	
 	//장바구니 담기
 	@RequestMapping("/addMyCartList.do")
-	public ModelAndView addMyCartList(HttpServletRequest req, int lidx, Boolean result) {
+	public ModelAndView addMyCartList(HttpServletRequest req, int lidx) {
 		HttpSession session = req.getSession();
 		//int midx = Integer.parseInt((String)session.getAttribute("midx"));
 		int midx = (Integer)session.getAttribute("midx");
@@ -366,14 +377,10 @@ public class StudentController {
 		}else {
 			//장바구니에 없다면 담기를 실행한다.
 			int count=cartDao.addMyCartList(midx,lidx);
-			if(result) { // db에 담고 장바구니 페이지로 이동
-				gopage="/myPage/myCartMsg";
-				msg="장바구니페이지로 이동합니다.";
-				
-			}else{// db에  담고 원래 lidx 페이지로 이동
-				msg="";
-				gopage="/lecture/lectureDetail";
-			}
+			
+			gopage="/myPage/myCartMsg";
+			msg="장바구니페이지로 이동합니다.";
+			
 		}
 		mav.addObject("msg", msg);
 		mav.addObject("lidx",lidx);

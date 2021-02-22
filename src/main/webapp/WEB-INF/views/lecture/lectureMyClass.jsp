@@ -32,44 +32,55 @@ function videoEnded(v){
 <body>
 <%@include file="/WEB-INF/views/header.jsp" %>
 
-<br /><br /><br /><br /><br /><br /><br /><br />
- <video id="lec" muted controls style="width:500px" onpause="videoPause(this)"   onended="videoEnded(this)">
-      <source src="${myClass.lcvideo}">
-      <strong>Your browser does not support the video tag.</strong>
- </video>
- 
- 
- <div id="curriculum">
- 
- <div class="accordion" id="accordionExample">
+
+
+<div class="row">
+
+
+
+<div class="col-9">
+<video src="video/${myClass.lcvideo}" controls width="1560px"></video> 
+</div>
+
+<!--  커리큘럼 영역 -->
+<div id="curriculum" class="col-3"">
+	
+	<div class="accordion" id="accordionExample">
+ 	
  	<c:forEach var="curi" items="${curriculum }" varStatus="num">
- 	<c:if test="${curi.lcsection != 1 && curi.lcpart == 0 }"></div></c:if>
+ 	<!-- 값 세팅 -->
     <c:if test="${curi.lcsection == 1 }"><c:set var="extendValue">true</c:set></c:if>
 	<c:if test="${curi.lcsection != 1 }"><c:set var="extendValue">false</c:set></c:if>
+    <!-- css랑 무관 -->
+    
+    <!-- 섹션 영역 -->
     <c:if test="${curi.lcpart == 0 }">
     <div class="card">
       <div class="card-header" id="heading${curi.lcsection}">
         <h2 class="mb-0">
           <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${curi.lcsection }" aria-expanded="${extendValue}" aria-controls="collapse${curi.lcsection }">
-            Head ${curi.lcsection}/${curi.lcpart}/${curi.lctitle }
+            Section${curi.lcsection} &nbsp;&nbsp;:&nbsp;&nbsp; ${curi.lctitle }
           </button>
         </h2>
       </div>
+    </div>
   	</c:if>
+  	
+  	
+  	<!-- 파트 영역 -->
   	<c:if test="${curi.lcpart != 0 }">
       <div id="collapse${curi.lcsection }" class="collapse" aria-labelledby="heading${curi.lcsection }" data-parent="#accordionExample">
         <div class="card-body">
-         content  ${curi.lcsection}/${curi.lcpart}/${curi.lctitle }
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="lectureMyClass.do?lidx=${curi.lidx}&section=${curi.lcsection}&part=${curi.lcpart}">Part${curi.lcpart } &nbsp;&nbsp;:&nbsp;&nbsp; ${curi.lctitle }</a>
         </div>
-        <div class="progress">
-  			<div class="progress-bar" role="progressbar" style="width : 30% " aria-valuenow="30" aria-valuemin="0" aria-valuemax="300"></div>
-		</div>
       </div>
     </c:if>
- </c:forEach>
- </div>
+    </c:forEach>
+ 	</div>
 </div> <!-- end div="curricullum" -->
- 
- 
+</div>
+
+
+ <%@include file="/WEB-INF/views/footer.jsp" %>
 </body>
 </html>

@@ -27,7 +27,7 @@
 			<div class="card-body">
 				<h5 class="card-title">${lecture.ltitle }</h5>
 				<p class="card-text">${lecture.lsubtitle }</p>
-				<a href="lectureDetail.do?lidx=${lecture.lidx}" class="btn btn-primary">상세페이지</a>
+				<a href="lectureMyClass.do?lidx=${lecture.lidx}" class="btn btn-primary">상세페이지</a>
 			</div>
 		</div>
 	</div>

@@ -14,6 +14,8 @@
         <p class="lead text-info" ><font style="color:black">- 조지 버나드 쇼 - </font></p>
         
     </div>
+
+<!-- 
 </main>
 <a href="teacherMain.do?midx=${sessionScope.midx}">강사</a>
 <hr>
@@ -64,7 +66,7 @@
 	<li><a href="lectureMyClass.do">강의 듣기</a></li>
 	<li></li>
 </ul>
-
+ -->
 <%@include file="footer.jsp" %>
 </body>
 </html>

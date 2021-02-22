@@ -102,7 +102,11 @@ public class IndexController {
     
 	/*등록된 강의 리스트 불러오기*/
     @RequestMapping("/teacherMain.do")
-	public ModelAndView createLectureMain(@RequestParam(value="midx")int midx) {
+	public ModelAndView createLectureMain(HttpServletRequest req) {
+    	
+    	HttpSession session = req.getSession();
+		//int midx = Integer.parseInt((String)session.getAttribute("midx"));
+		int midx = (Integer)session.getAttribute("midx");
     	Map map=new HashMap();
     	map.put("midx", midx);
     	
